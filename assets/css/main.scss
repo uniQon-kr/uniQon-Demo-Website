@@ -1,4 +1,5 @@
 ---
 ---
 
-@import "main";
+$baseurl: "{{ site.baseurl }}";
+@import "uniQon";
