@@ -17,7 +17,88 @@ body {
 }
 
 header {
-  // For mobile site
+  height: 60px;
+  padding: 30px 0 30px 0;
+  font-weight: 500;
+  background-color: #000000;
+  color: #ffffff;
 
-  // For Desktop site
+  // desktop
+  .desktop {
+    margin: 0px 40px 0px 40px;
+    display: grid;
+    grid-template-columns: 70px 130px auto 220px;
+
+    .uniQon_logo {
+      height: 50px;
+      padding: 5px 10px 5px 10px;
+    }
+  
+    .title {
+      padding: 5px 0px 0px 0px;
+      font-size: 30px;
+      font-weight: 700;
+    }
+  
+    .navigator {
+      padding-top: 15px;
+      height: 45px;
+
+      .a-wrapper {
+        padding-right: 20px;
+        display: block;
+        float: right;
+      }
+
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        font-size: 18px;
+        text-align: center;
+
+        &:hover {
+          border-bottom: 1px solid #ffffff;
+          padding-bottom: 2px;
+        }
+
+        &.current {
+          border-bottom: 1px solid #ffffff;
+          padding-bottom: 2px;
+        }
+      }
+    }
+
+    .botton_wrapper {
+      padding-top: 10px;
+      height: 50px;
+
+      .button {
+        float: left;
+        width: 100px;
+        text-align: center;
+        font-size: 18px;
+        height: 35px;
+        border-radius: 10px;
+        padding: 5px 0px 0px 0px;
+        margin: 0px 5px 0px 5px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000000;
+      }
+
+      .auth {
+        display: none;
+      }
+
+      .color_1 {
+        background-color: #ffffff;
+      }
+
+      .color_2 {
+        background-color: #ffffff;
+      }
+    }
+  }
 }

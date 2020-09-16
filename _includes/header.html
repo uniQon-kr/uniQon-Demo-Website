@@ -1,25 +1,21 @@
 <!-- Desktop Header -->
-<div class "desktop">
+<div class = "desktop">
     <img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg">
+    <div class = "title">uniQon</div>
     <div class = "navigator">
-        {% for item in site.data.sitemap %}
+        {% assign sorted = site.data.sitemap | reverse %}
+        {% for item in sorted %}
             {% if page.url == item.url %}
-                <a class = "current">{{ item.title }}</a>
+                <div class = a-wrapper><a class = "current">{{ item.title }}</a></div>
             {% else %}
-                <a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a>
+                <div class = a-wrapper><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></div>
             {% endif %}
         {% endfor %}
-        <div class = "button unauth">
-            Sign In
-        </div>
-        <div class = "button unauth">
-            Sign Up
-        </div>
-        <div class = "button auth">
-            My Page
-        </div>
-        <div class = "button auth">
-            Sign Out
-        </div>
+    </div>
+    <div class = "botton_wrapper">
+        <a href = "/signin"><div class = "button color_1 unauth">SIGN IN</div></a>
+        <a href = "/signup"><div class = "button color_2 unauth">SIGN UP</div></a>
+        <a href = "/mypage"><div class = "button color_1 auth">MY PAGE</div></a>
+        <div class = "button color_2 auth" id = "signout-button">SIGN OUT</div>
     </div>
 </div>

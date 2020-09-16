@@ -4,7 +4,10 @@
   url: /
 
 - title: Our Mentors
-  url: /mentors
+  url: /mentors-list
+
+- title: Be Our Mentor
+  url: /mentor-recruit
 
 - title: Plans
   url: /plans

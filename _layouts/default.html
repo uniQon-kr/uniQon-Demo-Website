@@ -22,14 +22,14 @@
     <!-- TODO: favicons -->
   </head>
   <body>
+    <header>
+      {% include header.html %}
+    </header>
     <div class = "container">
-      <header>
-        {% include header.html %}
-      </header>
       {{ content }}
-      <footer>
-        {% include footer.html %}
-      </footer>
     </div>
+    <footer>
+      {% include footer.html %}
+    </footer>
   </body>
 </html>
