@@ -188,6 +188,79 @@ footer {
   }
 }
 
+.mentors-recruit {
+  font-weight: 500;
+
+  .greeting {
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 0, 0);
+
+    #line1 {
+      font-size: 75px;
+      padding-bottom: 5px;
+      padding-top: 500px;
+    }
+
+    #line2 {
+      font-size: 50px;
+      padding-bottom: 500px;
+      margin-bottom: 200px;
+      padding-top: 0px;
+    }
+  }
+  
+  a {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .block {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 100%;
+    margin-bottom: 100px;   
+
+    #biggerBody {
+      font-size: 75px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+
+    #bigBody {
+      font-size: 50px;
+      margin-bottom: 20px;
+      margin-top: 0px;
+    }
+
+    .text {
+      .smallBody {
+        font-size: 20px;
+        margin-bottom: 25px;
+        margin-top: 10px;
+      }
+      .boldBody {
+        font-weight: 1000;
+        font-size: 20px;
+        margin-bottom: 40px;
+        margin-top: 0px;
+      }
+      .button {
+        text-align: center;
+        line-height: 70px;
+        font-size: 20px;
+        width: 275px;
+        height: 70px;
+        margin-bottom: 50px;
+        border-style: solid;
+        border-color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
 .signin-wrapper {
   text-align: center;
   margin-top: 50px;
