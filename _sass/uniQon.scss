@@ -153,11 +153,26 @@ footer {
   }
 
   .arrow-down {
-    width: 0; 
-    height: 0; 
-    border-left: 50% solid transparent;
-    border-right: 50% solid transparent;
-    border-top: 100px solid #000;
+    background-color: #000000;
+    height: 10vw;
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    #arrow-down1 {
+      background-image: linear-gradient(to right top, white 0%, white 50%, transparent 50%);
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      left: 0;
+    }
+
+    #arrow-down2 {
+      background-image: linear-gradient(to left top, white 0%, white 50%, transparent 50%);
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      left: 0;
+    }
   }
   
   a {
@@ -173,7 +188,16 @@ footer {
     display: grid;
     grid-template-columns: 50% 50%;
     margin-bottom: 100px;
-    .text {   
+    margin-top: 125px;
+
+    .symbol-image {
+      margin: auto;
+      width: 450px;
+    }
+
+    .text {
+      padding-left: 20px;
+
       .bigBody {
         font-size: 75px;
         margin-bottom: 10px;
