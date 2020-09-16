@@ -1,15 +1,16 @@
 @import "normalize"; // Reset browser's default CSS Setting
 @import "NotoSansKR";
 
+* {
+  margin: 0;
+}
+
 body {
   background: #ffffff;
   color: #000000;
   font-family: "Noto Sans KR","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 
   .container {
-    width: 1182px;
-    max-width: 99%;
-    margin: 5px auto;
     @media screen and (max-width: 1191px) {
       margin: 5px;
     }
@@ -130,6 +131,7 @@ footer {
 }
 
 .home {
+  margin: 0;
   font-weight: 500;
 
   .greeting {
@@ -140,15 +142,22 @@ footer {
     #line1 {
       font-size: 50px;
       padding-bottom: 5px;
-      padding-top: 500px;
+      padding-top: 300px;
     }
 
     #line2 {
       font-size: 75px;
-      padding-bottom: 500px;
-      margin-bottom: 200px;
+      padding-bottom: 450px;
       padding-top: 0px;
     }
+  }
+
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 50% solid transparent;
+    border-right: 50% solid transparent;
+    border-top: 100px solid #000;
   }
   
   a {
@@ -157,6 +166,9 @@ footer {
   }
 
   .block {
+    margin: auto;
+    width: 1182px;
+    max-width: 99%;
     text-align: left;
     display: grid;
     grid-template-columns: 50% 50%;
