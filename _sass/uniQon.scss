@@ -5,4 +5,19 @@ body {
   background: #ffffff;
   color: #000000;
   font-family: "Noto Sans KR","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
+  .container {
+    width: 1182px;
+    max-width: 99%;
+    margin: 5px auto;
+    @media screen and (max-width: 1191px) {
+      margin: 5px;
+    }
+  }
+}
+
+header {
+  // For mobile site
+
+  // For Desktop site
 }
