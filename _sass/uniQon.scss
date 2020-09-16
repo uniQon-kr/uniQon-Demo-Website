@@ -183,12 +183,81 @@ footer {
         margin: auto;
         width: 500px;
         height: 200px;
+        border-block-style:;
         border-style: solid;
         border-color: rgb(0, 0, 0);
         background-color: rgb(255, 255, 255);
         border-radius: 20px;
         color: #000000;
       }
+    }
+  }
+}
+
+.signin-wrapper {
+  text-align: center;
+  margin-top: 50px;
+
+  .uniQon_logo {
+    background-color: #000000;
+    width: 50px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .signin-box {
+    margin: auto;
+    border: 1px solid #c9c9c9;
+    background-color: #f9f9f9;
+    width: 320px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 5px;
+
+    .description {
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 312px;;
+      border: 1px solid #c9c9c9;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      padding: 2px;
+    }
+
+    .button {
+      margin: auto;
+      width: 312px;
+      background-color: #2ea44f;
+      padding: 4px;
+      margin-top: 10px;
+      text-align: center;
+      color: #ffffff;
+      border-radius: 10px;
+    }
+  }
+
+  .not-member {
+    margin: auto;
+    background-color: #ebebeb;
+    border: 1px solid #c9c9c9;
+    width: 352px;
+    padding: 4px;
+    font-size: 14px;
+
+    a {
+      color: #0366d6;
+      text-decoration: none;
     }
   }
 }
