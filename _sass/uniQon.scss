@@ -209,13 +209,13 @@ footer {
     color: white;
     background-color: rgb(0, 0, 0);
 
-    #line1 {
+    .title {
       font-size: 75px;
       padding-bottom: 5px;
       padding-top: 500px;
     }
 
-    #line2 {
+    .subtitle {
       font-size: 50px;
       padding-bottom: 500px;
       margin-bottom: 200px;
@@ -229,6 +229,7 @@ footer {
   }
 
   .block {
+    margin-left: 50px;
     text-align: left;
     display: grid;
     grid-template-columns: 100%;
