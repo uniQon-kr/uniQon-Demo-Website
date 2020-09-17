@@ -1,6 +1,6 @@
 
 async function signOutFunc(){
-  const response = await fetch("http://api.uniqon.kr/signout",{
+  const response = await fetch("http://api.uniqon.kr/auth/signout",{
     method: "DELETE"
   })
   localStorage.setItem("uniQonSignedIn", jsonResponse.signedIn);
