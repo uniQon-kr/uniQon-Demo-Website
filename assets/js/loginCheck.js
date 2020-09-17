@@ -15,9 +15,15 @@ async function loginCheck() {
         for (item of document.getElementsByClassName("unauth")) {
             item.style.display = "none";
         }
-    } else {
         for (item of document.getElementsByClassName("unauth")) {
             item.style.display = "none";
+        }
+    } else {
+        for (item of document.getElementsByClassName("auth")) {
+            item.style.display = "none";
+        }
+        for (item of document.getElementsByClassName("unauth")) {
+            item.style.display = "block";
         }
     }
 }
