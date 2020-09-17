@@ -11,7 +11,9 @@ if (localStorage.getItem("uniQonSignedIn") === null) {
 
 // parse localStorage and display button accordingly
 if (localStorage.getItem("uniQonSignedIn") === true) {
-    
+    document.getElementsByClassName("unauth").style.display = none;
+    document.getElementsByClassName("auth").style.display = block;
 } else {
-
+    document.getElementsByClassName("unauth").style.display = none;
+    document.getElementsByClassName("auth").style.display = block;
 }
