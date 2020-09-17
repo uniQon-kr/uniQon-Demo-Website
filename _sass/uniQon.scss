@@ -9,12 +9,6 @@ body {
   background: #ffffff;
   color: #000000;
   font-family: "Noto Sans KR","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-
-  .container {
-    @media screen and (max-width: 1191px) {
-      margin: 5px;
-    }
-  }
 }
 
 header {
