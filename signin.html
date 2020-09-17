@@ -3,11 +3,14 @@ layout: no-header-footer
 title: "Sign In"
 permalink: /signin
 ---
+<script src = '{{ site.baseurl }}/assets/js/logoutCheck.js'></script>
 <div class = "signin-wrapper">
-    <img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg">
+    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
     <div class = "title">Sign in to uniQon</div>
     <div class = "signin-box">
         <div class = "signin">
+            <div class = "error" id = "invalid">Invalid Input</div>
+            <div class = "error" id = "not-match">Cannot Find Matching Information</div>
             <div class = "username">
                 <div class = "description">Username</div>
                 <input name = "username" type = "text"/>
@@ -19,6 +22,6 @@ permalink: /signin
             <div class = "button" id = 'signinbtn' onclick="signInFunc()">Sign in</div>
         </div>
     </div>
-    <div class = "not-member">New to uniQon? <a href ="">Create an account</a></div>
-    <script src='assets/js/signin.js'></script>
+    <div class = "not-member">New to uniQon? <a href ="'{{ site.baseurl }}/signup'">Create an account</a></div>
+    <script src='{{ site.baseurl }}/assets/js/signin.js'></script>
 </div>
