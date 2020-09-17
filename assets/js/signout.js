@@ -1,14 +1,17 @@
 
-async function signOutFunc(){
-  const response = await fetch("https://api.uniqon.kr/auth/signout",{
+async function signOutFunc() {
+  // Log out from server
+  await fetch("https://api.uniqon.kr/auth/signout",{
     method: "DELETE"
-  })
-  const jsonResponse = await response.json();
-  
-  localStorage.setItem("uniQonSignedIn", jsonResponse.signedIn);
+  });
 
-  if (localStorage.getItem("uniQonSignedIn") === true){
-    window.location.replace("{{ site.baseurl }}assets\js\signout.js");
+  // Unset uniQonSignedIn
+  localStorage.setItem("uniQonSignedIn", false);
+
+  // Redirect to main page
+  if (location === "{{ site.baseurl }}") {
+    location.reload();
+  } else {
+    location.href = "{{ site.baseurl }}";
   }
-  console.log(jsonResponse);
 }
