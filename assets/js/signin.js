@@ -11,18 +11,16 @@ async function signInFunc(){
 			id : username,
 			password : password,
 		};
-		console.log(userInput);
-		const userAction = async () => {
-		  const response = await fetch('http://uniqon.kr/signin/', {
-		    method: 'POST',
-		    body: userInput, // string or object
-		    headers: {
-		      'Content-Type': 'application/json'
-		    }
-		  });
-		  const myJson = await response.json(); //extract JSON from the http response
-		  // do something with myJson
-		}
-	}
+		const response = await fetch('http://uniqon.kr/signin/', {
+			method: 'POST',
+			body: userInput, // string or object
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+		const myJson = await response.json(); //extract JSON from the http response
+		// do something with myJson
 
+		console.log(myJson);
+	}
 }
