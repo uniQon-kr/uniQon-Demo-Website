@@ -4,4 +4,8 @@ async function signOutFunc(){
     method: "DELETE"
   })
   localStorage.setItem("uniQonSignedIn", jsonResponse.signedIn);
+
+  if (localStorage.getItem("uniQonSignedIn") === true){
+    window.location.replace("{{ site.baseurl }}assets\js\signout.js");
+  }
 }
