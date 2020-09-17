@@ -569,7 +569,7 @@ footer {
       padding: 2px;
     }
 
-    .button {
+    button {
       margin: auto;
       width: 312px;
       background-color: #2ea44f;
@@ -578,6 +578,7 @@ footer {
       text-align: center;
       color: #ffffff;
       border-radius: 10px;
+      border: 1px solid #2ea44f;
     }
   }
 
