@@ -20,10 +20,10 @@ async function loginCheck() {
         }
     } else {
         for (item of document.getElementsByClassName("auth")) {
-            item.style.display = "block";
+            item.style.display = "none";
         }
         for (item of document.getElementsByClassName("unauth")) {
-            item.style.display = "none";
+            item.style.display = "block";
         }
     }
 }
