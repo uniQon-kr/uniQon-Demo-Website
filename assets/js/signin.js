@@ -11,12 +11,9 @@ async function signInFunc(){
 			id : username,
 			password : password,
 		};
-		const response = await fetch('http://api.uniqon.kr/signin', {
+		const response = await fetch('https://api.uniqon.kr/auth/signin', {
 			method: 'POST',
-			body: userInput, // string or object
-			headers: {
-				'Content-Type': 'application/json'
-			}
+			body: userInput,
 		});
 		const myJson = await response.json(); //extract JSON from the http response
 		// do something with myJson
