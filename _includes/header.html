@@ -16,8 +16,10 @@
         <a href = "/signin"><div class = "button color_1 unauth">SIGN IN</div></a>
         <a href = "/signup"><div class = "button color_2 unauth">SIGN UP</div></a>
         <a href = "/mypage"><div class = "button color_1 auth">MY PAGE</div></a>
-        <div class = "button color_2 auth" id = "signout-button">SIGN OUT</div>
+        <div class = "button color_2 auth" id = "signout-button" onclick = "signOutFunc()">SIGN OUT</div>
     </div>
     <!-- Check Logged In -->
     <script async src = "{{ site.baseurl }}/assets/js/loginCheck.js"></script>
+    <!-- Signout Script-->
+    <script async src = "{{ site.baseurl }}/assets/js/signout.js"></script>
 </div>
