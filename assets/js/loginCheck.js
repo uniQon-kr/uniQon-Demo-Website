@@ -12,8 +12,8 @@ async function loginCheck() {
 
     // parse localStorage and display button accordingly
     if (localStorage.getItem("uniQonSignedIn") === true) {
-        for (item of document.getElementsByClassName("unauth")) {
-            item.style.display = "none";
+        for (item of document.getElementsByClassName("auth")) {
+            item.style.display = "block";
         }
         for (item of document.getElementsByClassName("unauth")) {
             item.style.display = "none";
