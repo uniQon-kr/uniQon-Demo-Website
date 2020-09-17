@@ -2,7 +2,7 @@ async function loginCheck() {
     if (localStorage.getItem("uniQonSignedIn") === null) {
         // call GET https://api.uniqon.kr/auth to check whether user is logged in or not
         const response = await fetch("https://api.uniqon.kr/auth", {
-            method: "GET"
+            method: 'GET'
         });
         const jsonResponse = await response.json();
 
@@ -12,11 +12,13 @@ async function loginCheck() {
 
     // parse localStorage and display button accordingly
     if (localStorage.getItem("uniQonSignedIn") === true) {
-        document.getElementsByClassName("unauth").style.display = "none";
-        document.getElementsByClassName("auth").style.display = "block";
+        for (item of document.getElementsByClassName("unauth")) {
+            item.style.display = "none";
+        }
     } else {
-        document.getElementsByClassName("unauth").style.display = "none";
-        document.getElementsByClassName("auth").style.display = "block";
+        for (item of document.getElementsByClassName("unauth")) {
+            item.style.display = "none";
+        }
     }
 }
 
