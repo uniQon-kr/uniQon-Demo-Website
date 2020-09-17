@@ -9,9 +9,9 @@ async function signOutFunc() {
   localStorage.setItem("uniQonSignedIn", false);
 
   // Redirect to main page
-  if (location === "{{ site.baseurl }}") {
+  if (location === "https://uniqon.kr") {
     location.reload();
   } else {
-    location.href = "{{ site.baseurl }}";
+    location.href = "https://uniqon.kr";
   }
 }
