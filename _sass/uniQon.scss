@@ -731,7 +731,7 @@ footer {
 
   .subtitle {
     margin-left: 10%;
-    text-align: left;;
+    text-align: left;
     margin-top: 20px;
     font-size: 30px;
     font-weight: 400;
@@ -739,6 +739,7 @@ footer {
   }
 
   textarea {
+    overflow-y: scroll;
     width: 80%;
     height: 400px;
   }

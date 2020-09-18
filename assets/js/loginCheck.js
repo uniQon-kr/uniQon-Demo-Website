@@ -1,3 +1,5 @@
+---
+---
 async function loginCheck() {
     if (localStorage.getItem("uniQonSignedIn") === null) {
         // call GET https://api.uniqon.kr/auth to check whether user is logged in or not
@@ -11,8 +13,8 @@ async function loginCheck() {
     }
 
     // redirect to main page if not logged in
-    if (localStorage.getItem("uniQonSignedIn") === false) {
-        location.href = "https://uniqon.kr";
+    if (localStorage.getItem("uniQonSignedIn") === "false") {
+        location.href = "{{ site.baseurl }}/";
     }
 }
 

@@ -11,7 +11,7 @@ async function loginCheckHeader() {
     }
 
     // parse localStorage and display button accordingly
-    if (localStorage.getItem("uniQonSignedIn") === true) {
+    if (localStorage.getItem("uniQonSignedIn") === "true") {
         for (item of document.getElementsByClassName("auth")) {
             item.style.display = "block";
         }

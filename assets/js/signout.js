@@ -1,4 +1,5 @@
-
+---
+---
 async function signOutFunc() {
   // Log out from server
   await fetch("https://api.uniqon.kr/auth/signout",{
@@ -9,9 +10,9 @@ async function signOutFunc() {
   localStorage.setItem("uniQonSignedIn", false);
 
   // Redirect to main page
-  if (location === "https://uniqon.kr") {
+  if (location === "{{ site.baseurl }}/") {
     location.reload();
   } else {
-    location.href = "https://uniqon.kr";
+    location.href = "{{ site.baseurl }}/";
   }
 }
