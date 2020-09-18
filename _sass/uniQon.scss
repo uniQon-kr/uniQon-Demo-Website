@@ -600,7 +600,7 @@ footer {
 .signup{
   .title{
     text-align: center;
-    margin-top: 350px;
+    margin-top: 13vw;
     margin-bottom: 50px;
     font-size: 50px;
   }
@@ -709,6 +709,9 @@ footer {
 }
 
 .tc {
+  margin: auto;
+  width: 1000px;
+  max-width: 80%;
   text-align: center;
   margin-top: 50px;
 
@@ -737,7 +740,7 @@ footer {
 
   textarea {
     width: 80%;
-    height: 500px;
+    height: 400px;
   }
 }
 
