@@ -61,6 +61,7 @@ async function signUpFunc() {
       }
     });
   
+    
     // Check Response Code and prompt error message if needed
     if(response.status === 400) {
       document.getElementById("invalid").style.display = "block";
