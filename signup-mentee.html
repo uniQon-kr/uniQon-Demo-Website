@@ -1,44 +1,6 @@
 ---
-layout: no-header-footer
+layout: signup
 title: "Sign Up for Mentee"
 permalink: /signup/mentee
 ---
-
-<script src = '{{ site.baseurl }}/assets/js/logoutCheck.js'></script>
-<script async src='{{ site.baseurl }}/assets/js/signup.js'></script>
-<div class="signup-detail">
-  <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
-  <div class = "title">Welcome to uniQon</div>
-  <div class = "signup-box">
-    <div class = "signup">
-        <div class = "otherInput">
-            <div class = "description">Username</div>
-            <input id = "username" type = "text"/>
-        </div>
-        <div class = "otherInput">
-            <div class = "description">First Name</div>
-            <input id = "firstName" type = "text"/>
-        </div>
-        <div class = "otherInput">
-            <div class = "description">Last Name</div>
-            <input id = "lastName" type = "text"/>
-        </div>
-        <div class = "otherInput">
-            <div class = "description">Password</div>
-            <input id = "password" type = "password"/>
-        </div>
-        <div class = "otherInput">
-            <div class = "description">E-mail</div>
-            <input id = "email" type = "text"/>
-        </div>
-        <div class = "otherInput">
-            <div class = "description">Nickname</div>
-            <input id = "nickname" type = "text"/>
-        </div>
-        <div class = "terms">
-          <input type="checkbox" id="terms" value="agreement" onclick="tsCheck()"><label> I agree to the <a href="{{ site.baseurl }}/signup/mentee/tc" id="ts" target="_blank" onclick="openCheck()">Terms of Service</a></label>
-        </div>
-        <button onclick="signUpFunc()">Sign Up</button>
-    </div>
-  </div>
-</div>
+<input type="checkbox" id="terms" value="agreement" onclick="tsCheck()"><label> I agree to the <a href="{{ site.baseurl }}/signup/mentee/tc" id="ts" target="_blank" onclick="openCheck()">Terms of Service</a></label>
