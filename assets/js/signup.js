@@ -3,8 +3,10 @@ let pageOpened = false;
 function pageVisited() {
   document.getElementById("invalid").style.display = "none";
   document.getElementById("agreeTC").style.display = "none";
-  document.getElementById("duplicated").style.display = "none";
+  document.getElementById("duplicatedID").style.display = "none";
   document.getElementById("readTC").style.display = "none";
+  document.getElementById("already").style.display = "none";
+  document.getElementById("duplicatedNickname").style.display = "none";
   pageOpened = true;
 }
 
@@ -12,8 +14,10 @@ async function tsCheck(){
   if (!pageOpened){
     document.getElementById("invalid").style.display = "none";
     document.getElementById("agreeTC").style.display = "none";
-    document.getElementById("duplicated").style.display = "none";
+    document.getElementById("duplicatedID").style.display = "none";
     document.getElementById("readTC").style.display = "block";
+    document.getElementById("already").style.display = "none";
+    document.getElementById("duplicatedNickname").style.display = "none";
     document.getElementById('terms').checked = false;
   }
 }
@@ -24,8 +28,10 @@ async function signUpFunc() {
   if(tnc === false) {
     document.getElementById("invalid").style.display = "none";
     document.getElementById("agreeTC").style.display = "block";
-    document.getElementById("duplicated").style.display = "none";
+    document.getElementById("duplicatedID").style.display = "none";
     document.getElementById("readTC").style.display = "none";
+    document.getElementById("already").style.display = "none";
+    document.getElementById("duplicatedNickname").style.display = "none";
     return;
   }
 
@@ -44,8 +50,10 @@ async function signUpFunc() {
 		// if not properly filled in, show error message
 		document.getElementById("invalid").style.display = "block";
     document.getElementById("agreeTC").style.display = "none";
-    document.getElementById("duplicated").style.display = "none";
+    document.getElementById("duplicatedID").style.display = "none";
     document.getElementById("readTC").style.display = "none";
+    document.getElementById("already").style.display = "none";
+    document.getElementById("duplicatedNickname").style.display = "none";
   } else {
     // if properly filled in, send the username and password inputs to the auth API
     const userInput = {
@@ -65,12 +73,41 @@ async function signUpFunc() {
         'Content-Type': 'application/json'
       }
     });
-  
-    
-    // Check Response Code and prompt error message if needed
+
+    // Check Error Message
+    const jsonResponse = await response.json();
     if(response.status === 400) {
-      document.getElementById("invalid").style.display = "block";
-      return;
-    } 
+      if(jsonResponse.message.includes("Duplicated ID")) {
+        document.getElementById("invalid").style.display = "none";
+        document.getElementById("agreeTC").style.display = "none";
+        document.getElementById("duplicatedID").style.display = "block";
+        document.getElementById("readTC").style.display = "none";
+        document.getElementById("already").style.display = "none";
+        document.getElementById("duplicatedNickname").style.display = "none";
+      } else if(jsonResponse.message.includes("Already")) {
+        document.getElementById("invalid").style.display = "none";
+        document.getElementById("agreeTC").style.display = "none";
+        document.getElementById("duplicatedID").style.display = "none";
+        document.getElementById("readTC").style.display = "none";
+        document.getElementById("already").style.display = "block";
+        document.getElementById("duplicatedNickname").style.display = "none";
+      } else if(jsonResponse.message.includes("Duplicated Nickname")) {
+        document.getElementById("invalid").style.display = "none";
+        document.getElementById("agreeTC").style.display = "none";
+        document.getElementById("duplicatedID").style.display = "none";
+        document.getElementById("readTC").style.display = "none";
+        document.getElementById("already").style.display = "none";
+        document.getElementById("duplicatedNickname").style.display = "block";
+      } else {
+        document.getElementById("invalid").style.display = "block";
+        document.getElementById("agreeTC").style.display = "none";
+        document.getElementById("duplicatedID").style.display = "none";
+        document.getElementById("readTC").style.display = "none";
+        document.getElementById("already").style.display = "none";
+        document.getElementById("duplicatedNickname").style.display = "none";
+      }
+    }
+
+    location.href = "{{ site.baseurl }}/";
   }
 }
