@@ -29,12 +29,16 @@ async function signUpFunc() {
     return;
   }
 
+  let pathname = location.pathname.split( '/' );
+
 	const username = document.getElementById('username').value;
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
   const password = document.getElementById('password').value;
   const email = document.getElementById('email').value;
   const nickname = document.getElementById('nickname').value;
+  const type = pathname[2];
+  console.log(type);
 
 	if(username === "" || firstName === "" || lastName === "" || password === "" || email === "" || nickname === "") {
 		// if not properly filled in, show error message
@@ -51,9 +55,10 @@ async function signUpFunc() {
       password : password,
       email: email,
       nickname: nickname,
+      type: type,
       tnc: tnc
     };
-    const response = await fetch('https://api.uniqon.kr/auth/signup', {
+    const response = await fetch('https://api.uniqon.kr/user/signup', {
       method: 'POST',
       body: JSON.stringify(userInput),
       headers: {
@@ -67,6 +72,5 @@ async function signUpFunc() {
       document.getElementById("invalid").style.display = "block";
       return;
     } 
-    history.back();
   }
 }
