@@ -9,8 +9,11 @@ layout: no-header-footer
   <div class = "title">Welcome to uniQon</div>
   <div class = "signup-box">
     <div class = "signup">
+        <div class = "error" id = "invalid">Invalid Input</div>
+        <div class = "error" id = "agreeTC">Please Agree to Our Terms of Service!!</div>
+        <div class = "error" id = "duplicated">Duplicated Username</div>
         <div class = "otherInput">
-            <div class = "description">Username</div>
+            <div class = "description">Username (ID)</div>
             <input id = "username" type = "text"/>
         </div>
         <div class = "otherInput">
@@ -33,6 +36,7 @@ layout: no-header-footer
             <div class = "description">Nickname</div>
             <input id = "nickname" type = "text"/>
         </div>
+        <div class = "error" id = "readTC">Please read Terms of Services</div>
         <div class = "terms">
           {{ content }}
         </div>

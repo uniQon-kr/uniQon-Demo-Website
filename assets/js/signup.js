@@ -11,7 +11,10 @@ async function openCheck() {
 
 async function tsCheck(){
   if (!pageOpened){
-    alert("Please read Terms and Services");
+    document.getElementById("invalid").style.display = "none";
+    document.getElementById("agreeTC").style.display = "none";
+    document.getElementById("duplicated").style.display = "none";
+    document.getElementById("readTC").style.display = "block";
     document.getElementById('terms').checked = false;
   }
 }
@@ -19,7 +22,10 @@ async function tsCheck(){
 async function signUpFunc() {
   const tnc = document.getElementById('terms').checked;
   if(tnc === false) {
-    alert("Please Agree to Our Terms and Condition!!");
+    document.getElementById("invalid").style.display = "none";
+    document.getElementById("agreeTC").style.display = "block";
+    document.getElementById("duplicated").style.display = "none";
+    document.getElementById("readTC").style.display = "none";
     return;
   }
 
