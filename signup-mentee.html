@@ -36,7 +36,7 @@ permalink: /signup/mentee
             <input id = "nickname" type = "text"/>
         </div>
         <div class = "terms">
-          <input type="checkbox" id="terms" value="agreement" onclick="tsCheck()"><label> I agree to the <a href="{{ site.baseurl }}/signup/mentee/tc" id="ts" onclick="tsCheck()">Terms of Service</a></label>
+          <input type="checkbox" id="terms" value="agreement" onclick="tsCheck()"><label> I agree to the <a href="{{ site.baseurl }}/signup/mentee/tc" id="ts" target="_blank" onclick="openCheck()">Terms of Service</a></label>
         </div>
         <button onclick="signUpFunc()">Sign Up</button>
     </div>
