@@ -679,7 +679,21 @@ footer {
     }
 
     .terms{
+      clear: both;
+      float: none;
+      position: relative;
+
+      input {
+        position: relative;
+      }
+      
+      label {
+        display: block;
+        margin-left: 20px;
+        width: 100%;
+      }
       a {
+        text-align: center;
         color: #0366d6;
         text-decoration: none;
       }

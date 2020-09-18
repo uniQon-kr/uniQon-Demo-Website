@@ -35,8 +35,7 @@ permalink: /signup/mentee
             <input name = "username" type = "text"/>
         </div>
         <div class = "terms">
-          <a href="{{ site.baseurl }}/signup/mentee/tc"><div class = "button">Terms and Conditions</div></a>
-          <label><input type="checkbox" name="terms" value="agreement"> Click here to indicate that you have read and agree to the terms presented in the Terms and Conditions agreement </label>
+          <input type="checkbox" name="terms" value="agreement" onclick="tsCheck()"><label> I agree to the <a href="{{ site.baseurl }}/signup/mentee/tc" id="ts" onclick="tsCheck()">Terms of Service</a></label>
         </div>
         <button onclick="signUpFunc()">Sign Up</button>
     </div>
