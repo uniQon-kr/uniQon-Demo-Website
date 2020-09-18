@@ -561,7 +561,7 @@ footer {
     }
 
     input {
-      width: 312px;;
+      width: 312px;
       border: 1px solid #c9c9c9;
       background-color: #f9f9f9;
       border-radius: 10px;
@@ -699,13 +699,15 @@ footer {
       }
     }
 
-    input {
-      width: 312px;;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
+    .otherInput {
+      input {
+        width: 312px;
+        border: 1px solid #c9c9c9;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
     }
 
     button {

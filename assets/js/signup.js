@@ -1,3 +1,5 @@
+let pageOpened = false;
+
 async function tsCheck(){
   var link = document.getElementById('ts');
   link.addEventListener('click', pageVisited);
@@ -10,4 +12,7 @@ async function tsCheck(){
     alert("Please read Terms and Services");
   }
 }
-var pageOpened = false;
+
+async function signOutFunc() {
+  const 
+}
