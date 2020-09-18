@@ -1,6 +1,6 @@
 async function signInFunc(){
-	const username = document.querySelector('[name="username"]').value;
-	const password = document.querySelector('[name="password"]').value;
+	const username = document.getElementById('username-input').value;
+	const password = document.getElementById('username-input').value;
 
 	// on press, check if both inputs (username and password) are entered properly
 	if(username === "" || password === "") {

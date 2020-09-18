@@ -13,6 +13,10 @@ async function tsCheck(){
   }
 }
 
-async function signOutFunc() {
-  const 
+async function signUpFunc() {
+  const tnc = document.getElementById('terms').checked;
+  if(tnc === false) {
+    alert("Please Agree to Our Terms and Condition!!");
+    return;
+  }
 }

@@ -11,32 +11,32 @@ permalink: /signup/mentee
   <div class = "title">Welcome to uniQon</div>
   <div class = "signup-box">
     <div class = "signup">
-        <div class = "username">
+        <div class = "otherInput">
             <div class = "description">Username</div>
-            <input name = "username" type = "text"/>
+            <input id = "username" type = "text"/>
         </div>
-        <div class = "firstName">
+        <div class = "otherInput">
             <div class = "description">First Name</div>
-            <input name = "firstName" type = "text"/>
+            <input id = "firstName" type = "text"/>
         </div>
-        <div class = "lastName">
+        <div class = "otherInput">
             <div class = "description">Last Name</div>
-            <input name = "username" type = "text"/>
+            <input id = "lastName" type = "text"/>
         </div>
-        <div class = "password">
+        <div class = "otherInput">
             <div class = "description">Password</div>
-            <input name = "password" type = "password"/>
+            <input id = "password" type = "password"/>
         </div>
-        <div class = "email">
+        <div class = "otherInput">
             <div class = "description">E-mail</div>
-            <input name = "username" type = "text"/>
+            <input id = "email" type = "text"/>
         </div>
-        <div class = "nickname">
+        <div class = "otherInput">
             <div class = "description">Nickname</div>
-            <input name = "username" type = "text"/>
+            <input id = "nickname" type = "text"/>
         </div>
         <div class = "terms">
-          <input type="checkbox" name="terms" value="agreement" onclick="tsCheck()"><label> I agree to the <a href="{{ site.baseurl }}/signup/mentee/tc" id="ts" onclick="tsCheck()">Terms of Service</a></label>
+          <input type="checkbox" id="terms" value="agreement" onclick="tsCheck()"><label> I agree to the <a href="{{ site.baseurl }}/signup/mentee/tc" id="ts" onclick="tsCheck()">Terms of Service</a></label>
         </div>
         <button onclick="signUpFunc()">Sign Up</button>
     </div>
