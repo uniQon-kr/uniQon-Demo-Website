@@ -1,12 +1,11 @@
 let pageOpened = false;
 
-async function openCheck() {
-  let link = document.getElementById('ts');
-  link.addEventListener('click', pageVisited());
-
-  function pageVisited(){
-    pageOpened = true;
-  }
+function pageVisited() {
+  document.getElementById("invalid").style.display = "none";
+  document.getElementById("agreeTC").style.display = "none";
+  document.getElementById("duplicated").style.display = "none";
+  document.getElementById("readTC").style.display = "none";
+  pageOpened = true;
 }
 
 async function tsCheck(){
@@ -30,7 +29,6 @@ async function signUpFunc() {
     return;
   }
 
-  
 	const username = document.getElementById('username').value;
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
@@ -41,9 +39,10 @@ async function signUpFunc() {
 	if(username === "" || firstName === "" || lastName === "" || password === "" || email === "" || nickname === "") {
 		// if not properly filled in, show error message
 		document.getElementById("invalid").style.display = "block";
-    document.getElementById("not-match").style.display = "none";
-  }
-  else {
+    document.getElementById("agreeTC").style.display = "none";
+    document.getElementById("duplicated").style.display = "none";
+    document.getElementById("readTC").style.display = "none";
+  } else {
     // if properly filled in, send the username and password inputs to the auth API
     const userInput = {
       id : username,
@@ -51,7 +50,8 @@ async function signUpFunc() {
       lastName: lastName,
       password : password,
       email: email,
-      nickname: nickname
+      nickname: nickname,
+      tnc: tnc
     };
     const response = await fetch('https://api.uniqon.kr/auth/signup', {
       method: 'POST',
