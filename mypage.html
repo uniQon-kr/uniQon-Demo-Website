@@ -4,27 +4,49 @@ title: "My Page"
 permalink: /mypage
 ---
 <div class="mypage">
-	<div class="myinfo">My Information</div>
-	<div class="container">
-		<div class="wrapper-firstName">
-			<label for="fname">First name:</label><br>
-			<input type="text" id="fname" name="fname" value="John">
+	<p class="title">Hi! <p>
+	<div class="common section-wrapper">
+		<div class = "section-header">
+			<p class = "subtitle">Common User Profile</p>
 		</div>
-		<div class="wrapper-lastName">
-			<label for="lname">Last name:</label><br>
-			<input type="text" id="lname" name="lname" value="Doe">
+		<div class="nickname-wrapper content">
+			<p class = "content-title">Nickname</p>
+			<input type="text" id="nickname" />
 		</div>
-		<div class="wrapper-nickName">
-			<label for="nname">Nick name:</label><br>
-			<input type="text" id="nname" name="nname" value="johnnydonny">
+		<div class="email-wrapper content">
+			<p class = "content-title">Email</p>
+			<input type="text" id="email" />
 		</div>
-		<div class="wrapper-type">
-			<label for="type">Position:</label><br>
-			<input type="text" id="type" name="type" value="Mentor">
+		<div class = "button-wrapper content">
+			<div class = "error" id = "invalid">Invalid Input</div>
+			<div class = "error" id = "noUpdate">Nothing to Update</div>
+			<div class = "error" id = "duplicatedNickname">Duplicated Nickname</div>
+			<button>Change User Information</button>
+			<button>Change Password</button>
 		</div>
-		<div class="wrapper-email">
-			<label for="email">Email:</label><br>
-			<input type="text" id="email" name="email" value="johndoe@uniqon.kr">
+	</div>
+	<div class = "mentor section-wrapper">
+		<div class = "section-header">
+			<p class = "subtitle">Mentor Profile</p>
 		</div>
+		<div class = "balance-wrapper content grid">
+			<p class = "content-title">Remaining Balance</p>
+			<p id = "balance"></p>
+		</div>
+		<p class = "description content">If you want to request cash out, please contact to sales department.</p>
+	</div>
+	<div class = "mentee section-wrapper">
+		<div class = "section-header">
+			<p class = "subtitle">Mentee Profile</p>
+		</div>
+		<div class = "used-app-wrapper content grid">
+			<p class = "content-title">Used Application</p>
+			<p id = "usedApp"></p>
+		</div>
+		<div class = "remaining-app-wrapper content grid">
+			<p class = "content-title">Remaining Application</p>
+			<p id = "remainingApp"></p>
+		</div>
+		<p class = "description content">If you want to see more applications, please contact to sales department.</p>
 	</div>
 </div>
