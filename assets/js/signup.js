@@ -1,4 +1,7 @@
+---
+---
 let pageOpened = false;
+document.getElementById('terms').checked = false;
 
 function pageVisited() {
   document.getElementById("invalid").style.display = "none";
@@ -43,8 +46,7 @@ async function signUpFunc() {
   const password = document.getElementById('password').value;
   const email = document.getElementById('email').value;
   const nickname = document.getElementById('nickname').value;
-  const type = pathname[2];
-  console.log(type);
+  const type = [ pathname[2] ];
 
 	if(username === "" || firstName === "" || lastName === "" || password === "" || email === "" || nickname === "") {
 		// if not properly filled in, show error message
@@ -77,21 +79,22 @@ async function signUpFunc() {
     // Check Error Message
     const jsonResponse = await response.json();
     if(response.status === 400) {
-      if(jsonResponse.message.includes("Duplicated ID")) {
+      const errorMessage = String(jsonResponse.error);
+      if(errorMessage.includes("Duplicated ID")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("agreeTC").style.display = "none";
         document.getElementById("duplicatedID").style.display = "block";
         document.getElementById("readTC").style.display = "none";
         document.getElementById("already").style.display = "none";
         document.getElementById("duplicatedNickname").style.display = "none";
-      } else if(jsonResponse.message.includes("Already")) {
+      } else if(errorMessage.includes("Already")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("agreeTC").style.display = "none";
         document.getElementById("duplicatedID").style.display = "none";
         document.getElementById("readTC").style.display = "none";
         document.getElementById("already").style.display = "block";
         document.getElementById("duplicatedNickname").style.display = "none";
-      } else if(jsonResponse.message.includes("Duplicated Nickname")) {
+      } else if(errorMessage.includes("Duplicated Nickname")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("agreeTC").style.display = "none";
         document.getElementById("duplicatedID").style.display = "none";
@@ -106,8 +109,8 @@ async function signUpFunc() {
         document.getElementById("already").style.display = "none";
         document.getElementById("duplicatedNickname").style.display = "none";
       }
+    } else if(response.ok) {
+      location.href = "{{ site.baseurl }}/";
     }
-
-    location.href = "{{ site.baseurl }}/";
   }
 }
