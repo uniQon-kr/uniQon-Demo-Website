@@ -30,7 +30,7 @@ async function signUpFunc() {
     return;
   }
 
-  
+
 	const username = document.getElementById('username').value;
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
@@ -41,7 +41,6 @@ async function signUpFunc() {
 	if(username === "" || firstName === "" || lastName === "" || password === "" || email === "" || nickname === "") {
 		// if not properly filled in, show error message
 		document.getElementById("invalid").style.display = "block";
-    document.getElementById("not-match").style.display = "none";
   }
   else {
     // if properly filled in, send the username and password inputs to the auth API
