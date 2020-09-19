@@ -41,6 +41,7 @@ async function findIDFunc() {
         document.getElementById("duplicated-info").style.display = "none";
       }
     } else if(response.ok) {
+      alert("New Password has been sent to Your Email!");
       location.href = "{{ site.baseurl }}/signin";
     }
   }
