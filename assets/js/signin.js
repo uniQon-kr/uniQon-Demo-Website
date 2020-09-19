@@ -14,6 +14,7 @@ async function signInFunc(){
 			password : password,
 		};
 		const response = await fetch('https://api.uniqon.kr/auth/signin', {
+			credentials: 'include',
 			method: 'POST',
 			body: JSON.stringify(userInput),
 			headers: {

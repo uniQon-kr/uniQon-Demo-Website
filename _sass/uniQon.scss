@@ -766,6 +766,122 @@ footer {
   }
 }
 
+.mypage {
+  width: 800px;
+  max-width: 99%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 200px;
+
+  #title {
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 25px;
+  }
+
+  .subtitle {
+    font-weight: 300;
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+
+  .section-header {
+    border-bottom: 1px solid #c2c6ca;
+    margin-bottom: 20px;
+  }
+
+  .optional {
+    display: none;
+  }
+
+  .section-wrapper {
+    margin-bottom: 30px;
+
+    .description {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
+
+  .description {
+    margin-top: -5px;
+  }
+
+  .button-wrapper {
+    margin-top: 20px;
+
+    button {
+      display: block;
+      width: 322px;
+      background-color: #2ea44f;
+      padding: 4px;
+      margin-top: 10px;
+      text-align: center;
+      color: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #2ea44f;
+    }
+
+    .error {
+      display: none;
+      width: 312px;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 3px 0 3px 3px;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #ff5656;
+      background-color:  #ffe0e0;
+      border: 1px solid #ffb5b5;
+      border-radius: 5px;
+    }
+
+    #success {
+      display: none;
+      width: 312px;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 3px 0 3px 3px;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #2ea44f;
+      background-color:  #d4ffe0;
+      border: 1px solid #a9ffc1;
+      border-radius: 5px;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 200px auto;
+  }
+
+  .content {
+    margin-bottom: 10px;
+    padding: 0px 10px 0px 10px;
+
+    .content-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .content-paragraph {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding-left: 10px;
+      font-size: 14px;
+      width: 312px;
+      border: 1px solid #c9c9c9;
+      background-color: #fcfcfc;
+      border-radius: 10px;
+    }
+  }
+}
 
 .find-wrapper {
   text-align: center;

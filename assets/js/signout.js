@@ -3,6 +3,7 @@
 async function signOutFunc() {
   // Log out from server
   await fetch("https://api.uniqon.kr/auth/signout",{
+    credentials: 'include',
     method: "DELETE"
   });
 

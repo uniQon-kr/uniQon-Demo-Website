@@ -67,6 +67,7 @@ async function signUpFunc() {
       tnc: tnc
     };
     const response = await fetch('https://api.uniqon.kr/user/signup', {
+      credentials: 'include',
       method: 'POST',
       body: JSON.stringify(userInput),
       headers: {
