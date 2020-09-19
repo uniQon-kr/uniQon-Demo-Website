@@ -2,6 +2,7 @@ async function loginCheckHeader() {
     if (localStorage.getItem("uniQonSignedIn") === null) {
         // call GET https://api.uniqon.kr/auth to check whether user is logged in or not
         const response = await fetch("https://api.uniqon.kr/auth", {
+            credentials: 'include',
             method: 'GET'
         });
         const jsonResponse = await response.json();

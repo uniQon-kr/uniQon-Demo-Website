@@ -3,8 +3,9 @@ layout: default
 title: "My Page"
 permalink: /mypage
 ---
+<script src = '{{ site.baseurl }}/assets/js/loginCheck.js'></script>
 <div class="mypage">
-	<p class="title">Hi! <p>
+	<p id="title">Hi! <p>
 	<div class="common section-wrapper">
 		<div class = "section-header">
 			<p class = "subtitle">Common User Profile</p>
@@ -25,7 +26,7 @@ permalink: /mypage
 			<button>Change Password</button>
 		</div>
 	</div>
-	<div class = "mentor section-wrapper">
+	<div class = "section-wrapper optional" id = "mentor">
 		<div class = "section-header">
 			<p class = "subtitle">Mentor Profile</p>
 		</div>
@@ -35,7 +36,7 @@ permalink: /mypage
 		</div>
 		<p class = "description content">If you want to request cash out, please contact to sales department.</p>
 	</div>
-	<div class = "mentee section-wrapper">
+	<div class = "section-wrapper optional" id = "mentee">
 		<div class = "section-header">
 			<p class = "subtitle">Mentee Profile</p>
 		</div>
@@ -49,4 +50,5 @@ permalink: /mypage
 		</div>
 		<p class = "description content">If you want to see more applications, please contact to sales department.</p>
 	</div>
+	<script src = '{{ site.baseurl }}/assets/js/mypage.js'></script>
 </div>

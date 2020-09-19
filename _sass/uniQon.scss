@@ -769,9 +769,9 @@ footer {
   max-width: 99%;
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
 
-  .title {
+  #title {
     font-weight: 700;
     font-size: 35px;
     margin-bottom: 25px;
@@ -786,6 +786,10 @@ footer {
   .section-header {
     border-bottom: 1px solid #c2c6ca;
     margin-bottom: 20px;
+  }
+
+  .optional {
+    display: none;
   }
 
   .section-wrapper {
