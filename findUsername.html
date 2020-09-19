@@ -1,0 +1,30 @@
+---
+layout: no-header-footer
+title: "Find Username"
+permalink: /findUsername
+---
+<script src = '{{ site.baseurl }}/assets/js/findUsername.js'></script>
+<div class = "find-wrapper">
+    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
+    <div class = "title">Find Username</div>
+    <div class = "find-box">
+        <div class = "find">
+            <div class = "error" id = "invalid">Invalid Input</div>
+            <div class = "error" id = "not-match">Cannot Find Matching Information</div>
+            <div class = "error" id = "duplicated-info">Duplicated information found. Contact Customer Support!!</div>
+            <div class = "email">
+                <div class = "description">E-mail</div>
+                <input id = "email" type = "text"/>
+            </div>
+            <div class = "firstname">
+                <div class = "description">First Name</div>
+                <input id = "firstname" type = "text"/>
+            </div>
+            <div class = "lastname">
+                <div class = "description">Last Name</div>
+                <input id = "lastname" type = "text"/>
+            </div>
+            <button onclick="findIDFunc()">Find Your Username</button>
+        </div>
+    </div>
+</div>

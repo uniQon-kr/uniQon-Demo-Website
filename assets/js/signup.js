@@ -1,5 +1,3 @@
----
----
 let pageOpened = false;
 document.getElementById('terms').checked = false;
 
