@@ -11,7 +11,6 @@ async function findIDFunc() {
   } else {
     // if properly filled in, send the username and password inputs to the auth API
     const userInput = {
-      username: username,
       email: email,
       firstName: firstName,
       lastName: lastName
