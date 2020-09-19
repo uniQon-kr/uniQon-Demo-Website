@@ -11,7 +11,8 @@ async function getMyInfo() {
     if(response.ok) {
         const jsonResponse = await response.json();
         // Common
-        const { nickname, email } = jsonResponse;
+        nickname = jsonResponse.nickname;
+        email = jsonResponse.email;
         document.getElementById("title").innerHTML = "Hi! " + jsonResponse.firstName + " " + jsonResponse.lastName;
         document.getElementById("nickname").value = nickname;
         document.getElementById("email").value = email;
@@ -35,4 +36,62 @@ async function getMyInfo() {
     }
 }
 
+async function updateMyInfo() {
+    // Retrieve Inputs
+    const newEmail = document.getElementById("email").value;
+    const newNickname = document.getElementById("nickname").value;
+    const updateObjects = {};
+
+    // Select update contents
+    if(newNickname !== nickname) {
+        updateObjects.nickname = newNickname;
+    }
+    if(newEmail !== email) {
+        updateObjects.email = newEmail;
+    }
+
+    // Check update target existance before sending request
+    if(Object.keys(updateObjects).length === 0) {
+        document.getElementById('noUpdate').style.display = "block";
+        document.getElementById('invalid').style.display = "none";
+        document.getElementById('duplicatedNickname').style.display = "none";
+        document.getElementById('success').style.display = "none";
+    } else {
+        const response = await fetch('https://api.uniqon.kr/user/myinfo', {
+            credentials: 'include',
+            method: 'PUT',
+            body: JSON.stringify(updateObjects),
+            headers: {
+				'Content-Type': 'application/json'
+			}
+        });
+
+        if(response.ok) {
+            document.getElementById('noUpdate').style.display = "none";
+            document.getElementById('invalid').style.display = "none";
+            document.getElementById('duplicatedNickname').style.display = "none";
+            document.getElementById('success').style.display = "block";
+            location.reload();
+        } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
+            localStorage.setItem("uniQonSignedIn", false);
+            location.href = "{{ site.baseurl }}/";
+        } else {
+            const jsonResponse = await response.json();
+            const errorMsg = String(jsonResponse.error);
+            if(errorMsg.includes("Duplicated")) {
+                document.getElementById('noUpdate').style.display = "none";
+                document.getElementById('invalid').style.display = "none";
+                document.getElementById('duplicatedNickname').style.display = "block";
+                document.getElementById('success').style.display = "none";
+            } else {
+                document.getElementById('noUpdate').style.display = "none";
+                document.getElementById('invalid').style.display = "block";
+                document.getElementById('duplicatedNickname').style.display = "none";
+                document.getElementById('success').style.display = "none";
+            }
+        }
+    }
+}
+
+let email, nickname;
 getMyInfo();
