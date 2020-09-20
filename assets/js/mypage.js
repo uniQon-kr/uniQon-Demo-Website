@@ -28,7 +28,8 @@ async function getMyInfo() {
             document.getElementById("remainingApp").innerHTML = jsonResponse.remainingApp;
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
-        if(await renew()) { // try to renew access token
+        await renew(); // try to renew access token
+        if(localStorage.getItem("uniQonSignedIn")) {
             getMyInfo();
         }
     } else {
