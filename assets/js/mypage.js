@@ -28,8 +28,10 @@ async function getMyInfo() {
             document.getElementById("remainingApp").innerHTML = jsonResponse.remainingApp;
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
-        localStorage.setItem("uniQonSignedIn", false);
-        location.href = "{{ site.baseurl }}/";
+        await renew(); // try to renew access token
+        if(localStorage.getItem("uniQonSignedIn")) {
+            getMyInfo();
+        }
     } else {
         alert("Server Error!! Please Try Again");
         location.href = "{{ site.baseurl }}/";
@@ -73,8 +75,9 @@ async function updateMyInfo() {
             document.getElementById('success').style.display = "block";
             location.reload();
         } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
-            localStorage.setItem("uniQonSignedIn", false);
-            location.href = "{{ site.baseurl }}/";
+            if(await renew()) { // try to renew access token
+                updateMyInfo();
+            }
         } else {
             const jsonResponse = await response.json();
             const errorMsg = String(jsonResponse.error);

@@ -20,6 +20,7 @@ async function changePasswordFunc() {
             alert("Success");
             history.back();
         } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
+            // Used Refresh Token
             localStorage.setItem("uniQonSignedIn", false);
             location.href = "{{ site.baseurl }}/";
         } else {
