@@ -4,13 +4,16 @@ title: "My Page"
 permalink: /application
 ---
 
-
 <div class="application">
 	<div class="profile-wrapper">
-    <img class = "college-image" src = "">
+    <img id = "college-image" src = "">
 		<div class = "header-wrapper">
-			<p class = "mentor-nickname"></p>
-			<p class = "mentor-major"></p>
+			<a id = "mentorID"></a>
+      <a> (</a>
+      <a id="expectedGrad"></a>
+      <a>)</a>
+    </br>
+			<p id = "mentor-major"></p>
 			<a href = ""><button>프로필 열람하기</button></a>
 		</div>
   </div>
@@ -18,19 +21,24 @@ permalink: /application
 	<div class = "more-details">
 		<p class = "subtitle">Colleges/Universities</p>
 		<div class = "college">
+      <a id="college-detail"></a>
     </div>
 		<p class = "subtitle">Background</p>
 		<div class = "background">
+      <p id="background-detail"><p>
     </div>
 		<p class = "subtitle">Academics</p>
 		<div class = "academics">
+      <p id="academics-detail"><p>
     </div>
 		<p class = "subtitle">Honors</p>
 		<div class = "honors">
+      <p id="honors-detail"><p>
     </div>
 		<p class = "subtitle">Activities</p>
 		<div class = "activities">
+      <p id="activities-detail"><p>
     </div>
-	</div>
-	<script src = '{{ site.baseurl }}/assets/js/application.js'></script>
+  </div>
+  <script src = '{{ site.baseurl }}/assets/js/application.js'></script>
 </div>
