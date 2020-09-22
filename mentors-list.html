@@ -4,20 +4,22 @@ title: "Our Mentors"
 permalink: /mentors-list
 ---
 
+<script src = '{{ site.baseurl }}/assets/js/list.js'></script>
 <div class="mentors-list">
-  <a href = "{{ site.baseurl }}/application" target= blank>
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/columbia.png">
-      <div class = "mentor-name"><p class="smallBody">journeytotheeast (Columbia '20)</p></div>
-    </div>
-  </a>
-  <!-- for -->
-  <a href = "{{ site.baseurl }}/application" target= blank>
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/">
-      <div class = "mentor-name"><p class="smallBody">journeytotheeast (Columbia '20)</p></div>
-    </div>
-  </a>
-  <!-- endfor -->
-	<script src = '{{ site.baseurl }}/assets/js/applications.js'></script>
+  <div class="mentors-box">
+    {% for x in (1..15) %}
+    <a href = "{{ site.baseurl }}/application" target= blank>
+      <div class = "mentor-wrapper"> 
+        <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/columbia.png">
+        <div class = "mentor-name"><p class="smallBody">journeytotheeast (Columbia '20)</p></div>
+      </div>
+    </a>
+    <script>hi();</script>
+    {% endfor %}
+  </div>
+  <div class="pagination">
+    <a href="#">&laquo;</a>
+    <a class="active" href="#">1</a>
+    <a href="#">&raquo;</a>
+  </div>
 </div>
