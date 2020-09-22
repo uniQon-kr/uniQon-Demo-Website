@@ -514,6 +514,12 @@ footer {
   }
   .pagination {
     padding-bottom: 100px;
+    #previous{
+      display: none;
+    }
+    #next{
+      display: initial;
+    }
     a { 
       color: black;
       float: center;
@@ -959,6 +965,7 @@ footer {
 
   .mentor-wrapper {
     margin-bottom: 30px;
+    display: initial;
 
     .description {
       font-size: 14px;
