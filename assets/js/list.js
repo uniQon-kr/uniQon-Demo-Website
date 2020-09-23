@@ -13,9 +13,11 @@ async function list() {
   if(response.ok) {
     jsonResponse = await response.json();
     const length = jsonResponse.appList.length;
+    console.log(length);
     let nextPage = false;
-    if(jsonResponse.appList[15]!=null){nextPage = true;}
+    if(length === 16){nextPage = true;}//check if there is more profiles after 
     
+    //controls navbar arrows
     if (page===1){
       document.getElementById('previous').style.display = "none";
     } else if (!nextPage){
@@ -25,12 +27,14 @@ async function list() {
       document.getElementById('next').style.display = "initial";
     }
     
+    //clears form
     for (i = 0; i < 15; i++) {
       document.getElementById("mentor-wrapper-" + i).style.display = "none";
       document.getElementById("college-name-" + i).src = "";
     }
     
-    if (length === 15) {
+    //draw profiles onto the form
+    if (length >= 15) {
       for (i = 0; i < 15; i++) { 
         let jsonObj = jsonResponse.appList[i];
         
