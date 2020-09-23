@@ -9,6 +9,7 @@ async function loadMentor() {
           'Content-Type': 'application/json'
       }
   });
+
   if(response.ok) {
     let jsonResponse = await response.json();
     
@@ -123,19 +124,25 @@ async function loadMentor() {
   }
 }
 
-loadMentor();
-
 async function bookmark() {//checking for bookmark
-  const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
-  const response = await fetch(responseUrl, {
-      credentials: 'include',
-      method: 'GET', 
-      headers: {
-        'Content-Type': 'application/json'
+  if(localStorage.getItem("uniQonSignedIn") === "true"){ //display correct block of error
+    const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
+    const response = await fetch(responseUrl, {
+        credentials: 'include',
+        method: 'GET', 
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    });
+    const jsonResponse = await response.json();
+
+    if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden")) {
+      if(await renew()) {
+        bookmark();
+        return;
       }
-  });
-  const jsonResponse = await response.json();
-  if(localStorage.getItem("uniQonSignedIn") === "true"){//display correct block of error
+    }
+
     if(jsonResponse.userType === 'mentee'){
       if(!jsonResponse.bookmarked){
         document.getElementById("bookmarkAdd").style.display = "block";
@@ -148,7 +155,6 @@ async function bookmark() {//checking for bookmark
     }
   }
 }
-bookmark();
 
 async function bookmarkAdd() {//post bookmark
   const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
@@ -159,8 +165,17 @@ async function bookmarkAdd() {//post bookmark
         'Content-Type': 'application/json'
       }
   });
+
+  if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden")) {
+    if(await renew()) {
+      bookmarkAdd();
+      return;
+    }
+  }
+
   bookmark();
 }
+
 async function bookmarkDel() {//delete bookmark
   const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
   const response = await fetch(responseUrl, {
@@ -170,5 +185,17 @@ async function bookmarkDel() {//delete bookmark
         'Content-Type': 'application/json'
       }
   });
+
+  if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden")) {
+    if(await renew()) {
+      bookmarkDel();
+      return;
+    }
+  }
+
   bookmark();
 }
+
+loadMentor();
+
+bookmark();
