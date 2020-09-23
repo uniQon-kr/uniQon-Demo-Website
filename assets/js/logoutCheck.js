@@ -14,7 +14,6 @@ async function logoutCheck() {
     }
 
     // redirect to main page if logged in
-    console.log(localStorage.getItem("uniQonSignedIn"));
     if (localStorage.getItem("uniQonSignedIn") === "true") {
         location.href = "{{ site.baseurl }}/";
     }
