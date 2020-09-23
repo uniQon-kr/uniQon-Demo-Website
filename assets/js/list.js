@@ -82,7 +82,7 @@ async function formatter(nav) {
 async function openDetail(x) {
   if(jsonResponse.appList[x] != null) {
     localStorage.setItem('docID', jsonResponse.appList[x].docID);
-    window.open("/application");
+    window.location.href = "/application";
   }
 }
 

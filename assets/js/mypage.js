@@ -1,5 +1,5 @@
----
----
+let jsonResponse;
+
 async function getMyInfo() {
     const response = await fetch('https://api.uniqon.kr/user/myinfo', {
         credentials: 'include',
@@ -9,7 +9,7 @@ async function getMyInfo() {
         }
     });
     if(response.ok) {
-        const jsonResponse = await response.json();
+        jsonResponse = await response.json();
         // Common
         nickname = jsonResponse.nickname;
         email = jsonResponse.email;
@@ -27,12 +27,14 @@ async function getMyInfo() {
             document.getElementById("usedApp").innerHTML = jsonResponse.usedApp;
             document.getElementById("remainingApp").innerHTML = jsonResponse.remainingApp;
             document.getElementById("bookmark").style.display = "block";
+            //bookmark function
             for(i=0; i < jsonResponse.bookmark.length; i++){
-                const bookmarks = jsonResponse.bookmark[i].split("_");
-                let collegeImage = "/assets/school-logo/" + bookmarks[1].replace(/ /g,'-') + ".png";
+                const bookmarkArr = jsonResponse.bookmark[i].split("_");
+                let collegeName = bookmarkArr[1].replace(/-/g,' ').replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
+                let collegeImage = "/assets/school-logo/" + bookmarkArr[1].replace(/ /g,'-') + ".png";
 
-                document.getElementById("bookmarks").innerHTML += "<img class = 'collegeImage' src =" + collegeImage + ">" + "<p class = 'content-paragraph'>" + bookmarks[0] + "</p>";
-                
+                document.getElementById("bookmarks").innerHTML += "<div><img class = 'collegeImage' src =" + collegeImage + "></div>" 
+                + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + bookmarkArr[0] + " (" + collegeName + ")</p></div>";
             }
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
@@ -44,6 +46,11 @@ async function getMyInfo() {
         alert("Server Error!! Please Try Again");
         location.href = "{{ site.baseurl }}/";
     }
+}
+
+async function openDetail(i) {
+    localStorage.setItem('docID', jsonResponse.bookmark[i]);
+    window.location.href = "/application";
 }
 
 async function updateMyInfo() {

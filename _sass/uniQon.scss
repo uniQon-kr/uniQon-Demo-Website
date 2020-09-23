@@ -503,7 +503,7 @@ footer {
         cursor: pointer;
       }
 
-      .college-image {
+      .collegeImage {
         margin: auto;
         max-width: 80%;
         max-height: 320px;
@@ -806,7 +806,7 @@ footer {
   max-width: 99%;
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 
   #title {
     font-weight: 700;
@@ -831,7 +831,22 @@ footer {
 
   .section-wrapper {
     margin-bottom: 30px;
-
+    
+    .collegeImage{
+      justify-self: right;
+      width: 90%;
+    }
+    .bookmarkLink{
+      margin-left: 3%;
+      margin-top: 2%;
+      color: #0366d6;
+      text-decoration: underline;
+    }
+    #bookmarks{
+      display: grid;
+      grid-template-columns: 10% 90%;
+      row-gap: 10px;
+    }
     .description {
       font-size: 14px;
       font-weight: 300;
@@ -958,7 +973,7 @@ footer {
   .bookmark{
     display: none;
   }
-  
+
   .subtitle {
     font-size: 30px;
     border-bottom: 2px solid #c2c6ca;
