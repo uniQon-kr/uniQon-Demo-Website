@@ -4,8 +4,6 @@ title: "Our Mentors"
 permalink: /mentors-list
 ---
 
-<script src = '{{ site.baseurl }}/assets/js/list.js'></script>
-<script>list()</script>
 <div class="mentors-list">
   <div class="mentors-box">
     {% for x in (0..14) %}
@@ -25,4 +23,5 @@ permalink: /mentors-list
     <a class="active" id= "page">1</a>
     <a onclick="formatter(1)" id="next">&raquo;</a>
   </div>
+  <script src = '{{ site.baseurl }}/assets/js/list.js'></script>
 </div>

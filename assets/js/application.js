@@ -9,7 +9,7 @@ async function loadMentor() {
   if(response.ok) {
     const jsonResponse = await response.json();
     
-    const name = jsonResponse.name;
+    const mentorName = localStorage.getItem('docID').split("_")[0];
     const admittedMajor = jsonResponse.admittedMajor;
     const grad = jsonResponse.grad;
     const college = jsonResponse.college;
@@ -25,7 +25,7 @@ async function loadMentor() {
     
     document.getElementById("college-image").src = "/assets/school-logo/" + college.name.replace(/ /g,'-') + ".png";
   
-    document.getElementById("mentor-name").innerHTML = localStorage.getItem('mentorName');
+    document.getElementById("mentor-name").innerHTML = mentorName;
     document.getElementById("grad").innerHTML = college.grad;
     document.getElementById("mentor-major").innerHTML = college.admittedMajor;
     document.getElementById("mentor-school").innerHTML = college.name;

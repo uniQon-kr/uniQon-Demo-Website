@@ -1,11 +1,9 @@
-let listRem,index,from,to,page,maxPage,length;
-page = 1;
-from = page * 15;
-to = from - 14;
+let listRem,index,from,to,maxPage,length;
 
 async function list() {
+  const page = Number(document.getElementById("page").innerHTML);
   const response = await fetch('https://api.uniqon.kr/document/application/list', {
-      url: 'https://api.uniqon.kr/document/application/list?from=' + from + '&to=' + to,
+      url: 'https://api.uniqon.kr/document/application/list?from=' + page*15 + '&to=' + page*15-14,
       credentials: 'include',
       method: 'GET', 
       headers: {
@@ -16,6 +14,15 @@ async function list() {
     jsonResponse = await response.json();
     length = jsonResponse.appList.length;
     maxPage = length/15;
+  }
+  
+  if (page===1){
+    document.getElementById('previous').style.display = "none";
+  } else if (page===maxPage){
+    document.getElementById('next').style.display = "none";
+  } else {
+    document.getElementById('previous').style.display = "initial";
+    document.getElementById('next').style.display = "initial";
   }
   
   for (i = 0; i < 15; i++) {
@@ -45,28 +52,17 @@ async function list() {
   }
 }
 
+list();
+
 async function formatter(nav) {
   page += nav;
-  from = page * 15;
-  to = from - 14;
   document.getElementById('page').innerHTML = page;
 
-  if (page===1){
-    document.getElementById('previous').style.display = "none";
-  } else if (page===maxPage){
-    document.getElementById('next').style.display = "none";
-  } else {
-    document.getElementById('previous').style.display = "initial";
-    document.getElementById('next').style.display = "initial";
-  }
-
-  list(from, to);
+  list();
 }
 
 async function openDetail(x) {
   window.open("/application");
-  localStorage.clear();
   
   localStorage.setItem('docID', jsonResponse.appList[x].docID);
-  localStorage.setItem('mentorName', jsonResponse.appList[x].mentorID);
 }
