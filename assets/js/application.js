@@ -1,5 +1,7 @@
-async function loadMentors() {
-  const response = await fetch('https://api.uniqon.kr//application/detail', {
+
+async function loadMentor() {
+  sessionStorage.setItem('docID');
+  const response = await fetch('https://api.uniqon.kr//application/'+ localStorage.getItem('docID'), {
       credentials: 'include',
       method: 'GET', 
       headers: {
@@ -9,37 +11,33 @@ async function loadMentors() {
   if(response.ok) {
     const jsonResponse = await response.json();
     
-    name = jsonResponse.name;
-    admittedMajor = jsonResponse.admittedMajor;
-    grad = jsonResponse.grad;
-    college = jsonResponse.college;
-    background = jsonResponse.background;
-    academics = jsonResponse.academics;
-    expectedGrad = jsonResponse.honors;
-    collegeName = jsonResponse.activities;
-    expectedGrad = jsonResponse.essay;
+    const name = jsonResponse.name;
+    const admittedMajor = jsonResponse.admittedMajor;
+    const grad = jsonResponse.grad;
+    const college = jsonResponse.college;
+    const background = jsonResponse.background;
+    const academics = jsonResponse.academics;
+    const act = jsonResponse.academics.act;
+    const sat1 = jsonResponse.academics.sat1;
+    const sat2Count = jsonResponse.academics.sat2Count;
+    const apCount = jsonResponse.academics.apCount;
+    const honorsCount = jsonResponse.honorsCount;
+    const activitiesCount = jsonResponse.activitiesCount;
+    const essay = jsonResponse.essay;
 
     collegeImage = collegeName + ".png"
-    document.getElementById("college-image").innerHTML = "{{ site.baseurl }}/assets/school-logo/" + collegeImage;
+    document.getElementById("college-image").src = "{{ site.baseurl }}/assets/school-logo/" + college.name + ".png";
   
-    document.getElementById("mentor-name").innerHTML = name;
-    document.getElementById("grad").innerHTML = grad;
-    document.getElementById("mentor-major").innerHTML = admittedMajor;
+    document.getElementById("mentor-name").innerHTML = localStorage.getItem('mentorName');
+    document.getElementById("grad").innerHTML = college.grad;
+    document.getElementById("mentor-major").innerHTML = college.admittedMajor;
 
     document.getElementById("college-detail").innerHTML = "<li>"+college.name+"</li>"+"<li>"+college.admittedMajor+"</li>"+"<li>"+college.grad+"</li>";
     document.getElementById("background-detail").innerHTML = "<li>"+background.citizenship+"<li>"+background.gender+"</li>"+background.ethnicity+"</li>"+"<li>"+background.hooks+"</li>";
-    document.getElementById("academics-detail").innerHTML = "<li>"+academics.weightedGPA+"</li>"+"<li>"+academics.sat1+"</li>"+"<li>"+academics.sat1.math+"</li>"+"<li>"+academics.sat1.readingWriting
-      +"</li>"+"<li>"+academics.act+"</li>"+"<li>"+academics.act.english+"</li>"+"<li>"+academics.act.math+"</li>"+"<li>"+academics.act.reading+"</li>"+"<li>"+academics.act.science+"</li>"+
-      "<li>"+academics.ap+"</li>";
-      //ap not done forloop review needed
-
-    //forloop
-    document.getElementById("honors-detail").innerHTML += "<li>"+honors.title+"</li>"+"<li>"+honors.gradeLevel+"</li>"+"<li>"+honors.levelOfRecognition+"</li>";
-    //end forloop
-    //forloop
-    document.getElementById("activities-detail").innerHTML += "<li>"+activities.type+"</li>"+"<li>"+activities.position+"</li>"+"<li>"+activities.organizationName+"</li>"+"<li>"+activities.description+"</li>"
-    +"<li>"+activities.participationGradeLevel+"</li>"+"<li>"+activities.timeOfParticipation+"</li>";
-    //end forloop
+    document.getElementById("academics-detail").innerHTML = "<li>"+academics+"</li>"+"<li>"+sat1+"</li>"+"<li>"+sat2Count+"</li>"+"</li>"+"<li>"+act+"</li>" + "<li>"+apCount+"</li>";
+      
+    document.getElementById("honors-detail").innerHTML += "<li>"+honorsCount+"</li>";
+    document.getElementById("activities-detail").innerHTML += "<li>"+activitiesCount+"</li>";
 
     } else{
     alert("Server Error!! Please Try Again");
@@ -47,5 +45,4 @@ async function loadMentors() {
   }
 }
 
-let name,admittedMajor,grad,college,background,academics,honors,activities,essay;
-loadMentors();
+loadMentor();

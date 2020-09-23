@@ -16,8 +16,6 @@ async function list(from, to) {
   }
 }
 
-list();
-
 async function refresh(nav) {
   for (i = 0; i < 15; i++) {
     document.getElementById("mentor-wrapper-" + i).style.display = "none";
@@ -65,3 +63,12 @@ async function generate() {
     }
   }
 }
+
+async function openDetail(x) {
+  window.open("{{ site.baseurl }}/application");
+  localStorage.clear();
+  localStorage.setItem('docID', jsonResponse[x].docID);
+  localStorage.setItem('mentorName', jsonResponse[x].mentorID);
+}
+
+list();

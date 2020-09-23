@@ -8,7 +8,7 @@ permalink: /mentors-list
 <div class="mentors-list">
   <div class="mentors-box">
     {% for x in (0..14) %}
-    <a href = "{{ site.baseurl }}/application" target= blank>
+    <a onclick="openDetail({{ x }})" target= blank>
       <div class = "mentor-wrapper" id = "mentor-wrapper-{{ x }}"> 
         <img class = "college-image" id = "college-name-{{ x }}" src = "{{ site.baseurl }}/assets/school-logo/columbia.png">
         <div class = "mentor-name" id = "mentor-name-{{ x }}"><p class="smallBody">journeytotheeast (Columbia '20)</p></div>
