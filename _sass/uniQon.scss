@@ -923,25 +923,72 @@ footer {
 }
 
 .application {
-  width: 800px;
+  width: 70%;
   max-width: 99%;
   margin: auto;
   margin-top: 50px;
   margin-bottom: 200px;
 
+  .detail-box{
+
+    .textbox {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .essay {
+        font-size: 16px;
+        margin-bottom: 30px;
+        margin-top: 5px;
+        font-weight: 400;
+      }
+      .content {
+        text-transform: capitalize;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-weight: 400;
+        display: none;
+      }
+      .content-title{
+        font-weight: 800;
+      }
+    }
+  }
   .subtitle {
-    font-weight: 300;
-    font-size: 25px;
-    border-bottom: 1px solid #c2c6ca;
-    margin-bottom: 20px;
+    font-size: 30px;
+    border-bottom: 2px solid #c2c6ca;
+    padding-top: 20px;
   }
   
   .profile-wrapper {
     display: grid;
-    grid-template-columns: 30% 70%;
-    justify-items: center;
+    grid-template-columns: 25% 75%;
+
+    .header-wrapper{
+      margin-top: 7%;
+      text-transform: capitalize;
+      font-size: 16px;
+      font-weight: 700;
+      justify-self: left;
+      margin-left: 10%;
+      
+      .content{
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+
+      a{
+        text-decoration: none;
+      }
+    }
+    #college-image{
+      justify-self: right;
+      width: 90%;
+      margin-top:20px;
+      margin-bottom:30px;
+    }
   }
-  
+
   .error {
     display: none;
     font-size: 14px;
@@ -956,7 +1003,8 @@ footer {
   }
 
   .more-details{
-    grid-template-columns: 200px auto;
+    display: grid;
+    grid-template-columns: 100%;
     text-align: left;
   }
 
@@ -972,11 +1020,6 @@ footer {
     border: 1px solid black;
   }
 
-  .header-wrapper {
-    border-bottom: 1px solid #c2c6ca;
-    margin-bottom: 20px;
-  }
-
   .optional {
     display: none;
   }
@@ -989,17 +1032,6 @@ footer {
       font-size: 14px;
       font-weight: 300;
       font-style: italic;
-    }
-  }
-
-  .content {
-    margin-bottom: 10px;
-    padding: 0px 10px 0px 10px;
-
-    .content-title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 5px;
     }
   }
 }

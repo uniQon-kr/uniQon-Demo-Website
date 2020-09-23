@@ -16,37 +16,61 @@ permalink: /application
         <a id="grad"></a>
         <a>)</a>
       </p>
-      <p id = "mentor-school"></p>
-			<p id = "mentor-major"></p>
+      <p id = "mentor-school" class = "content"></p>
+			<p id = "mentor-major" class = "content"></p>
       <a href = ""><button>프로필 열람하기</button></a>
       <a href = ""><button>북마크 추가</button></a>
 		</div>
   </div>
   
 	<div class = "more-details">
-		<p class = "subtitle">Colleges/Universities</p>
-		<div class = "college">
-      <ul id="college-detail"></ul>
+		<div class = "detail-box">
+      <p class = "subtitle">Colleges/Universities</p>
+        <div class = "textbox">
+          <p class = "content" id = collegeName><span class = "content-title">College/University: </span></p>
+          <p class = "content" id = admittedMajor><span class = "content-title">Admitted Major: </span></p>
+          <p class = "content" id = expectedGrad><span class = "content-title">Expected Graduation: </span></p>
+        </div>
+		<div class = "detail-box">
+      <p class = "subtitle">Background</p>
+      <div class = "textbox">
+        <p class = "content" id = citizenship><span class = "content-title">Citizenship: </span></p>
+        <p class = "content" id = gender><span class = "content-title">Gender: </span></p>
+        <p class = "content" id = ethnicity><span class = "content-title">Ethnicity: </span></p>
+        <p class = "content" id = hooks><span class = "content-title">Hooks: </span></p>
+        <ul id = hooksList></ul>
+      </div>
+		</div>
+		<div class = "detail-box">
+      <p class = "subtitle"><span class = "subtitle"></span>Academics</p>
+      <div class = "textbox">
+        <p class = "content" id = "weightedGPA"><span class = "content-title">Weighted GPA: </span></p>
+        <p class = "content" id = "sat1"><span class = "content-title">SAT1: </span></p>
+        <p class = "content" id = "sat2"><span class = "content-title">SAT2 </span>- 프로필 열람 후 </p>
+        <p class = "content" id = "act"><span class = "content-title">ACT: </span></p>
+        <p class = "content" id = "apCount"><span class = "content-title">AP </span>- 프로필 열람 후 </p>
+      </div>
     </div>
-		<p class = "subtitle">Background</p>
-		<div class = "background">
-      <ul id="background-detail"></ul>
+		<div class = "detail-box" id = "honorsBox">
+      <p class = "subtitle">Honors</p>
+      <div class = "textbox">
+        <p class = "content" id = "honorsCount">프로필 열람 후 </p>
+      </div>
     </div>
-		<p class = "subtitle">Academics</p>
-		<div class = "academics">
-      <ul id="academics-detail"></ul>
+		<div class = "detail-box" id = "activitiesBox">
+      <p class = "subtitle">Activities</p>
+      <div class = "textbox">
+        <p class = "content" id = "activitiesCount">프로필 열람 후 </p>
+      </div>
     </div>
-		<p class = "subtitle">Honors</p>
-		<div class = "honors">
-      <ul id="honors-detail"></ul>
+		<div class = "detail-box">
+      <p class = "subtitle">Essay</p>
+      <div class = "textbox" id="essay-detail">
+      </div>
     </div>
-		<p class = "subtitle">Activities</p>
-		<div class = "activities">
-      <ul id="activities-detail"></ul>
-    </div>
-		<p class = "subtitle">Essay</p>
-		<div class = "essay">
-      <p id="essay-detail"></p>
+		<div class = "detail-box" id = "infoBox">
+      <p class = "subtitle">Additional Information</p>
+      <p class = "textbox" id="additionalInfo"></p>
     </div>
   </div>
   <script src = '{{ site.baseurl }}/assets/js/application.js'></script>
