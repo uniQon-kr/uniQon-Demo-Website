@@ -5,22 +5,24 @@ permalink: /mentors-list
 ---
 
 <script src = '{{ site.baseurl }}/assets/js/list.js'></script>
+<script>list()</script>
 <div class="mentors-list">
   <div class="mentors-box">
     {% for x in (0..14) %}
     <a onclick="openDetail({{ x }})" target= blank>
       <div class = "mentor-wrapper" id = "mentor-wrapper-{{ x }}"> 
-        <img class = "college-image" id = "college-name-{{ x }}" src = "{{ site.baseurl }}/assets/school-logo/columbia.png">
-        <div class = "mentor-name" id = "mentor-name-{{ x }}"><p class="smallBody">journeytotheeast (Columbia '20)</p></div>
+        <img class = "college-image" id = "college-name-{{ x }}" src = "">
+        <div class = "mentor-name">
+          <p class="school-name" id = "mentor-school-{{ x }}"></p>
+          <p class="smallBody" id = "mentor-name-{{ x }}"></p>
+        </div>
       </div>
     </a>
     {% endfor %}
-    <script>refresh()</script>
-    <script>generate()</script>
   </div>
   <div class="pagination">
-    <a onclick="refresh(-1)" id="previous">&laquo;</a>
+    <a onclick="formatter(-1)" id="previous">&laquo;</a>
     <a class="active" id= "page">1</a>
-    <a onclick="refresh(1)" id="next">&raquo;</a>
+    <a onclick="formatter(1)" id="next">&raquo;</a>
   </div>
 </div>

@@ -1,8 +1,10 @@
-let listRem,index,from,to,page,maxPage;
+let listRem,index,from,to,page,maxPage,length;
 page = 1;
+from = page * 15;
+to = from - 14;
 
-async function list(from, to) {
-  const response = await fetch('https://api.uniqon.kr/application/list', {
+async function list() {
+  const response = await fetch('https://api.uniqon.kr/document/application/list', {
       url: 'https://api.uniqon.kr/document/application/list?from=' + from + '&to=' + to,
       credentials: 'include',
       method: 'GET', 
@@ -12,17 +14,35 @@ async function list(from, to) {
   });
   if(response.ok) {
     jsonResponse = await response.json();
-    maxPage = jsonResponse.length/15;
+    length = jsonResponse.appList.length;
+    maxPage = length/15;
   }
-}
-
-async function refresh(nav) {
+  
   for (i = 0; i < 15; i++) {
     document.getElementById("mentor-wrapper-" + i).style.display = "none";
     document.getElementById("college-name-" + i).src = "";
-    document.getElementById("college-name-" + i).src = "";
   }
-  if(nav!=null){formatter(nav);}
+  
+  if (length > 15) {
+    for (i = 0; i < 15; i++) { 
+      let jsonObj = jsonResponse.appList[i];
+      
+      document.getElementById("mentor-wrapper-" + i).style.display = "grid";
+      document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + "(" + jsonObj.expectedGrad + ")";
+      document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
+      document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
+    }
+  }else{
+    for (i = 0; i < length; i++) {
+      let jsonObj = jsonResponse.appList[i];
+      
+      document.getElementById("mentor-wrapper-" + i).style.display = "grid";
+      document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + "(" + jsonObj.expectedGrad + ")";
+      document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
+      document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
+      document.getElementById('next').style.display = "none";
+    }
+  }
 }
 
 async function formatter(nav) {
@@ -41,34 +61,12 @@ async function formatter(nav) {
   }
 
   list(from, to);
-  generate();
-}
-
-async function generate() {
-  if (page)
-  if (jsonResponse.length > 15) {
-    for (i = 0; i < 15; i++) {
-      let jsonObj = jsonResponse[i];
-      
-      document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID + " " + jsonObj.expectedGrad;
-      document.getElementById("college-name-" + i).src = "{{ site.baseurl }}/assets/school-logo/" + jsonObj.collegeName + ".png";
-    }
-  }
-  else{
-    for (i = 0; i < jsonResponse.length; i++) {
-      let jsonObj = jsonResponse[i];
-      
-      document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID + " " + jsonObj.expectedGrad;
-      document.getElementById("college-name-" + i).src = "{{ site.baseurl }}/assets/school-logo/" + jsonObj.collegeName + ".png";
-    }
-  }
 }
 
 async function openDetail(x) {
-  window.open("{{ site.baseurl }}/application");
+  window.open("/application");
   localStorage.clear();
-  localStorage.setItem('docID', jsonResponse[x].docID);
-  localStorage.setItem('mentorName', jsonResponse[x].mentorID);
+  
+  localStorage.setItem('docID', jsonResponse.appList[x].docID);
+  localStorage.setItem('mentorName', jsonResponse.appList[x].mentorID);
 }
-
-list();

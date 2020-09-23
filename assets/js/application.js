@@ -1,7 +1,5 @@
-
 async function loadMentor() {
-  sessionStorage.setItem('docID');
-  const response = await fetch('https://api.uniqon.kr//application/'+ localStorage.getItem('docID'), {
+  const response = await fetch('https://api.uniqon.kr/document/application/' + localStorage.getItem('docID'), {
       credentials: 'include',
       method: 'GET', 
       headers: {
@@ -24,24 +22,27 @@ async function loadMentor() {
     const honorsCount = jsonResponse.honorsCount;
     const activitiesCount = jsonResponse.activitiesCount;
     const essay = jsonResponse.essay;
-
-    collegeImage = collegeName + ".png"
-    document.getElementById("college-image").src = "{{ site.baseurl }}/assets/school-logo/" + college.name + ".png";
+    
+    document.getElementById("college-image").src = "/assets/school-logo/" + college.name.replace(/ /g,'-') + ".png";
   
     document.getElementById("mentor-name").innerHTML = localStorage.getItem('mentorName');
     document.getElementById("grad").innerHTML = college.grad;
     document.getElementById("mentor-major").innerHTML = college.admittedMajor;
+    document.getElementById("mentor-school").innerHTML = college.name;
 
     document.getElementById("college-detail").innerHTML = "<li>"+college.name+"</li>"+"<li>"+college.admittedMajor+"</li>"+"<li>"+college.grad+"</li>";
-    document.getElementById("background-detail").innerHTML = "<li>"+background.citizenship+"<li>"+background.gender+"</li>"+background.ethnicity+"</li>"+"<li>"+background.hooks+"</li>";
+    document.getElementById("background-detail").innerHTML = "<li>"+background.citizenship+"</li>"+"<li>"+background.gender+"</li>"+"<li>"+background.ethnicity+"</li>"+"<li>"+background.hooks+"</li>";
     document.getElementById("academics-detail").innerHTML = "<li>"+academics+"</li>"+"<li>"+sat1+"</li>"+"<li>"+sat2Count+"</li>"+"</li>"+"<li>"+act+"</li>" + "<li>"+apCount+"</li>";
       
     document.getElementById("honors-detail").innerHTML += "<li>"+honorsCount+"</li>";
     document.getElementById("activities-detail").innerHTML += "<li>"+activitiesCount+"</li>";
 
-    } else{
-    alert("Server Error!! Please Try Again");
-    location.href = "{{ site.baseurl }}/";
+  } else if(response.status == 403) { 
+    document.getElementById("notReady").style.display = "block";
+    document.getElementById("noDocument").style.display = "none";
+  } else if(response.status == 404) { 
+    document.getElementById("notReady").style.display = "none";
+    document.getElementById("noDocument").style.display = "block";
   }
 }
 

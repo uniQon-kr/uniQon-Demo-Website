@@ -479,9 +479,6 @@ footer {
 .mentors-list{
   margin: auto;
   width: 1182px;
-  max-width: 99%;
-  display: grid;
-  grid-template-columns: 100%;
   text-align: center;
 
   .mentors-box{
@@ -492,7 +489,7 @@ footer {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     margin-bottom: 40px;
-
+    
     a {
       text-decoration: none;
       color: black;
@@ -506,7 +503,9 @@ footer {
         margin: auto;
         width: 80%;
       }
-
+      .school-name{
+        text-transform: capitalize;
+      }
       .mentor-name {
         font-size: 15px;
         margin: auto;
@@ -938,6 +937,19 @@ footer {
     justify-items: center;
   }
   
+  .error {
+    display: none;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 3px 0 3px 3px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ff5656;
+    background-color:  #ffe0e0;
+    border: 1px solid #ffb5b5;
+    border-radius: 5px;
+  }
+
   .more-details{
     grid-template-columns: 200px auto;
     text-align: left;
