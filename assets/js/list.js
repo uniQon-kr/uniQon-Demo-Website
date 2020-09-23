@@ -1,9 +1,18 @@
 let page = 1;
+let maxPage = Number.MAX_VALUE;
 let jsonResponse;
 
 async function list() {
-  if(page===0) {page=1;document.getElementById('page').innerHTML = page;}//before it loads check if page is in possible range
+  // before it loads check if page is in possible range
+  if (page <= 0) {
+    page = 1;
+    document.getElementById('page').innerHTML = page;
+  } else if (page > maxPage) {
+    page = maxPage;
+    document.getElementById('page').innerHTML = page;
+  }
 
+  // Fetch List of Mentors
   const responseUrl = `https://api.uniqon.kr/document/application/list?from=${(page*15)-14}&to=${(page*15)+1}`
   const response = await fetch(responseUrl, {
       credentials: 'include',
@@ -17,18 +26,24 @@ async function list() {
     jsonResponse = await response.json();
     const length = jsonResponse.appList.length;
     let nextPage = false;
-    if(length === 16){nextPage = true;} //check if there is more profiles after 
-    
-    if(length===0){
-      page--;
+
+    //check if there is more profiles after 
+    if(length === 16) {
+      nextPage = true;
+    } else if(length === 0) {
+      maxPage = page - 1;
       document.getElementById('page').innerHTML = page;
       list();
+      return;
+    } else {
+      maxPage = page;
     }
+
     //controls navbar arrows
-    if(!nextPage&&page===1) {
+    if(!nextPage && page===1) {
       document.getElementById('previous').style.display = "none";
       document.getElementById('next').style.display = "none";
-    }else if (!nextPage){
+    } else if (!nextPage){
       document.getElementById('previous').style.display = "initial";
       document.getElementById('next').style.display = "none";
     } else if (page===1){
@@ -46,30 +61,15 @@ async function list() {
     }
     
     //draw profiles onto the form
-    if (length >= 15) {
-      for (i = 0; i < 15; i++) { 
-        let jsonObj = jsonResponse.appList[i];
-        
-        document.getElementById("mentor-wrapper-" + i).style.display = "grid";
-        document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + " (" + jsonObj.expectedGrad + ")";
-        document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
-        document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
-      }
-    }else{
-      for (i = 0; i < length; i++) {
-        let jsonObj = jsonResponse.appList[i];
-        
-        document.getElementById("mentor-wrapper-" + i).style.display = "grid";
-        document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + " (" + jsonObj.expectedGrad + ")";
-        document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
-        document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
-        document.getElementById('next').style.display = "none";
-      }
+    for (i = 0; i < length; i++) {
+      let jsonObj = jsonResponse.appList[i];
+      document.getElementById("mentor-wrapper-" + i).style.display = "grid";
+      document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + " (" + jsonObj.expectedGrad + ")";
+      document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
+      document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
     }
   }
 }
-
-list();
 
 async function formatter(nav) {
   page += nav;
@@ -83,3 +83,5 @@ async function openDetail(x) {
   
   localStorage.setItem('docID', jsonResponse.appList[x].docID);
 }
+
+list();
