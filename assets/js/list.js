@@ -30,7 +30,7 @@ async function list() {
       document.getElementById("college-name-" + i).src = "";
     }
     
-    if (length > 15) {
+    if (length === 15) {
       for (i = 0; i < 15; i++) { 
         let jsonObj = jsonResponse.appList[i];
         
