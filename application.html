@@ -19,7 +19,8 @@ permalink: /application
       <p id = "mentor-school" class = "content"></p>
 			<p id = "mentor-major" class = "content"></p>
       <a href = ""><button>프로필 열람하기</button></a>
-      <a href = ""><button>북마크 추가</button></a>
+      <a class = "bookmark" id= "bookmarkAdd" onclick="bookmarkAdd()"><button>북마크 추가</button></a>
+      <a class = "bookmark" id= "bookmarkDel" onclick="bookmarkDel()"><button>북마크 제거</button></a>
 		</div>
   </div>
   
@@ -37,7 +38,7 @@ permalink: /application
         <p class = "content" id = citizenship><span class = "content-title">Citizenship: </span></p>
         <p class = "content" id = gender><span class = "content-title">Gender: </span></p>
         <p class = "content" id = ethnicity><span class = "content-title">Ethnicity: </span></p>
-        <p class = "content" id = hooks><span class = "content-title">Hooks: </span></p>
+        <p class = "content content-title" id = hooks>Hooks: <span class = "content" id="NA"></span></p>
         <ul id = hooksList></ul>
       </div>
 		</div>

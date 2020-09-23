@@ -2,7 +2,7 @@
 ---
 
 async function loadMentor() {
-  const response = await fetch('https://api.uniqon.kr/document/application/' + localStorage.getItem('docID'), {
+  let response = await fetch('https://api.uniqon.kr/document/application/' + localStorage.getItem('docID'), {
       credentials: 'include',
       method: 'GET', 
       headers: {
@@ -10,7 +10,7 @@ async function loadMentor() {
       }
   });
   if(response.ok) {
-    const jsonResponse = await response.json();
+    let jsonResponse = await response.json();
     
     const mentorName = localStorage.getItem('docID').split("_")[0];
     const admittedMajor = jsonResponse.admittedMajor;
@@ -57,12 +57,13 @@ async function loadMentor() {
       document.getElementById("ethnicity").style.display = "block";
     }
     //for hooks if they dont exist display N/A and if they do bullet list them
+    document.getElementById("hooks").style.display = "initial";
     if(background.hooks.length == 0){
-      document.getElementById("hooks").innerHTML += "N/A";
-      document.getElementById("hooks").style.display = "block";
+      document.getElementById("NA").innerHTML += "N/A";
+      document.getElementById("NA").style.display = "inline";
     } else{
       for(i=0; i<background.hooks.length; i++){
-        hooksList += "<li>" + background.hooks[i] + "</li>";
+        document.getElementById("hooksList").innerHTML += "<li>" + background.hooks[i] + "</li>";
       }
     }
 
@@ -123,3 +124,51 @@ async function loadMentor() {
 }
 
 loadMentor();
+
+async function bookmark() {//checking for bookmark
+  const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
+  const response = await fetch(responseUrl, {
+      credentials: 'include',
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+  });
+  const jsonResponse = await response.json();
+  if(localStorage.getItem("uniQonSignedIn") === "true"){//display correct block of error
+    if(jsonResponse.userType === 'mentee'){
+      if(!jsonResponse.bookmarked){
+        document.getElementById("bookmarkAdd").style.display = "block";
+        document.getElementById("bookmarkDel").style.display = "none";
+      }
+      else{
+        document.getElementById("bookmarkAdd").style.display = "none";
+        document.getElementById("bookmarkDel").style.display = "block";
+      }
+    }
+  }
+}
+bookmark();
+
+async function bookmarkAdd() {//post bookmark
+  const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
+  const response = await fetch(responseUrl, {
+      credentials: 'include',
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+  });
+  bookmark();
+}
+async function bookmarkDel() {//delete bookmark
+  const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
+  const response = await fetch(responseUrl, {
+      credentials: 'include',
+      method: 'DELETE', 
+      headers: {
+        'Content-Type': 'application/json'
+      }
+  });
+  bookmark();
+}

@@ -26,6 +26,14 @@ async function getMyInfo() {
             document.getElementById("mentee").style.display = "block";
             document.getElementById("usedApp").innerHTML = jsonResponse.usedApp;
             document.getElementById("remainingApp").innerHTML = jsonResponse.remainingApp;
+            document.getElementById("bookmark").style.display = "block";
+            for(i=0; i < jsonResponse.bookmark.length; i++){
+                const bookmarks = jsonResponse.bookmark[i].split("_");
+                let collegeImage = "/assets/school-logo/" + bookmarks[1].replace(/ /g,'-') + ".png";
+
+                document.getElementById("bookmarks").innerHTML += "<img class = 'collegeImage' src =" + collegeImage + ">" + "<p class = 'content-paragraph'>" + bookmarks[0] + "</p>";
+                
+            }
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
         await renew(); // try to renew access token
