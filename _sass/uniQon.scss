@@ -499,9 +499,14 @@ footer {
       display: grid;
       grid-template-rows: 400px 50px;
 
+      &:hover {
+        cursor: pointer;
+      }
+
       .college-image {
         margin: auto;
-        width: 80%;
+        max-width: 80%;
+        max-height: 320px;
       }
       .school-name{
         text-transform: capitalize;

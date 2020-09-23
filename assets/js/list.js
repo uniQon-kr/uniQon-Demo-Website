@@ -61,7 +61,8 @@ async function list() {
     }
     
     //draw profiles onto the form
-    for (i = 0; i < length; i++) {
+    
+    for (i = 0; i < (length > 15 ? 15 : length); i++) {
       let jsonObj = jsonResponse.appList[i];
       document.getElementById("mentor-wrapper-" + i).style.display = "grid";
       document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + " (" + jsonObj.expectedGrad + ")";
@@ -79,9 +80,10 @@ async function formatter(nav) {
 }
 
 async function openDetail(x) {
-  window.open("/application");
-  
-  localStorage.setItem('docID', jsonResponse.appList[x].docID);
+  if(jsonResponse.appList[x] != null) {
+    localStorage.setItem('docID', jsonResponse.appList[x].docID);
+    window.open("/application");
+  }
 }
 
 list();
