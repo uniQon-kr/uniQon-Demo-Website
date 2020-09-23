@@ -2,6 +2,8 @@ let page = 1;
 let jsonResponse;
 
 async function list() {
+  if(page===0) {page=1;document.getElementById('page').innerHTML = page;}//before it loads check if page is in possible range
+
   const responseUrl = `https://api.uniqon.kr/document/application/list?from=${(page*15)-14}&to=${(page*15)+1}`
   const response = await fetch(responseUrl, {
       credentials: 'include',
@@ -17,11 +19,21 @@ async function list() {
     let nextPage = false;
     if(length === 16){nextPage = true;} //check if there is more profiles after 
     
+    if(length===0){
+      page--;
+      document.getElementById('page').innerHTML = page;
+      list();
+    }
     //controls navbar arrows
-    if (page===1){
+    if(!nextPage&&page===1) {
       document.getElementById('previous').style.display = "none";
-    } else if (!nextPage){
       document.getElementById('next').style.display = "none";
+    }else if (!nextPage){
+      document.getElementById('previous').style.display = "initial";
+      document.getElementById('next').style.display = "none";
+    } else if (page===1){
+      document.getElementById('previous').style.display = "none";
+      document.getElementById('next').style.display = "initial";
     } else {
       document.getElementById('previous').style.display = "initial";
       document.getElementById('next').style.display = "initial";
