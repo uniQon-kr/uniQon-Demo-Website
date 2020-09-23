@@ -1,3 +1,6 @@
+---
+---
+
 async function loadMentor() {
   const response = await fetch('https://api.uniqon.kr/document/application/' + localStorage.getItem('docID'), {
       credentials: 'include',
@@ -40,9 +43,11 @@ async function loadMentor() {
   } else if(response.status == 403) { 
     document.getElementById("notReady").style.display = "block";
     document.getElementById("noDocument").style.display = "none";
+    location.href = "{{ site.baseurl }}/mentors-list";
   } else if(response.status == 404) { 
     document.getElementById("notReady").style.display = "none";
     document.getElementById("noDocument").style.display = "block";
+    location.href = "{{ site.baseurl }}/mentors-list";
   }
 }
 
