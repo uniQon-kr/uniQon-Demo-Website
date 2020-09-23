@@ -39,7 +39,7 @@ async function list() {
         let jsonObj = jsonResponse.appList[i];
         
         document.getElementById("mentor-wrapper-" + i).style.display = "grid";
-        document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + "(" + jsonObj.expectedGrad + ")";
+        document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + " (" + jsonObj.expectedGrad + ")";
         document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
         document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
       }
@@ -48,7 +48,7 @@ async function list() {
         let jsonObj = jsonResponse.appList[i];
         
         document.getElementById("mentor-wrapper-" + i).style.display = "grid";
-        document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + "(" + jsonObj.expectedGrad + ")";
+        document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + " (" + jsonObj.expectedGrad + ")";
         document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
         document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
         document.getElementById('next').style.display = "none";
