@@ -1,21 +1,21 @@
 let page = 1;
+let jsonResponse;
 
 async function list() {
-  console.log(page);
-  const response = await fetch('https://api.uniqon.kr/document/application/list', {
-      url: 'https://api.uniqon.kr/document/application/list?from=' + page*15-14 + '&to=' + page*15+1,
+  const responseUrl = `https://api.uniqon.kr/document/application/list?from=${(page*15)-14}&to=${(page*15)+1}`
+  const response = await fetch(responseUrl, {
       credentials: 'include',
       method: 'GET', 
       headers: {
         'Content-Type': 'application/json'
       }
   });
+
   if(response.ok) {
     jsonResponse = await response.json();
     const length = jsonResponse.appList.length;
-    console.log(length);
     let nextPage = false;
-    if(length === 16){nextPage = true;}//check if there is more profiles after 
+    if(length === 16){nextPage = true;} //check if there is more profiles after 
     
     //controls navbar arrows
     if (page===1){
@@ -44,14 +44,14 @@ async function list() {
         document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
       }
     }else{
-    for (i = 0; i < length; i++) {
-      let jsonObj = jsonResponse.appList[i];
-      
-      document.getElementById("mentor-wrapper-" + i).style.display = "grid";
-      document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + "(" + jsonObj.expectedGrad + ")";
-      document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
-      document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
-      document.getElementById('next').style.display = "none";
+      for (i = 0; i < length; i++) {
+        let jsonObj = jsonResponse.appList[i];
+        
+        document.getElementById("mentor-wrapper-" + i).style.display = "grid";
+        document.getElementById("mentor-school-" + i).innerHTML = jsonObj.collegeName + "(" + jsonObj.expectedGrad + ")";
+        document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
+        document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
+        document.getElementById('next').style.display = "none";
       }
     }
   }
