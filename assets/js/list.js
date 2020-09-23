@@ -39,8 +39,7 @@ async function list() {
         document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
         document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
       }
-    }
-  }else{
+    }else{
     for (i = 0; i < length; i++) {
       let jsonObj = jsonResponse.appList[i];
       
@@ -49,6 +48,7 @@ async function list() {
       document.getElementById("mentor-name-" + i).innerHTML = jsonObj.mentorID;
       document.getElementById("college-name-" + i).src = "/assets/school-logo/" + jsonObj.collegeName.replace(/ /g,'-') + ".png";
       document.getElementById('next').style.display = "none";
+      }
     }
   }
 }
