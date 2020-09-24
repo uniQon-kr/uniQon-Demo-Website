@@ -61,15 +61,15 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">SAT1</p>
-      <input class = "required" id = "form-sat1-english"onkeypress = "formUpdated()"  type = "text" placeholder="Reading/Writing"/>
-      <input class = "required" id = "form-sat1-math" onkeypress = "formUpdated()" type = "text" placeholder="Math"/>
+      <input class = "required" id = "form-sat1-english"onkeypress = "formUpdated()"  onchange = "requiredScore()" type = "text" placeholder="Reading/Writing"/>
+      <input class = "required" id = "form-sat1-math" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Math"/>
     </div>
     <div class="content">
 			<p class = "content-title">ACT</p>
-      <input class = "required" id = "form-act-eng" onkeypress = "formUpdated()" type = "text" placeholder="English"/>
-      <input class = "required" id = "form-act-math" onkeypress = "formUpdated()" type = "text" placeholder="Math"/>
-      <input class = "required" id = "form-act-rd" onkeypress = "formUpdated()" type = "text" placeholder="Reading"/>
-      <input class = "required" id = "form-act-sci" onkeypress = "formUpdated()" type = "text" placeholder="Science"/>
+      <input class = "required" id = "form-act-eng" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="English"/>
+      <input class = "required" id = "form-act-math" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Math"/>
+      <input class = "required" id = "form-act-rd" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Reading"/>
+      <input class = "required" id = "form-act-sci" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Science"/>
       <input id = "form-act-ess" onkeypress = "formUpdated()" type = "text" placeholder="Writing (optional)"/>
 		</div>
 		<div class="content">
