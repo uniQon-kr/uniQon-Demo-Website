@@ -1,6 +1,10 @@
 // boolean variable to keep track whether the form has been updated after last draft save
 isUpdated = false;
 
+async function addMore(type) {
+  // TODO: save as draft
+}
+
 async function loadDraft() {
     // TODO: function to load draft when the page first loaded
 }
