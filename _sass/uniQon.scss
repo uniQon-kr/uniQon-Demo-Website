@@ -1332,23 +1332,28 @@ footer {
         }
       }
     }
-    input[type=text]{
-      width: 350px;
-      margin-right: 10px;
+    
+    input {
+      background-color: #fcfcfc;
       margin-top: 10px;
       margin-bottom: 10px;
-      margin-left: 10px;
       font-size: 14px;
-      border: 1px solid #c9c9c9;
-      background-color: #fcfcfc;
-      border-radius: 5px;
+
+      &[type=text] {
+        width: 350px;
+        margin-right: 10px;
+        margin-left: 10px;
+        border: 1px solid #c9c9c9;
+        border-radius: 5px;
+      }
+
+      &[type=checkbox] {
+        width: 20px;
+      }
     }
-    input[type=checkbox]{
-      margin-top: 10px;
-      margin-bottom: 10px;
-      width: 20px;
-      font-size: 14px;
-      background-color: #fcfcfc;
+
+    .required {
+      background-color: #ffe4e4;
     }
   }
 }

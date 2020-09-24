@@ -13,15 +13,15 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">College/University</p>
-      <input id = "form-college" type = "text" required/>
+      <input class ="required" id = "form-college" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Admitted Major</p>
-      <input id = "form-major" type = "text" required/>
+      <input class = "required" id = "form-major" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Expected Graduation</p>
-      <input id = "form-grad" type = "text" required/>
+      <input class = "required" id = "form-grad" type = "text"/>
     </div>
     
 
@@ -30,15 +30,15 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">Citizenship</p>
-      <input id = "form-citizenship" type = "text" required/>
+      <input class="required" id = "form-citizenship" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Gender</p>
-      <input id = "form-gender" type = "text" required/>
+      <input class = "required" id = "form-gender" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Ethnicity</p>
-      <input id = "form-title" type = "text" required/>
+      <input class = "required" id = "form-title" type = "text"/>
     </div>
 		<div class="content">
 			<p class = "content-title">Hooks</p>
@@ -54,12 +54,20 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">Weighted GPA</p>
-      <input id = "form-gpa" type = "text" required/>
+      <input class = "required" id = "form-gpa" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">SAT1</p>
-      <input id = "form-sat1-english" type = "text" placeholder="Reading/Writing"/>
-      <input id = "form-sat1-math" type = "text" placeholder="Math"/>
+      <input class = "required" id = "form-sat1-english" type = "text" placeholder="Reading/Writing"/>
+      <input class = "required" id = "form-sat1-math" type = "text" placeholder="Math"/>
+    </div>
+    <div class="content">
+			<p class = "content-title">ACT</p>
+      <input class = "required" id = "form-act-eng" type = "text" placeholder="English"/>
+      <input class = "required" id = "form-act-math" type = "text" placeholder="Math"/>
+      <input class = "required" id = "form-act-rd" type = "text" placeholder="Reading"/>
+      <input class = "required" id = "form-act-sci" type = "text" placeholder="Science"/>
+      <input id = "form-act-ess" type = "text" placeholder="Writing (optional)"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">SAT2</p>
@@ -68,14 +76,6 @@ permalink: /mentor-form
         <input id = "form-sat2-score" type = "text" placeholder= "Score"/>
       </div>
       <p class="addmore" onclick="addMore('sat2')">Add more</p>
-		</div>
-		<div class="content">
-			<p class = "content-title">ACT</p>
-      <input id = "form-act-eng" type = "text" placeholder="English"/>
-      <input id = "form-act-math" type = "text" placeholder="Math"/>
-      <input id = "form-act-rd" type = "text" placeholder="Reading"/>
-      <input id = "form-act-sci" type = "text" placeholder="Science"/>
-      <input id = "form-act-ess" type = "text" placeholder="Essay(optional)"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">AP</p>
@@ -93,9 +93,9 @@ permalink: /mentor-form
       <div class = "detailedInput">
         <div class = "entryBox">
           <p class = "content-title">Title</p>
-          <input id = "form-honors-title" type = "text"/>
+          <input class = "required" id = "form-honors-title" type = "text"/>
           <p class = "content-title">Grade Level</p>
-          <div class = "checkboxes">
+          <div class = "checkboxes required">
             <input type="checkbox" id="h1-9" value="9"><label>9</label>
             <input type="checkbox" id="h1-10" value="10"><label>10</label>
             <input type="checkbox" id="h1-11" value="11"><label>11</label>
@@ -103,7 +103,7 @@ permalink: /mentor-form
             <input type="checkbox" id="h1-13" value="13"><label>Post-Graduate</label>
           </div>
           <p class = "content-title">Level of Recognition</p>
-          <input id = "form-honors-lvl" type = "text"/>
+          <input class = "required" id = "form-honors-lvl" type = "text"/>
         </div>
       </div>
       <p class="addmore" onclick="">Add more</p>
@@ -117,15 +117,15 @@ permalink: /mentor-form
       <div class = "detailedInput">
         <div class = "entryBox">
           <p class = "content-title">Title</p>
-          <input id = "form-activities-type" type = "text"/>
+          <input class = "required" id = "form-activities-type" type = "text"/>
           <p class = "content-title">Position</p>
-          <input id = "form-activities-position" type = "text"/>
+          <input class = "required" id = "form-activities-position" type = "text"/>
           <p class = "content-title">Organization</p>
-          <input id = "form-activities-organization" type = "text"/>
+          <input class = "required" id = "form-activities-organization" type = "text"/>
           <p class = "content-title">Description</p>
-          <input id = "form-activities-description" type = "text"/>
+          <input class = "required" id = "form-activities-description" type = "text"/>
           <p class = "content-title">Participation Grade</p>
-          <div class = "checkboxes">
+          <div class = "checkboxes required">
             <input type="checkbox" id="a1-9" value="9"><label>9</label>
             <input type="checkbox" id="a1-10" value="10"><label>10</label>
             <input type="checkbox" id="a1-11" value="11"><label>11</label>
@@ -133,7 +133,7 @@ permalink: /mentor-form
             <input type="checkbox" id="a1-13" value="13"><label>Post-Graduate</label>
           </div>
           <p class = "content-title">Time of Participation</p>
-          <input id = "form-activities-time" type = "text"/>
+          <input class = "required" id = "form-activities-time" type = "text"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('honors')">Add more</p>
@@ -146,7 +146,7 @@ permalink: /mentor-form
 		<div class="content">
       <div class = "detailedInput">
         <div class = "entryBox">
-          <textarea class = "essay" id=additional-1 required></textarea>
+          <textarea class = "essay required" id=additional-1></textarea>
         </div>
         <p class="addmore" onclick="addMore('essay')">Add more</p>
       </div>
@@ -158,8 +158,8 @@ permalink: /mentor-form
 		<div class="content">
       <div class = "detailedInput">
         <div class = "entryBox">
-          <input id = "form-essay-prompt-01" type = "text" placeholder="Prompt" required/>
-          <textarea class = "essay" id= essay-1 required></textarea>
+          <input class = "required" id = "form-essay-prompt-01" type = "text" placeholder="Prompt"/>
+          <textarea class = "essay required" id= essay-1></textarea>
         </div>
         <p class="addmore" onclick="addMore()">Add more</p>
       </div>
