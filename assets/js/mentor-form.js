@@ -9,16 +9,68 @@ let activitiesCount = 1;
 let essayCount = 1;
 let additionalCount = 1;
 
+async function hideRemove() {
+    if(hooksCount===1){
+        document.getElementById("hooks-remove").style.display = "none";
+    }if(sat2Count===1){
+        document.getElementById("sat2-remove").style.display = "none";
+    }if(apCount===1){
+        document.getElementById("ap-remove").style.display = "none";
+    }if(honorsCount===1){
+        document.getElementById("honors-remove").style.display = "none";
+    }if(activitiesCount===1){
+        document.getElementById("activities-remove").style.display = "none";
+    }if(essayCount===1){
+        document.getElementById("essay-remove").style.display = "none";
+    }if(additionalCount===1){
+        document.getElementById("additional-remove").style.display = "none";
+    }
+}
+
+async function remove(type) {
+    let element;
+    if(type === "hooks"){
+        element = document.getElementById("hooksEntryBox-" + hooksCount);
+        element.parentNode.removeChild(element);
+        hooksCount--;
+    } else if(type === "sat2"){
+        element = document.getElementById("sat2EntryBox-" + sat2Count);
+        element.parentNode.removeChild(element);
+        sat2Count--;
+    } else if(type === "ap"){
+        element = document.getElementById("apEntryBox-" + apCount);
+        element.parentNode.removeChild(element);
+        apCount--;
+    } else if(type === "honors"){
+        element = document.getElementById("honorsEntryBox-" + honorsCount);
+        element.parentNode.removeChild(element);
+        honorsCount--;
+    } else if(type === "activities"){
+        element = document.getElementById("activitiesEntryBox-" + activitiesCount);
+        element.parentNode.removeChild(element);
+        activitiesCount--;
+    } else if(type === "essay"){
+        element = document.getElementById("essayEntryBox-" + essayCount);
+        element.parentNode.removeChild(element);
+        essayCount--;
+    } else if(type === "additional"){
+        element = document.getElementById("additionalEntryBox-" + additionalCount);
+        element.parentNode.removeChild(element);
+        additionalCount--;
+    } hideRemove();
+}
 async function addMore(type) {
   //add more textfields to its type
   if(type === "hooks"){
     hooksCount++;
+    document.getElementById("hooks-remove").style.display = "block";
     document.getElementById("hooks-AM").innerHTML += `
         <div class='entryBoxA' id = 'hooksEntryBox-${hooksCount}''>
             <input id = 'form-hooks-${hooksCount}' onkeypress = 'formUpdated()' type = 'text'/>
         </div>`;
   } else if(type === "sat2"){
     sat2Count++;
+    document.getElementById("sat2-remove").style.display = "block";
     document.getElementById("sat2-AM").innerHTML += `
         <div class='entryBoxA' id = 'sat2EntryBox-${sat2Count}'>
             <input id = 'form-sat2-subject-${sat2Count}' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Subject'/>
@@ -26,6 +78,7 @@ async function addMore(type) {
         </div>`;
   } else if(type === "ap"){
     apCount++;
+    document.getElementById("ap-remove").style.display = "block";
     document.getElementById("ap-AM").innerHTML += `
         <div class='entryBoxA' id = 'apEntryBox-${apCount}'>
             <input id = 'form-ap-subject-${apCount}' onkeypress = 'formUpdated()' type = 'text' placeholder='Subject'/>
@@ -33,6 +86,7 @@ async function addMore(type) {
         </div>`;
   } else if(type === "honors"){
     honorsCount++;
+    document.getElementById("honors-remove").style.display = "block";
     document.getElementById("honors-AM").innerHTML += `
         <div class='entryBox' id = 'honorsEntryBox-${honorsCount}'>
             <p class = 'content-title'>Title</p>
@@ -50,8 +104,9 @@ async function addMore(type) {
         </div>`;
   } else if(type === "activities"){
     activitiesCount++;
+    document.getElementById("activities-remove").style.display = "block";
     document.getElementById("activities-AM").innerHTML += `
-        <div class='entryBox' id = 'activitiesEntryBox-'${activitiesCount}'>
+        <div class='entryBox' id = 'activitiesEntryBox-${activitiesCount}'>
             <p class = 'content-title'>Title</p>
             <input class = 'required' id = 'form-activities-type-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-type-${activitiesCount}')" type = 'text'/> 
             <p class = 'content-title'>Position</p>
@@ -69,10 +124,11 @@ async function addMore(type) {
                 <input type='checkbox' id='a${activitiesCount}-13' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='13'><label>Post-Graduate</label>
             </div>
             <p class = 'content-title'>Time of Participation</p>
-            <input class = 'required' id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-time-${activitiesCount}')" type = 'text'/>
+            <input class = 'required id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-time-${activitiesCount}')" type = 'text'/>
         </div>`;
   } else if(type === "essay"){
     essayCount++;
+    document.getElementById("essay-remove").style.display = "block";
     document.getElementById("essay-AM").innerHTML += `
         <div class='entryBox' id = 'essayEntryBox-${essayCount}'>
             <input class = 'required' id = 'form-essay-prompt-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-essay-prompt-${essayCount}')" type = 'text' placeholder='Prompt'/>
@@ -80,6 +136,7 @@ async function addMore(type) {
         </div>`;
   }else if(type === "additional"){
     additionalCount++;
+    document.getElementById("additional-remove").style.display = "block";
     document.getElementById("additional-AM").innerHTML += `
         <div class='entryBox' id = 'additionalEntryBox-${additionalCount}'>
             <textarea class = 'essay' id='additional-${additionalCount}' onkeypress = 'formUpdated()'></textarea>
@@ -220,5 +277,5 @@ function satActCheck(inputFieldID) {
 }
 
 loadDraft();
-
+hideRemove()
 // start timer, save every one min
