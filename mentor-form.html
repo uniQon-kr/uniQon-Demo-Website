@@ -4,7 +4,7 @@ title: "Mentor Application Form"
 permalink: /mentor-form
 ---
 
-
+<script src = '{{ site.baseurl }}/assets/js/loginCheck.js'></script>
 <div class="mentor-form">
 	<p id="title">Share Your Success.<p>
 	<div class="common section-wrapper">
@@ -71,16 +71,16 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">ACT</p>
-      <input id = "form-sat1" type = "text" placeholder="English"/>
-      <input id = "form-sat1" type = "text" placeholder="Math"/>
-      <input id = "form-sat1" type = "text" placeholder="Reading"/>
-      <input id = "form-sat1" type = "text" placeholder="Science"/>
+      <input id = "form-act-eng" type = "text" placeholder="English"/>
+      <input id = "form-act-math" type = "text" placeholder="Math"/>
+      <input id = "form-act-rd" type = "text" placeholder="Reading"/>
+      <input id = "form-act-sci" type = "text" placeholder="Science"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">AP</p>
       <div class = "detailedInput">
-        <input id = "form-ap" type = "text" placeholder="Subject"/>
-        <input id = "form-ap" type = "text" placeholder="Score"/>
+        <input id = "form-ap-subject" type = "text" placeholder="Subject"/>
+        <input id = "form-ap-score" type = "text" placeholder="Score"/>
       </div>
       <p class="addmore" onclick="">Add more</p>
 		</div>
@@ -145,7 +145,7 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
       <div class = "detailedInput">
-        <input id = "form-major" type = "text" placeholder="Title"/>
+        <input id = "form-essay-title-01" type = "text" placeholder="Title"/>
         <textarea class = "essay"></textarea>
         <p class="addmore" onclick="">Add more</p>
       </div>
