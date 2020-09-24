@@ -91,6 +91,75 @@ function formUpdated() {
     }
 }
 
+function requiredScore() {
+    // retrieve test byte
+    let actByte, satByte; // 0: all clear, 1: part set, 2: all set
+    const actEng = (document.getElementById("form-act-eng").value !== "");
+    const actMath = (document.getElementById("form-act-math").value !== "");
+    const actRd = (document.getElementById("form-act-rd").value !== "");
+    const actSci = (document.getElementById("form-act-sci").value !== "");
+    const satEng = (document.getElementById("form-sat1-english").value !== "");
+    const satMath = (document.getElementById("form-sat1-math").value !== "");
+
+    if(actEng && actMath && actRd && actSci) { // act All Set
+        actByte = 2;
+    } else if(!actEng && !actMath && !actRd && !actSci) { // act All Clear
+        actByte = 0;
+    } else {
+        actByte = 1;
+    }
+
+    if(satEng && satMath) { // sat all set
+        satByte = 2;
+    } else if(!satEng && !satMath) { // sat all clear
+        satByte = 0;
+    } else {
+        satByte = 1;
+    }
+
+    if(actByte === 2) {
+        document.getElementById("form-act-eng").style.backgroundColor = "#fcfcfc";
+        document.getElementById("form-act-math").style.backgroundColor = "#fcfcfc";
+        document.getElementById("form-act-rd").style.backgroundColor = "#fcfcfc";
+        document.getElementById("form-act-sci").style.backgroundColor = "#fcfcfc";
+        if(satByte === 1) {
+            document.getElementById("form-sat1-english").style.backgroundColor = "#ffe4e4";
+            document.getElementById("form-sat1-math").style.backgroundColor = "#ffe4e4";
+        } else {
+            document.getElementById("form-sat1-english").style.backgroundColor = "#fcfcfc";
+            document.getElementById("form-sat1-math").style.backgroundColor = "#fcfcfc";
+        }
+    } else if(actByte === 1) {
+        document.getElementById("form-act-eng").style.backgroundColor = "#ffe4e4";
+        document.getElementById("form-act-math").style.backgroundColor = "#ffe4e4";
+        document.getElementById("form-act-rd").style.backgroundColor = "#ffe4e4";
+        document.getElementById("form-act-sci").style.backgroundColor = "#ffe4e4";
+        if(satByte === 2) {
+            document.getElementById("form-sat1-english").style.backgroundColor = "#fcfcfc";
+            document.getElementById("form-sat1-math").style.backgroundColor = "#fcfcfc";
+        } else {
+            document.getElementById("form-sat1-english").style.backgroundColor = "#ffe4e4";
+            document.getElementById("form-sat1-math").style.backgroundColor = "#ffe4e4";
+        }
+    } else {
+        if(satByte === 2) {
+            document.getElementById("form-sat1-english").style.backgroundColor = "#fcfcfc";
+            document.getElementById("form-sat1-math").style.backgroundColor = "#fcfcfc";
+            document.getElementById("form-act-eng").style.backgroundColor = "#fcfcfc";
+            document.getElementById("form-act-math").style.backgroundColor = "#fcfcfc";
+            document.getElementById("form-act-rd").style.backgroundColor = "#fcfcfc";
+            document.getElementById("form-act-sci").style.backgroundColor = "#fcfcfc";
+        } else {
+            document.getElementById("form-act-eng").style.backgroundColor = "#ffe4e4";
+            document.getElementById("form-act-math").style.backgroundColor = "#ffe4e4";
+            document.getElementById("form-act-rd").style.backgroundColor = "#ffe4e4";
+            document.getElementById("form-act-sci").style.backgroundColor = "#ffe4e4";
+            document.getElementById("form-sat1-english").style.backgroundColor = "#ffe4e4";
+            document.getElementById("form-sat1-math").style.backgroundColor = "#ffe4e4";
+        }
+    }
+}
+
 function requiredCheck(inputFieldID) {
     // check whether input field is written or not
     if(document.getElementById(inputFieldID).value !== "") { // when field contains value
