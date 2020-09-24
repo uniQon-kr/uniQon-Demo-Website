@@ -1294,12 +1294,14 @@ footer {
     display: grid;
     grid-template-columns: 200px auto;
   }
-
+  .checkboxes {
+    margin-left:10px;
+  }
   .content {
     margin-bottom: 10px;
-    padding: 0px 10px 0px 10px;
 
     .content-title {
+      margin-left:10px;
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 5px;
@@ -1307,13 +1309,10 @@ footer {
     .detailedInput{
       .entryBox{
         display:grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 100%;
         border: 1px solid #c9c9c9;
         background-color: #fcfcfc;
         border-radius: 5px;
-        a{
-          margin-left: 10px
-        }
       }
     }
     input[type=text]{
