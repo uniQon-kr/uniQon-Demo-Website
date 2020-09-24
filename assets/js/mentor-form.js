@@ -61,7 +61,7 @@ async function addMore(type) {
             <p class = 'content-title'>Description</p>
             <input class = 'required' id = 'form-activities-description-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-description-${activitiesCount}')" type = 'text'/>
             <p class = 'content-title'>Participation Grade</p>
-            <div class = 'checkboxes required' id = "a${honorsCount}">
+            <div class = 'checkboxes required' id = "a${activitiesCount}">
                 <input type='checkbox' id='a${activitiesCount}-9' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='9'><label>9</label>
                 <input type='checkbox' id='a${activitiesCount}-10' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='10'><label>10</label>
                 <input type='checkbox' id='a${activitiesCount}-11' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='11'><label>11</label>
@@ -69,7 +69,7 @@ async function addMore(type) {
                 <input type='checkbox' id='a${activitiesCount}-13' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='13'><label>Post-Graduate</label>
             </div>
             <p class = 'content-title'>Time of Participation</p>
-            <input class = 'required id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-time-${activitiesCount}')" type = 'text'/>
+            <input class = 'required' id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-time-${activitiesCount}')" type = 'text'/>
         </div>`;
   } else if(type === "essay"){
     essayCount++;
