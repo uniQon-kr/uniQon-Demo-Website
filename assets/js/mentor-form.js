@@ -69,14 +69,14 @@ async function addMore(type) {
                 <input type='checkbox' id='a${activitiesCount}-13' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='13'><label>Post-Graduate</label>
             </div>
             <p class = 'content-title'>Time of Participation</p>
-            <input class = 'required id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-time-${activitiesCount}')' type = 'text'/>
+            <input class = 'required id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-time-${activitiesCount}')" type = 'text'/>
         </div>`;
   } else if(type === "essay"){
     essayCount++;
     document.getElementById("essay-AM").innerHTML += `
         <div class='entryBox' id = 'essayEntryBox-${essayCount}'>
             <input class = 'required' id = 'form-essay-prompt-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-essay-prompt-${essayCount}')" type = 'text' placeholder='Prompt'/>
-            <textarea class = 'essay required' id= essay-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('essay-${essayCount}')"></textarea>
+            <textarea class = 'essay required' id = 'essay-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('essay-${essayCount}')"></textarea>
         </div>`;
   }else if(type === "additional"){
     additionalCount++;
