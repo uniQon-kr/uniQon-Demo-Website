@@ -102,6 +102,20 @@ function requiredCheck(inputFieldID) {
     }
 }
 
+function requiredCheckBox(inputFieldID) {
+    if(document.getElementById(inputFieldID + "-9").checked === false && 
+        document.getElementById(inputFieldID + "-10").checked === false && 
+        document.getElementById(inputFieldID + "-11").checked === false && 
+        document.getElementById(inputFieldID + "-12").checked === false && 
+        document.getElementById(inputFieldID + "-13").checked === false) {
+            // set background
+            document.getElementById(inputFieldID).style.backgroundColor = "#ffe4e4";
+    } else {
+        // unset background if at least one element is clicked
+        document.getElementById(inputFieldID).style.backgroundColor = "#fcfcfc";
+    }
+}
+
 function satActCheck(inputFieldID) {
     // TODO: check whether input field is written or not
     

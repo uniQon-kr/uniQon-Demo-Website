@@ -93,17 +93,17 @@ permalink: /mentor-form
       <div class = "detailedInput" id="honors-AM">
         <div class = "entryBox">
           <p class = "content-title">Title</p>
-          <input class = "required" id = "form-honors-title-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-title')" type = "text"/>
+          <input class = "required" id = "form-honors-title-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-title-1')" type = "text"/>
           <p class = "content-title">Grade Level</p>
-          <div class = "checkboxes required">
-            <input type="checkbox" id="h1-9" onclick = "formUpdated()" value="9"><label>9</label>
-            <input type="checkbox" id="h1-10" onclick = "formUpdated()" value="10"><label>10</label>
-            <input type="checkbox" id="h1-11" onclick = "formUpdated()" value="11"><label>11</label>
-            <input type="checkbox" id="h1-12" onclick = "formUpdated()" value="12"><label>12</label>
-            <input type="checkbox" id="h1-13" onclick = "formUpdated()" value="13"><label>Post-Graduate</label>
+          <div class = "checkboxes required" id="h1">
+            <input type="checkbox" id="h1-9" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="9"><label>9</label>
+            <input type="checkbox" id="h1-10" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="10"><label>10</label>
+            <input type="checkbox" id="h1-11" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="11"><label>11</label>
+            <input type="checkbox" id="h1-12" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="12"><label>12</label>
+            <input type="checkbox" id="h1-13" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="13"><label>Post-Graduate</label>
           </div>
           <p class = "content-title">Level of Recognition</p>
-          <input class = "required" id = "form-honors-lvl-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-lvl')" type = "text"/>
+          <input class = "required" id = "form-honors-lvl-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-lvl-1')" type = "text"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('honors')">Add more</p>
@@ -117,23 +117,23 @@ permalink: /mentor-form
       <div class = "detailedInput" id="activities-AM">
         <div class = "entryBox">
           <p class = "content-title">Title</p>
-          <input class = "required" id = "form-activities-type-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-type')" type = "text"/>
+          <input class = "required" id = "form-activities-type-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-type-1')" type = "text"/>
           <p class = "content-title">Position</p>
-          <input class = "required" id = "form-activities-position-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-position')" type = "text"/>
+          <input class = "required" id = "form-activities-position-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-position-1')" type = "text"/>
           <p class = "content-title">Organization</p>
-          <input class = "required" id = "form-activities-organization-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-organization')" type = "text"/>
+          <input class = "required" id = "form-activities-organization-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-organization-1')" type = "text"/>
           <p class = "content-title">Description</p>
-          <input class = "required" id = "form-activities-description-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-description')" type = "text"/>
+          <input class = "required" id = "form-activities-description-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-description-1')" type = "text"/>
           <p class = "content-title">Participation Grade</p>
-          <div class = "checkboxes required">
-            <input type="checkbox" id="a1-9" onclick = "formUpdated()" value="9"><label>9</label>
-            <input type="checkbox" id="a1-10" onclick = "formUpdated()" value="10"><label>10</label>
-            <input type="checkbox" id="a1-11" onclick = "formUpdated()" value="11"><label>11</label>
-            <input type="checkbox" id="a1-12" onclick = "formUpdated()" value="12"><label>12</label>
-            <input type="checkbox" id="a1-13" onclick = "formUpdated()" value="13"><label>Post-Graduate</label>
+          <div class = "checkboxes required" id="a1">
+            <input type="checkbox" id="a1-9" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="9"><label>9</label>
+            <input type="checkbox" id="a1-10" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="10"><label>10</label>
+            <input type="checkbox" id="a1-11" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="11"><label>11</label>
+            <input type="checkbox" id="a1-12" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="12"><label>12</label>
+            <input type="checkbox" id="a1-13" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="13"><label>Post-Graduate</label>
           </div>
           <p class = "content-title">Time of Participation</p>
-          <input class = "required" id = "form-activities-time-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-time')" type = "text"/>
+          <input class = "required" id = "form-activities-time-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-time-1')" type = "text"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('activities')">Add more</p>
