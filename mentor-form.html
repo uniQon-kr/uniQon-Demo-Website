@@ -43,7 +43,9 @@ permalink: /mentor-form
 		<div class="content">
 			<p class = "content-title">Hooks</p>
       <div class = "detailedInput" id = 'hooks-AM'>
-        <input id = "form-hooks-1" onkeypress = "formUpdated()" type = "text"/>
+        <div class = 'entryBox-1'>
+          <input id = "form-hooks-1" onkeypress = "formUpdated()" type = "text"/>
+        </div>
       </div>
       <p class="addmore" onclick="addMore('hooks')">Add more</p>
     </div>
@@ -72,16 +74,20 @@ permalink: /mentor-form
 		<div class="content">
 			<p class = "content-title">SAT2</p>
       <div class = "detailedInput" id = 'sat2-AM'>
-        <input id = "form-sat2-subject-1" onkeypress = "formUpdated()" type = "text" placeholder= "Subject"/>
-        <input id = "form-sat2-score-1" onkeypress = "formUpdated()" type = "text" placeholder= "Score"/>
+          <div class = 'entryBox-1'>
+          <input id = "form-sat2-subject-1" onkeypress = "formUpdated()" type = "text" placeholder= "Subject"/>
+          <input id = "form-sat2-score-1" onkeypress = "formUpdated()" type = "text" placeholder= "Score"/>
+        </div>
       </div>
       <p class="addmore" onclick="addMore('sat2')">Add more</p>
 		</div>
 		<div class="content">
 			<p class = "content-title">AP</p>
       <div class = "detailedInput" id = 'ap-AM'>
-        <input id = "form-ap-subject-1" onkeypress = "formUpdated()" type = "text" placeholder="Subject"/>
-        <input id = "form-ap-score-1" onkeypress = "formUpdated()" type = "text" placeholder="Score"/>
+        <div class = 'entryBox-1'>
+          <input id = "form-ap-subject-1" onkeypress = "formUpdated()" type = "text" placeholder="Subject"/>
+          <input id = "form-ap-score-1" onkeypress = "formUpdated()" type = "text" placeholder="Score"/>
+        </div>
       </div>
       <p class="addmore" onclick="addMore('ap')">Add more</p>
 		</div>
@@ -91,7 +97,7 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
       <div class = "detailedInput" id="honors-AM">
-        <div class = "entryBox">
+        <div class = "entryBox-1">
           <p class = "content-title">Title</p>
           <input class = "required" id = "form-honors-title-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-title-1')" type = "text"/>
           <p class = "content-title">Grade Level</p>
@@ -115,7 +121,7 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
       <div class = "detailedInput" id="activities-AM">
-        <div class = "entryBox">
+        <div class = "entryBox-1">
           <p class = "content-title">Title</p>
           <input class = "required" id = "form-activities-type-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-type-1')" type = "text"/>
           <p class = "content-title">Position</p>
@@ -144,7 +150,7 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
       <div class = "detailedInput" id = 'essay-AM'>
-        <div class = "entryBox">
+        <div class = "entryBox-1">
           <input class = "required" id = "form-essay-prompt-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-essay-prompt-1')" type = "text" placeholder="Prompt"/>
           <textarea class = "essay required" id= essay-1 onkeypress = "formUpdated()" onchange = "requiredCheck('essay-1')"></textarea>
         </div>
@@ -157,7 +163,7 @@ permalink: /mentor-form
   </div>
   <div class="content">
     <div class = "detailedInput" id="additional-AM">
-      <div class = "entryBox">
+      <div class = "entryBox-1">
         <textarea class = "essay" id="additional-1" onkeypress = "formUpdated()"></textarea>
       </div>
     </div>
