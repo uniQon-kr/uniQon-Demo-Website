@@ -2,7 +2,19 @@
 isUpdated = false;
 
 async function addMore(type) {
-  // TODO: save as draft
+  if(type === ){
+    
+  } else if(type === ){
+
+  } else if(type === ){
+
+  } else if(type === ){
+
+  } else if(type === ){
+
+  } else if(type === ){
+
+  }
 }
 
 async function loadDraft() {
