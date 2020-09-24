@@ -1239,11 +1239,13 @@ footer {
   }
 
   .button-wrapper {
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 49% 49%;
+    column-gap: 2%;
+  }
 
-    a {
-      text-decoration: none;
-    }
+  .message-wrapper {
+    margin-top: 20px;
 
     .error {
       display: none;
@@ -1275,6 +1277,7 @@ footer {
   }
 
   button {
+    margin: auto;
     display: block;
     width: 99%;
     background-color: #2ea44f;
@@ -1285,6 +1288,13 @@ footer {
     border-radius: 10px;
     border: 1px solid #2ea44f;
   }
+
+  .draftSave {
+    background-color: #f1f1f1;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+
   .essay{
     justify-self: center;
     width: 96.5%;
