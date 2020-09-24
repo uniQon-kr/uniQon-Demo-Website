@@ -5,43 +5,23 @@ permalink: /mentors-list
 ---
 
 <div class="mentors-list">
-  <a href = "">
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/columbia.png">
-      <div class = "mentor-name"><p class="smallBody">journeytotheeast (Columbia '20)</p></div>
-    </div>
-  </a>
-  <a href = "">
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/caltech.png">
-      <div class = "mentor-name"><p class="smallBody">shaoint (CalTech '22)</p></div>
-    </div>
-  </a>
-  <a href = "">
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/princeton.png">
-      <div class = "mentor-name"><p class="smallBody">astrolover (Princeton '20)</p></div>
-    </div>
-  </a>
-
-  <a href = "">
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/stanford.png">
-      <div class = "mentor-name"><p class="smallBody">squareone (Stanford '21)</p></div>
-    </div>
-  </a>
-
-  <a href = "">
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/harvard.png">
-      <div class = "mentor-name"><p class="smallBody">sesame2019 (Harvard '19)</p></div>
-    </div>
-  </a>
-
-  <a href = "">
-    <div class = "mentor-wrapper"> 
-      <img class = "college-image" src = "{{ site.baseurl }}/assets/school-logo/stanford.png">
-      <div class = "mentor-name"><p class="smallBody">nydaaa (Stanford '21)</p></div>
-    </div>
-  </a>
+  <div class="mentors-box">
+    {% for x in (0..14) %}
+    <a onclick="openDetail({{ x }})" target= blank>
+      <div class = "mentor-wrapper" id = "mentor-wrapper-{{ x }}"> 
+        <img class = "collegeImage" id = "college-name-{{ x }}" src = "">
+        <div class = "mentor-name">
+          <p class="school-name" id = "mentor-school-{{ x }}"></p>
+          <p class="smallBody" id = "mentor-name-{{ x }}"></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="pagination">
+    <a onclick="formatter(-1)" id="previous">&laquo;</a>
+    <a class="active" id= "page">1</a>
+    <a onclick="formatter(1)" id="next">&raquo;</a>
+  </div>
+  <script src = '{{ site.baseurl }}/assets/js/list.js'></script>
 </div>

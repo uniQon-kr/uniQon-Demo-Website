@@ -325,7 +325,7 @@ footer {
       margin-top: 25px;
   
       .number {
-        margin-left: 85%;
+        margin-left: 75%;
         text-align: center;
         width: 450px;
         font-weight: 300;
@@ -343,7 +343,7 @@ footer {
         text-align: left;
         font-weight: 300;
         margin-bottom: 20px;
-        margin-right: 35%;
+        margin-right: 25%;
   
         .bigBody {
           font-size: 30px;
@@ -457,6 +457,7 @@ footer {
         font-weight: 400;
         margin-bottom: 20px;
         margin-top: 65px;
+        margin-right: 10%;
   
         .bigBody {
           font-size: 30px;
@@ -477,33 +478,67 @@ footer {
 
 .mentors-list{
   margin: auto;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  text-align: center;
   width: 1182px;
-  max-width: 99%;
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  margin-bottom: 40px;
+  text-align: center;
 
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
-  .mentor-wrapper{
+  .mentors-box{
+    width: 99%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
     display: grid;
-    grid-template-rows: 400px 50px;
-
-    .college-image {
-      margin: auto;
-      width: 80%;
+    grid-template-columns: 33% 33% 33%;
+    margin-bottom: 40px;
+    
+    a {
+      text-decoration: none;
+      color: black;
     }
 
-    .mentor-name {
-      font-size: 15px;
-      margin: auto;
+    .mentor-wrapper{
+      display: grid;
+      grid-template-rows: 400px 50px;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      .collegeImage {
+        margin: auto;
+        max-width: 80%;
+        max-height: 320px;
+      }
+      .school-name{
+        text-transform: capitalize;
+      }
+      .mentor-name {
+        font-size: 15px;
+        margin: auto;
+      }
     }
+  }
+  .pagination {
+    padding-bottom: 100px;
+    #previous{
+      display: none;
+    }
+    #next{
+      display: none;
+    }
+    a { 
+      color: black;
+      float: center;
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color .3s;
+    }
+    
+    a.active {
+      background-color: dodgerblue;
+      color: white;
+    }
+    
+    a:hover:not(.active) {background-color: #ddd;}
   }
 }
 
@@ -771,7 +806,7 @@ footer {
   max-width: 99%;
   margin: auto;
   margin-top: 50px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 
   #title {
     font-weight: 700;
@@ -797,6 +832,26 @@ footer {
   .section-wrapper {
     margin-bottom: 30px;
 
+    .collegeImageWrapper {
+      text-align: center;
+
+      .collegeImage{
+        width: 90%;
+        margin: auto;
+      }
+    }
+
+    .bookmarkLink{
+      margin-left: 3%;
+      margin-top: 2%;
+      color: #0366d6;
+      text-decoration: none;
+    }
+    #bookmarks{
+      display: grid;
+      grid-template-columns: 10% 90%;
+      row-gap: 15px;
+    }
     .description {
       font-size: 14px;
       font-weight: 300;
@@ -883,6 +938,125 @@ footer {
       border: 1px solid #c9c9c9;
       background-color: #fcfcfc;
       border-radius: 10px;
+    }
+  }
+}
+
+.application {
+  width: 70%;
+  max-width: 99%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 200px;
+
+  .detail-box{
+
+    .textbox {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .essay {
+        font-size: 16px;
+        margin-bottom: 30px;
+        margin-top: 5px;
+        font-weight: 400;
+      }
+      .content {
+        text-transform: capitalize;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-weight: 400;
+        display: none;
+      }
+      .content-title{
+        font-weight: 800;
+      }
+    }
+  }
+  
+  .bookmark{
+    display: none;
+  }
+
+  .subtitle {
+    font-size: 30px;
+    border-bottom: 2px solid #c2c6ca;
+    padding-top: 20px;
+  }
+  
+  .profile-wrapper {
+    display: grid;
+    grid-template-columns: 25% 75%;
+
+    .header-wrapper{
+      margin-top: 7%;
+      text-transform: capitalize;
+      font-size: 16px;
+      font-weight: 700;
+      justify-self: left;
+      margin-left: 10%;
+      
+      .content{
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+
+      a{
+        text-decoration: none;
+      }
+    }
+    .college-image{
+      justify-self: right;
+      width: 90%;
+      margin-top:20px;
+      margin-bottom:30px;
+    }
+  }
+
+  .error {
+    display: none;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 3px 0 3px 3px;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #ff5656;
+    background-color:  #ffe0e0;
+    border: 1px solid #ffb5b5;
+    border-radius: 5px;
+  }
+
+  .more-details{
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: left;
+  }
+
+  button {
+    display: block;
+    width: 300px;
+    background-color: #ffffff;
+    padding: 4px;
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+
+  .optional {
+    display: none;
+  }
+
+  .mentor-wrapper {
+    margin-bottom: 30px;
+    display: initial;
+
+    .description {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
     }
   }
 }
