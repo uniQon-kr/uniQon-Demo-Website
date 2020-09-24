@@ -36,14 +36,14 @@ async function addMore(type) {
     document.getElementById("honors-AM").innerHTML += `
         <div class='entryBox' id = 'honorsEntryBox-${honorsCount}'>
             <p class = 'content-title'>Title</p>
-            <input class = 'required' id = 'form-honors-title-${honorsCount}' onkeypress = 'formUpdated()'' onchange = 'requiredCheck('form-honors-title-${honorsCount}')'' type = 'text'/>
+            <input class = 'required' id = 'form-honors-title-${honorsCount}' onkeypress = 'formUpdated()'' onchange = "requiredCheck('form-honors-title-${honorsCount}')" type = 'text'/>
             <p class = 'content-title'>Grade Level</p>
             <div class = 'checkboxes required'>
-                <input type='checkbox' id='h${honorsCount}-9' onclick = 'formUpdated()' onchange = 'requiredCheckBox('h${honorsCount}')' value='9'><label>9</label>
-                <input type='checkbox' id='h${honorsCount}-10' onclick = 'formUpdated()' onchange = 'requiredCheckBox('h${honorsCount}')' value='10'><label>10</label>
-                <input type='checkbox' id='h${honorsCount}-11' onclick = 'formUpdated()' onchange = 'requiredCheckBox('h${honorsCount}')' value='11'><label>11</label>
-                <input type='checkbox' id='h${honorsCount}-12' onclick = 'formUpdated()' onchange = 'requiredCheckBox('h${honorsCount}')' value='12'><label>12</label>
-                <input type='checkbox' id='h${honorsCount}-13' onclick = 'formUpdated()' onchange = 'requiredCheckBox('h${honorsCount}')' value='13'><label>Post-Graduate</label>
+                <input type='checkbox' id='h${honorsCount}-9' onclick = 'formUpdated()' onchange = "requiredCheckBox('h${honorsCount}')" value='9'><label>9</label>
+                <input type='checkbox' id='h${honorsCount}-10' onclick = 'formUpdated()' onchange = "requiredCheckBox('h${honorsCount}')" value='10'><label>10</label>
+                <input type='checkbox' id='h${honorsCount}-11' onclick = 'formUpdated()' onchange = "requiredCheckBox('h${honorsCount}')" value='11'><label>11</label>
+                <input type='checkbox' id='h${honorsCount}-12' onclick = 'formUpdated()' onchange = "requiredCheckBox('h${honorsCount}')" value='12'><label>12</label>
+                <input type='checkbox' id='h${honorsCount}-13' onclick = 'formUpdated()' onchange = "requiredCheckBox('h${honorsCount}')" value='13'><label>Post-Graduate</label>
             </div>
             <p class = 'content-title'>Level of Recognition</p>
             <input class = 'required' id = 'form-honors-lvl-${honorsCount}' onclick = 'formUpdated()' onchange = 'requiredCheck('form-honors-lvl-${honorsCount}')' type = 'text'/>
@@ -53,20 +53,20 @@ async function addMore(type) {
     document.getElementById("activities-AM").innerHTML += `
         <div class='entryBox' id = 'activitiesEntryBox-'${activitiesCount}'>
             <p class = 'content-title'>Title</p>
-            <input class = 'required' id = 'form-activities-type-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-type-${activitiesCount}')' type = 'text'/> 
+            <input class = 'required' id = 'form-activities-type-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-type-${activitiesCount}')" type = 'text'/> 
             <p class = 'content-title'>Position</p>
-            <input class = 'required' id = 'form-activities-position-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-position-${activitiesCount}')' type = 'text'/>
+            <input class = 'required' id = 'form-activities-position-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-position-${activitiesCount}')" type = 'text'/>
             <p class = 'content-title'>Organization</p>
-            <input class = 'required' id = 'form-activities-organization-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-organization-${activitiesCount}')' type = 'text'/>
+            <input class = 'required' id = 'form-activities-organization-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-organization-${activitiesCount}')" type = 'text'/>
             <p class = 'content-title'>Description</p>
-            <input class = 'required' id = 'form-activities-description-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-description-${activitiesCount}')' type = 'text'/>
+            <input class = 'required' id = 'form-activities-description-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-description-${activitiesCount}')" type = 'text'/>
             <p class = 'content-title'>Participation Grade</p>
             <div class = 'checkboxes required'>
-                <input type='checkbox' id='a${activitiesCount}-9' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='9'><label>9</label>
-                <input type='checkbox' id='a${activitiesCount}-10' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='10'><label>10</label>
-                <input type='checkbox' id='a${activitiesCount}-11' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='11'><label>11</label>
-                <input type='checkbox' id='a${activitiesCount}-12' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='12'><label>12</label>
-                <input type='checkbox' id='a${activitiesCount}-13' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='13'><label>Post-Graduate</label>
+                <input type='checkbox' id='a${activitiesCount}-9' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='9'><label>9</label>
+                <input type='checkbox' id='a${activitiesCount}-10' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='10'><label>10</label>
+                <input type='checkbox' id='a${activitiesCount}-11' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='11'><label>11</label>
+                <input type='checkbox' id='a${activitiesCount}-12' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='12'><label>12</label>
+                <input type='checkbox' id='a${activitiesCount}-13' onkeypress = 'formUpdated()' onchange = "requiredCheck('a${activitiesCount}')" value='13'><label>Post-Graduate</label>
             </div>
             <p class = 'content-title'>Time of Participation</p>
             <input class = 'required id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-time-${activitiesCount}')' type = 'text'/>
