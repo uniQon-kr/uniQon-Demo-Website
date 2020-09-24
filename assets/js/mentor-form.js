@@ -1,3 +1,6 @@
+---
+---
+
 // boolean variable to keep track whether the form has been updated after last draft save
 let isUpdated = false;
 let updateTimer = null;
@@ -144,8 +147,29 @@ async function addMore(type) {
   }
 }
 
+// function to load draft when the page first loaded
 async function loadDraft() {
-    // TODO: function to load draft when the page first loaded
+    const response = await fetch('https://api.uniqon.kr/document/application/draft', {
+        credentials: 'include',
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const jsonResponse = await response.json();
+
+    if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden: Not A Mentor")) {
+        // renew token
+        await renew();
+        if(localStorage.getItem("uniQonSignedIn")) {
+            await loadDraft();
+        }
+    } else if(response.ok) {
+        // TODO: retrieve elements
+    } else {
+        alert("Server Error!! Please Try Again!!");
+        location.href = "{{ site.baseurl }}/";
+    }
 }
 
 async function submit() {
@@ -270,12 +294,5 @@ function requiredCheckBox(inputFieldID) {
     }
 }
 
-function satActCheck(inputFieldID) {
-    // TODO: check whether input field is written or not
-    
-    formUpdated();
-}
-
 loadDraft();
 hideRemove()
-// start timer, save every one min
