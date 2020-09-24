@@ -43,12 +43,12 @@ permalink: /mentor-form
 		<div class="content">
 			<p class = "content-title">Hooks</p>
       <div class = "detailedInput" id = 'hooks-AM'>
-        <div class = 'entryBox'>
+        <div class = 'entryBoxA'>
           <input id = "form-hooks-1" onkeypress = "formUpdated()" type = "text"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('hooks')">Add more</p>
-      <p class="remove" onclick="addMore('hooks')">Remove</p>
+      <p class="addmore" onclick="remove('hooks')">Remove</p>
     </div>
     
 
@@ -75,22 +75,24 @@ permalink: /mentor-form
 		<div class="content">
 			<p class = "content-title">SAT2</p>
       <div class = "detailedInput" id = 'sat2-AM'>
-          <div class = 'entryBox'>
+          <div class = 'entryBoxA'>
           <input id = "form-sat2-subject-1" onkeypress = "formUpdated()" type = "text" placeholder= "Subject"/>
           <input id = "form-sat2-score-1" onkeypress = "formUpdated()" type = "text" placeholder= "Score"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('sat2')">Add more</p>
+      <p class="addmore" onclick="remove('sat2')">Remove</p>
 		</div>
 		<div class="content">
 			<p class = "content-title">AP</p>
       <div class = "detailedInput" id = 'ap-AM'>
-        <div class = 'entryBox'>
+        <div class = 'entryBoxA'>
           <input id = "form-ap-subject-1" onkeypress = "formUpdated()" type = "text" placeholder="Subject"/>
           <input id = "form-ap-score-1" onkeypress = "formUpdated()" type = "text" placeholder="Score"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('ap')">Add more</p>
+      <p class="addmore" onclick="remove('ap')">Remove</p>
 		</div>
     
 		<div class = "section-header">
@@ -114,6 +116,7 @@ permalink: /mentor-form
         </div>
       </div>
       <p class="addmore" onclick="addMore('honors')">Add more</p>
+      <p class="addmore" onclick="remove('honors')">Remove</p>
 		</div>
     
     
@@ -144,6 +147,7 @@ permalink: /mentor-form
         </div>
       </div>
       <p class="addmore" onclick="addMore('activities')">Add more</p>
+      <p class="addmore" onclick="remove('activities')">Remove</p>
 		</div>
     
 		<div class = "section-header">
@@ -157,6 +161,7 @@ permalink: /mentor-form
         </div>
     </div>
     <p class="addmore" onclick="addMore('essay')">Add more</p>
+    <p class="addmore" onclick="remove('essay')">Remove</p>
   </div>
     
   <div class = "section-header">
@@ -169,6 +174,7 @@ permalink: /mentor-form
       </div>
     </div>
     <p class="addmore" onclick="addMore('additional')">Add more</p>
+    <p class="addmore" onclick="remove('additional')">Remove</p>
   </div>
   
   <script src = '{{ site.baseurl }}/assets/js/mentor-form.js'></script>
