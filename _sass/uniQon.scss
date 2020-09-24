@@ -1305,17 +1305,34 @@ footer {
       margin-bottom: 5px;
     }
     .detailedInput{
-
+      .entryBox{
+        display:grid;
+        grid-template-columns: 50% 50%;
+        border: 1px solid #c9c9c9;
+        background-color: #fcfcfc;
+        border-radius: 5px;
+        a{
+          margin-left: 10px
+        }
+      }
     }
-    input {
-      width: 360px;
+    input[type=text]{
+      width: 350px;
       margin-right: 10px;
+      margin-top: 10px;
       margin-bottom: 10px;
-      padding-left: 10px;
+      margin-left: 10px;
       font-size: 14px;
       border: 1px solid #c9c9c9;
       background-color: #fcfcfc;
-      border-radius: 10px;
+      border-radius: 5px;
+    }
+    input[type=checkbox]{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 20px;
+      font-size: 14px;
+      background-color: #fcfcfc;
     }
   }
 }

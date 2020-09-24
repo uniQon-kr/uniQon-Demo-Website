@@ -79,7 +79,8 @@ permalink: /mentor-form
 		<div class="content">
 			<p class = "content-title">AP</p>
       <div class = "detailedInput">
-        <input id = "form-ap" type = "text"/>
+        <input id = "form-ap" type = "text" placeholder="Subject"/>
+        <input id = "form-ap" type = "text" placeholder="Score"/>
       </div>
       <p class="addmore" onclick="">Add more</p>
 		</div>
@@ -89,7 +90,17 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
       <div class = "detailedInput">
-        <input id = "form-honors" type = "text"/>
+        <div class = "entryBox">
+          <input id = "form-honors-title" type = "text" placeholder="Title"/>
+          <div class = "checkboxes">
+            <a>Grade Level</a>
+            <input type="checkbox" id="h1-9" value="9"><label>9</label>
+            <input type="checkbox" id="h1-10" value="10"><label>10</label>
+            <input type="checkbox" id="h1-11" value="11"><label>11</label>
+            <input type="checkbox" id="h1-12" value="12"><label>12</label>
+          </div>
+          <input id = "form-honors-lvl" type = "text" placeholder="Level of Recognition"/>
+        </div>
       </div>
       <p class="addmore" onclick="">Add more</p>
 		</div>
@@ -100,7 +111,19 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
       <div class = "detailedInput">
-        <input id = "form-activities" type = "text"/>
+        <div class = "entryBox">
+          <input id = "form-activities-type" type = "text" placeholder="Type"/>
+          <input id = "form-activities-position" type = "text" placeholder="Position"/>
+          <input id = "form-activities-organization" type = "text" placeholder="Organization"/>
+          <input id = "form-activities-description" type = "text" placeholder="Description"/>
+          <div class = "checkboxes">
+            <a>Participation Grade</a>
+            <input type="checkbox" id="h1-9" value="9"><label>9</label>
+            <input type="checkbox" id="h1-10" value="10"><label>10</label>
+            <input type="checkbox" id="h1-11" value="11"><label>11</label>
+          </div>
+          <input id = "form-activities-time" type = "text" placeholder="Time of Participation"/>
+        </div>
       </div>
       <p class="addmore" onclick="">Add more</p>
 		</div>
