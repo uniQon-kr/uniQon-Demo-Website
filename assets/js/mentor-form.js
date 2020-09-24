@@ -75,8 +75,8 @@ async function addMore(type) {
     essayCount++;
     document.getElementById("essay-AM").innerHTML += `
         <div class='entryBox' id = 'essayEntryBox-${essayCount}'>
-            <input class = 'required' id = 'form-essay-prompt-${essayCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-essay-prompt-${essayCount}')' type = 'text' placeholder='Prompt'/>
-            <textarea class = 'essay required' id= essay-${essayCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('essay-${essayCount}')'></textarea>
+            <input class = 'required' id = 'form-essay-prompt-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-essay-prompt-${essayCount}')" type = 'text' placeholder='Prompt'/>
+            <textarea class = 'essay required' id= essay-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('essay-${essayCount}')"></textarea>
         </div>`;
   }else if(type === "additional"){
     additionalCount++;
