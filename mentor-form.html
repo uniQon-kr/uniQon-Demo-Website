@@ -148,8 +148,8 @@ permalink: /mentor-form
           <input class = "required" id = "form-essay-prompt-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-essay-prompt-1')" type = "text" placeholder="Prompt"/>
           <textarea class = "essay required" id= essay-1 onkeypress = "formUpdated()" onchange = "requiredCheck('essay-1')"></textarea>
         </div>
-        <p class="addmore" onclick="addMore()">Add more</p>
     </div>
+    <p class="addmore" onclick="addMore('essay')">Add more</p>
   </div>
     
   <div class = "section-header">
@@ -158,10 +158,10 @@ permalink: /mentor-form
   <div class="content">
     <div class = "detailedInput" id="additional-AM">
       <div class = "entryBox">
-        <textarea class = "essay" id=additional-1 onkeypress = "formUpdated()"></textarea>
+        <textarea class = "essay" id="additional-1" onkeypress = "formUpdated()"></textarea>
       </div>
-      <p class="addmore" onclick="addMore('additional')">Add more</p>
     </div>
+    <p class="addmore" onclick="addMore('additional')">Add more</p>
   </div>
   
   <script src = '{{ site.baseurl }}/assets/js/mentor-form.js'></script>
