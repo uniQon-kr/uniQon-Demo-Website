@@ -14,20 +14,20 @@ async function addMore(type) {
   if(type === "hooks"){
     hooksCount++;
     document.getElementById("hooks-AM").innerHTML += `
-        <div class='entryBox' id = 'hooksEntryBox-${hooksCount}''>
+        <div class='entryBoxA' id = 'hooksEntryBox-${hooksCount}''>
             <input id = 'form-hooks-${hooksCount}' onkeypress = 'formUpdated()' type = 'text'/>
         </div>`;
   } else if(type === "sat2"){
     sat2Count++;
     document.getElementById("sat2-AM").innerHTML += `
-        <div class='entryBox' id = 'sat2EntryBox-${sat2Count}'>
+        <div class='entryBoxA' id = 'sat2EntryBox-${sat2Count}'>
             <input id = 'form-sat2-subject-${sat2Count}' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Subject'/>
             <input id = 'form-sat2-score-${sat2Count}' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Score'/>
         </div>`;
   } else if(type === "ap"){
     apCount++;
     document.getElementById("ap-AM").innerHTML += `
-        <div class='entryBox' id = 'apEntryBox-${apCount}'>
+        <div class='entryBoxA' id = 'apEntryBox-${apCount}'>
             <input id = 'form-ap-subject-${apCount}' onkeypress = 'formUpdated()' type = 'text' placeholder='Subject'/>
             <input id = 'form-ap-score-${apCount}' onkeypress = 'formUpdated()' type = 'text' placeholder='Score'/>
         </div>`;
@@ -50,30 +50,26 @@ async function addMore(type) {
         </div>`;
   } else if(type === "activities"){
     activitiesCount++;
-    document.getElementById("activities-AM").innerHTML +="<div class='entrybox' id = 'activitiesEntryBox-"+
-      activitiesCount+"'><p class = 'content-title'>Title</p><input class = 'required' id = 'form-activities-type-"+
-      activitiesCount+"' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-type-"+
-      activitiesCount+"')' type = 'text'/><p class = 'content-title'>Position</p><input class = 'required' id = 'form-activities-position-"+
-      activitiesCount+"' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-position-"+
-      activitiesCount+"')' type = 'text'/><p class = 'content-title'>Organization</p><input class = 'required' id = 'form-activities-organization-"+
-      activitiesCount+"' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-organization-"+
-      activitiesCount+"')' type = 'text'/><p class = 'content-title'>Description</p><input class = 'required' id = 'form-activities-description-"+
-      activitiesCount+"' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-description-"+
-      activitiesCount+"')' type = 'text'/><p class = 'content-title'>Participation Grade</p><div class = 'checkboxes required'><input type='checkbox' id='a"+
-      activitiesCount+"-9' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a"+
-      activitiesCount+"')' value='9'><label>9</label><input type='checkbox' id='a"+
-      activitiesCount+"-10' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a"+
-      activitiesCount+"')' value='10'><label>10</label><input type='checkbox' id='a"+
-      activitiesCount+"-11' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a"+
-      activitiesCount+"')' value='11'><label>11</label><input type='checkbox' id='a"+
-      activitiesCount+"-12' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a"+
-      activitiesCount+"')' value='12'><label>12</label><input type='checkbox' id='a"+
-      activitiesCount+"-13' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a"+
-      activitiesCount+"-13' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a"+
-      activitiesCount+"')' value='13'><label>Post-Graduate</label></div><p class = 'content-title'>Time of Participation</p><input class = 'required id = 'form-activities-time-"+
-      activitiesCount+"' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-time-"+
-      activitiesCount+"')' type = 'text'/></div>";
-      activitiesCount++;
+    document.getElementById("activities-AM").innerHTML += `
+          <div class='entryBox' id = 'activitiesEntryBox-'${activitiesCount}'>
+          <p class = 'content-title'>Title</p>
+          <input class = 'required' id = 'form-activities-type-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-type-${activitiesCount}')' type = 'text'/>
+          <p class = 'content-title'>Position</p>
+          <input class = 'required' id = 'form-activities-position-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-position-${activitiesCount}')' type = 'text'/>
+          <p class = 'content-title'>Organization</p>
+          <input class = 'required' id = 'form-activities-organization-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-organization-${activitiesCount}')' type = 'text'/>
+          <p class = 'content-title'>Description</p>
+          <input class = 'required' id = 'form-activities-description-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-description-${activitiesCount}')' type = 'text'/>
+          <p class = 'content-title'>Participation Grade</p><div class = 'checkboxes required'>
+          <input type='checkbox' id='a${activitiesCount}-9' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='9'><label>9</label>
+          <input type='checkbox' id='a${activitiesCount}-10' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='10'><label>10</label>
+          <input type='checkbox' id='a${activitiesCount}-11' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='11'><label>11</label>
+          <input type='checkbox' id='a${activitiesCount}-12' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='12'><label>12</label>
+          <input type='checkbox' id='a${activitiesCount}-13' onkeypress = 'formUpdated()' onchange = 'requiredCheck('a${activitiesCount}')' value='13'><label>Post-Graduate</label>
+          </div>
+          <p class = 'content-title'>Time of Participation</p>
+          <input class = 'required id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-time-${activitiesCount}')' type = 'text'/>
+          </div>`;
   } else if(type === "essay"){
     essayCount++;
     document.getElementById("essay-AM").innerHTML += `
