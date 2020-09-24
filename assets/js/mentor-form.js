@@ -13,22 +13,22 @@ async function addMore(type) {
   //add more textfields to its type
   if(type === "hooks"){
     hooksCount++;
-    document.getElementById("hooks-AM").innerHTML += "<div class = 'entryBox-" + hooksCount +"'><input id = 'form-hooks-" + hooksCount +"' onkeypress = 'formUpdated()' type = 'text'/></div>";
+    document.getElementById("hooks-AM").innerHTML += "<div class='entrybox' id = 'hooksEntryBox-" + hooksCount +"'><input id = 'form-hooks-" + hooksCount +"' onkeypress = 'formUpdated()' type = 'text'/></div>";
   } else if(type === "sat2"){
     sat2Count++;
-    document.getElementById("sat2-AM").innerHTML +="<div class = 'entryBox-" + 
+    document.getElementById("sat2-AM").innerHTML +="<div class='entrybox' id = 'sat2EntryBox-" + 
       sat2Count + "'><input id = 'form-sat2-subject-" + 
       sat2Count + "' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Subject'/><input id = 'form-sat2-score-" + 
       sat2Count + "' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Score'/></div>";
   } else if(type === "ap"){
     apCount++;
-    document.getElementById("ap-AM").innerHTML +="<div class = 'entryBox-"+
+    document.getElementById("ap-AM").innerHTML +="<div class='entrybox' id = 'apEntryBox-"+
       apCount+"'><input id = 'form-ap-subject-"+
       apCount+"' onkeypress = 'formUpdated()' type = 'text' placeholder='Subject'/><input id = 'form-ap-score-"+ 
       apCount+"' onkeypress = 'formUpdated()' type = 'text' placeholder='Score'/></div>";
   } else if(type === "honors"){
     honorsCount++;
-    document.getElementById("honors-AM").innerHTML +="<div class = 'entryBox-"+
+    document.getElementById("honors-AM").innerHTML +="<div class='entrybox' id = 'honorsEntryBox-"+
       honorsCount+"'><p class = 'content-title'>Title</p><input class = 'required' id = 'form-honors-title-"+
       honorsCount+"'  onkeypress = 'formUpdated()'' onchange = 'requiredCheck('form-honors-title-1')'' type = 'text'/><p class = 'content-title'>Grade Level</p><div class = 'checkboxes required'><input type='checkbox' id='h"+
       honorsCount+"-9' onclick = 'formUpdated()'' onchange = 'requiredCheckBox('h"+
@@ -45,7 +45,7 @@ async function addMore(type) {
       honorsCount+"')' type = 'text'/></div>";
   } else if(type === "activities"){
     activitiesCount++;
-    document.getElementById("activities-AM").innerHTML +="<div class = 'entryBox-"+
+    document.getElementById("activities-AM").innerHTML +="<div class='entrybox' id = 'activitiesEntryBox-"+
       activitiesCount+"'><p class = 'content-title'>Title</p><input class = 'required' id = 'form-activities-type-"+
       activitiesCount+"' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-activities-type-"+
       activitiesCount+"')' type = 'text'/><p class = 'content-title'>Position</p><input class = 'required' id = 'form-activities-position-"+
@@ -71,7 +71,7 @@ async function addMore(type) {
       activitiesCount++;
   } else if(type === "essay"){
     essayCount++;
-    document.getElementById("essay-AM").innerHTML +="<div class = 'entryBox-"+
+    document.getElementById("essay-AM").innerHTML +="<div class='entrybox' id = 'essayEntryBox-"+
       essayCount+"'><input class = 'required' id = 'form-essay-prompt-"+
       essayCount+"' onkeypress = 'formUpdated()' onchange = 'requiredCheck('form-essay-prompt-"+
       essayCount+"')'  type = 'text' placeholder='Prompt'/><textarea class = 'essay required' id= essay-"+
@@ -79,7 +79,7 @@ async function addMore(type) {
       essayCount+"')''></textarea></div>";
   }else if(type === "additional"){
     additionalCount++;
-    document.getElementById("additional-AM").innerHTML +="<div class = 'entryBox-"+
+    document.getElementById("additional-AM").innerHTML +="<div class='entrybox' id = 'additionalEntryBox-"+
       additionalCount+"'><textarea class = 'essay' id='additional-"+
       additionalCount+"' onkeypress = 'formUpdated()'></textarea></div>";
   }
