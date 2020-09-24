@@ -2,6 +2,10 @@
 let isUpdated = false;
 let updateTimer = null;
 
+async function addMore(type) {
+  // TODO: save as draft
+}
+
 async function loadDraft() {
     // TODO: function to load draft when the page first loaded
 }

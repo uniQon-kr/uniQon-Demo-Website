@@ -13,15 +13,15 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">College/University</p>
-      <input id = "form-college" type = "text"/>
+      <input id = "form-college" type = "text" required/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Admitted Major</p>
-      <input id = "form-major" type = "text"/>
+      <input id = "form-major" type = "text" required/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Expected Graduation</p>
-      <input id = "form-grad" type = "text"/>
+      <input id = "form-grad" type = "text" required/>
     </div>
     
 
@@ -30,22 +30,22 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">Citizenship</p>
-      <input id = "form-citizenship" type = "text"/>
+      <input id = "form-citizenship" type = "text" required/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Gender</p>
-      <input id = "form-gender" type = "text"/>
+      <input id = "form-gender" type = "text" required/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Ethnicity</p>
-      <input id = "form-title" type = "text"/>
+      <input id = "form-title" type = "text" required/>
     </div>
 		<div class="content">
 			<p class = "content-title">Hooks</p>
       <div class = "detailedInput">
         <input id = "form-hooks1" type = "text"/>
       </div>
-      <p class="addmore" onclick="">Add more</p>
+      <p class="addmore" onclick="addMore('hooks')">Add more</p>
     </div>
     
 
@@ -54,7 +54,7 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">Weighted GPA</p>
-      <input id = "form-gpa" type = "text"/>
+      <input id = "form-gpa" type = "text" required/>
 		</div>
 		<div class="content">
 			<p class = "content-title">SAT1</p>
@@ -67,7 +67,7 @@ permalink: /mentor-form
         <input id = "form-sat2-subject" type = "text" placeholder= "Subject"/>
         <input id = "form-sat2-score" type = "text" placeholder= "Score"/>
       </div>
-      <p class="addmore" onclick="">Add more</p>
+      <p class="addmore" onclick="addMore('sat2')">Add more</p>
 		</div>
 		<div class="content">
 			<p class = "content-title">ACT</p>
@@ -75,6 +75,7 @@ permalink: /mentor-form
       <input id = "form-act-math" type = "text" placeholder="Math"/>
       <input id = "form-act-rd" type = "text" placeholder="Reading"/>
       <input id = "form-act-sci" type = "text" placeholder="Science"/>
+      <input id = "form-act-ess" type = "text" placeholder="Essay(optional)"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">AP</p>
@@ -82,7 +83,7 @@ permalink: /mentor-form
         <input id = "form-ap-subject" type = "text" placeholder="Subject"/>
         <input id = "form-ap-score" type = "text" placeholder="Score"/>
       </div>
-      <p class="addmore" onclick="">Add more</p>
+      <p class="addmore" onclick="addMore('ap')">Add more</p>
 		</div>
     
 		<div class = "section-header">
@@ -135,10 +136,22 @@ permalink: /mentor-form
           <input id = "form-activities-time" type = "text"/>
         </div>
       </div>
-      <p class="addmore" onclick="">Add more</p>
+      <p class="addmore" onclick="addMore('honors')">Add more</p>
 		</div>
     
     
+		<div class = "section-header">
+			<p class = "subtitle">Additional Information</p>
+		</div>
+		<div class="content">
+      <div class = "detailedInput">
+        <div class = "entryBox">
+          <textarea class = "essay" id=additional-1 required></textarea>
+        </div>
+        <p class="addmore" onclick="addMore('essay')">Add more</p>
+      </div>
+    </div>
+  </div>
     
 		<div class = "section-header">
 			<p class = "subtitle">Essay</p>
@@ -146,10 +159,10 @@ permalink: /mentor-form
 		<div class="content">
       <div class = "detailedInput">
         <div class = "entryBox">
-          <input id = "form-essay-title-01" type = "text" placeholder="Title"/>
-          <textarea class = "essay"></textarea>
+          <input id = "form-essay-prompt-01" type = "text" placeholder="Prompt" required/>
+          <textarea class = "essay" id= essay-1 required></textarea>
         </div>
-        <p class="addmore" onclick="">Add more</p>
+        <p class="addmore" onclick="addMore()">Add more</p>
       </div>
     </div>
   </div>

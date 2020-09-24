@@ -1299,6 +1299,7 @@ footer {
     justify-self: center;
     width: 96.5%;
     height: 200px;
+    margin-top: 10px;
     margin-bottom: 10px;
   }
 
@@ -1325,6 +1326,10 @@ footer {
         border: 1px solid #c9c9c9;
         background-color: #fcfcfc;
         border-radius: 5px;
+        textarea{
+          resize: none;
+          font-size: 15px;
+        }
       }
     }
     input[type=text]{
