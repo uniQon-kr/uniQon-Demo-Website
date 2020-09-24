@@ -24,10 +24,14 @@ async function loadDraft() {
 
 async function submit() {
     // TODO: submit the form as final version
+
+    // TODO: renew token
 }
 
 async function saveDraft() {
     // TODO: save as draft
+
+    // TODO: renew token
 
     // clear timer after draft submit
     clearInterval(updateTimer);
@@ -47,9 +51,14 @@ function formUpdated() {
 }
 
 function requiredCheck(inputFieldID) {
-    // TODO: check whether input field is written or not
-
-    formUpdated();
+    // check whether input field is written or not
+    if(document.getElementById(inputFieldID).value !== "") { // when field contains value
+        // unset background
+        document.getElementById(inputFieldID).style.backgroundColor = "#fcfcfc";
+    } else {
+        // set background
+        document.getElementById(inputFieldID).style.backgroundColor = "#ffe4e4";
+    }
 }
 
 function satActCheck(inputFieldID) {

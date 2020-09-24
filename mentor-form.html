@@ -13,15 +13,15 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">College/University</p>
-      <input class ="required" id = "form-college" type = "text"/>
+      <input class ="required" id = "form-college" onkeypress = "formUpdated()" onchange = "requiredCheck('form-college')" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Admitted Major</p>
-      <input class = "required" id = "form-major" type = "text"/>
+      <input class = "required" id = "form-major" onkeypress = "formUpdated()" onchange = "requiredCheck('form-major')" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Expected Graduation</p>
-      <input class = "required" id = "form-grad" type = "text"/>
+      <input class = "required" id = "form-grad" onkeypress = "formUpdated()" onchange = "requiredCheck('form-grad')" type = "text"/>
     </div>
     
 
@@ -30,20 +30,20 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">Citizenship</p>
-      <input class="required" id = "form-citizenship" type = "text"/>
+      <input class="required" id = "form-citizenship" onkeypress = "formUpdated()" onchange = "requiredCheck('form-citizenship')" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Gender</p>
-      <input class = "required" id = "form-gender" type = "text"/>
+      <input class = "required" id = "form-gender" onkeypress = "formUpdated()" onchange = "requiredCheck('form-gender')" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">Ethnicity</p>
-      <input class = "required" id = "form-title" type = "text"/>
+      <input class = "required" id = "form-title" onkeypress = "formUpdated()" onchange = "requiredCheck('form-title')" type = "text"/>
     </div>
 		<div class="content">
 			<p class = "content-title">Hooks</p>
       <div class = "detailedInput">
-        <input id = "form-hooks1" type = "text"/>
+        <input id = "form-hooks1" onkeypress = "formUpdated()" type = "text"/>
       </div>
       <p class="addmore" onclick="addMore('hooks')">Add more</p>
     </div>
@@ -54,34 +54,34 @@ permalink: /mentor-form
 		</div>
 		<div class="content">
 			<p class = "content-title">Weighted GPA</p>
-      <input class = "required" id = "form-gpa" type = "text"/>
+      <input class = "required" id = "form-gpa" onkeypress = "formUpdated()" onchange = "requiredCheck('form-gpa')" type = "text"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">SAT1</p>
-      <input class = "required" id = "form-sat1-english" type = "text" placeholder="Reading/Writing"/>
-      <input class = "required" id = "form-sat1-math" type = "text" placeholder="Math"/>
+      <input class = "required" id = "form-sat1-english"onkeypress = "formUpdated()"  type = "text" placeholder="Reading/Writing"/>
+      <input class = "required" id = "form-sat1-math" onkeypress = "formUpdated()" type = "text" placeholder="Math"/>
     </div>
     <div class="content">
 			<p class = "content-title">ACT</p>
-      <input class = "required" id = "form-act-eng" type = "text" placeholder="English"/>
-      <input class = "required" id = "form-act-math" type = "text" placeholder="Math"/>
-      <input class = "required" id = "form-act-rd" type = "text" placeholder="Reading"/>
-      <input class = "required" id = "form-act-sci" type = "text" placeholder="Science"/>
-      <input id = "form-act-ess" type = "text" placeholder="Writing (optional)"/>
+      <input class = "required" id = "form-act-eng" onkeypress = "formUpdated()" type = "text" placeholder="English"/>
+      <input class = "required" id = "form-act-math" onkeypress = "formUpdated()" type = "text" placeholder="Math"/>
+      <input class = "required" id = "form-act-rd" onkeypress = "formUpdated()" type = "text" placeholder="Reading"/>
+      <input class = "required" id = "form-act-sci" onkeypress = "formUpdated()" type = "text" placeholder="Science"/>
+      <input id = "form-act-ess" onkeypress = "formUpdated()" type = "text" placeholder="Writing (optional)"/>
 		</div>
 		<div class="content">
 			<p class = "content-title">SAT2</p>
       <div class = "detailedInput">
-        <input id = "form-sat2-subject" type = "text" placeholder= "Subject"/>
-        <input id = "form-sat2-score" type = "text" placeholder= "Score"/>
+        <input id = "form-sat2-subject" onkeypress = "formUpdated()" type = "text" placeholder= "Subject"/>
+        <input id = "form-sat2-score" onkeypress = "formUpdated()" type = "text" placeholder= "Score"/>
       </div>
       <p class="addmore" onclick="addMore('sat2')">Add more</p>
 		</div>
 		<div class="content">
 			<p class = "content-title">AP</p>
       <div class = "detailedInput">
-        <input id = "form-ap-subject" type = "text" placeholder="Subject"/>
-        <input id = "form-ap-score" type = "text" placeholder="Score"/>
+        <input id = "form-ap-subject" onkeypress = "formUpdated()" type = "text" placeholder="Subject"/>
+        <input id = "form-ap-score" onkeypress = "formUpdated()" type = "text" placeholder="Score"/>
       </div>
       <p class="addmore" onclick="addMore('ap')">Add more</p>
 		</div>
@@ -93,17 +93,17 @@ permalink: /mentor-form
       <div class = "detailedInput">
         <div class = "entryBox">
           <p class = "content-title">Title</p>
-          <input class = "required" id = "form-honors-title" type = "text"/>
+          <input class = "required" id = "form-honors-title" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-title')" type = "text"/>
           <p class = "content-title">Grade Level</p>
           <div class = "checkboxes required">
-            <input type="checkbox" id="h1-9" value="9"><label>9</label>
-            <input type="checkbox" id="h1-10" value="10"><label>10</label>
-            <input type="checkbox" id="h1-11" value="11"><label>11</label>
-            <input type="checkbox" id="h1-12" value="12"><label>12</label>
-            <input type="checkbox" id="h1-13" value="13"><label>Post-Graduate</label>
+            <input type="checkbox" id="h1-9" onclick = "formUpdated()" value="9"><label>9</label>
+            <input type="checkbox" id="h1-10" onclick = "formUpdated()" value="10"><label>10</label>
+            <input type="checkbox" id="h1-11" onclick = "formUpdated()" value="11"><label>11</label>
+            <input type="checkbox" id="h1-12" onclick = "formUpdated()" value="12"><label>12</label>
+            <input type="checkbox" id="h1-13" onclick = "formUpdated()" value="13"><label>Post-Graduate</label>
           </div>
           <p class = "content-title">Level of Recognition</p>
-          <input class = "required" id = "form-honors-lvl" type = "text"/>
+          <input class = "required" id = "form-honors-lvl" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-lvl')" type = "text"/>
         </div>
       </div>
       <p class="addmore" onclick="">Add more</p>
@@ -117,23 +117,23 @@ permalink: /mentor-form
       <div class = "detailedInput">
         <div class = "entryBox">
           <p class = "content-title">Title</p>
-          <input class = "required" id = "form-activities-type" type = "text"/>
+          <input class = "required" id = "form-activities-type" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-type')" type = "text"/>
           <p class = "content-title">Position</p>
-          <input class = "required" id = "form-activities-position" type = "text"/>
+          <input class = "required" id = "form-activities-position" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-position')" type = "text"/>
           <p class = "content-title">Organization</p>
-          <input class = "required" id = "form-activities-organization" type = "text"/>
+          <input class = "required" id = "form-activities-organization" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-organization')" type = "text"/>
           <p class = "content-title">Description</p>
-          <input class = "required" id = "form-activities-description" type = "text"/>
+          <input class = "required" id = "form-activities-description" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-description')" type = "text"/>
           <p class = "content-title">Participation Grade</p>
           <div class = "checkboxes required">
-            <input type="checkbox" id="a1-9" value="9"><label>9</label>
-            <input type="checkbox" id="a1-10" value="10"><label>10</label>
-            <input type="checkbox" id="a1-11" value="11"><label>11</label>
-            <input type="checkbox" id="a1-12" value="12"><label>12</label>
-            <input type="checkbox" id="a1-13" value="13"><label>Post-Graduate</label>
+            <input type="checkbox" id="a1-9" onclick = "formUpdated()" value="9"><label>9</label>
+            <input type="checkbox" id="a1-10" onclick = "formUpdated()" value="10"><label>10</label>
+            <input type="checkbox" id="a1-11" onclick = "formUpdated()" value="11"><label>11</label>
+            <input type="checkbox" id="a1-12" onclick = "formUpdated()" value="12"><label>12</label>
+            <input type="checkbox" id="a1-13" onclick = "formUpdated()" value="13"><label>Post-Graduate</label>
           </div>
           <p class = "content-title">Time of Participation</p>
-          <input class = "required" id = "form-activities-time" type = "text"/>
+          <input class = "required" id = "form-activities-time" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-time')" type = "text"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('honors')">Add more</p>
@@ -146,7 +146,7 @@ permalink: /mentor-form
 		<div class="content">
       <div class = "detailedInput">
         <div class = "entryBox">
-          <textarea class = "essay required" id=additional-1></textarea>
+          <textarea class = "essay required" id=additional-1 onkeypress = "formUpdated()" onchange = "requiredCheck('additional-1')"></textarea>
         </div>
         <p class="addmore" onclick="addMore('essay')">Add more</p>
       </div>
@@ -158,8 +158,8 @@ permalink: /mentor-form
 		<div class="content">
       <div class = "detailedInput">
         <div class = "entryBox">
-          <input class = "required" id = "form-essay-prompt-01" type = "text" placeholder="Prompt"/>
-          <textarea class = "essay required" id= essay-1></textarea>
+          <input class = "required" id = "form-essay-prompt-01" onkeypress = "formUpdated()" onchange = "requiredCheck('form-essay-prompt-01')" type = "text" placeholder="Prompt"/>
+          <textarea class = "essay required" id= essay-1 onkeypress = "formUpdated()" onchange = "requiredCheck('essay-1')"></textarea>
         </div>
         <p class="addmore" onclick="addMore()">Add more</p>
       </div>
