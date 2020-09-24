@@ -831,21 +831,26 @@ footer {
 
   .section-wrapper {
     margin-bottom: 30px;
-    
-    .collegeImage{
-      justify-self: right;
-      width: 90%;
+
+    .collegeImageWrapper {
+      text-align: center;
+
+      .collegeImage{
+        width: 90%;
+        margin: auto;
+      }
     }
+
     .bookmarkLink{
       margin-left: 3%;
       margin-top: 2%;
       color: #0366d6;
-      text-decoration: underline;
+      text-decoration: none;
     }
     #bookmarks{
       display: grid;
       grid-template-columns: 10% 90%;
-      row-gap: 10px;
+      row-gap: 15px;
     }
     .description {
       font-size: 14px;
@@ -1001,7 +1006,7 @@ footer {
         text-decoration: none;
       }
     }
-    #college-image{
+    .college-image{
       justify-self: right;
       width: 90%;
       margin-top:20px;

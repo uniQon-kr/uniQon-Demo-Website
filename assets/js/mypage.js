@@ -33,7 +33,7 @@ async function getMyInfo() {
                 let collegeName = bookmarkArr[1].replace(/-/g,' ').replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
                 let collegeImage = "/assets/school-logo/" + bookmarkArr[1].replace(/ /g,'-') + ".png";
 
-                document.getElementById("bookmarks").innerHTML += "<div><img class = 'collegeImage' src =" + collegeImage + "></div>" 
+                document.getElementById("bookmarks").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
                 + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + bookmarkArr[0] + " (" + collegeName + ")</p></div>";
             }
         }
