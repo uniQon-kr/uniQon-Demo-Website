@@ -1,5 +1,6 @@
 // boolean variable to keep track whether the form has been updated after last draft save
-isUpdated = false;
+let isUpdated = false;
+let updateTimer = null;
 
 async function loadDraft() {
     // TODO: function to load draft when the page first loaded
@@ -11,10 +12,34 @@ async function submit() {
 
 async function saveDraft() {
     // TODO: save as draft
+
+    // clear timer after draft submit
+    clearInterval(updateTimer);
+    updateTimer = null;
 }
 
+// change isUpdated to true (on key press for all text field)
 function formUpdated() {
-    // TODO: change isUpdated to true (on key press for all text field)
+    isUpdated = true;
+    
+    // When timer unsetted, set and start (3min)
+    if (updateTimer == null) {
+        updateTimer = setInterval(() => {
+            saveDraft();
+        }, 180000);
+    }
+}
+
+function requiredCheck(inputFieldID) {
+    // TODO: check whether input field is written or not
+
+    formUpdated();
+}
+
+function satActCheck(inputFieldID) {
+    // TODO: check whether input field is written or not
+    
+    formUpdated();
 }
 
 loadDraft();
