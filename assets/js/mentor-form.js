@@ -148,6 +148,34 @@ async function addMore(type) {
   }
 }
 
+async function submit() {
+    // TODO: submit the form as final version
+
+    // TODO: renew token
+}
+
+async function saveDraft() {
+    // TODO: save as draft
+
+    // TODO: renew token
+
+    // clear timer after draft submit
+    clearInterval(updateTimer);
+    updateTimer = null;
+}
+
+// change isUpdated to true (on key press for all text field)
+function formUpdated() {
+    isUpdated = true;
+    
+    // When timer unsetted, set and start (3min)
+    if (updateTimer == null) {
+        updateTimer = setInterval(() => {
+            saveDraft();
+        }, 180000);
+    }
+}
+
 function requiredScore() {
     // retrieve test byte
     let actByte, satByte; // 0: all clear, 1: part set, 2: all set
@@ -251,8 +279,8 @@ async function loadDraft() {
             'Content-Type': 'application/json'
         }
     });
-
     const jsonResponse = await response.json();
+    const draft = jsonResponse.draft;
 
     if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden: Not A Mentor")) {
         // renew token
@@ -275,18 +303,25 @@ async function loadDraft() {
         document.getElementById("form-gender").value = draft.background.gender;
         document.getElementById("form-title").value = draft.background.ethnicity;
 
-        if(jsonResponse.background.hooks.length>1){
-            for(i=1; i<jsonResponse.background.hooks.length; i++){
-                hooksCount++;
-                addMore(hooks);
+        document.getElementById("form-hooks-1").value = draft.background.hooks[0];
+        if(draft.background.hooks.length>0){
+            document.getElementById("form-hooks-1").value = draft.background.hooks[0];
+            if(draft.background.hooks.length>1){
+                for(i=1; i < draft.background.hooks.length; i++){
+                    addMore('hooks');
+                    document.getElementById("form-hooks-" + i).value = draft.background.hooks[i-1];
+                    hooksCount++;
+                }
+                hooksCount--;
             }
         }
     } else if(response.status !== 404) {
+
+    } else {
         alert("Server Error!! Please Try Again!!");
         location.href = "{{ site.baseurl }}/";
     }
 }
-
 async function submit() {
     // TODO: submit the form as final version
 
