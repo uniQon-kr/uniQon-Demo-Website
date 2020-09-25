@@ -761,37 +761,33 @@ async function saveDraft() {
     const additionalInfo = document.getElementById('additional-1').value;
 
     // if properly filled in, send the username and password inputs to the auth API
-    if(){
-
-    }else{ 
-        const response = await fetch('https://api.uniqon.kr/document/application/draft', {
-            credentials: 'include',
-            method: 'POST',
-            body: JSON.stringify(userInput),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const jsonResponse = await response.json();
-        const draft = jsonResponse.draft;
-
-        if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
-            // renew token
-            await renew();
-            if(localStorage.getItem("uniQonSignedIn")) {
-                await loadDraft();
-            }
-        } else if(response.ok) {
-            const draft = jsonResponse.draft;
+    const response = await fetch('https://api.uniqon.kr/document/application/draft', {
+        credentials: 'include',
+        method: 'POST',
+        body: JSON.stringify(userInput),
+        headers: {
+            'Content-Type': 'application/json'
         }
-        // TODO: save as draft
+    });
+    const jsonResponse = await response.json();
+    const draft = jsonResponse.draft;
 
-        // TODO: renew token
-
-        // clear timer after draft submit
-        clearInterval(updateTimer);
-        updateTimer = null;
+    if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
+        // renew token
+        await renew();
+        if(localStorage.getItem("uniQonSignedIn")) {
+            await loadDraft();
+        }
+    } else if(response.ok) {
+        const draft = jsonResponse.draft;
     }
+    // TODO: save as draft
+
+    // TODO: renew token
+
+    // clear timer after draft submit
+    clearInterval(updateTimer);
+    updateTimer = null;
 }
 
 // change isUpdated to true (on key press for all text field)
