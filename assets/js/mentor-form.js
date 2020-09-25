@@ -639,50 +639,80 @@ async function saveDraft() {
     }if (document.getElementById('form-sat1-english').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.background.sat1 == null){
-            request.background.sat1 = {};
+        }if(request.academics.sat1 == null){
+            request.academics.sat1 = {};
         }
         request.academics.sat1.readingWriting = document.getElementByID("form-sat1-english").value;
     }if ( document.getElementById('form-sat1-math').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.background.sat1 == null){
-            request.background.sat1 = {};
+        }if(request.academics.sat1 == null){
+            request.academics.sat1 = {};
         }
         request.academics.sat1.math = document.getElementByID("form-sat1-math").value;
     }if (document.getElementById('form-sat1-reading').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.background.sat1 == null){
-            request.background.sat1 = {};
-        }if(request.background.sat1.essay == null){
-            request.background.sat1.essay = {};
+        }if(request.academics.sat1 == null){
+            request.academics.sat1 = {};
+        }if(request.academics.sat1.essay == null){
+            request.academics.sat1.essay = {};
         }
         request.academics.sat1.essay.reading = document.getElementByID("form-sat1-reading").value;
     }if (document.getElementById('form-sat1-analysis').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.background.sat1 == null){
-            request.background.sat1 = {};
-        }if(request.background.sat1.essay == null){
-            request.background.sat1.essay = {};
+        }if(request.academics.sat1 == null){
+            request.academics.sat1 = {};
+        }if(request.academics.sat1.essay == null){
+            request.academics.sat1.essay = {};
         }
         request.academics.sat1.essay.analysis = document.getElementByID("form-sat1-analysis").value;
     }if (document.getElementById('form-sat1-writing').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.background.sat1 == null){
-            request.background.sat1 = {};
-        }if(request.background.sat1.essay == null){
-            request.background.sat1.essay = {};
+        }if(request.academics.sat1 == null){
+            request.academics.sat1 = {};
+        }if(request.academics.sat1.essay == null){
+            request.academics.sat1.essay = {};
         }
         request.academics.sat1.essay.writing = document.getElementByID("form-sat1-writing").value;
+    }if (document.getElementById('form-act-english').value !== ""){
+        if(request.academics == null) {
+          request.academics = {};
+        }if(request.academics.act == null){
+            request.academics.act = {};
+        }
+        request.academics.act.english = document.getElementByID("form-act-english").value;
+    }if (document.getElementById('form-act-math').value !== ""){
+        if(request.academics == null) {
+          request.academics = {};
+        }if(request.academics.act == null){
+            request.academics.act = {};
+        }
+        request.academics.act.math = document.getElementByID("form-act-math").value;
+    }if (document.getElementById('form-act-reading').value !== ""){
+        if(request.academics == null) {
+          request.academics = {};
+        }if(request.academics.act == null){
+            request.academics.act = {};
+        }
+        request.academics.act.reading = document.getElementByID("form-act-reading").value;
+    }if (document.getElementById('form-act-science').value !== ""){
+        if(request.academics == null) {
+          request.academics = {};
+        }if(request.academics.act == null){
+            request.academics.act = {};
+        }
+        request.academics.act.science = document.getElementByID("form-act-science").value;
+    }if (document.getElementById('form-act-writing').value !== ""){
+        if(request.academics == null) {
+          request.academics = {};
+        }if(request.academics.act == null){
+            request.academics.act = {};
+        }
+        request.academics.act.writing = document.getElementByID("form-act-writing").value;
     }
-	const actEnglish = document.getElementById('form-act-english').value;
-    const actMath = document.getElementById('form-act-math').value;
-    const actReading = document.getElementById('form-act-reading').value;
-    const actScience = document.getElementById('form-act-science').value;
-    const actWriting = document.getElementById('form-act-writing').value;
 
     const sat2subjects = document.getElementById('form-sat2-subject-1').value;
     const sat2Scores = document.getElementById('form-sat2-score-1').value;
