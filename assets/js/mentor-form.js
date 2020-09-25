@@ -78,16 +78,16 @@ async function addMore(type) {
     document.getElementById("sat2-remove").style.display = "block";
     document.getElementById("sat2-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBoxA' id = 'sat2EntryBox-${sat2Count}'>
-            <input id = 'form-sat2-subject-${sat2Count}' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Subject'/>
-            <input id = 'form-sat2-score-${sat2Count}' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Score'/>
+            <input id = 'form-sat2-subject-${sat2Count}' onkeypress = 'formUpdated()' onchange = "optionalTestCheck('sat2', '${sat2Count}')" type = 'text' placeholder= 'Subject'/>
+            <input id = 'form-sat2-score-${sat2Count}' onkeypress = 'formUpdated()' onchange = "optionalTestCheck('sat2', '${sat2Count}')" type = 'text' placeholder= 'Score'/>
         </div>`);
   } else if(type === "ap"){
     apCount++;
     document.getElementById("ap-remove").style.display = "block";
     document.getElementById("ap-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBoxA' id = 'apEntryBox-${apCount}'>
-            <input id = 'form-ap-subject-${apCount}' onkeypress = 'formUpdated()' type = 'text' placeholder='Subject'/>
-            <input id = 'form-ap-score-${apCount}' onkeypress = 'formUpdated()' type = 'text' placeholder='Score'/>
+            <input id = 'form-ap-subject-${apCount}' onkeypress = 'formUpdated()' onchange = "optionalTestCheck('ap', '${apCount}')" type = 'text' placeholder='Subject'/>
+            <input id = 'form-ap-score-${apCount}' onkeypress = 'formUpdated()' onchange = "optionalTestCheck('ap', '${apCount}')" type = 'text' placeholder='Score'/>
         </div>`);
   } else if(type === "honors"){
     honorsCount++;
@@ -246,6 +246,22 @@ function satEssayCheck() {
     }
 }
 
+function optionalTestCheck(test, index) {
+    const subject = (document.getElementById(`form-${test}-subject-${index}`).value !== "");
+    const score = (document.getElementById(`form-${test}-score-${index}`).value !== "");
+
+    if((subject && score) || (!subject && !score)) {
+        document.getElementById(`form-${test}-subject-${index}`).style.backgroundColor = "#fcfcfc";
+        document.getElementById(`form-${test}-score-${index}`).style.backgroundColor = "#fcfcfc";
+    } else if(subject && !score) {
+        document.getElementById(`form-${test}-subject-${index}`).style.backgroundColor = "#fcfcfc";
+        document.getElementById(`form-${test}-score-${index}`).style.backgroundColor = "#ffe4e4";
+    } else {
+        document.getElementById(`form-${test}-subject-${index}`).style.backgroundColor = "#ffe4e4";
+        document.getElementById(`form-${test}-score-${index}`).style.backgroundColor = "#fcfcfc";
+    }
+}
+
 function requiredCheck(inputFieldID) {
     // check whether input field is written or not
     if(document.getElementById(inputFieldID).value !== "") { // when field contains value
@@ -292,7 +308,7 @@ async function loadDraft() {
     } else if(response.ok) {
         const draft = jsonResponse.draft;
         
-        //fill up the text fields
+        // College/Universities
         if(draft.college != null) {
             if(draft.college.name != null) {
                 document.getElementById("form-college").value = draft.college.name;
@@ -308,6 +324,7 @@ async function loadDraft() {
             }
         }
 
+        // Backgrounds
         if(draft.background != null) {
             if(draft.background.citizenship != null) {
                 document.getElementById("form-citizenship").value = draft.background.citizenship;
@@ -321,10 +338,10 @@ async function loadDraft() {
                 document.getElementById("form-ethnicity").value = draft.background.ethnicity;
                 requiredCheck("form-ethnicity");
             }
-            if(draft.background.hooks.length>0 || draft.background.hooks!=null){
+            if(draft.background.hooks != null && draft.background.hooks.length > 0){
                 document.getElementById("form-hooks-1").value = draft.background.hooks[0];
                 
-                if(draft.background.hooks.length>1){
+                if(draft.background.hooks.length > 1){
                     while(hooksCount < draft.background.hooks.length){
                         addMore('hooks');
                         document.getElementById("form-hooks-"+(hooksCount)).value = draft.background.hooks[hooksCount-1];
@@ -333,11 +350,13 @@ async function loadDraft() {
             }
         }
 
+        // Academics
         if(draft.academics != null) {
             if(draft.academics.weightedGPA != null){
                 document.getElementById("form-gpa").value = draft.academics.weightedGPA;
                 requiredCheck("form-gpa");
             }
+            // SAT
             if(draft.academics.sat1 != null){
                 if(draft.academics.sat1.readingWriting != null){
                     document.getElementById("form-sat1-english").value = draft.academics.sat1.readingWriting;
@@ -346,7 +365,7 @@ async function loadDraft() {
                     document.getElementById("form-sat1-math").value = draft.academics.sat1.math;
                     requiredScore();
                 }
-                if(Object.keys(draft.academics.sat1).length === 3){
+                if(draft.academics.sat1.essay != null){
                     if(draft.academics.sat1.essay.reading != null){
                         document.getElementById("form-sat1-reading").value = draft.academics.sat1.essay.reading;
                     }
@@ -359,6 +378,7 @@ async function loadDraft() {
                     satEssayCheck();
                 }
             }
+            // ACT
             if(draft.academics.act != null){
                 if(draft.academics.act.english != null){
                     document.getElementById("form-act-english").value = draft.academics.act.english;
@@ -373,184 +393,207 @@ async function loadDraft() {
                     document.getElementById("form-act-science").value = draft.academics.act.science;
                     requiredScore();
                 }
-                if(Object.keys(draft.academics.act).length === 5){
-                    if(draft.academics.act.essay.reading != null){
-                        document.getElementById("form-act-writing").value = draft.academics.act.writing;
+                if(draft.academics.act.writing != null){
+                    document.getElementById("form-act-writing").value = draft.academics.act.writing;
+                }
+            }
+            // SAT2
+            if(draft.academics.sat2 != null && draft.academics.sat2.length > 0){
+                let key= Object.keys(draft.academics.sat2[0])[0]
+                document.getElementById("form-sat2-subject-1").value = key;
+                if(draft.academics.sat2[0][key] != null){
+                    document.getElementById("form-sat2-score-1").value = draft.academics.sat2[0][key];
+                }
+                optionalTestCheck('sat2', '1');
+                    
+                if(draft.academics.sat2.length > 1){
+                    while(sat2Count < draft.academics.sat2.length){
+                        addMore('sat2');
+                        key = Object.keys(draft.academics.sat2[sat2Count-1])[0]
+                        document.getElementById("form-sat2-subject-"+sat2Count).value = key;
+                        if(draft.academics.sat2[sat2Count-1][key] != null){
+                            document.getElementById("form-sat2-score-"+sat2Count).value = draft.academics.sat2[sat2Count-1][key];
+                        }
+                        optionalTestCheck('sat2', `${sat2Count}`);
                     }
                 }
             }
-            if(draft.academics.sat2 != null){
-                if(draft.academics.sat2.length>0 || draft.academics.sat2 ===null){
-                    let key= Object.keys(draft.academics.sat2[0])[0]
-                    document.getElementById("form-sat2-subject-1").value = key;
-                    if(draft.academics.sat2[0][key]!==null){
-                        document.getElementById("form-sat2-score-1").value = draft.academics.sat2[0][key];
-                    }
-                    
-                    if(draft.academics.sat2.length>1){
-                        while(sat2Count < draft.academics.sat2.length){
-                            addMore('sat2');
-                            key= Object.keys(draft.academics.sat2[sat2Count-1])[0]
-                            document.getElementById("form-sat2-subject-"+sat2Count).value = key;
-                            if(draft.academics.sat2[sat2Count-1][key]!==null){
-                                document.getElementById("form-sat2-score-"+sat2Count).value = draft.academics.sat2[sat2Count-1][key];
-                            }
-                        }
-                    }
+            // AP
+            if(draft.academics.ap != null && draft.academics.ap.length > 0){
+                key= Object.keys(draft.academics.ap[0])[0];
+                document.getElementById("form-ap-subject-1").value = key;
+                if(draft.academics.ap[0][key] != null){
+                    document.getElementById("form-ap-score-1").value = draft.academics.ap[0][key];
                 }
-            }
-            if(draft.academics.ap != null){
-                if(draft.academics.ap.length>0 || draft.academics.ap !=null){
-                    key= Object.keys(draft.academics.ap[0])[0];
-                    document.getElementById("form-ap-subject-1").value = key;
-                    if(draft.academics.ap[0][key]!==null){
-                        document.getElementById("form-ap-score-1").value = draft.academics.ap[0][key];
-                    }
-                    
-                    if(draft.academics.ap.length>1){
-                        while(apCount < draft.academics.ap.length){
-                            addMore('ap');
-                            key= Object.keys(draft.academics.ap[apCount-1])[0]
-                            document.getElementById("form-ap-subject-"+apCount).value = key;
-                            if(draft.academics.ap[apCount-1][key]!==null){
-                                document.getElementById("form-ap-score-"+apCount).value = draft.academics.ap[apCount-1][key];
-                            }
+                optionalTestCheck('ap', '1');
+                
+                if(draft.academics.ap.length > 1){
+                    while(apCount < draft.academics.ap.length){
+                        addMore('ap');
+                        key= Object.keys(draft.academics.ap[apCount-1])[0]
+                        document.getElementById("form-ap-subject-"+apCount).value = key;
+                        if(draft.academics.ap[apCount-1][key] != null){
+                            document.getElementById("form-ap-score-"+apCount).value = draft.academics.ap[apCount-1][key];
                         }
+                        optionalTestCheck('ap', `${apCount}`);
                     }
                 }
             }
         }
+
+        // Honors
         if(draft.honors != null) {
-            if(draft.honors.contents.length>0 || draft.honors.contents != null) {
-                document.getElementById("form-honors-title-1").value = draft.honors.contents[0]['title'];
-                requiredCheck("form-honors-title-1");
-                if(draft.honors.contents[0]['gradeLevel'].length>0 || draft.honors.contents['gradeLevel'] != null){
+            if(draft.honors.contents != null && draft.honors.contents.length > 0) {
+                // Title
+                if(draft.honors.contents[0]['title'] != null) {
+                    document.getElementById("form-honors-title-1").value = draft.honors.contents[0]['title'];
+                    requiredCheck("form-honors-title-1");
+                }
+                // Grade Level
+                if(draft.honors.contents[0]['gradeLevel'] != null && draft.honors.contents[0]['gradeLevel'].length > 0){
                     if(draft.honors.contents[0]['gradeLevel'].includes(9)){
                         document.getElementById("h1-9").checked = true;
-                        requiredCheck("h1");
                     }
                     if(draft.honors.contents[0]['gradeLevel'].includes(10)){
                         document.getElementById("h1-10").checked = true;
-                        requiredCheck("h1");
                     }
                     if(draft.honors.contents[0]['gradeLevel'].includes(11)){
                         document.getElementById("h1-11").checked = true;
-                        requiredCheck("h1");
                     }
                     if(draft.honors.contents[0]['gradeLevel'].includes(12)){
                         document.getElementById("h1-12").checked = true;
-                        requiredCheck("h1");
                     }
                     if(draft.honors.contents[0]['gradeLevel'].includes(13)){
                         document.getElementById("h1-13").checked = true;
-                        requiredCheck("h1");
                     }
+                    requiredCheck("h1");
                 }
-                document.getElementById("form-honors-lvl-1").value = draft.honors.contents[0]['levelOfRecognition'];
-                requiredCheck("form-honors-lvl-1");
+                // Level Of Recognition
+                if(draft.honors.contents[0]['levelOfRecognition'] != null) {
+                    document.getElementById("form-honors-lvl-1").value = draft.honors.contents[0]['levelOfRecognition'];
+                    requiredCheck("form-honors-lvl-1");
+                }
                 
-                if(draft.honors.contents.length>1){
+                if(draft.honors.contents.length > 1){
                     while(honorsCount < draft.honors.contents.length){
                         addMore('honors');
-                        document.getElementById("form-honors-title-" + honorsCount).value = draft.honors.contents[honorsCount-1]['title'];
-                        requiredCheck("form-honors-title-" + honorsCount);
-                        if(draft.honors.contents[honorsCount-1]['gradeLevel'].length>0 || draft.honors.contents['gradeLevel'] != null){
+                        if(draft.honors.contents[honorsCount-1]['title'] != null) {
+                            document.getElementById("form-honors-title-" + honorsCount).value = draft.honors.contents[honorsCount-1]['title'];
+                            requiredCheck("form-honors-title-" + honorsCount);
+                        }
+                        if(draft.honors.contents[honorsCount-1]['gradeLevel'] != null && draft.honors.contents[honorsCount-1]['gradeLevel'].length > 0){
                             if(draft.honors.contents[honorsCount-1]['gradeLevel'].includes(9)){
                                 document.getElementById("h"+honorsCount+"-9").checked = true;
-                                requiredCheck("h" + honorsCount);
                             }
                             if(draft.honors.contents[honorsCount-1]['gradeLevel'].includes(10)){
                                 document.getElementById("h"+honorsCount+"-10").checked = true;
-                                requiredCheck("h" + honorsCount);
                             }
                             if(draft.honors.contents[honorsCount-1]['gradeLevel'].includes(11)){
                                 document.getElementById("h"+honorsCount+"-11").checked = true;
-                                requiredCheck("h" + honorsCount);
                             }
                             if(draft.honors.contents[honorsCount-1]['gradeLevel'].includes(12)){
                                 document.getElementById("h"+honorsCount+"-12").checked = true;
-                                requiredCheck("h" + honorsCount);
                             }
                             if(draft.honors.contents[honorsCount-1]['gradeLevel'].includes(13)){
                                 document.getElementById("h"+honorsCount+"-13").checked = true;
-                                requiredCheck("h" + honorsCount);
                             }
+                            requiredCheck("h" + honorsCount);
                         }
-                        document.getElementById("form-honors-lvl-" + honorsCount).value = draft.honors.contents[honorsCount-1]['levelOfRecognition'];
-                        requiredCheck("form-honors-lvl-" + honorsCount);
+                        if(draft.honors.contents[honorsCount-1]['levelOfRecognition'] != null) {
+                            document.getElementById("form-honors-lvl-" + honorsCount).value = draft.honors.contents[honorsCount-1]['levelOfRecognition'];
+                            requiredCheck("form-honors-lvl-" + honorsCount);
+                        }
                     }
                 }
             }
         }
+
+        // Activities
         if(draft.activities != null) {
-            if(draft.activities != null) {
-                if(draft.activities.contents.length>0 || draft.activities.contents != null) {
+            if(draft.activities.contents != null && draft.activities.contents.length > 0) {
+                // type
+                if(draft.activities.contents[0]['type'] != null) {
                     document.getElementById("form-activities-type-1").value = draft.activities.contents[0]['type'];
                     requiredCheck("form-activities-type-1");
+                }
+                // position
+                if(draft.activities.contents[0]['position'] != null) {
                     document.getElementById("form-activities-position-1").value = draft.activities.contents[0]['position'];
                     requiredCheck("form-activities-position-1");
+                }
+                // organization
+                if(draft.activities.contents[0]['organization'] != null) {
                     document.getElementById("form-activities-organization-1").value = draft.activities.contents[0]['organization'];
                     requiredCheck("form-activities-organization-1");
+                }
+                // description
+                if(draft.activities.contents[0]['description'] != null) {
                     document.getElementById("form-activities-description-1").value = draft.activities.contents[0]['description'];
                     requiredCheck("form-activities-description-1");
-                    if(draft.activities.contents[0]['participationGradeLevel'].length>0 || draft.activities.contents['participationGradeLevel'] != null){
-                        if(draft.activities.contents[0]['participationGradeLevel'].includes(9)){
-                            document.getElementById("a1-9").checked = true;
-                            requiredCheck("a" + activitiesCount);
-                        }
-                        if(draft.activities.contents[0]['participationGradeLevel'].includes(10)){
-                            document.getElementById("a1-10").checked = true;
-                            requiredCheck("a" + activitiesCount);
-                        }
-                        if(draft.activities.contents[0]['participationGradeLevel'].includes(11)){
-                            document.getElementById("a1-11").checked = true;
-                            requiredCheck("a" + activitiesCount);
-                        }
-                        if(draft.activities.contents[0]['participationGradeLevel'].includes(12)){
-                            document.getElementById("a1-12").checked = true;
-                            requiredCheck("a" + activitiesCount);
-                        }
-                        if(draft.activities.contents[0]['participationGradeLevel'].includes(13)){
-                            document.getElementById("a1-13").checked = true;
-                            requiredCheck("a" + activitiesCount);
-                        }
+                }
+                // participation grade level
+                if(draft.activities.contents[0]['participationGradeLevel'] != null && draft.activities.contents[0]['participationGradeLevel'].length > 0) {
+                    if(draft.activities.contents[0]['participationGradeLevel'].includes(9)){
+                        document.getElementById("a1-9").checked = true;
                     }
+                    if(draft.activities.contents[0]['participationGradeLevel'].includes(10)){
+                        document.getElementById("a1-10").checked = true;
+                    }
+                    if(draft.activities.contents[0]['participationGradeLevel'].includes(11)){
+                        document.getElementById("a1-11").checked = true;
+                    }
+                    if(draft.activities.contents[0]['participationGradeLevel'].includes(12)){
+                        document.getElementById("a1-12").checked = true;
+                    }
+                    if(draft.activities.contents[0]['participationGradeLevel'].includes(13)){
+                        document.getElementById("a1-13").checked = true;
+                    }
+                    requiredCheck("a" + activitiesCount);
+                }
+                // Time of Participation
+                if(draft.activities.contents[0]['timeOfParticipation'] != null) {
                     document.getElementById("form-activities-time-1").value = draft.activities.contents[0]['timeOfParticipation'];
                     requiredCheck("form-activities-time-1");
-                    
-                    if(draft.activities.contents.length>1){
-                        while(activitiesCount < draft.activities.contents.length){
-                            addMore('activities');
+                }
+                
+                if(draft.activities.contents.length > 1){
+                    while(activitiesCount < draft.activities.contents.length){
+                        addMore('activities');
+                        if(draft.activities.contents[activitiesCount-1]['type'] != null) {
                             document.getElementById("form-activities-type-"+activitiesCount).value = draft.activities.contents[activitiesCount-1]['type'];
                             requiredCheck("form-activities-type-" + activitiesCount);
+                        }
+                        if(draft.activities.contents[activitiesCount-1]['position'] != null) {
                             document.getElementById("form-activities-position-"+activitiesCount).value = draft.activities.contents[activitiesCount-1]['position'];
                             requiredCheck("form-activities-position-" + activitiesCount);
+                        }
+                        if(draft.activities.contents[activitiesCount-1]['organization'] != null) {
                             document.getElementById("form-activities-organization-"+activitiesCount).value = draft.activities.contents[activitiesCount-1]['organization'];
                             requiredCheck("form-activities-organization-" + activitiesCount);
+                        }
+                        if(draft.activities.contents[activitiesCount-1]['description'] != null) {
                             document.getElementById("form-activities-description-"+activitiesCount).value = draft.activities.contents[activitiesCount-1]['description'];
                             requiredCheck("form-activities-description-" + activitiesCount);
-                            if(draft.activities.contents[0]['participationGradeLevel'].length>0 || draft.activities.contents['participationGradeLevel'] != null){
-                                if(draft.activities.contents[0]['participationGradeLevel'].includes(9)){
-                                    document.getElementById("a"+activitiesCount+"-9").checked = true;
-                                    requiredCheck("a" + activitiesCount);
-                                }
-                                if(draft.activities.contents[0]['participationGradeLevel'].includes(10)){
-                                    document.getElementById("a"+activitiesCount+"-10").checked = true;
-                                    requiredCheck("a" + activitiesCount);
-                                }
-                                if(draft.activities.contents[0]['participationGradeLevel'].includes(11)){
-                                    document.getElementById("a"+activitiesCount+"-11").checked = true;
-                                    requiredCheck("a" + activitiesCount);
-                                }
-                                if(draft.activities.contents[0]['participationGradeLevel'].includes(12)){
-                                    document.getElementById("a"+activitiesCount+"-12").checked = true;
-                                    requiredCheck("a" + activitiesCount);
-                                }
-                                if(draft.activities.contents[0]['participationGradeLevel'].includes(13)){
-                                    document.getElementById("a"+activitiesCount+"-13").checked = true;
-                                    requiredCheck("a" + activitiesCount);
-                                }
+                        }
+                        if(draft.activities.contents[activitiesCount-1]['participationGradeLevel'] != null && draft.activities.contents[activitiesCount-1]['participationGradeLevel'].length>0) {
+                            if(draft.activities.contents[activitiesCount-1]['participationGradeLevel'].includes(9)){
+                                document.getElementById("a"+activitiesCount+"-9").checked = true;
                             }
+                            if(draft.activities.contents[activitiesCount-1]['participationGradeLevel'].includes(10)){
+                                document.getElementById("a"+activitiesCount+"-10").checked = true;
+                            }
+                            if(draft.activities.contents[activitiesCount-1]['participationGradeLevel'].includes(11)){
+                                document.getElementById("a"+activitiesCount+"-11").checked = true;
+                            }
+                            if(draft.activities.contents[activitiesCount-1]['participationGradeLevel'].includes(12)){
+                                document.getElementById("a"+activitiesCount+"-12").checked = true;
+                            }
+                            if(draft.activities.contents[activitiesCount-1]['participationGradeLevel'].includes(13)){
+                                document.getElementById("a"+activitiesCount+"-13").checked = true;
+                            }
+                            requiredCheck("a" + activitiesCount);
+                        }
+                        if(draft.activities.contents[activitiesCount-1]['timeOfParticipation'] != null) {
                             document.getElementById("form-activities-time-" + activitiesCount).value = draft.activities.contents[activitiesCount-1]['timeOfParticipation'];
                             requiredCheck("form-activities-time-" + activitiesCount);
                         }
@@ -558,46 +601,157 @@ async function loadDraft() {
                 }
             }
         }
+
+        // Essay
         if(draft.essay != null) {
-            if(draft.essay.contents.length>0 || draft.essay.contents != null) {
-                document.getElementById("form-essay-prompt-1").value = draft.essay.contents[0]['prompt'];
-                requiredCheck("form-essay-prompt-1");
-                document.getElementById("form-essay-statement-1").value = draft.essay.contents[0]['statement'];
-                requiredCheck("form-essay-statement-1");
+            if(draft.essay.contents != null && draft.essay.contents.length > 0) {
+                if(draft.essay.contents[0]['prompt'] != null) {
+                    document.getElementById("form-essay-prompt-1").value = draft.essay.contents[0]['prompt'];
+                    requiredCheck("form-essay-prompt-1");
+                }
+                if(draft.essay.contents[0]['statement'] != null) {
+                    document.getElementById("form-essay-statement-1").value = draft.essay.contents[0]['statement'];
+                    requiredCheck("form-essay-statement-1");
+                }
                 
-                if(draft.essay.contents.length>1){
+                if(draft.essay.contents.length > 1){
                     while(essayCount < draft.essay.contents.length){
                         addMore('essay');
-                        document.getElementById("form-essay-prompt-" + essayCount).value = draft.essay.contents[essayCount-1]['prompt'];
-                        requiredCheck("form-essay-prompt-" + essayCount);
-                        document.getElementById("form-essay-statement-" + essayCount).value = draft.essay.contents[essayCount-1]['statement'];
-                        requiredCheck("form-essay-statement-" + essayCount);
+                        if(draft.essay.contents[essayCount-1]['prompt'] != null) {
+                            document.getElementById("form-essay-prompt-" + essayCount).value = draft.essay.contents[essayCount-1]['prompt'];
+                            requiredCheck("form-essay-prompt-" + essayCount);
+                        }
+                        if(draft.essay.contents[essayCount-1]['statement'] != null) {
+                            document.getElementById("form-essay-statement-" + essayCount).value = draft.essay.contents[essayCount-1]['statement'];
+                            requiredCheck("form-essay-statement-" + essayCount);
+                        }
                     }
                 }
             }
         }
-        if(draft.additional != null) {
-            if(draft.additional.contents.length>0 || draft.additional.contents != null) {
-                document.getElementById("additional-1").value = draft.additional.contents[0];
-                requiredCheck("additional-1");
-                
-                if(draft.additional.contents.length>1){
-                    while(additionalCount < draft.additional.contents.length){
-                        addMore('additional');
-                        document.getElementById("additional-" + additionalCount).value = draft.additional.contents[additionalCount-1];
-                        requiredCheck("additional-" + additionalCount);
+
+        // Additional Information
+        if(draft.additionalInfo != null) {
+            if(draft.additionalInfo.contents != null) {
+                if(draft.additionalInfo.contents != null && draft.additionalInfo.contents.length > 0) {
+                    if(draft.additionalInfo.contents[0] != null) {
+                        document.getElementById("additional-1").value = draft.additionalInfo.contents[0];
+                    }
+                    
+                    if(draft.additionalInfo.contents.length > 1){
+                        while(additionalCount < draft.additionalInfo.contents.length){
+                            addMore('additional');
+                            if(draft.additionalInfo.contents[additionalCount-1] != null) {
+                                document.getElementById("additional-" + additionalCount).value = draft.additionalInfo.contents[additionalCount-1];
+                            }
+                        }
                     }
                 }
             }
-
-        }   
+        }
     } else if(response.status !== 404) {
         alert("Server Error!! Please Try Again!!");
         location.href = "{{ site.baseurl }}/";
     }
 }
+
 async function submit() {
     // TODO: Check Input
+    const request = {};
+
+    // College/University Information
+    if(document.getElementById("form-college").value !== "" && document.getElementById('form-major').value !== "" && document.getElementById('form-grad').value !== "") {
+        request.college = {
+            name: document.getElementById("form-college").value,
+            admittedMajor: document.getElementById("form-major").value,
+            grad: document.getElementById("form-grad").value
+        };
+    } else {
+        // TODO: Error
+        return;
+    }
+
+    // Background
+    if (document.getElementById('form-citizenship').value !== "" && document.getElementById('form-gender').value !== "" && document.getElementById('form-ethnicity').value !== "") {
+        request.background = {
+            citizenship: document.getElementById("form-citizenship").value,
+            gender: document.getElementById("form-gender").value,
+            ethnicity: document.getElementById("form-ethnicity").value
+        };
+
+        // Hooks
+        if (document.getElementById('form-hooks-1').value !== ""){
+            request.background.hooks = [];
+            for(i=1; i<=hooksCount; i++){
+              request.background.hooks.push(document.getElementById("form-hooks-"+i).value);
+            }
+        }
+    } else {
+        // TODO: error
+        return;
+    }
+
+    // Academics
+    if (document.getElementById('form-gpa').value !== ""){
+        request.academics = { weightedGPA: document.getElementById("form-gpa").value };
+
+        // Required Test
+        let reqTest = false;
+        // SAT
+        if(document.getElementById('form-sat1-english').value !== "" && document.getElementById('form-sat1-math').value !== "") {
+            reqTest = true;
+            request.academics.sat1 = {
+                readingWriting: document.getElementById("form-sat1-english").value,
+                math: document.getElementById("form-sat1-math").value
+            };
+
+            // SAT Essay
+            let essayReq = (document.getElementById('form-sat1-reading').value !== "" || document.getElementById('form-sat1-analysis').value !== "" || document.getElementById('form-sat1-writing').value !== "");
+            if(document.getElementById('form-sat1-reading').value !== "" && document.getElementById('form-sat1-analysis').value !== "" && document.getElementById('form-sat1-writing').value !== "") {
+                essayReq = false;
+                req.academics.sat1.essay = {
+                    reading: document.getElementById("form-sat1-reading").value,
+                    analysis: document.getElementById("form-sat1-analysis").value,
+                    writing: document.getElementById("form-sat1-writing").value
+                };
+            }
+            if(essayReq) {
+                // TODO: error
+                return;
+            }
+        }
+        // ACT
+        if(document.getElementById('form-act-english').value !== "" && document.getElementById('form-act-math').value !== "" && document.getElementById('form-act-reading').value !== "" && document.getElementById('form-act-science').value !== "") {
+            reqTest = true;
+            request.academics.act = {
+                english: document.getElementById("form-act-english").value,
+                math: document.getElementById("form-act-math").value,
+                reading: document.getElementById("form-act-reading").value,
+                science: document.getElementById("form-act-science").value
+            };
+
+            // ACT Writing
+            if(document.getElementById('form-act-writing').value !== "") {
+                request.academics.act.writing = document.getElementById("form-act-writing").value;
+            }
+        }
+        // Check for Required Test
+        if(!reqTest) {
+            // TODO: error
+            return;
+        }
+
+        // Optional Tests
+        // SAT2
+        const sat2 = [];
+
+        // AP
+
+    } else {
+        // TODO: error
+        return;
+    }
+    
 
     // sending document
     let draftSent = false;
@@ -626,42 +780,45 @@ async function submit() {
 async function saveDraft() {
     // Generating Document
     const request = {};
-    if(document.getElementByID("form-college").value !== "") {
+
+    // College/University
+    if(document.getElementById("form-college").value !== "") {
         if(request.college == null) {
           request.college = {};
         }
-        request.college.name = document.getElementByID("form-college").value;
+        request.college.name = document.getElementById("form-college").value;
     }
     if (document.getElementById('form-major').value !== ""){
         if(request.college == null) {
           request.college = {};
         }
-        request.college.admittedMajor = document.getElementByID("form-major").value;
+        request.college.admittedMajor = document.getElementById("form-major").value;
     }
     if (document.getElementById('form-grad').value !== ""){
         if(request.college == null) {
           request.college = {};
         }
-        request.college.grad = document.getElementByID("form-grad").value;
+        request.college.grad = document.getElementById("form-grad").value;
     }
 
+    // Background
     if (document.getElementById('form-citizenship').value !== ""){
         if(request.background == null) {
           request.background = {};
         }
-        request.background.citizenship = document.getElementByID("form-citizenship").value;
+        request.background.citizenship = document.getElementById("form-citizenship").value;
     }
     if (document.getElementById('form-gender').value !== ""){
         if(request.background == null) {
           request.background = {};
         }
-        request.background.gender = document.getElementByID("form-gender").value;
+        request.background.gender = document.getElementById("form-gender").value;
     }
     if (document.getElementById('form-ethnicity').value !== ""){
         if(request.background == null) {
           request.background = {};
         }
-        request.background.ethnicity = document.getElementByID("form-ethnicity").value;
+        request.background.ethnicity = document.getElementById("form-ethnicity").value;
     }
     if (document.getElementById('form-hooks-1').value !== ""){
         if(request.background == null) {
@@ -671,16 +828,18 @@ async function saveDraft() {
             request.background.hooks = [];
         }
         for(i=1;i<=hooksCount;i++){
-          request.background.hooks.push(document.getElementByID("form-hooks-"+i).value);
+          request.background.hooks.push(document.getElementById("form-hooks-"+i).value);
         }
     }
 
+    // Academics
     if (document.getElementById('form-gpa').value !== ""){
         if(request.academics == null) {
           request.academics = {};
         }
-        request.academics.weightedGPA = document.getElementByID("form-gpa").value;
+        request.academics.weightedGPA = document.getElementById("form-gpa").value;
     }
+    // SAT1
     if (document.getElementById('form-sat1-english').value !== ""){
         if(request.academics == null) {
           request.academics = {};
@@ -688,7 +847,7 @@ async function saveDraft() {
         if(request.academics.sat1 == null){
             request.academics.sat1 = {};
         }
-        request.academics.sat1.readingWriting = document.getElementByID("form-sat1-english").value;
+        request.academics.sat1.readingWriting = document.getElementById("form-sat1-english").value;
     }
     if ( document.getElementById('form-sat1-math').value !== ""){
         if(request.academics == null) {
@@ -697,7 +856,7 @@ async function saveDraft() {
         if(request.academics.sat1 == null){
             request.academics.sat1 = {};
         }
-        request.academics.sat1.math = document.getElementByID("form-sat1-math").value;
+        request.academics.sat1.math = document.getElementById("form-sat1-math").value;
     }
     if (document.getElementById('form-sat1-reading').value !== ""){
         if(request.academics == null) {
@@ -709,7 +868,7 @@ async function saveDraft() {
         if(request.academics.sat1.essay == null){
             request.academics.sat1.essay = {};
         }
-        request.academics.sat1.essay.reading = document.getElementByID("form-sat1-reading").value;
+        request.academics.sat1.essay.reading = document.getElementById("form-sat1-reading").value;
     }
     if (document.getElementById('form-sat1-analysis').value !== ""){
         if(request.academics == null) {
@@ -721,7 +880,7 @@ async function saveDraft() {
         if(request.academics.sat1.essay == null){
             request.academics.sat1.essay = {};
         }
-        request.academics.sat1.essay.analysis = document.getElementByID("form-sat1-analysis").value;
+        request.academics.sat1.essay.analysis = document.getElementById("form-sat1-analysis").value;
     }
     if (document.getElementById('form-sat1-writing').value !== ""){
         if(request.academics == null) {
@@ -733,8 +892,9 @@ async function saveDraft() {
         if(request.academics.sat1.essay == null){
             request.academics.sat1.essay = {};
         }
-        request.academics.sat1.essay.writing = document.getElementByID("form-sat1-writing").value;
+        request.academics.sat1.essay.writing = document.getElementById("form-sat1-writing").value;
     }
+    // ACT
     if (document.getElementById('form-act-english').value !== ""){
         if(request.academics == null) {
           request.academics = {};
@@ -742,7 +902,7 @@ async function saveDraft() {
         if(request.academics.act == null){
             request.academics.act = {};
         }
-        request.academics.act.english = document.getElementByID("form-act-english").value;
+        request.academics.act.english = document.getElementById("form-act-english").value;
     }
     if (document.getElementById('form-act-math').value !== ""){
         if(request.academics == null) {
@@ -751,7 +911,7 @@ async function saveDraft() {
         if(request.academics.act == null){
             request.academics.act = {};
         }
-        request.academics.act.math = document.getElementByID("form-act-math").value;
+        request.academics.act.math = document.getElementById("form-act-math").value;
     }
     if (document.getElementById('form-act-reading').value !== ""){
         if(request.academics == null) {
@@ -760,7 +920,7 @@ async function saveDraft() {
         if(request.academics.act == null){
             request.academics.act = {};
         }
-        request.academics.act.reading = document.getElementByID("form-act-reading").value;
+        request.academics.act.reading = document.getElementById("form-act-reading").value;
     }
     if (document.getElementById('form-act-science').value !== ""){
         if(request.academics == null) {
@@ -769,7 +929,7 @@ async function saveDraft() {
         if(request.academics.act == null){
             request.academics.act = {};
         }
-        request.academics.act.science = document.getElementByID("form-act-science").value;
+        request.academics.act.science = document.getElementById("form-act-science").value;
     }
     if (document.getElementById('form-act-writing').value !== ""){
         if(request.academics == null) {
@@ -778,8 +938,10 @@ async function saveDraft() {
         if(request.academics.act == null){
             request.academics.act = {};
         }
-        request.academics.act.writing = document.getElementByID("form-act-writing").value;
-    }if (document.getElementById('form-sat2-subject-1').value !== ""){
+        request.academics.act.writing = document.getElementById("form-act-writing").value;
+    }
+    // SAT2
+    if (document.getElementById('form-sat2-subject-1').value !== ""){
         if(request.academics == null) {
           request.academics = {};
         }
@@ -788,10 +950,12 @@ async function saveDraft() {
         }
         for(i=1;i<=sat2Count;i++){
             const sat2Score = {};
-            score[document.getElementByID("form-sat2-subject-"+i).value] = document.getElementByID("form-sat2-score-"+i).value;
-            request.academics.sat2.push(score);
+            sat2Score[document.getElementById("form-sat2-subject-"+i).value] = document.getElementById("form-sat2-score-"+i).value;
+            request.academics.sat2.push(sat2Score);
         }
-    }if (document.getElementById('form-sat2-ap-1').value !== ""){
+    }
+    // AP
+    if (document.getElementById('form-ap-subject-1').value !== ""){
         if(request.academics == null) {
           request.academics = {};
         }
@@ -800,42 +964,32 @@ async function saveDraft() {
         }
         for(i=1;i<=apCount;i++){
             const apScore = {};
-            score[document.getElementByID("form-ap-subject-"+i).value] = document.getElementByID("form-ap-score-"+i).value;
-            request.academics.ap.push(score);
+            apScore[document.getElementById("form-ap-subject-"+i).value] = document.getElementById("form-ap-score-"+i).value;
+            request.academics.ap.push(apScore);
         }
     }
-    
-    const honorsIn = {};
-    if (document.getElementById('form-honors-title-1').value !== ""){
-        if(request.academics == null) {
-        request.academics = {};
+
+    // Honors
+    let honorsIn = {};
+    // Title
+    if (document.getElementById('form-honors-title-1').value !== "") {
+        if(request.honors == null){
+            request.honors = {
+                contents: [],
+            };
         }
-        if(request.academics.honors == null){
-            request.academics.honors = {};
-        }
-        if(request.academics.honors.contents == null){
-            request.academics.honors.contents = [];
-        }
-        honorsIn.title = document.getElementByID("form-honors-title-1").value;
+        honorsIn.title = document.getElementById("form-honors-title-1").value;
     }
-    if (document.getElementById('h1-9').checked 
-    || document.getElementById('h1-10').checked 
-    || document.getElementById('h1-11').checked 
-    || document.getElementById('h1-12').checked 
-    || document.getElementById('h1-13').checked){
-        if(request.academics == null) {
-            request.academics = {};
-        }
-        if(request.academics.honors == null){
-            request.academics.honors = {};
-        }
-        if(request.academics.honors.contents == null){
-            request.academics.honors.contents = [];
+    // Grade Level
+    if (document.getElementById('h1-9').checked || document.getElementById('h1-10').checked || document.getElementById('h1-11').checked || document.getElementById('h1-12').checked || document.getElementById('h1-13').checked) {
+        if(request.honors == null){
+            request.honors = {
+                contents: [],
+            };
         }
         if(honorsIn.gradeLevel == null){
             honorsIn.gradeLevel = [];
         }
-        
         if(document.getElementById('h1-9').checked){
             honorsIn.gradeLevel.push(9);
         }
@@ -853,39 +1007,33 @@ async function saveDraft() {
         }
     }
     if (document.getElementById('form-honors-lvl-1').value !== ""){
-        if(request.academics == null) {
-        request.academics = {};
+        if(request.honors == null){
+            request.honors = {
+                contents: [],
+            };
         }
-        if(request.academics.honors == null){
-            request.academics.honors = {};
-        }
-        if(request.academics.honors.contents == null){
-            request.academics.honors.contents = [];
-        }
-        honorsIn.title = document.getElementByID("form-honors-lvl-1").value;
+        honorsIn.levelOfRecognition = document.getElementById("form-honors-lvl-1").value;
     }
-    if(honorsCount>1){
-        if(request.academics == null) {
-        request.academics = {};
+    if(Object.keys(honorsIn).length !== 0) {
+        request.honors.contents.push(honorsIn);
+    }
+
+    // More than 1 honors
+    if(honorsCount>1) {
+        if(request.honors == null){
+            request.honors = {
+                contents: [],
+            };
         }
-        if(request.academics.honors == null){
-            request.academics.honors = {};
-        }
-        if(request.academics.honors.contents == null){
-            request.academics.honors.contents = [];
-        }
-        if(honorsIn.gradeLevel == null){
-            honorsIn.gradeLevel = [];
-        }
-        request.academics.honors.contents.push(honorsIn);
-        for(i=1; i<=honorsCount;i++){
-            honorsIn = {};
+        for(i=2; i<=honorsCount; i++) {
+            honorsIn = {
+                gradeLevel: []
+            };
+            // Title
             if (document.getElementById('form-honors-title-'+i).value !== ""){
-                honorsIn.title = document.getElementByID("form-honors-title-"+i).value;
+                honorsIn.title = document.getElementById("form-honors-title-"+i).value;
             }
-            if (document.getElementById("form-honors-title-"+i).value !== ""){
-                honorsIn.title = document.getElementByID("form-honors-title"+i).value;
-            }
+            // Grade Level
             if(document.getElementById("h"+i+"-9").checked){
                 honorsIn.gradeLevel.push(9);
             }
@@ -901,37 +1049,209 @@ async function saveDraft() {
             if(document.getElementById("h"+i+"-13").checked){
                 honorsIn.gradeLevel.push(13);
             }
-            }
+            // Level of Recognition
             if (document.getElementById("form-honors-lvl-"+i).value !== ""){
-                honorsIn.title = document.getElementByID("form-honors-lvl-"+i).value;
+                honorsIn.levelOfRecognition = document.getElementById("form-honors-lvl-"+i).value;
             }
-            request.academics.honors.contents.push(honorsIn);
+            request.honors.contents.push(honorsIn);
         }
     }
 
+    // Activities
+    let activitiesIn = {};
+    // Type
+    if (document.getElementById('form-activities-type-1').value !== "") {
+        if(request.activities == null){
+            request.activities = {
+                contents: [],
+            };
+        }
+        activitiesIn.type = document.getElementById("form-activities-type-1").value;
+    }
+    // Position
+    if (document.getElementById('form-activities-type-1').value !== "") {
+        if(request.activities == null){
+            request.activities = {
+                contents: [],
+            };
+        }
+        activitiesIn.position = document.getElementById("form-activities-position-1").value;
+    }
+    // Organization
+    if (document.getElementById('form-activities-organization-1').value !== "") {
+        if(request.activities == null){
+            request.activities = {
+                contents: [],
+            };
+        }
+        activitiesIn.organization = document.getElementById("form-activities-organization-1").value;
+    }
+    // Description
+    if (document.getElementById('form-activities-description-1').value !== "") {
+        if(request.activities == null){
+            request.activities = {
+                contents: [],
+            };
+        }
+        activitiesIn.description = document.getElementById("form-activities-description-1").value;
+    }
+    // Grade Level
+    if (document.getElementById('a1-9').checked || document.getElementById('a1-10').checked || document.getElementById('a1-11').checked || document.getElementById('a1-12').checked || document.getElementById('a1-13').checked) {
+        if(request.activities == null){
+            request.activities = {
+                contents: [],
+            };
+        }
+        if(activitiesIn.gradeLevel == null){
+            activitiesIn.participationGradeLevel = [];
+        }
+        if(document.getElementById('a1-9').checked){
+            activitiesIn.participationGradeLevel.push(9);
+        }
+        if(document.getElementById('a1-10').checked){
+            activitiesIn.participationGradeLevel.push(10);
+        }
+        if(document.getElementById('a1-11').checked){
+            activitiesIn.participationGradeLevel.push(11);
+        }
+        if(document.getElementById('a1-12').checked){
+            activitiesIn.participationGradeLevel.push(12);
+        }
+        if(document.getElementById('a1-13').checked){
+            activitiesIn.participationGradeLevel.push(13);
+        }
+    }
+    // Time of Participation
+    if (document.getElementById('form-activities-time-1').value !== ""){
+        if(request.activities == null){
+            request.activities = {
+                contents: [],
+            };
+        }
+        activitiesIn.timeOfParticipation = document.getElementById("form-activities-time-1").value;
+    }
+    if(Object.keys(activitiesIn).length !== 0) {
+        request.activities.contents.push(activitiesIn);
+    }
 
-    const password = document.getElementById('h1-9').value;
-    const password = document.getElementById('h1-10').value;
-    const password = document.getElementById('h1-11').value;
-    const password = document.getElementById('h1-12').value;
-    const password = document.getElementById('h1-13').value;
-    const honorLevels = document.getElementById('form-honors-lvl-1').value;
-    
-    const activitiesTypes = document.getElementById('form-activities-type-1').value;
-    const activitiesPositions = document.getElementById('form-activities-position-1').value;
-    const activitiesOrgs = document.getElementById('form-activities-organization-1').value;
-    const activitiesDescriptions = document.getElementById('form-activities-description-1').value;
-    const password = document.getElementById('a1-9').value;
-    const password = document.getElementById('a1-10').value;
-    const password = document.getElementById('a1-11').value;
-    const password = document.getElementById('a1-12').value;
-    const password = document.getElementById('a1-13').value;
-    const activitiesTimes = document.getElementById('form-activities-time-1').value;
+    // More than 1 activities
+    if(activitiesCount>1) {
+        if(request.activities == null){
+            request.activities = {
+                contents: [],
+            };
+        }
+        for(i=2; i<=activitiesCount; i++) {
+            activitiesIn = {
+                participationGradeLevel: []
+            };
+            // Type
+            if (document.getElementById('form-activities-type-'+i).value !== ""){
+                activitiesIn.type = document.getElementById("form-activities-type-"+i).value;
+            }
+            // Position
+            if (document.getElementById('form-activities-position-'+i).value !== ""){
+                activitiesIn.position = document.getElementById("form-activities-position-"+i).value;
+            }
+            // Organization
+            if (document.getElementById('form-activities-organization-'+i).value !== ""){
+                activitiesIn.organization = document.getElementById("form-activities-organization-"+i).value;
+            }
+            // Description
+            if (document.getElementById('form-activities-description-'+i).value !== ""){
+                activitiesIn.description = document.getElementById("form-activities-description-"+i).value;
+            }
+            // Grade Level
+            if(document.getElementById("a"+i+"-9").checked){
+                activitiesIn.participationGradeLevel.push(9);
+            }
+            if(document.getElementById("a"+i+"-10").checked){
+                activitiesIn.participationGradeLevel.push(10);
+            }
+            if(document.getElementById("a"+i+"-11").checked){
+                activitiesIn.participationGradeLevel.push(11);
+            }
+            if(document.getElementById("a"+i+"-12").checked){
+                activitiesIn.participationGradeLevel.push(12);
+            }
+            if(document.getElementById("a"+i+"-13").checked){
+                activitiesIn.participationGradeLevel.push(13);
+            }
+            // Time Of Participation
+            if (document.getElementById('form-activities-time-'+i).value !== ""){
+                activitiesIn.timeOfParticipation = document.getElementById("form-activities-time-"+i).value;
+            }
+            request.activities.contents.push(activitiesIn);
+        }
+    }
 
-    const essayPrompts = document.getElementById('form-essay-prompt-1').value;
-    const essayStatements = document.getElementById('form-essay-statement-1').value;
+    // Essay
+    let essayIn = {};
+    // Prompt
+    if (document.getElementById('form-essay-prompt-1').value !== "") {
+        if(request.essay == null){
+            request.essay = {
+                contents: [],
+            };
+        }
+        essayIn.prompt = document.getElementById("form-essay-prompt-1").value;
+    }
+    // Statement
+    if (document.getElementById('form-essay-statement-1').value !== "") {
+        if(request.essay == null){
+            request.essay = {
+                contents: [],
+            };
+        }
+        essayIn.statement = document.getElementById("form-essay-statement-1").value;
+    }
+    if(Object.keys(essayIn).length !== 0) {
+        request.essay.contents.push(essayIn);
+    }
 
-    const additionalInfo = document.getElementById('additional-1').value;
+    // More than 1 essay
+    if(essayCount>1) {
+        if(request.essay == null){
+            request.essay = {
+                contents: [],
+            };
+        }
+        for(i=2; i<=essayCount; i++) {
+            essayIn = {};
+            // Prompt
+            if (document.getElementById('form-essay-prompt-'+i).value !== ""){
+                essayIn.prompt = document.getElementById("form-essay-prompt-"+i).value;
+            }
+            // Statement
+            if (document.getElementById("form-essay-statement-"+i).value !== ""){
+                essayIn.statement = document.getElementById("form-essay-statement-"+i).value;
+            }
+            request.essay.contents.push(essayIn);
+        }
+    }
+
+    // AdditionalInfo
+    if (document.getElementById('additional-1').value !== "") {
+        if(request.additionalInfo == null){
+            request.additionalInfo = {
+                contents: [],
+            };
+        }
+        request.additionalInfo.contents.push(document.getElementById("additional-1").value);
+    }
+
+    if(additionalCount>1) {
+        if(request.additionalInfo == null){
+            request.additionalInfo = {
+                contents: [],
+            };
+        }
+        for(i=2; i<=additionalCount; i++) {
+            if (document.getElementById("additional-"+i).value !== ""){
+                request.essay.contents.push(document.getElementById("additional-"+i).value);
+            }
+        }
+    }
 
     // sending draft
     let draftSent = false;
@@ -939,7 +1259,7 @@ async function saveDraft() {
         const response = await fetch('https://api.uniqon.kr/document/application/draft', {
             credentials: 'include',
             method: 'POST',
-            body: JSON.stringify(userInput),
+            body: JSON.stringify(request),
             headers: {
                 'Content-Type': 'application/json'
             }

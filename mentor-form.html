@@ -79,8 +79,8 @@ permalink: /mentor-form
 			<p class = "content-title">SAT2</p>
       <div class = "detailedInput" id = 'sat2-AM'>
           <div class = 'entryBoxA' id = 'sat2EntryBox-1'>
-          <input id = "form-sat2-subject-1" onkeypress = "formUpdated()" type = "text" placeholder= "Subject"/>
-          <input id = "form-sat2-score-1" onkeypress = "formUpdated()" type = "text" placeholder= "Score"/>
+          <input id = "form-sat2-subject-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('sat2', '1')" type = "text" placeholder= "Subject"/>
+          <input id = "form-sat2-score-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('sat2', '1')" type = "text" placeholder= "Score"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('sat2')">Add more</p>
@@ -90,8 +90,8 @@ permalink: /mentor-form
 			<p class = "content-title">AP</p>
       <div class = "detailedInput" id = 'ap-AM'>
         <div class = 'entryBoxA' id = 'apEntryBox-1'>
-          <input id = "form-ap-subject-1" onkeypress = "formUpdated()" type = "text" placeholder="Subject"/>
-          <input id = "form-ap-score-1" onkeypress = "formUpdated()" type = "text" placeholder="Score"/>
+          <input id = "form-ap-subject-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('ap', '1')" type = "text" placeholder="Subject"/>
+          <input id = "form-ap-score-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('ap', '1')" type = "text" placeholder="Score"/>
         </div>
       </div>
       <p class="addmore" onclick="addMore('ap')">Add more</p>
@@ -179,7 +179,7 @@ permalink: /mentor-form
     <p class="addmore" onclick="addMore('additional')">Add more</p>
     <p class="addmore" id=additional-remove onclick="remove('additional')">Remove</p>
   </div>
-  
+
   <script src = '{{ site.baseurl }}/assets/js/mentor-form.js'></script>
   <div class = "message-wrapper">
     <div class = "error" id = "invalid">Invalid Input</div>
@@ -188,7 +188,7 @@ permalink: /mentor-form
     <div id = "success">Successfully Submitted</div>
   </div>
   <div class = "button-wrapper">
-    <button class = "draftSave" onclick="">Save as Draft</button>
+    <button class = "draftSave" onclick="saveDraft()">Save as Draft</button>
     <button onclick="">Submit</button>
   </div>
 </div>
