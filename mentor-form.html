@@ -63,13 +63,16 @@ permalink: /mentor-form
 			<p class = "content-title">SAT1</p>
       <input class = "required" id = "form-sat1-english"onkeypress = "formUpdated()"  onchange = "requiredScore()" type = "text" placeholder="Reading/Writing"/>
       <input class = "required" id = "form-sat1-math" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Math"/>
+      <input id = "form-sat1-reading" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Essay-Readying (optional)"/>
+      <input id = "form-sat1-analysis" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Essay-Analysis (optional)"/>
+      <input id = "form-sat1-writing" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Essay-Writing (optional)"/>
     </div>
     <div class="content">
 			<p class = "content-title">ACT</p>
-      <input class = "required" id = "form-act-eng" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="English"/>
+      <input class = "required" id = "form-act-english" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="English"/>
       <input class = "required" id = "form-act-math" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Math"/>
-      <input class = "required" id = "form-act-rd" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Reading"/>
-      <input class = "required" id = "form-act-sci" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Science"/>
+      <input class = "required" id = "form-act-reading" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Reading"/>
+      <input class = "required" id = "form-act-science" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Science"/>
       <input id = "form-act-ess" onkeypress = "formUpdated()" type = "text" placeholder="Writing (optional)"/>
 		</div>
 		<div class="content">
@@ -126,7 +129,7 @@ permalink: /mentor-form
 		<div class="content">
       <div class = "detailedInput" id="activities-AM">
         <div class = "entryBox" id = 'activitiesEntryBox-1'>
-          <p class = "content-title">Title</p>
+          <p class = "content-title">Type</p>
           <input class = "required" id = "form-activities-type-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-type-1')" type = "text"/>
           <p class = "content-title">Position</p>
           <input class = "required" id = "form-activities-position-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-position-1')" type = "text"/>
@@ -157,7 +160,7 @@ permalink: /mentor-form
       <div class = "detailedInput" id = 'essay-AM'>
         <div class = "entryBox" id = 'essayEntryBox-1'>
           <input class = "required" id = "form-essay-prompt-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-essay-prompt-1')" type = "text" placeholder="Prompt"/>
-          <textarea class = "essay required" id= essay-1 onkeypress = "formUpdated()" onchange = "requiredCheck('essay-1')"></textarea>
+          <textarea class = "essay required" id= "form-essay-statement-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-essay-statement-1')"></textarea>
         </div>
     </div>
     <p class="addmore" onclick="addMore('essay')">Add more</p>
