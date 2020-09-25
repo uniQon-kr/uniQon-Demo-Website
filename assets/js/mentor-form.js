@@ -230,6 +230,22 @@ function requiredScore() {
     }
 }
 
+function satEssayCheck() {
+    const reading = (document.getElementById("form-sat1-reading").value !== "");
+    const analysis = (document.getElementById("form-sat1-analysis").value !== "");
+    const writing = (document.getElementById("form-sat1-writing").value !== "");
+
+    if((reading && analysis && writing) || (!reading && !analysis && !writing)) {
+        document.getElementById("form-sat1-reading").style.backgroundColor = "#fcfcfc";
+        document.getElementById("form-sat1-analysis").style.backgroundColor = "#fcfcfc";
+        document.getElementById("form-sat1-writing").style.backgroundColor = "#fcfcfc";
+    } else {
+        document.getElementById("form-sat1-reading").style.backgroundColor = "#ffe4e4";
+        document.getElementById("form-sat1-analysis").style.backgroundColor = "#ffe4e4";
+        document.getElementById("form-sat1-writing").style.backgroundColor = "#ffe4e4";
+    }
+}
+
 function requiredCheck(inputFieldID) {
     // check whether input field is written or not
     if(document.getElementById(inputFieldID).value !== "") { // when field contains value
@@ -340,6 +356,7 @@ async function loadDraft() {
                     if(draft.academics.sat1.essay.writing != null){
                         document.getElementById("form-sat1-writing").value = draft.academics.sat1.essay.writing;
                     }
+                    satEssayCheck();
                 }
             }
             if(draft.academics.act != null){
@@ -359,7 +376,6 @@ async function loadDraft() {
                 if(Object.keys(draft.academics.act).length === 5){
                     if(draft.academics.act.essay.reading != null){
                         document.getElementById("form-act-writing").value = draft.academics.act.writing;
-                        requiredCheck("form-act-writing");
                     }
                 }
             }
