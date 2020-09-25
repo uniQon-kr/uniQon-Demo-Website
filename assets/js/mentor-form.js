@@ -69,7 +69,6 @@ async function addMore(type) {
   if(type === "hooks"){
     hooksCount++;
     document.getElementById("hooks-remove").style.display = "block";
-
     document.getElementById("hooks-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBoxA' id = 'hooksEntryBox-${hooksCount}''>
             <input id = 'form-hooks-${hooksCount}' onkeypress = 'formUpdated()' type = 'text'/>
@@ -77,23 +76,23 @@ async function addMore(type) {
   } else if(type === "sat2"){
     sat2Count++;
     document.getElementById("sat2-remove").style.display = "block";
-    document.getElementById("sat2-AM").innerHTML += `
+    document.getElementById("sat2-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBoxA' id = 'sat2EntryBox-${sat2Count}'>
             <input id = 'form-sat2-subject-${sat2Count}' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Subject'/>
             <input id = 'form-sat2-score-${sat2Count}' onkeypress = 'formUpdated()' type = 'text' placeholder= 'Score'/>
-        </div>`;
+        </div>`);
   } else if(type === "ap"){
     apCount++;
     document.getElementById("ap-remove").style.display = "block";
-    document.getElementById("ap-AM").innerHTML += `
+    document.getElementById("ap-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBoxA' id = 'apEntryBox-${apCount}'>
             <input id = 'form-ap-subject-${apCount}' onkeypress = 'formUpdated()' type = 'text' placeholder='Subject'/>
             <input id = 'form-ap-score-${apCount}' onkeypress = 'formUpdated()' type = 'text' placeholder='Score'/>
-        </div>`;
+        </div>`);
   } else if(type === "honors"){
     honorsCount++;
     document.getElementById("honors-remove").style.display = "block";
-    document.getElementById("honors-AM").innerHTML += `
+    document.getElementById("honors-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBox' id = 'honorsEntryBox-${honorsCount}'>
             <p class = 'content-title'>Title</p>
             <input class = 'required' id = 'form-honors-title-${honorsCount}' onkeypress = 'formUpdated()'' onchange = "requiredCheck('form-honors-title-${honorsCount}')" type = 'text'/>
@@ -107,11 +106,11 @@ async function addMore(type) {
             </div>
             <p class = 'content-title'>Level of Recognition</p>
             <input class = 'required' id = 'form-honors-lvl-${honorsCount}' onclick = 'formUpdated()' onchange = "requiredCheck('form-honors-lvl-${honorsCount}')" type = 'text'/>
-        </div>`;
+        </div>`);
   } else if(type === "activities"){
     activitiesCount++;
     document.getElementById("activities-remove").style.display = "block";
-    document.getElementById("activities-AM").innerHTML += `
+    document.getElementById("activities-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBox' id = 'activitiesEntryBox-${activitiesCount}'>
             <p class = 'content-title'>Title</p>
             <input class = 'required' id = 'form-activities-type-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-type-${activitiesCount}')" type = 'text'/> 
@@ -131,22 +130,22 @@ async function addMore(type) {
             </div>
             <p class = 'content-title'>Time of Participation</p>
             <input class = 'required id = 'form-activities-time-${activitiesCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-activities-time-${activitiesCount}')" type = 'text'/>
-        </div>`;
+        </div>`);
   } else if(type === "essay"){
     essayCount++;
     document.getElementById("essay-remove").style.display = "block";
-    document.getElementById("essay-AM").innerHTML += `
+    document.getElementById("essay-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBox' id = 'essayEntryBox-${essayCount}'>
             <input class = 'required' id = 'form-essay-prompt-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('form-essay-prompt-${essayCount}')" type = 'text' placeholder='Prompt'/>
             <textarea class = 'essay required' id = 'essay-${essayCount}' onkeypress = 'formUpdated()' onchange = "requiredCheck('essay-${essayCount}')"></textarea>
-        </div>`;
+        </div>`);
   }else if(type === "additional"){
     additionalCount++;
     document.getElementById("additional-remove").style.display = "block";
-    document.getElementById("additional-AM").innerHTML += `
+    document.getElementById("additional-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBox' id = 'additionalEntryBox-${additionalCount}'>
             <textarea class = 'essay' id='additional-${additionalCount}' onkeypress = 'formUpdated()'></textarea>
-        </div>`;
+        </div>`);
   }
 }
 
