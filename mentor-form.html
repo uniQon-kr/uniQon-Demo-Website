@@ -181,13 +181,11 @@ permalink: /mentor-form
     <p class="addmore" id=additional-remove onclick="remove('additional')">Remove</p>
   </div>
   <div class = "message-wrapper">
-    <div class = "error" id = "invalid">Invalid Input</div>
-    <div class = "error" id = "noUpdate">Nothing to Update</div>
-    <div class = "error" id = "duplicatedNickname">Duplicated Nickname</div>
+    <div class = "error" id = "missing">Missing Input: Please Fill All Blanks</div>
     <div id = "success">Successfully Submitted</div>
   </div>
   <div class = "button-wrapper">
     <button class = "draftSave" onclick="saveDraft()">Save as Draft</button>
-    <button onclick="">Submit</button>
+    <button onclick="submit()">Submit</button>
   </div>
 </div>

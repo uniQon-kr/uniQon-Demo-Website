@@ -667,7 +667,7 @@ async function submit() {
             grad: document.getElementById("form-grad").value
         };
     } else {
-        // TODO: Error
+        document.getElementById("missing").style.display = "block";
         return;
     }
 
@@ -687,7 +687,7 @@ async function submit() {
             }
         }
     } else {
-        // TODO: error
+        document.getElementById("missing").style.display = "block";
         return;
     }
 
@@ -716,7 +716,7 @@ async function submit() {
                 };
             }
             if(essayReq) {
-                // TODO: error
+                document.getElementById("missing").style.display = "block";
                 return;
             }
         }
@@ -737,7 +737,7 @@ async function submit() {
         }
         // Check for Required Test
         if(!reqTest) {
-            // TODO: error
+            document.getElementById("missing").style.display = "block";
             return;
         }
 
@@ -748,7 +748,7 @@ async function submit() {
         // AP
 
     } else {
-        // TODO: error
+        document.getElementById("missing").style.display = "block";
         return;
     }
     
@@ -770,6 +770,8 @@ async function submit() {
             // renew token
             await renew();
         } else if(response.ok) {
+            document.getElementById("missing").style.display = "none";
+            document.getElementById("success").style.display = "block";
             draftSent = true;
         } else {
             alert("Server Error");
