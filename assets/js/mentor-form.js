@@ -1319,14 +1319,59 @@ async function submit() {
         return;
     }
 
-    // TODO Honors
+    // Honors
+    const honorsContents = [];
+    for(let i = 1; i <= honorsCount; i += 1) {
+        if(document.getElementById('form-honors-title-'+i).value !== "" &&
+            ((document.getElementById('h'+i+'-9').checked === true) || (document.getElementById('h'+i+'-10').checked === true) || (document.getElementById('h'+i+'-11').checked === true) || (document.getElementById('h'+i+'-12').checked === true) || (document.getElementById('h'+i+'-13').checked === true)) &&
+            document.getElementById('form-honors-lvl-'+i).value !== "") {
+            const honor = {
+                title: document.getElementById('form-honors-title-'+i).value,
+                gradeLevel: [],
+                levelOfRecognition: document.getElementById('form-honors-lvl-'+i).value
+            };
+            // Add Grade Level
+            if(document.getElementById('h'+i+'-9').checked === true) {
+                honor.gradeLevel.push(9);
+            }
+            if(document.getElementById('h'+i+'-10').checked === true) {
+                honor.gradeLevel.push(10);
+            }
+            if(document.getElementById('h'+i+'-11').checked === true) {
+                honor.gradeLevel.push(11);
+            }
+            if(document.getElementById('h'+i+'-12').checked === true) {
+                honor.gradeLevel.push(12);
+            }
+            if(document.getElementById('h'+i+'-13').checked === true) {
+                honor.gradeLevel.push(13);
+            }
+            // add to honorsContents
+            honorsContents.push(honor);
+        } else {
+            document.getElementById("missing").style.display = "block";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "none";
+            return;
+        }
+    }
+    if(honorsContents.length === 0) {
+        document.getElementById("missing").style.display = "block";
+        document.getElementById("duplicated").style.display = "none";
+        document.getElementById("success").style.display = "none";
+        document.getElementById("invalid").style.display = "none";
+        return;
+    } else {
+        request.honors = { contents: honorsContents };
+    }
 
     // TODO Activities
     // TODO Essay
 
     // Additional Information
     const additionalInfoContents = [];
-    for(let i = 1; i < additionalCount; i += 1) {
+    for(let i = 1; i <= additionalCount; i += 1) {
         if(document.getElementById('additional-'+i).value !== "") {
             additionalInfoContents.push(document.getElementById('additional-'+i).value);
         } else {
