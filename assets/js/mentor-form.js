@@ -522,8 +522,8 @@ async function loadDraft() {
                     requiredCheck("form-activities-position-1");
                 }
                 // organization
-                if(draft.activities.contents[0]['organization'] != null) {
-                    document.getElementById("form-activities-organization-1").value = draft.activities.contents[0]['organization'];
+                if(draft.activities.contents[0]['organizationName'] != null) {
+                    document.getElementById("form-activities-organization-1").value = draft.activities.contents[0]['organizationName'];
                     requiredCheck("form-activities-organization-1");
                 }
                 // description
@@ -567,8 +567,8 @@ async function loadDraft() {
                             document.getElementById("form-activities-position-"+activitiesCount).value = draft.activities.contents[activitiesCount-1]['position'];
                             requiredCheck("form-activities-position-" + activitiesCount);
                         }
-                        if(draft.activities.contents[activitiesCount-1]['organization'] != null) {
-                            document.getElementById("form-activities-organization-"+activitiesCount).value = draft.activities.contents[activitiesCount-1]['organization'];
+                        if(draft.activities.contents[activitiesCount-1]['organizationName'] != null) {
+                            document.getElementById("form-activities-organization-"+activitiesCount).value = draft.activities.contents[activitiesCount-1]['organizationName'];
                             requiredCheck("form-activities-organization-" + activitiesCount);
                         }
                         if(draft.activities.contents[activitiesCount-1]['description'] != null) {
@@ -1084,7 +1084,7 @@ async function saveDraft() {
                 contents: [],
             };
         }
-        activitiesIn.organization = document.getElementById("form-activities-organization-1").value;
+        activitiesIn.organizationName = document.getElementById("form-activities-organization-1").value;
     }
     // Description
     if (document.getElementById('form-activities-description-1').value !== "") {
@@ -1155,7 +1155,7 @@ async function saveDraft() {
             }
             // Organization
             if (document.getElementById('form-activities-organization-'+i).value !== ""){
-                activitiesIn.organization = document.getElementById("form-activities-organization-"+i).value;
+                activitiesIn.organizationName = document.getElementById("form-activities-organization-"+i).value;
             }
             // Description
             if (document.getElementById('form-activities-description-'+i).value !== ""){
@@ -1248,7 +1248,7 @@ async function saveDraft() {
         }
         for(i=2; i<=additionalCount; i++) {
             if (document.getElementById("additional-"+i).value !== ""){
-                request.essay.contents.push(document.getElementById("additional-"+i).value);
+                request.additionalInfo.contents.push(document.getElementById("additional-"+i).value);
             }
         }
     }
