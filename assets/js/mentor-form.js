@@ -1323,7 +1323,28 @@ async function submit() {
 
     // TODO Activities
     // TODO Essay
-    // TODO Additional Information    
+
+    // Additional Information
+    const additionalInfoContents = [];
+    for(let i = 1; i < additionalCount; i += 1) {
+        if(document.getElementById('additional-'+i).value !== "") {
+            additionalInfoContents.push(document.getElementById('additional-'+i).value);
+        } else {
+            if(i === 1 && additionalCount === 1) {
+                // First Form Empty
+                continue;
+            } else {
+                document.getElementById("missing").style.display = "block";
+                document.getElementById("duplicated").style.display = "none";
+                document.getElementById("success").style.display = "none";
+                document.getElementById("invalid").style.display = "none";
+                return;
+            }
+        }
+    }
+    if(additionalInfoContents.length !== 0) {
+        request.additionalInfo = { contents: additionalInfoContents };
+    }
 
     // sending document
     let draftSent = false;
@@ -1331,7 +1352,7 @@ async function submit() {
         const response = await fetch('https://api.uniqon.kr/document/application', {
             credentials: 'include',
             method: 'POST',
-            body: JSON.stringify(userInput),
+            body: JSON.stringify(request),
             headers: {
                 'Content-Type': 'application/json'
             }
