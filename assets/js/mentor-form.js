@@ -62,6 +62,7 @@ async function remove(type) {
         additionalCount--;
     } hideRemove();
 }
+
 async function addMore(type) {
   //add more textfields to its type
   if(type === "hooks"){
@@ -145,79 +146,6 @@ async function addMore(type) {
             <textarea class = 'essay' id='additional-${additionalCount}' onkeypress = 'formUpdated()'></textarea>
         </div>`;
   }
-}
-
-// function to load draft when the page first loaded
-async function loadDraft() {
-    const response = await fetch('https://api.uniqon.kr/document/application/draft', {
-        credentials: 'include',
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    const jsonResponse = await response.json();
-    const draft = jsonResponse.draft;
-    console.log(draft.college.name);
-
-    if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden: Not A Mentor")) {
-        // renew token
-        await renew();
-        if(localStorage.getItem("uniQonSignedIn")) {
-            await loadDraft();
-        }
-    } else if(response.ok) {
-        console.log(draft.college.name);
-        //fill up the text fields
-        document.getElementById("form-college").value = draft.college.name;
-        document.getElementById("form-college").style.backgroundColor = "#fcfcfc";
-        document.getElementById("form-major").value = draft.college.admittedMajor;
-        document.getElementById("form-grad").value = draft.college.grad;
-
-        document.getElementById("form-citizenship").value = draft.background.citizenship;
-        document.getElementById("form-gender").value = draft.background.gender;
-        document.getElementById("form-title").value = draft.background.ethnicity;
-
-        if(jsonResponse.background.hooks.length>1){
-            for(i=1; i<jsonResponse.background.hooks.length; i++){
-                hooksCount++;
-                addMore(hooks);
-            }
-        }
-    } else if(response.status !== 404) {
-
-    } else {
-        alert("Server Error!! Please Try Again!!");
-        location.href = "{{ site.baseurl }}/";
-    }
-}
-
-async function submit() {
-    // TODO: submit the form as final version
-
-    // TODO: renew token
-}
-
-async function saveDraft() {
-    // TODO: save as draft
-
-    // TODO: renew token
-
-    // clear timer after draft submit
-    clearInterval(updateTimer);
-    updateTimer = null;
-}
-
-// change isUpdated to true (on key press for all text field)
-function formUpdated() {
-    isUpdated = true;
-    
-    // When timer unsetted, set and start (3min)
-    if (updateTimer == null) {
-        updateTimer = setInterval(() => {
-            saveDraft();
-        }, 180000);
-    }
 }
 
 function requiredScore() {
@@ -311,6 +239,79 @@ function requiredCheckBox(inputFieldID) {
     } else {
         // unset background if at least one element is clicked
         document.getElementById(inputFieldID).style.backgroundColor = "#fcfcfc";
+    }
+}
+
+// function to load draft when the page first loaded
+async function loadDraft() {
+    const response = await fetch('https://api.uniqon.kr/document/application/draft', {
+        credentials: 'include',
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const jsonResponse = await response.json();
+
+    if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden: Not A Mentor")) {
+        // renew token
+        await renew();
+        if(localStorage.getItem("uniQonSignedIn")) {
+            await loadDraft();
+        }
+    } else if(response.ok) {
+        const draft = jsonResponse.draft;
+        
+        //fill up the text fields
+        document.getElementById("form-college").value = (draft.college.name ?? "");
+        requiredCheck("form-college");
+        document.getElementById("form-major").value = (draft.college.admittedMajor ?? "");
+        requiredCheck("form-major");
+        document.getElementById("form-grad").value = (draft.college.grad ?? "");
+        requiredCheck("form-grad");
+
+        document.getElementById("form-citizenship").value = draft.background.citizenship;
+        document.getElementById("form-gender").value = draft.background.gender;
+        document.getElementById("form-title").value = draft.background.ethnicity;
+
+        if(jsonResponse.background.hooks.length>1){
+            for(i=1; i<jsonResponse.background.hooks.length; i++){
+                hooksCount++;
+                addMore(hooks);
+            }
+        }
+    } else if(response.status !== 404) {
+        alert("Server Error!! Please Try Again!!");
+        location.href = "{{ site.baseurl }}/";
+    }
+}
+
+async function submit() {
+    // TODO: submit the form as final version
+
+    // TODO: renew token
+}
+
+async function saveDraft() {
+    // TODO: save as draft
+
+    // TODO: renew token
+
+    // clear timer after draft submit
+    clearInterval(updateTimer);
+    updateTimer = null;
+}
+
+// change isUpdated to true (on key press for all text field)
+function formUpdated() {
+    isUpdated = true;
+    
+    // When timer unsetted, set and start (3min)
+    if (updateTimer == null) {
+        updateTimer = setInterval(() => {
+            saveDraft();
+        }, 180000);
     }
 }
 
