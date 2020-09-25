@@ -597,9 +597,30 @@ async function loadDraft() {
     }
 }
 async function submit() {
-    // TODO: submit the form as final version
+    // TODO: Check Input
 
-    // TODO: renew token
+    // sending document
+    let draftSent = false;
+    while(!draftSent) {
+        const response = await fetch('https://api.uniqon.kr/document/application', {
+            credentials: 'include',
+            method: 'POST',
+            body: JSON.stringify(userInput),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const jsonResponse = await response.json();
+
+        if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
+            // renew token
+            await renew();
+        } else if(response.ok) {
+            draftSent = true;
+        } else {
+            alert("Server Error");
+        }
+    }
 }
 
 async function saveDraft() {
@@ -830,4 +851,4 @@ function formUpdated() {
 }
 
 loadDraft();
-hideRemove()
+hideRemove();
