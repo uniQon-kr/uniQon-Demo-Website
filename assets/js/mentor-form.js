@@ -276,12 +276,20 @@ async function loadDraft() {
         const draft = jsonResponse.draft;
         
         //fill up the text fields
-        document.getElementById("form-college").value = (draft.college.name ?? "");
-        requiredCheck("form-college");
-        document.getElementById("form-major").value = (draft.college.admittedMajor ?? "");
-        requiredCheck("form-major");
-        document.getElementById("form-grad").value = (draft.college.grad ?? "");
-        requiredCheck("form-grad");
+        if(draft.college != null) {
+            if(draft.college.name != null) {
+                document.getElementById("form-college").value = draft.college.name;
+                requiredCheck("form-college");
+            }
+            if(draft.college.admittedMajor != null) {
+                document.getElementById("form-major").value = draft.college.admittedMajor;
+                requiredCheck("form-major");
+            }
+            if(draft.college.grad != null) {
+                document.getElementById("form-grad").value = draft.college.grad;
+                requiredCheck("form-grad");
+            }
+        }
 
         document.getElementById("form-citizenship").value = draft.background.citizenship;
         document.getElementById("form-gender").value = draft.background.gender;
