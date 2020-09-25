@@ -64,14 +64,16 @@ async function remove(type) {
 }
 
 async function addMore(type) {
+    let elm;
   //add more textfields to its type
   if(type === "hooks"){
     hooksCount++;
     document.getElementById("hooks-remove").style.display = "block";
-    document.getElementById("hooks-AM").innerHTML += `
+
+    document.getElementById("hooks-AM").insertAdjacentHTML( 'beforeend',`
         <div class='entryBoxA' id = 'hooksEntryBox-${hooksCount}''>
             <input id = 'form-hooks-${hooksCount}' onkeypress = 'formUpdated()' type = 'text'/>
-        </div>`;
+        </div>`);
   } else if(type === "sat2"){
     sat2Count++;
     document.getElementById("sat2-remove").style.display = "block";
@@ -308,7 +310,6 @@ async function loadDraft() {
 
         if(draft.background.hooks.length>0){
             document.getElementById("form-hooks-1").value = draft.background.hooks[0];
-            console.log(draft.background.hooks[0]);
             
             if(draft.background.hooks.length>1){
                 while(hooksCount < draft.background.hooks.length){
