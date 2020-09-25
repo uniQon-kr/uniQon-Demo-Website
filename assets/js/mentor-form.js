@@ -705,7 +705,7 @@ async function saveDraft() {
         if(request.background.hooks == null){
             request.background.hooks = [];
         }
-        for(i=1;i<=hooksCount;i++){
+        for(let i=1;i<=hooksCount;i++){
           request.background.hooks.push(document.getElementById("form-hooks-"+i).value);
         }
     }
@@ -826,7 +826,7 @@ async function saveDraft() {
         if(request.academics.sat2 == null){
             request.academics.sat2 = [];
         }
-        for(i=1;i<=sat2Count;i++){
+        for(let i=1;i<=sat2Count;i++){
             const sat2Score = {};
             sat2Score[document.getElementById("form-sat2-subject-"+i).value] = document.getElementById("form-sat2-score-"+i).value;
             request.academics.sat2.push(sat2Score);
@@ -840,7 +840,7 @@ async function saveDraft() {
         if(request.academics.ap == null){
             request.academics.ap = [];
         }
-        for(i=1;i<=apCount;i++){
+        for(let i=1;i<=apCount;i++){
             const apScore = {};
             apScore[document.getElementById("form-ap-subject-"+i).value] = document.getElementById("form-ap-score-"+i).value;
             request.academics.ap.push(apScore);
@@ -903,7 +903,7 @@ async function saveDraft() {
                 contents: [],
             };
         }
-        for(i=2; i<=honorsCount; i++) {
+        for(let i=2; i<=honorsCount; i++) {
             honorsIn = {
                 gradeLevel: []
             };
@@ -1019,7 +1019,7 @@ async function saveDraft() {
                 contents: [],
             };
         }
-        for(i=2; i<=activitiesCount; i++) {
+        for(let i=2; i<=activitiesCount; i++) {
             activitiesIn = {
                 participationGradeLevel: []
             };
@@ -1094,7 +1094,7 @@ async function saveDraft() {
                 contents: [],
             };
         }
-        for(i=2; i<=essayCount; i++) {
+        for(let i=2; i<=essayCount; i++) {
             essayIn = {};
             // Prompt
             if (document.getElementById('form-essay-prompt-'+i).value !== ""){
@@ -1124,7 +1124,7 @@ async function saveDraft() {
                 contents: [],
             };
         }
-        for(i=2; i<=additionalCount; i++) {
+        for(let i=2; i<=additionalCount; i++) {
             if (document.getElementById("additional-"+i).value !== ""){
                 request.additionalInfo.contents.push(document.getElementById("additional-"+i).value);
             }
@@ -1195,7 +1195,7 @@ async function submit() {
         // Hooks
         if (document.getElementById('form-hooks-1').value !== ""){
             request.background.hooks = [];
-            for(i=1; i<=hooksCount; i++){
+            for(let i=1; i<=hooksCount; i++){
               request.background.hooks.push(document.getElementById("form-hooks-"+i).value);
             }
         }
@@ -1264,11 +1264,43 @@ async function submit() {
         }
 
         // Optional Tests
-        // TODO SAT2
+        // SAT2
         const sat2 = [];
+        for(let i = 1; i < sat2Count; i += 1) {
+            if(document.getElementById('form-sat2-subject-'+i).value !== "" && document.getElementById('form-sat2-score-'+i).value !== "") {
+                const sat2Score = {};
+                sat2Score[document.getElementById('form-sat2-subject-'+i).value] = document.getElementById('form-sat2-score-'+i).value;
+                sat2.push(sat2Score);
+            } else {
+                document.getElementById("missing").style.display = "block";
+                document.getElementById("duplicated").style.display = "none";
+                document.getElementById("success").style.display = "none";
+                document.getElementById("invalid").style.display = "none";
+                return;
+            }
+        }
+        if(sat2.length !== 0) {
+            request.academics.sat2 = sat2;
+        }
 
-        // TODO AP
-
+        // AP
+        const ap = [];
+        for(let i = 1; i < apCount; i += 1) {
+            if(document.getElementById('form-ap-subject-'+i).value !== "" && document.getElementById('form-ap-score-'+i).value !== "") {
+                const apScore = {};
+                apScore[document.getElementById('form-ap-subject-'+i).value] = document.getElementById('form-ap-score-'+i).value;
+                ap.push(apScore);
+            } else {
+                document.getElementById("missing").style.display = "block";
+                document.getElementById("duplicated").style.display = "none";
+                document.getElementById("success").style.display = "none";
+                document.getElementById("invalid").style.display = "none";
+                return;
+            }
+        }
+        if(ap.length !== 0) {
+            request.academics.ap = ap;
+        }
     } else {
         document.getElementById("missing").style.display = "block";
         document.getElementById("duplicated").style.display = "none";
