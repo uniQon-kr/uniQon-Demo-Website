@@ -779,6 +779,15 @@ async function saveDraft() {
             request.academics.act = {};
         }
         request.academics.act.writing = document.getElementByID("form-act-writing").value;
+    }if (document.getElementById('form-sat2-subject-1').value !== ""){
+        if(request.academics == null) {
+          request.academics = {};
+        }if(request.academics.sat2 == null){
+            request.academics.sat2 = [];
+        }
+        for(i=1;i<=sat2Count;i++){
+            request.academics.sat2[document.getElementByID("form-sat2-subject-"+i).value] = document.getElementByID("form-sat2-score-"+i).value;
+        }
     }
 
     const sat2subjects = document.getElementById('form-sat2-subject-1').value;
