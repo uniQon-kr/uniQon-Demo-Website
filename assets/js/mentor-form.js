@@ -1364,10 +1364,91 @@ async function submit() {
         return;
     } else {
         request.honors = { contents: honorsContents };
+        
+        request.honors.contents.push(honorscontents);
     }
 
-    // TODO Activities
+    //Activities
+    const activitiesContents = [];
+    for(let i = 1; i <= activitiesCount; i += 1) {
+        if(document.getElementById('form-activities-type-'+i).value !== "" &&
+            document.getElementById('form-activities-position-'+i).value !== "" &&
+            document.getElementById('form-activities-organization-'+i).value !== "" &&
+            document.getElementById('form-activities-description-'+i).value !== "" &&
+            ((document.getElementById('a'+i+'-9').checked === true) || (document.getElementById('a'+i+'-10').checked === true) || (document.getElementById('a'+i+'-11').checked === true) || (document.getElementById('a'+i+'-12').checked === true) || (document.getElementById('a'+i+'-13').checked === true)) &&
+            document.getElementById('form-activities-time-'+i).value !== "") {
+            const activity = {
+                type: document.getElementById('form-activities-type-'+i).value,
+                position: document.getElementById('form-activities-position-'+i).value,
+                organizationName: document.getElementById('form-activities-organization-'+i).value,
+                description: document.getElementById('form-activities-description-'+i).value,
+                participationGradeLevel: [],
+                timeOfParticipation: document.getElementById('form-activities-time-'+i).value
+            };
+            // Add Grade Level
+            if(document.getElementById('a'+i+'-9').checked === true) {
+                activity.participationGradeLevel.push(9);
+            }
+            if(document.getElementById('a'+i+'-10').checked === true) {
+                activity.participationGradeLevel.push(10);
+            }
+            if(document.getElementById('a'+i+'-11').checked === true) {
+                activity.participationGradeLevel.push(11);
+            }
+            if(document.getElementById('a'+i+'-12').checked === true) {
+                activity.participationGradeLevel.push(12);
+            }
+            if(document.getElementById('a'+i+'-13').checked === true) {
+                activity.participationGradeLevel.push(13);
+            }
+            // add to activitiesContents
+            activitiesContents.push(activity);
+        } else {
+            document.getElementById("missing").style.display = "block";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "none";
+            return;
+        }
+    }
+    if(honorsContents.length === 0) {
+        document.getElementById("missing").style.display = "block";
+        document.getElementById("duplicated").style.display = "none";
+        document.getElementById("success").style.display = "none";
+        document.getElementById("invalid").style.display = "none";
+        return;
+    } else {
+        request.activities = { contents: activitiesContents };
+    }
+    
     // TODO Essay
+    const essayContents = [];
+    for(let i = 1; i <= essayCount; i += 1) {
+        if(document.getElementById('form-essay-prompt-'+i).value !== "" &&
+            document.getElementById('form-essay-statement-'+i).value !== "") {
+            const essay = {
+                prompt: document.getElementById('form-essay-prompt-'+i).value,
+                statement: document.getElementById('form-essay-statement-'+i).value
+            };
+            // add to essayContents
+            essayContents.push(essay);
+        } else {
+            document.getElementById("missing").style.display = "block";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "none";
+            return;
+        }
+    }
+    if(essayContents.length === 0) {
+        document.getElementById("missing").style.display = "block";
+        document.getElementById("duplicated").style.display = "none";
+        document.getElementById("success").style.display = "none";
+        document.getElementById("invalid").style.display = "none";
+        return;
+    } else {
+        request.essay = { contents: essayContents };
+    }
 
     // Additional Information
     const additionalInfoContents = [];
