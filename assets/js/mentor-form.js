@@ -295,16 +295,15 @@ async function loadDraft() {
         document.getElementById("form-gender").value = draft.background.gender;
         document.getElementById("form-title").value = draft.background.ethnicity;
 
-        document.getElementById("form-hooks-1").value = draft.background.hooks[0];
         if(draft.background.hooks.length>0){
             document.getElementById("form-hooks-1").value = draft.background.hooks[0];
+            console.log(draft.background.hooks[0]);
+            
             if(draft.background.hooks.length>1){
-                for(i=1; i < draft.background.hooks.length; i++){
+                while(hooksCount < draft.background.hooks.length){
                     addMore('hooks');
-                    document.getElementById("form-hooks-" + i).value = draft.background.hooks[i-1];
-                    hooksCount++;
+                    document.getElementById("form-hooks-"+(hooksCount)).value = draft.background.hooks[hooksCount-1];
                 }
-                hooksCount--;
             }
         }
     } else if(response.status !== 404) {
