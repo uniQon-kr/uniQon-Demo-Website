@@ -291,9 +291,20 @@ async function loadDraft() {
             }
         }
 
-        document.getElementById("form-citizenship").value = draft.background.citizenship;
-        document.getElementById("form-gender").value = draft.background.gender;
-        document.getElementById("form-title").value = draft.background.ethnicity;
+        if(draft.background != null) {
+            if(draft.background.citizenship != null) {
+                document.getElementById("form-citizenship").value = draft.background.citizenship;
+                requiredCheck("form-citizenship");
+            }
+            if(draft.background.gender != null) {
+                document.getElementById("form-gender").value = draft.background.gender;
+                requiredCheck("form-gender");
+            }
+            if(draft.background.ethnicity != null) {
+                document.getElementById("form-title").value = draft.background.ethnicity;
+                requiredCheck("form-title");
+            }
+        }
 
         if(draft.background.hooks.length>0){
             document.getElementById("form-hooks-1").value = draft.background.hooks[0];
