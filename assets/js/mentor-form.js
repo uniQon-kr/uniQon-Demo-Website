@@ -603,18 +603,21 @@ async function submit() {
 }
 
 async function saveDraft() {
+    // Generating Document
     const request = {};
     if(document.getElementByID("form-college").value !== "") {
         if(request.college == null) {
           request.college = {};
         }
         request.college.name = document.getElementByID("form-college").value;
-    }if (document.getElementById('form-major').value !== ""){
+    }
+    if (document.getElementById('form-major').value !== ""){
         if(request.college == null) {
           request.college = {};
         }
         request.college.admittedMajor = document.getElementByID("form-major").value;
-    }if (document.getElementById('form-grad').value !== ""){
+    }
+    if (document.getElementById('form-grad').value !== ""){
         if(request.college == null) {
           request.college = {};
         }
@@ -626,20 +629,24 @@ async function saveDraft() {
           request.background = {};
         }
         request.background.citizenship = document.getElementByID("form-citizenship").value;
-    }if (document.getElementById('form-gender').value !== ""){
+    }
+    if (document.getElementById('form-gender').value !== ""){
         if(request.background == null) {
           request.background = {};
         }
         request.background.gender = document.getElementByID("form-gender").value;
-    }if (document.getElementById('form-ethnicity').value !== ""){
+    }
+    if (document.getElementById('form-ethnicity').value !== ""){
         if(request.background == null) {
           request.background = {};
         }
         request.background.ethnicity = document.getElementByID("form-ethnicity").value;
-    }if (document.getElementById('form-hooks-1').value !== ""){
+    }
+    if (document.getElementById('form-hooks-1').value !== ""){
         if(request.background == null) {
           request.background = {};
-        } if(request.background.hooks == null){
+        }
+        if(request.background.hooks == null){
             request.background.hooks = [];
         }
         for(i=1;i<=hooksCount;i++){
@@ -652,79 +659,102 @@ async function saveDraft() {
           request.academics = {};
         }
         request.academics.weightedGPA = document.getElementByID("form-gpa").value;
-    }if (document.getElementById('form-sat1-english').value !== ""){
+    }
+    if (document.getElementById('form-sat1-english').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.sat1 == null){
+        }
+        if(request.academics.sat1 == null){
             request.academics.sat1 = {};
         }
         request.academics.sat1.readingWriting = document.getElementByID("form-sat1-english").value;
-    }if ( document.getElementById('form-sat1-math').value !== ""){
+    }
+    if ( document.getElementById('form-sat1-math').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.sat1 == null){
+        }
+        if(request.academics.sat1 == null){
             request.academics.sat1 = {};
         }
         request.academics.sat1.math = document.getElementByID("form-sat1-math").value;
-    }if (document.getElementById('form-sat1-reading').value !== ""){
+    }
+    if (document.getElementById('form-sat1-reading').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.sat1 == null){
+        }
+        if(request.academics.sat1 == null){
             request.academics.sat1 = {};
-        }if(request.academics.sat1.essay == null){
+        }
+        if(request.academics.sat1.essay == null){
             request.academics.sat1.essay = {};
         }
         request.academics.sat1.essay.reading = document.getElementByID("form-sat1-reading").value;
-    }if (document.getElementById('form-sat1-analysis').value !== ""){
+    }
+    if (document.getElementById('form-sat1-analysis').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.sat1 == null){
+        }
+        if(request.academics.sat1 == null){
             request.academics.sat1 = {};
-        }if(request.academics.sat1.essay == null){
+        }
+        if(request.academics.sat1.essay == null){
             request.academics.sat1.essay = {};
         }
         request.academics.sat1.essay.analysis = document.getElementByID("form-sat1-analysis").value;
-    }if (document.getElementById('form-sat1-writing').value !== ""){
+    }
+    if (document.getElementById('form-sat1-writing').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.sat1 == null){
+        }
+        if(request.academics.sat1 == null){
             request.academics.sat1 = {};
-        }if(request.academics.sat1.essay == null){
+        }
+        if(request.academics.sat1.essay == null){
             request.academics.sat1.essay = {};
         }
         request.academics.sat1.essay.writing = document.getElementByID("form-sat1-writing").value;
-    }if (document.getElementById('form-act-english').value !== ""){
+    }
+    if (document.getElementById('form-act-english').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.act == null){
+        }
+        if(request.academics.act == null){
             request.academics.act = {};
         }
         request.academics.act.english = document.getElementByID("form-act-english").value;
-    }if (document.getElementById('form-act-math').value !== ""){
+    }
+    if (document.getElementById('form-act-math').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.act == null){
+        }
+        if(request.academics.act == null){
             request.academics.act = {};
         }
         request.academics.act.math = document.getElementByID("form-act-math").value;
-    }if (document.getElementById('form-act-reading').value !== ""){
+    }
+    if (document.getElementById('form-act-reading').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.act == null){
+        }
+        if(request.academics.act == null){
             request.academics.act = {};
         }
         request.academics.act.reading = document.getElementByID("form-act-reading").value;
-    }if (document.getElementById('form-act-science').value !== ""){
+    }
+    if (document.getElementById('form-act-science').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.act == null){
+        }
+        if(request.academics.act == null){
             request.academics.act = {};
         }
         request.academics.act.science = document.getElementByID("form-act-science").value;
-    }if (document.getElementById('form-act-writing').value !== ""){
+    }
+    if (document.getElementById('form-act-writing').value !== ""){
         if(request.academics == null) {
-          request.academics = {};
-        }if(request.academics.act == null){
+            request.academics = {};
+        }
+        if(request.academics.act == null){
             request.academics.act = {};
         }
         request.academics.act.writing = document.getElementByID("form-act-writing").value;
@@ -769,34 +799,31 @@ async function saveDraft() {
 
     const additionalInfo = document.getElementById('additional-1').value;
 
-    // if properly filled in, send the username and password inputs to the auth API
-    const response = await fetch('https://api.uniqon.kr/document/application/draft', {
-        credentials: 'include',
-        method: 'POST',
-        body: JSON.stringify(userInput),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    const jsonResponse = await response.json();
-    const draft = jsonResponse.draft;
+    // sending draft
+    let draftSent = false;
+    while(!draftSent) {
+        const response = await fetch('https://api.uniqon.kr/document/application/draft', {
+            credentials: 'include',
+            method: 'POST',
+            body: JSON.stringify(userInput),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const jsonResponse = await response.json();
 
-    if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
-        // renew token
-        await renew();
-        if(localStorage.getItem("uniQonSignedIn")) {
-            await loadDraft();
+        if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
+            // renew token
+            await renew();
+        } else if(response.ok) {
+            draftSent = true;
+            // clear timer after draft submit
+            clearInterval(updateTimer);
+            updateTimer = null;
+        } else {
+            alert("Server Error");
         }
-    } else if(response.ok) {
-        const draft = jsonResponse.draft;
     }
-    // TODO: save as draft
-
-    // TODO: renew token
-
-    // clear timer after draft submit
-    clearInterval(updateTimer);
-    updateTimer = null;
 }
 
 // change isUpdated to true (on key press for all text field)
