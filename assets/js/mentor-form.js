@@ -574,12 +574,8 @@ async function loadDraft() {
                 }
             }
 
-        }
-        
-    }else if(response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor"){
-        alert("Only Mentors Can Submit a Form");
-        location.href = "{{ site.baseurl }}/";
-    }else if(response.status !== 404) {
+        }   
+    } else if(response.status !== 404) {
         alert("Server Error!! Please Try Again!!");
         location.href = "{{ site.baseurl }}/";
     }
