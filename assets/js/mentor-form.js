@@ -655,130 +655,6 @@ async function loadDraft() {
     }
 }
 
-async function submit() {
-    // TODO: Check Input
-    const request = {};
-
-    // College/University Information
-    if(document.getElementById("form-college").value !== "" && document.getElementById('form-major').value !== "" && document.getElementById('form-grad').value !== "") {
-        request.college = {
-            name: document.getElementById("form-college").value,
-            admittedMajor: document.getElementById("form-major").value,
-            grad: document.getElementById("form-grad").value
-        };
-    } else {
-        document.getElementById("missing").style.display = "block";
-        return;
-    }
-
-    // Background
-    if (document.getElementById('form-citizenship').value !== "" && document.getElementById('form-gender').value !== "" && document.getElementById('form-ethnicity').value !== "") {
-        request.background = {
-            citizenship: document.getElementById("form-citizenship").value,
-            gender: document.getElementById("form-gender").value,
-            ethnicity: document.getElementById("form-ethnicity").value
-        };
-
-        // Hooks
-        if (document.getElementById('form-hooks-1').value !== ""){
-            request.background.hooks = [];
-            for(i=1; i<=hooksCount; i++){
-              request.background.hooks.push(document.getElementById("form-hooks-"+i).value);
-            }
-        }
-    } else {
-        document.getElementById("missing").style.display = "block";
-        return;
-    }
-
-    // Academics
-    if (document.getElementById('form-gpa').value !== ""){
-        request.academics = { weightedGPA: document.getElementById("form-gpa").value };
-
-        // Required Test
-        let reqTest = false;
-        // SAT
-        if(document.getElementById('form-sat1-english').value !== "" && document.getElementById('form-sat1-math').value !== "") {
-            reqTest = true;
-            request.academics.sat1 = {
-                readingWriting: document.getElementById("form-sat1-english").value,
-                math: document.getElementById("form-sat1-math").value
-            };
-
-            // SAT Essay
-            let essayReq = (document.getElementById('form-sat1-reading').value !== "" || document.getElementById('form-sat1-analysis').value !== "" || document.getElementById('form-sat1-writing').value !== "");
-            if(document.getElementById('form-sat1-reading').value !== "" && document.getElementById('form-sat1-analysis').value !== "" && document.getElementById('form-sat1-writing').value !== "") {
-                essayReq = false;
-                req.academics.sat1.essay = {
-                    reading: document.getElementById("form-sat1-reading").value,
-                    analysis: document.getElementById("form-sat1-analysis").value,
-                    writing: document.getElementById("form-sat1-writing").value
-                };
-            }
-            if(essayReq) {
-                document.getElementById("missing").style.display = "block";
-                return;
-            }
-        }
-        // ACT
-        if(document.getElementById('form-act-english').value !== "" && document.getElementById('form-act-math').value !== "" && document.getElementById('form-act-reading').value !== "" && document.getElementById('form-act-science').value !== "") {
-            reqTest = true;
-            request.academics.act = {
-                english: document.getElementById("form-act-english").value,
-                math: document.getElementById("form-act-math").value,
-                reading: document.getElementById("form-act-reading").value,
-                science: document.getElementById("form-act-science").value
-            };
-
-            // ACT Writing
-            if(document.getElementById('form-act-writing').value !== "") {
-                request.academics.act.writing = document.getElementById("form-act-writing").value;
-            }
-        }
-        // Check for Required Test
-        if(!reqTest) {
-            document.getElementById("missing").style.display = "block";
-            return;
-        }
-
-        // Optional Tests
-        // SAT2
-        const sat2 = [];
-
-        // AP
-
-    } else {
-        document.getElementById("missing").style.display = "block";
-        return;
-    }
-    
-
-    // sending document
-    let draftSent = false;
-    while(!draftSent) {
-        const response = await fetch('https://api.uniqon.kr/document/application', {
-            credentials: 'include',
-            method: 'POST',
-            body: JSON.stringify(userInput),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const jsonResponse = await response.json();
-
-        if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
-            // renew token
-            await renew();
-        } else if(response.ok) {
-            document.getElementById("missing").style.display = "none";
-            document.getElementById("success").style.display = "block";
-            draftSent = true;
-        } else {
-            alert("Server Error");
-        }
-    }
-}
-
 async function saveDraft() {
     // Generating Document
     const request = {};
@@ -1276,8 +1152,174 @@ async function saveDraft() {
             // clear timer after draft submit
             clearInterval(updateTimer);
             updateTimer = null;
+        } else if(response.status == 400 && jsonResponse.error === "Invalid Input") {
+            document.getElementById("missing").style.display = "none";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "block";
+            location.reload();
         } else {
+            // TODO: Invalid Input
             alert("Server Error");
+            location.reload();
+        }
+    }
+}
+
+async function submit() {
+    // TODO: Check Input
+    const request = {};
+
+    // College/University Information
+    if(document.getElementById("form-college").value !== "" && document.getElementById('form-major').value !== "" && document.getElementById('form-grad').value !== "") {
+        request.college = {
+            name: document.getElementById("form-college").value,
+            admittedMajor: document.getElementById("form-major").value,
+            grad: document.getElementById("form-grad").value
+        };
+    } else {
+        document.getElementById("missing").style.display = "block";
+        document.getElementById("duplicated").style.display = "none";
+        document.getElementById("success").style.display = "none";
+        document.getElementById("invalid").style.display = "none";
+        return;
+    }
+
+    // Background
+    if (document.getElementById('form-citizenship').value !== "" && document.getElementById('form-gender').value !== "" && document.getElementById('form-ethnicity').value !== "") {
+        request.background = {
+            citizenship: document.getElementById("form-citizenship").value,
+            gender: document.getElementById("form-gender").value,
+            ethnicity: document.getElementById("form-ethnicity").value
+        };
+
+        // Hooks
+        if (document.getElementById('form-hooks-1').value !== ""){
+            request.background.hooks = [];
+            for(i=1; i<=hooksCount; i++){
+              request.background.hooks.push(document.getElementById("form-hooks-"+i).value);
+            }
+        }
+    } else {
+        document.getElementById("missing").style.display = "block";
+        document.getElementById("duplicated").style.display = "none";
+        document.getElementById("success").style.display = "none";
+        document.getElementById("invalid").style.display = "none";
+        return;
+    }
+
+    // Academics
+    if (document.getElementById('form-gpa').value !== ""){
+        request.academics = { weightedGPA: document.getElementById("form-gpa").value };
+
+        // Required Test
+        let reqTest = false;
+        // SAT
+        if(document.getElementById('form-sat1-english').value !== "" && document.getElementById('form-sat1-math').value !== "") {
+            reqTest = true;
+            request.academics.sat1 = {
+                readingWriting: document.getElementById("form-sat1-english").value,
+                math: document.getElementById("form-sat1-math").value
+            };
+
+            // SAT Essay
+            let essayReq = (document.getElementById('form-sat1-reading').value !== "" || document.getElementById('form-sat1-analysis').value !== "" || document.getElementById('form-sat1-writing').value !== "");
+            if(document.getElementById('form-sat1-reading').value !== "" && document.getElementById('form-sat1-analysis').value !== "" && document.getElementById('form-sat1-writing').value !== "") {
+                essayReq = false;
+                req.academics.sat1.essay = {
+                    reading: document.getElementById("form-sat1-reading").value,
+                    analysis: document.getElementById("form-sat1-analysis").value,
+                    writing: document.getElementById("form-sat1-writing").value
+                };
+            }
+            if(essayReq) {
+                document.getElementById("missing").style.display = "block";
+                document.getElementById("duplicated").style.display = "none";
+                document.getElementById("success").style.display = "none";
+                document.getElementById("invalid").style.display = "none";
+                return;
+            }
+        }
+        // ACT
+        if(document.getElementById('form-act-english').value !== "" && document.getElementById('form-act-math').value !== "" && document.getElementById('form-act-reading').value !== "" && document.getElementById('form-act-science').value !== "") {
+            reqTest = true;
+            request.academics.act = {
+                english: document.getElementById("form-act-english").value,
+                math: document.getElementById("form-act-math").value,
+                reading: document.getElementById("form-act-reading").value,
+                science: document.getElementById("form-act-science").value
+            };
+
+            // ACT Writing
+            if(document.getElementById('form-act-writing').value !== "") {
+                request.academics.act.writing = document.getElementById("form-act-writing").value;
+            }
+        }
+        // Check for Required Test
+        if(!reqTest) {
+            document.getElementById("missing").style.display = "block";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "none";
+            return;
+        }
+
+        // Optional Tests
+        // SAT2
+        const sat2 = [];
+
+        // AP
+
+    } else {
+        document.getElementById("missing").style.display = "block";
+        document.getElementById("duplicated").style.display = "none";
+        document.getElementById("success").style.display = "none";
+        document.getElementById("invalid").style.display = "none";
+        return;
+    }
+    
+
+    // sending document
+    let draftSent = false;
+    while(!draftSent) {
+        const response = await fetch('https://api.uniqon.kr/document/application', {
+            credentials: 'include',
+            method: 'POST',
+            body: JSON.stringify(userInput),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const jsonResponse = await response.json();
+
+        if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
+            // renew token
+            await renew();
+        } else if(response.ok) {
+            document.getElementById("missing").style.display = "none";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "block";
+            document.getElementById("invalid").style.display = "none";
+            draftSent = true;
+        } else if(response.status === 400 && jsonResponse.error === "Duplicated Application Found") {
+            document.getElementById("missing").style.display = "none";
+            document.getElementById("duplicated").style.display = "block";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "none";
+            await saveDraft();
+            location.reload();
+            // TODO: Invalid
+        } else if(response.status === 400 && jsonResponse.error === "Invalid Input") {
+            document.getElementById("missing").style.display = "none";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "block";
+            await saveDraft();
+            location.reload();
+        } else {
+            await saveDraft();
+            alert("Server Error!!");
+            location.reload();
         }
     }
 }
