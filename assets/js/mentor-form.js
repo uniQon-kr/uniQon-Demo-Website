@@ -782,21 +782,134 @@ async function saveDraft() {
     }if (document.getElementById('form-sat2-subject-1').value !== ""){
         if(request.academics == null) {
           request.academics = {};
-        }if(request.academics.sat2 == null){
+        }
+        if(request.academics.sat2 == null){
             request.academics.sat2 = [];
         }
         for(i=1;i<=sat2Count;i++){
-            request.academics.sat2[document.getElementByID("form-sat2-subject-"+i).value] = document.getElementByID("form-sat2-score-"+i).value;
+            const sat2Score = {};
+            score[document.getElementByID("form-sat2-subject-"+i).value] = document.getElementByID("form-sat2-score-"+i).value;
+            request.academics.sat2.push(score);
+        }
+    }if (document.getElementById('form-sat2-ap-1').value !== ""){
+        if(request.academics == null) {
+          request.academics = {};
+        }
+        if(request.academics.ap == null){
+            request.academics.ap = [];
+        }
+        for(i=1;i<=apCount;i++){
+            const apScore = {};
+            score[document.getElementByID("form-ap-subject-"+i).value] = document.getElementByID("form-ap-score-"+i).value;
+            request.academics.ap.push(score);
+        }
+    }
+    
+    const honorsIn = {};
+    if (document.getElementById('form-honors-title-1').value !== ""){
+        if(request.academics == null) {
+        request.academics = {};
+        }
+        if(request.academics.honors == null){
+            request.academics.honors = {};
+        }
+        if(request.academics.honors.contents == null){
+            request.academics.honors.contents = [];
+        }
+        honorsIn.title = document.getElementByID("form-honors-title-1").value;
+    }
+    if (document.getElementById('h1-9').checked 
+    || document.getElementById('h1-10').checked 
+    || document.getElementById('h1-11').checked 
+    || document.getElementById('h1-12').checked 
+    || document.getElementById('h1-13').checked){
+        if(request.academics == null) {
+            request.academics = {};
+        }
+        if(request.academics.honors == null){
+            request.academics.honors = {};
+        }
+        if(request.academics.honors.contents == null){
+            request.academics.honors.contents = [];
+        }
+        if(honorsIn.gradeLevel == null){
+            honorsIn.gradeLevel = [];
+        }
+        
+        if(document.getElementById('h1-9').checked){
+            honorsIn.gradeLevel.push(9);
+        }
+        if(document.getElementById('h1-10').checked){
+            honorsIn.gradeLevel.push(10);
+        }
+        if(document.getElementById('h1-11').checked){
+            honorsIn.gradeLevel.push(11);
+        }
+        if(document.getElementById('h1-12').checked){
+            honorsIn.gradeLevel.push(12);
+        }
+        if(document.getElementById('h1-13').checked){
+            honorsIn.gradeLevel.push(13);
+        }
+    }
+    if (document.getElementById('form-honors-lvl-1').value !== ""){
+        if(request.academics == null) {
+        request.academics = {};
+        }
+        if(request.academics.honors == null){
+            request.academics.honors = {};
+        }
+        if(request.academics.honors.contents == null){
+            request.academics.honors.contents = [];
+        }
+        honorsIn.title = document.getElementByID("form-honors-lvl-1").value;
+    }
+    if(honorsCount>1){
+        if(request.academics == null) {
+        request.academics = {};
+        }
+        if(request.academics.honors == null){
+            request.academics.honors = {};
+        }
+        if(request.academics.honors.contents == null){
+            request.academics.honors.contents = [];
+        }
+        if(honorsIn.gradeLevel == null){
+            honorsIn.gradeLevel = [];
+        }
+        request.academics.honors.contents.push(honorsIn);
+        for(i=1; i<=honorsCount;i++){
+            honorsIn = {};
+            if (document.getElementById('form-honors-title-'+i).value !== ""){
+                honorsIn.title = document.getElementByID("form-honors-title-"+i).value;
+            }
+            if (document.getElementById("form-honors-title-"+i).value !== ""){
+                honorsIn.title = document.getElementByID("form-honors-title"+i).value;
+            }
+            if(document.getElementById("h"+i+"-9").checked){
+                honorsIn.gradeLevel.push(9);
+            }
+            if(document.getElementById("h"+i+"-10").checked){
+                honorsIn.gradeLevel.push(10);
+            }
+            if(document.getElementById("h"+i+"-11").checked){
+                honorsIn.gradeLevel.push(11);
+            }
+            if(document.getElementById("h"+i+"-12").checked){
+                honorsIn.gradeLevel.push(12);
+            }
+            if(document.getElementById("h"+i+"-13").checked){
+                honorsIn.gradeLevel.push(13);
+            }
+            }
+            if (document.getElementById("form-honors-lvl-"+i).value !== ""){
+                honorsIn.title = document.getElementByID("form-honors-lvl-"+i).value;
+            }
+            request.academics.honors.contents.push(honorsIn);
         }
     }
 
-    const sat2subjects = document.getElementById('form-sat2-subject-1').value;
-    const sat2Scores = document.getElementById('form-sat2-score-1').value;
 
-    const apSubjects = document.getElementById('form-ap-subject-1').value;
-    const apNicknames = document.getElementById('form-ap-score-1').value;
-
-    const honorTitles = document.getElementById('form-honors-title-1').value;
     const password = document.getElementById('h1-9').value;
     const password = document.getElementById('h1-10').value;
     const password = document.getElementById('h1-11').value;
