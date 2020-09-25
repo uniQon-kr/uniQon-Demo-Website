@@ -583,8 +583,6 @@ async function loadDraft() {
         alert("Only Mentors Can Submit a Form");
         location.href = "{{ site.baseurl }}/";
     }else if(response.status !== 404) {
-        alert("No draft");
-    } else {
         alert("Server Error!! Please Try Again!!");
         location.href = "{{ site.baseurl }}/";
     }
