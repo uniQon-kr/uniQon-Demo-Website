@@ -157,6 +157,8 @@ async function loadDraft() {
         }
     });
     const jsonResponse = await response.json();
+    const draft = jsonResponse.draft;
+    console.log(draft.college.name);
 
     if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden: Not A Mentor")) {
         // renew token
@@ -165,8 +167,26 @@ async function loadDraft() {
             await loadDraft();
         }
     } else if(response.ok) {
-        // TODO: retrieve elements
+        console.log(draft.college.name);
+        //fill up the text fields
+        document.getElementById("form-college").value = draft.college.name;
+        document.getElementById("form-college").style.backgroundColor = "#fcfcfc";
+        document.getElementById("form-major").value = draft.college.admittedMajor;
+        document.getElementById("form-grad").value = draft.college.grad;
+
+        document.getElementById("form-citizenship").value = draft.background.citizenship;
+        document.getElementById("form-gender").value = draft.background.gender;
+        document.getElementById("form-title").value = draft.background.ethnicity;
+
+        if(jsonResponse.background.hooks.length>1){
+            for(i=1; i<jsonResponse.background.hooks.length; i++){
+                hooksCount++;
+                addMore(hooks);
+            }
+        }
     } else if(response.status !== 404) {
+
+    } else {
         alert("Server Error!! Please Try Again!!");
         location.href = "{{ site.baseurl }}/";
     }
