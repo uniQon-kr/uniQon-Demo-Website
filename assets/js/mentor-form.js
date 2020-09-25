@@ -148,22 +148,6 @@ async function addMore(type) {
   }
 }
 
-async function submit() {
-    // TODO: submit the form as final version
-
-    // TODO: renew token
-}
-
-async function saveDraft() {
-    // TODO: save as draft
-
-    // TODO: renew token
-
-    // clear timer after draft submit
-    clearInterval(updateTimer);
-    updateTimer = null;
-}
-
 // change isUpdated to true (on key press for all text field)
 function formUpdated() {
     isUpdated = true;
