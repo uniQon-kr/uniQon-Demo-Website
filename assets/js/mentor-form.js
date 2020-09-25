@@ -1266,17 +1266,22 @@ async function submit() {
         // Optional Tests
         // SAT2
         const sat2 = [];
-        for(let i = 1; i < sat2Count; i += 1) {
+        for(let i = 1; i <= sat2Count; i += 1) {
             if(document.getElementById('form-sat2-subject-'+i).value !== "" && document.getElementById('form-sat2-score-'+i).value !== "") {
                 const sat2Score = {};
                 sat2Score[document.getElementById('form-sat2-subject-'+i).value] = document.getElementById('form-sat2-score-'+i).value;
                 sat2.push(sat2Score);
             } else {
-                document.getElementById("missing").style.display = "block";
-                document.getElementById("duplicated").style.display = "none";
-                document.getElementById("success").style.display = "none";
-                document.getElementById("invalid").style.display = "none";
-                return;
+                if(i === 1 && document.getElementById('form-sat2-subject-'+i).value === "" && document.getElementById('form-sat2-score-'+i).value === "" && sat2Count === 1) {
+                    // When both field is empty for the first form
+                    continue;
+                } else {
+                    document.getElementById("missing").style.display = "block";
+                    document.getElementById("duplicated").style.display = "none";
+                    document.getElementById("success").style.display = "none";
+                    document.getElementById("invalid").style.display = "none";
+                    return;
+                }
             }
         }
         if(sat2.length !== 0) {
@@ -1285,17 +1290,22 @@ async function submit() {
 
         // AP
         const ap = [];
-        for(let i = 1; i < apCount; i += 1) {
+        for(let i = 1; i <= apCount; i += 1) {
             if(document.getElementById('form-ap-subject-'+i).value !== "" && document.getElementById('form-ap-score-'+i).value !== "") {
                 const apScore = {};
                 apScore[document.getElementById('form-ap-subject-'+i).value] = document.getElementById('form-ap-score-'+i).value;
                 ap.push(apScore);
             } else {
-                document.getElementById("missing").style.display = "block";
-                document.getElementById("duplicated").style.display = "none";
-                document.getElementById("success").style.display = "none";
-                document.getElementById("invalid").style.display = "none";
-                return;
+                if(i === 1 && document.getElementById('form-ap-subject-'+i).value === "" && document.getElementById('form-ap-score-'+i).value === "" && apCount === 1) {
+                    // When both field is empty for the first form
+                    continue;
+                } else {
+                    document.getElementById("missing").style.display = "block";
+                    document.getElementById("duplicated").style.display = "none";
+                    document.getElementById("success").style.display = "none";
+                    document.getElementById("invalid").style.display = "none";
+                    return;
+                }
             }
         }
         if(ap.length !== 0) {
@@ -1310,6 +1320,7 @@ async function submit() {
     }
 
     // TODO Honors
+
     // TODO Activities
     // TODO Essay
     // TODO Additional Information    
