@@ -333,15 +333,12 @@ async function loadDraft() {
                 if(Object.keys(draft.academics.sat1).length === 3){
                     if(draft.academics.sat1.essay.reading != null){
                         document.getElementById("form-sat1-reading").value = draft.academics.sat1.essay.reading;
-                        requiredCheck("form-sat1-reading");
                     }
                     if(draft.academics.sat1.essay.analysis != null){
                         document.getElementById("form-sat1-analysis").value = draft.academics.sat1.essay.analysis;
-                        requiredCheck("form-sat1-analysis");
                     }
                     if(draft.academics.sat1.essay.writing != null){
                         document.getElementById("form-sat1-writing").value = draft.academics.sat1.essay.writing;
-                        requiredCheck("form-sat1-writing");
                     }
                 }
             }
@@ -360,7 +357,7 @@ async function loadDraft() {
                     requiredScore();
                 }
                 if(Object.keys(draft.academics.act).length === 5){
-                    if(draft.academics.sat1.essay.reading != null){
+                    if(draft.academics.act.essay.reading != null){
                         document.getElementById("form-act-writing").value = draft.academics.act.writing;
                         requiredCheck("form-act-writing");
                     }
@@ -388,7 +385,7 @@ async function loadDraft() {
             }
             if(draft.academics.ap != null){
                 if(draft.academics.ap.length>0 || draft.academics.ap !=null){
-                    key= Object.keys(draft.academics.act[0])[0];
+                    key= Object.keys(draft.academics.ap[0])[0];
                     document.getElementById("form-ap-subject-1").value = key;
                     if(draft.academics.ap[0][key]!==null){
                         document.getElementById("form-ap-score-1").value = draft.academics.ap[0][key];
