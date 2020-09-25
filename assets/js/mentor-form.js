@@ -302,8 +302,8 @@ async function loadDraft() {
                 requiredCheck("form-gender");
             }
             if(draft.background.ethnicity != null) {
-                document.getElementById("form-title").value = draft.background.ethnicity;
-                requiredCheck("form-title");
+                document.getElementById("form-ethnicity").value = draft.background.ethnicity;
+                requiredCheck("form-ethnicity");
             }
             if(draft.background.hooks.length>0 || draft.background.hooks!=null){
                 document.getElementById("form-hooks-1").value = draft.background.hooks[0];
@@ -591,13 +591,101 @@ async function submit() {
 }
 
 async function saveDraft() {
-    // TODO: save as draft
+    if (document.getElementById('form-college').value !== ""){
+        const name = document.getElementById('form-college').value
+    }if (document.getElementById('form-major').value !== ""){
+        const major = document.getElementById('form-major').value
+    }if (document.getElementById('form-grad').value !== ""){
+        const grad = document.getElementById('form-grad').value};
+    }
+    
+    if (document.getElementById('form-citizenship').value !== ""){
+        const citzenship = document.getElementById('form-citizenship').value;
+    }if (document.getElementById('form-gender').value !== ""){
+        const gender = document.getElementById('form-gender').value;
+    }if (document.getElementById('form-ethnicity').value !== ""){
+        const ethnicity = document.getElementById('form-ethnicity').value;
+    }
 
-    // TODO: renew token
+    const hooks = document.getElementById('form-hooks-1').value;
 
-    // clear timer after draft submit
-    clearInterval(updateTimer);
-    updateTimer = null;
+	const gpa = document.getElementById('form-gpa').value;
+    const sat1English = document.getElementById('form-sat1-english').value;
+    const sat1Math = document.getElementById('form-sat1-math').value;
+    const sat1Reading = document.getElementById('form-sat1-reading').value;
+    const sat1Analysis = document.getElementById('form-sat1-analysis').value;
+    const sat1Writing = document.getElementById('form-sat1-writing').value;
+	const actEnglish = document.getElementById('form-act-english').value;
+    const actMath = document.getElementById('form-act-math').value;
+    const actReading = document.getElementById('form-act-reading').value;
+    const actScience = document.getElementById('form-act-science').value;
+    const actWriting = document.getElementById('form-act-writing').value;
+
+    const sat2subjects = document.getElementById('form-sat2-subject-1').value;
+    const sat2Scores = document.getElementById('form-sat2-score-1').value;
+
+    const apSubjects = document.getElementById('form-ap-subject-1').value;
+    const apNicknames = document.getElementById('form-ap-score-1').value;
+
+    const honorTitles = document.getElementById('form-honors-title-1').value;
+    const password = document.getElementById('h1-9').value;
+    const password = document.getElementById('h1-10').value;
+    const password = document.getElementById('h1-11').value;
+    const password = document.getElementById('h1-12').value;
+    const password = document.getElementById('h1-13').value;
+    const honorLevels = document.getElementById('form-honors-lvl-1').value;
+    
+    const activitiesTypes = document.getElementById('form-activities-type-1').value;
+    const activitiesPositions = document.getElementById('form-activities-position-1').value;
+    const activitiesOrgs = document.getElementById('form-activities-organization-1').value;
+    const activitiesDescriptions = document.getElementById('form-activities-description-1').value;
+    const password = document.getElementById('a1-9').value;
+    const password = document.getElementById('a1-10').value;
+    const password = document.getElementById('a1-11').value;
+    const password = document.getElementById('a1-12').value;
+    const password = document.getElementById('a1-13').value;
+    const activitiesTimes = document.getElementById('form-activities-time-1').value;
+
+    const essayPrompts = document.getElementById('form-essay-prompt-1').value;
+    const essayStatements = document.getElementById('form-essay-statement-1').value;
+
+    const additionalInfo = document.getElementById('additional-1').value;
+
+    // if properly filled in, send the username and password inputs to the auth API
+    if(){
+
+    }else{ 
+        const userInput = {
+
+        };
+        const response = await fetch('https://api.uniqon.kr/document/application/draft', {
+            credentials: 'include',
+            method: 'POST',
+            body: JSON.stringify(userInput),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const jsonResponse = await response.json();
+        const draft = jsonResponse.draft;
+
+        if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
+            // renew token
+            await renew();
+            if(localStorage.getItem("uniQonSignedIn")) {
+                await loadDraft();
+            }
+        } else if(response.ok) {
+            const draft = jsonResponse.draft;
+        }
+        // TODO: save as draft
+
+        // TODO: renew token
+
+        // clear timer after draft submit
+        clearInterval(updateTimer);
+        updateTimer = null;
+    }
 }
 
 // change isUpdated to true (on key press for all text field)
