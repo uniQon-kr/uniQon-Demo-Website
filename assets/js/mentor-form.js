@@ -166,7 +166,7 @@ async function loadDraft() {
         }
     } else if(response.ok) {
         // TODO: retrieve elements
-    } else {
+    } else if(response.status !== 404) {
         alert("Server Error!! Please Try Again!!");
         location.href = "{{ site.baseurl }}/";
     }
