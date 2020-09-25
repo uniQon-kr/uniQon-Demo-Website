@@ -1159,7 +1159,6 @@ async function saveDraft() {
             document.getElementById("invalid").style.display = "block";
             location.reload();
         } else {
-            // TODO: Invalid Input
             alert("Server Error");
             location.reload();
         }
@@ -1167,7 +1166,7 @@ async function saveDraft() {
 }
 
 async function submit() {
-    // TODO: Check Input
+    // Check Input
     const request = {};
 
     // College/University Information
@@ -1265,10 +1264,10 @@ async function submit() {
         }
 
         // Optional Tests
-        // SAT2
+        // TODO SAT2
         const sat2 = [];
 
-        // AP
+        // TODO AP
 
     } else {
         document.getElementById("missing").style.display = "block";
@@ -1277,7 +1276,11 @@ async function submit() {
         document.getElementById("invalid").style.display = "none";
         return;
     }
-    
+
+    // TODO Honors
+    // TODO Activities
+    // TODO Essay
+    // TODO Additional Information    
 
     // sending document
     let draftSent = false;
@@ -1308,7 +1311,6 @@ async function submit() {
             document.getElementById("invalid").style.display = "none";
             await saveDraft();
             location.reload();
-            // TODO: Invalid
         } else if(response.status === 400 && jsonResponse.error === "Invalid Input") {
             document.getElementById("missing").style.display = "none";
             document.getElementById("duplicated").style.display = "none";
