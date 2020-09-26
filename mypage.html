@@ -17,7 +17,10 @@ permalink: /mypage
 		</div>
 		<div class="email-wrapper content">
 			<p class = "content-title">Email</p>
-			<input type="text" id="email" />
+			<input type="text" id="email"  onkeypress="emailChanged()"/>
+			<button id = "sendVerification" class = "email-button"  onclick="sendVerification()">Send Verification Code</button>
+			<input type="text" id="verification" placeholder="Verification Code"/>
+			<button id = "verify" class = "email-button" onclick="verifyEmail()">Verify</button>
 		</div>
 		<div class = "button-wrapper content">
 			<div class = "error" id = "invalid">Invalid Input</div>

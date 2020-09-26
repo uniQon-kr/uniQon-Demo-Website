@@ -1,5 +1,22 @@
 let jsonResponse;
 
+async function emailChanged() {
+    document.getElementById("sendVerification").style.display = "inline-block";
+}
+async function sendVerification() {
+    document.getElementById("verification").style.display = "inline-block";
+    document.getElementById("verify").style.display = "inline-block";
+    //TODO send verification
+}
+async function verifyEmail() {
+    //if verified
+    if(true){
+    document.getElementById("sendVerification").style.display = "none";
+    document.getElementById("verification").style.display = "none";
+    document.getElementById("verify").style.display = "none";
+    }
+}
+
 async function getMyInfo() {
     const response = await fetch('https://api.uniqon.kr/user/myinfo', {
         credentials: 'include',

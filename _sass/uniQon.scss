@@ -919,7 +919,21 @@ footer {
   .content {
     margin-bottom: 10px;
     padding: 0px 10px 0px 10px;
-
+    .email-button{
+      display: none;
+      width:250px;
+      background-color: #2ea44f;
+      padding: 0px 10px 0px 10px;
+      margin-left: 10px;
+      text-align: center;
+      color: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #2ea44f;
+    }
+    #verification{
+      display: none;
+      margin-top: 20px;;
+    }
     .content-title {
       font-size: 16px;
       font-weight: 700;
