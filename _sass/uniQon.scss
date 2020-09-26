@@ -1254,9 +1254,6 @@ footer {
     text-align: right;
     color: #0366d6;
   }
-  .description {
-    margin-top: -5px;
-  }
 
   .button-wrapper {
     display: grid;
@@ -1282,7 +1279,7 @@ footer {
 
     #success {
       display: none;
-      width: 312px;
+      width: 99;
       font-size: 14px;
       font-weight: 400;
       padding: 3px 0 3px 3px;
@@ -1339,9 +1336,10 @@ footer {
     }
     .description {
       margin-bottom: 10px;
-      font-size: 10px;
-      font-weight: 500;
-      margin-left:15px;
+      font-size: 12px;
+      margin-left:10px;
+      font-weight: 300;
+      font-style: italic;
     }
     .detailedInput{
       .entryBox{

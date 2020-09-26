@@ -1166,6 +1166,10 @@ async function saveDraft() {
 }
 
 async function submit() {
+    // Disabling Buttons    
+    document.getElementById("draftButton").disabled = true;
+    document.getElementById("submitButton").disabled = true;
+
     // Check Input
     const request = {};
 
@@ -1193,8 +1197,8 @@ async function submit() {
         };
 
         // Hooks
+        request.background.hooks = [];
         if (document.getElementById('form-hooks-1').value !== ""){
-            request.background.hooks = [];
             for(let i=1; i<=hooksCount; i++){
               request.background.hooks.push(document.getElementById("form-hooks-"+i).value);
             }
@@ -1225,7 +1229,7 @@ async function submit() {
             let essayReq = (document.getElementById('form-sat1-reading').value !== "" || document.getElementById('form-sat1-analysis').value !== "" || document.getElementById('form-sat1-writing').value !== "");
             if(document.getElementById('form-sat1-reading').value !== "" && document.getElementById('form-sat1-analysis').value !== "" && document.getElementById('form-sat1-writing').value !== "") {
                 essayReq = false;
-                req.academics.sat1.essay = {
+                request.academics.sat1.essay = {
                     reading: document.getElementById("form-sat1-reading").value,
                     analysis: document.getElementById("form-sat1-analysis").value,
                     writing: document.getElementById("form-sat1-writing").value
@@ -1469,7 +1473,6 @@ async function submit() {
     if(additionalInfoContents.length !== 0) {
         request.additionalInfo = { contents: additionalInfoContents };
     }
-
     // sending document
     let draftSent = false;
     while(!draftSent) {
@@ -1492,24 +1495,47 @@ async function submit() {
             document.getElementById("success").style.display = "block";
             document.getElementById("invalid").style.display = "none";
             draftSent = true;
+            setTimeout(() => {
+                location.href = "{{ site.baseurl }}/mentor-recruit";
+            }, 2000);
+            break;
         } else if(response.status === 400 && jsonResponse.error === "Duplicated Application Found") {
             document.getElementById("missing").style.display = "none";
             document.getElementById("duplicated").style.display = "block";
             document.getElementById("success").style.display = "none";
             document.getElementById("invalid").style.display = "none";
             await saveDraft();
-            location.reload();
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+            break;
         } else if(response.status === 400 && jsonResponse.error === "Invalid Input") {
             document.getElementById("missing").style.display = "none";
             document.getElementById("duplicated").style.display = "none";
             document.getElementById("success").style.display = "none";
             document.getElementById("invalid").style.display = "block";
             await saveDraft();
-            location.reload();
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+            break;
+        } else if(response.status === 400 && jsonResponse.error === "Missing Fields") {
+            document.getElementById("missing").style.display = "block";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "none";
+            await saveDraft();
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+            break;
         } else {
             await saveDraft();
             alert("Server Error!!");
-            location.reload();
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+            break;
         }
     }
 }
