@@ -1,0 +1,197 @@
+---
+layout: default
+title: "Mentor Application Form"
+permalink: /mentor-form
+---
+
+<script src = '{{ site.baseurl }}/assets/js/loginCheck.js'></script>
+<script defer src = '{{ site.baseurl }}/assets/js/mentor-form.js'></script>
+<div class="mentor-form">
+	<p id="title">Share Your Success.<p>
+	<div class="common section-wrapper">
+		<div class = "section-header">
+			<p class = "subtitle">Colleges/Universities</p>
+		</div>
+		<div class="content">
+			<p class = "content-title">College/University</p>
+      <p class = "description">Use Full, Official School Name</p>
+      <input class ="required" id = "form-college" onkeypress = "formUpdated()" onchange = "requiredCheck('form-college')" type = "text"/>
+		</div>
+		<div class="content">
+			<p class = "content-title">Admitted Major</p>
+      <p class = "description">Use Full, Official Name of Major</p>
+      <input class = "required" id = "form-major" onkeypress = "formUpdated()" onchange = "requiredCheck('form-major')" type = "text"/>
+		</div>
+		<div class="content">
+			<p class = "content-title">Expected Graduation</p>
+      <input class = "required" id = "form-grad" onkeypress = "formUpdated()" onchange = "requiredCheck('form-grad')" type = "text"/>
+    </div>
+    
+
+		<div class = "section-header">
+			<p class = "subtitle">Background</p>
+		</div>
+		<div class="content">
+			<p class = "content-title">Citizenship</p>
+      <input class="required" id = "form-citizenship" onkeypress = "formUpdated()" onchange = "requiredCheck('form-citizenship')" type = "text"/>
+		</div>
+		<div class="content">
+			<p class = "content-title">Gender</p>
+      <input class = "required" id = "form-gender" onkeypress = "formUpdated()" onchange = "requiredCheck('form-gender')" type = "text"/>
+		</div>
+		<div class="content">
+			<p class = "content-title">Ethnicity</p>
+      <input class = "required" id = "form-ethnicity" onkeypress = "formUpdated()" onchange = "requiredCheck('form-ethnicity')" type = "text"/>
+    </div>
+		<div class="content">
+			<p class = "content-title">Hooks</p>
+      <div class = "detailedInput" id = 'hooks-AM'>
+        <div class = 'entryBoxA' id = 'hooksEntryBox-1'>
+          <input id = "form-hooks-1" onkeypress = "formUpdated()" type = "text"/>
+        </div>
+      </div>
+      <p class="addmore" onclick="addMore('hooks')">Add more</p>
+      <p class="addmore" id=hooks-remove onclick="remove('hooks')">Remove</p>
+    </div>
+    
+
+		<div class = "section-header">
+			<p class = "subtitle">Academics</p>
+		</div>
+		<div class="content">
+			<p class = "content-title">Weighted GPA</p>
+      <input class = "required" id = "form-gpa" onkeypress = "formUpdated()" onchange = "requiredCheck('form-gpa')" type = "text"/>
+		</div>
+		<div class="content">
+			<p class = "content-title">SAT1</p>
+      <p class = "description">Either SAT or ACT score is mendatory</p>
+      <input class = "required" id = "form-sat1-english"onkeypress = "formUpdated()"  onchange = "requiredScore()" type = "text" placeholder="Reading/Writing"/>
+      <input class = "required" id = "form-sat1-math" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Math"/>
+      <input id = "form-sat1-reading" onkeypress = "formUpdated()" onchange = "satEssayCheck()" type = "text" placeholder="Essay-Readying (optional)"/>
+      <input id = "form-sat1-analysis" onkeypress = "formUpdated()" onchange = "satEssayCheck()" type = "text" placeholder="Essay-Analysis (optional)"/>
+      <input id = "form-sat1-writing" onkeypress = "formUpdated()" onchange = "satEssayCheck()" type = "text" placeholder="Essay-Writing (optional)"/>
+    </div>
+    <div class="content">
+			<p class = "content-title">ACT</p>
+      <p class = "description">Either SAT or ACT score is mendatory</p>
+      <input class = "required" id = "form-act-english" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="English"/>
+      <input class = "required" id = "form-act-math" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Math"/>
+      <input class = "required" id = "form-act-reading" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Reading"/>
+      <input class = "required" id = "form-act-science" onkeypress = "formUpdated()" onchange = "requiredScore()" type = "text" placeholder="Science"/>
+      <input id = "form-act-writing" onkeypress = "formUpdated()" type = "text" placeholder="Writing (optional)"/>
+		</div>
+		<div class="content">
+			<p class = "content-title">SAT2</p>
+      <div class = "detailedInput" id = 'sat2-AM'>
+          <div class = 'entryBoxA' id = 'sat2EntryBox-1'>
+          <input id = "form-sat2-subject-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('sat2', '1')" type = "text" placeholder= "Subject"/>
+          <input id = "form-sat2-score-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('sat2', '1')" type = "text" placeholder= "Score"/>
+        </div>
+      </div>
+      <p class="addmore" onclick="addMore('sat2')">Add more</p>
+      <p class="addmore" id=sat2-remove onclick="remove('sat2')">Remove</p>
+		</div>
+		<div class="content">
+			<p class = "content-title">AP</p>
+      <div class = "detailedInput" id = 'ap-AM'>
+        <div class = 'entryBoxA' id = 'apEntryBox-1'>
+          <input id = "form-ap-subject-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('ap', '1')" type = "text" placeholder="Subject"/>
+          <input id = "form-ap-score-1" onkeypress = "formUpdated()" onchange = "optionalTestCheck('ap', '1')" type = "text" placeholder="Score"/>
+        </div>
+      </div>
+      <p class="addmore" onclick="addMore('ap')">Add more</p>
+      <p class="addmore" id=ap-remove onclick="remove('ap')">Remove</p>
+		</div>
+    
+		<div class = "section-header">
+			<p class = "subtitle">Honors</p>
+		</div>
+		<div class="content">
+      <div class = "detailedInput" id="honors-AM">
+        <div class = "entryBox" id = 'honorsEntryBox-1'>
+          <p class = "content-title">Title</p>
+          <input class = "required" id = "form-honors-title-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-title-1')" type = "text"/>
+          <p class = "content-title">Grade Level</p>
+          <div class = "checkboxes required" id="h1">
+            <input type="checkbox" id="h1-9" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="9"><label>9</label>
+            <input type="checkbox" id="h1-10" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="10"><label>10</label>
+            <input type="checkbox" id="h1-11" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="11"><label>11</label>
+            <input type="checkbox" id="h1-12" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="12"><label>12</label>
+            <input type="checkbox" id="h1-13" onclick = "formUpdated()" onchange = "requiredCheckBox('h1')" value="13"><label>Post-Graduate</label>
+          </div>
+          <p class = "content-title">Level of Recognition</p>
+          <input class = "required" id = "form-honors-lvl-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-honors-lvl-1')" type = "text"/>
+        </div>
+      </div>
+      <p class="addmore" onclick="addMore('honors')">Add more</p>
+      <p class="addmore" id=honors-remove onclick="remove('honors')">Remove</p>
+		</div>
+    
+    
+		<div class = "section-header">
+			<p class = "subtitle">Activities</p>
+		</div>
+		<div class="content">
+      <div class = "detailedInput" id="activities-AM">
+        <div class = "entryBox" id = 'activitiesEntryBox-1'>
+          <p class = "content-title">Type</p>
+          <input class = "required" id = "form-activities-type-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-type-1')" type = "text"/>
+          <p class = "content-title">Position</p>
+          <input class = "required" id = "form-activities-position-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-position-1')" type = "text"/>
+          <p class = "content-title">Organization</p>
+          <input class = "required" id = "form-activities-organization-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-organization-1')" type = "text"/>
+          <p class = "content-title">Description</p>
+          <input class = "required" id = "form-activities-description-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-description-1')" type = "text"/>
+          <p class = "content-title">Participation Grade</p>
+          <div class = "checkboxes required" id="a1">
+            <input type="checkbox" id="a1-9" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="9"><label>9</label>
+            <input type="checkbox" id="a1-10" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="10"><label>10</label>
+            <input type="checkbox" id="a1-11" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="11"><label>11</label>
+            <input type="checkbox" id="a1-12" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="12"><label>12</label>
+            <input type="checkbox" id="a1-13" onclick = "formUpdated()" onchange = "requiredCheckBox('a1')" value="13"><label>Post-Graduate</label>
+          </div>
+          <p class = "content-title">Time of Participation</p>
+          <input class = "required" id = "form-activities-time-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-activities-time-1')" type = "text"/>
+        </div>
+      </div>
+      <p class="addmore" onclick="addMore('activities')">Add more</p>
+      <p class="addmore" id=activities-remove onclick="remove('activities')">Remove</p>
+		</div>
+    
+		<div class = "section-header">
+			<p class = "subtitle">Essay</p>
+		</div>
+		<div class="content">
+      <div class = "detailedInput" id = 'essay-AM'>
+        <div class = "entryBox" id = 'essayEntryBox-1'>
+          <input class = "required" id = "form-essay-prompt-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-essay-prompt-1')" type = "text" placeholder="Prompt"/>
+          <textarea class = "essay required" id= "form-essay-statement-1" onkeypress = "formUpdated()" onchange = "requiredCheck('form-essay-statement-1')"></textarea>
+        </div>
+    </div>
+    <p class="addmore" onclick="addMore('essay')">Add more</p>
+    <p class="addmore" id=essay-remove onclick="remove('essay')">Remove</p>
+  </div>
+    
+  <div class = "section-header">
+    <p class = "subtitle">Additional Information</p>
+  </div>
+  <div class="content">
+    <div class = "detailedInput" id="additional-AM">
+      <div class = "entryBox" id = 'additionalEntryBox-1'>
+        <textarea class = "essay" id="additional-1" onkeypress = "formUpdated()"></textarea>
+      </div>
+    </div>
+    <p class="addmore" onclick="addMore('additional')">Add more</p>
+    <p class="addmore" id=additional-remove onclick="remove('additional')">Remove</p>
+  </div>
+  <div class = "message-wrapper">
+    <div class = "error" id = "missing">Missing Input: Please Fill All Required Fields</div>
+    <div class = "error" id = "duplicated">Duplicated Application Found</div>
+    <div class = "error" id = "invalid">Invalid Input</div>
+    <div id = "success">Successfully Submitted</div>
+  </div>
+  <div class = "button-wrapper">
+    <button class = "draftSave" id = "draftButton" onclick="saveDraft()">Save as Draft</button>
+    <button onclick="submit()" id = "submitButton">Submit</button>
+  </div>
+</div>

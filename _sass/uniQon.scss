@@ -919,7 +919,21 @@ footer {
   .content {
     margin-bottom: 10px;
     padding: 0px 10px 0px 10px;
-
+    .email-button{
+      display: none;
+      width:250px;
+      background-color: #2ea44f;
+      padding: 0px 10px 0px 10px;
+      margin-left: 10px;
+      text-align: center;
+      color: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #2ea44f;
+    }
+    #verification{
+      display: none;
+      margin-top: 20px;;
+    }
     .content-title {
       font-size: 16px;
       font-weight: 700;
@@ -1006,7 +1020,7 @@ footer {
         text-decoration: none;
       }
     }
-    .college-image{
+    #college-image{
       justify-self: right;
       width: 90%;
       margin-top:20px;
@@ -1196,3 +1210,174 @@ footer {
     }
   }
 }
+
+.mentor-form {
+  width: 800px;
+  max-width: 99%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+
+  #title {
+    font-weight: 700;
+    font-size: 35px;
+    margin-bottom: 25px;
+  }
+
+  .subtitle {
+    font-weight: 300;
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+
+  .section-header {
+    border-bottom: 1px solid #c2c6ca;
+    margin-bottom: 20px;
+    .description {
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 400;
+      margin-left:15px;
+    }
+  }
+
+  .optional {
+    display: none;
+  }
+
+  .section-wrapper {
+    margin-bottom: 30px;
+    }
+
+    
+  .addmore{
+    text-align: right;
+    color: #0366d6;
+  }
+
+  .button-wrapper {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    column-gap: 2%;
+  }
+
+  .message-wrapper {
+    margin-top: 20px;
+
+    .error {
+      display: none;
+      width: 99%;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 3px 0 3px 3px;
+      text-align: center;
+      color: #ff5656;
+      background-color:  #ffe0e0;
+      border: 1px solid #ffb5b5;
+      border-radius: 5px;
+    }
+
+    #success {
+      display: none;
+      width: 99;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 3px 0 3px 3px;
+      text-align: center;
+      color: #2ea44f;
+      background-color:  #d4ffe0;
+      border: 1px solid #a9ffc1;
+      border-radius: 5px;
+    }
+  }
+
+  button {
+    margin: auto;
+    display: block;
+    width: 99%;
+    background-color: #2ea44f;
+    padding: 4px;
+    margin-top: 10px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #2ea44f;
+  }
+
+  .draftSave {
+    background-color: #f1f1f1;
+    color: #000000;
+    border: 1px solid #000000;
+  }
+
+  .essay{
+    justify-self: center;
+    width: 96.5%;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 200px auto;
+  }
+  .checkboxes {
+    margin-left:10px;
+  }
+  .content {
+    margin-bottom: 10px;
+
+    .content-title {
+      margin-left:10px;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .description {
+      margin-bottom: 10px;
+      font-size: 12px;
+      margin-left:10px;
+      font-weight: 300;
+      font-style: italic;
+    }
+    .detailedInput{
+      .entryBox{
+        display:grid;
+        grid-template-columns: 100%;
+        border: 1px solid #c9c9c9;
+        background-color: #fcfcfc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        textarea{
+          resize: none;
+          font-size: 15px;
+        }
+      }
+    }
+    
+    input {
+      background-color: #fcfcfc;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+
+      &[type=text] {
+        width: 350px;
+        margin-right: 10px;
+        margin-left: 10px;
+        border: 1px solid #c9c9c9;
+        border-radius: 5px;
+      }
+
+      &[type=checkbox] {
+        width: 20px;
+      }
+    }
+
+    .required {
+      background-color: #ffe4e4;
+    }
+  }
+}
+

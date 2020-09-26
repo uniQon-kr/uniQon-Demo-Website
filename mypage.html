@@ -4,6 +4,7 @@ title: "My Page"
 permalink: /mypage
 ---
 <script src = '{{ site.baseurl }}/assets/js/loginCheck.js'></script>
+<script defer src = '{{ site.baseurl }}/assets/js/mypage.js'></script>
 <div class="mypage">
 	<p id="title">Hi! <p>
 	<div class="common section-wrapper">
@@ -16,7 +17,10 @@ permalink: /mypage
 		</div>
 		<div class="email-wrapper content">
 			<p class = "content-title">Email</p>
-			<input type="text" id="email" />
+			<input type="text" id="email"  onkeypress="emailChanged()"/>
+			<button id = "sendVerification" class = "email-button"  onclick="sendVerification()">Send Verification Code</button>
+			<input type="text" id="verification" placeholder="Verification Code"/>
+			<button id = "verify" class = "email-button" onclick="verifyEmail()">Verify</button>
 		</div>
 		<div class = "button-wrapper content">
 			<div class = "error" id = "invalid">Invalid Input</div>
@@ -58,5 +62,4 @@ permalink: /mypage
 		</div>
 		<div class = "content-paragraph" id= bookmarks></div>
 	</div>
-	<script src = '{{ site.baseurl }}/assets/js/mypage.js'></script>
 </div>
