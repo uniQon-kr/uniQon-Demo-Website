@@ -15,6 +15,7 @@ permalink: /mentor-form
 		<div class="content">
 			<p class = "content-title">College/University</p>
       <input class ="required" id = "form-college" onkeypress = "formUpdated()" onchange = "requiredCheck('form-college')" type = "text"/>
+      <p class = "description">Use Full, Officiial School Name</p>
 		</div>
 		<div class="content">
 			<p class = "content-title">Admitted Major</p>
@@ -55,6 +56,7 @@ permalink: /mentor-form
 
 		<div class = "section-header">
 			<p class = "subtitle">Academics</p>
+      <p class = "description">Either SAT or ACT score is mendatory</p>
 		</div>
 		<div class="content">
 			<p class = "content-title">Weighted GPA</p>
@@ -181,7 +183,7 @@ permalink: /mentor-form
     <p class="addmore" id=additional-remove onclick="remove('additional')">Remove</p>
   </div>
   <div class = "message-wrapper">
-    <div class = "error" id = "missing">Missing Input: Please Fill All Blanks</div>
+    <div class = "error" id = "missing">Missing Input: Please Fill All Required Fields</div>
     <div class = "error" id = "duplicated">Duplicated Application Found</div>
     <div class = "error" id = "invalid">Invalid Input</div>
     <div id = "success">Successfully Submitted</div>

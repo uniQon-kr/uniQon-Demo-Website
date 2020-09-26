@@ -1364,8 +1364,6 @@ async function submit() {
         return;
     } else {
         request.honors = { contents: honorsContents };
-        
-        request.honors = request.honors.contents.push(honorscontents);
     }
 
     //Activities
@@ -1421,7 +1419,7 @@ async function submit() {
         request.activities = { contents: activitiesContents };
     }
     
-    // Essay
+    // TODO Essay
     const essayContents = [];
     for(let i = 1; i <= essayCount; i += 1) {
         if(document.getElementById('form-essay-prompt-'+i).value !== "" &&
