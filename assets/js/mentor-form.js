@@ -1365,7 +1365,7 @@ async function submit() {
     } else {
         request.honors = { contents: honorsContents };
         
-        request.honors.contents.push(honorscontents);
+        request.honors = request.honors.contents.push(honorscontents);
     }
 
     //Activities
@@ -1411,7 +1411,7 @@ async function submit() {
             return;
         }
     }
-    if(honorsContents.length === 0) {
+    if(activitiesContents.length === 0) {
         document.getElementById("missing").style.display = "block";
         document.getElementById("duplicated").style.display = "none";
         document.getElementById("success").style.display = "none";
