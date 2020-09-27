@@ -1251,6 +1251,9 @@ footer {
 
     
   .addmore{
+    float: right;
+    clear:right;
+    display: inline;
     text-align: right;
     color: #0366d6;
   }
@@ -1326,7 +1329,7 @@ footer {
     margin-left:10px;
   }
   .content {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 
     .content-title {
       margin-left:10px;
