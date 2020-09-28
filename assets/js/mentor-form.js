@@ -1133,6 +1133,8 @@ async function saveDraft() {
 
     // sending draft
     let draftSent = false;
+    document.getElementById("draftButton").disabled = true;
+    document.getElementById("submitButton").disabled = true;
     while(!draftSent) {
         const response = await fetch('https://api.uniqon.kr/document/application/draft', {
             credentials: 'include',
@@ -1152,7 +1154,11 @@ async function saveDraft() {
             // clear timer after draft submit
             clearInterval(updateTimer);
             updateTimer = null;
+            document.getElementById('draft-success').style.display = "block";
+            document.getElementById("draftButton").disabled = false;
+            document.getElementById("submitButton").disabled = false;
         } else if(response.status == 400 && jsonResponse.error === "Invalid Input") {
+            alert("Invalid Input");
             document.getElementById("missing").style.display = "none";
             document.getElementById("duplicated").style.display = "none";
             document.getElementById("success").style.display = "none";
@@ -1423,7 +1429,7 @@ async function submit() {
         request.activities = { contents: activitiesContents };
     }
     
-    // TODO Essay
+    // Essay
     const essayContents = [];
     for(let i = 1; i <= essayCount; i += 1) {
         if(document.getElementById('form-essay-prompt-'+i).value !== "" &&

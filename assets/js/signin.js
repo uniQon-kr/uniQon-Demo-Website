@@ -1,6 +1,7 @@
 async function signInFunc(){
 	const username = document.getElementById('username-input').value;
 	const password = document.getElementById('password-input').value;
+  document.getElementById("signinButton").disabled = true;
 
 	// on press, check if both inputs (username and password) are entered properly
 	if(username === "" || password === "") {
@@ -27,16 +28,19 @@ async function signInFunc(){
 			document.getElementById("invalid").style.display = "block";
 			document.getElementById("not-match").style.display = "none";
 			document.getElementById("loginFail").style.display = "none";
+			document.getElementById("signinButton").disabled = false;
 			return;
 		} else if(response.status === 401) {
 			document.getElementById("invalid").style.display = "none";
 			document.getElementById("not-match").style.display = "none";
 			document.getElementById("loginFail").style.display = "block";
+			document.getElementById("signinButton").disabled = false;
 			return;
 		} else if(response.status === 404) {
 			document.getElementById("invalid").style.display = "none";
 			document.getElementById("not-match").style.display = "block";
 			document.getElementById("loginFail").style.display = "none";
+			document.getElementById("signinButton").disabled = false;
 			return;
 		} else if(response.status === 201) {
 			document.getElementById("invalid").style.display = "none";

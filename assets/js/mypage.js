@@ -1,6 +1,6 @@
 let jsonResponse;
 
-async function emailChanged() {
+function emailChanged() {
     document.getElementById("sendVerification").style.display = "inline-block";
 }
 async function sendVerification() {
@@ -53,6 +53,10 @@ async function getMyInfo() {
                 document.getElementById("bookmarks").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
                 + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + bookmarkArr[0] + " (" + collegeName + ")</p></div>";
             }
+        }
+
+        if(jsonResponse.verfiedReq){
+            emailChanged();
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
         await renew(); // try to renew access token

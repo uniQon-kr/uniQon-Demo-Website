@@ -2,6 +2,7 @@ async function findIDFunc() {
   const email = document.getElementById('email').value;
   const firstName = document.getElementById('firstname').value;
   const lastName = document.getElementById('lastname').value;
+  document.getElementById("findUsernameButton").disabled = true;
 
 	if(email === "" || firstName === "" || lastName === "") {
 		// if not properly filled in, show error message
@@ -31,14 +32,17 @@ async function findIDFunc() {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("not-match").style.display = "block";
         document.getElementById("duplicated-info").style.display = "none";
+        document.getElementById("findUsernameButton").disabled = false;
       } else if(errorMessage.includes("Duplicated Information")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("not-match").style.display = "none";
         document.getElementById("duplicated-info").style.display = "block";
+        document.getElementById("findUsernameButton").disabled = false;
       } else {
         document.getElementById("invalid").style.display = "block";
         document.getElementById("not-match").style.display = "none";
         document.getElementById("duplicated-info").style.display = "none";
+        document.getElementById("findUsernameButton").disabled = false;
       }
     } else if(response.ok) {
       alert("New Password has been sent to Your Email!");

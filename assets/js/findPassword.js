@@ -3,6 +3,7 @@ async function findPasswordFunc() {
   const email = document.getElementById('email').value;
   const firstName = document.getElementById('firstname').value;
   const lastName = document.getElementById('lastname').value;
+  document.getElementById("findPasswordButton").disabled = true;
 
 	if(username === "" || nameemail === "" || firstName === "" || lastName === "") {
 		// if not properly filled in, show error message
@@ -30,9 +31,11 @@ async function findPasswordFunc() {
       if(errorMessage.includes("User not")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("not-match").style.display = "block";
+        document.getElementById("findPasswordButton").disabled = false;
       } else {
         document.getElementById("invalid").style.display = "block";
         document.getElementById("not-match").style.display = "none";
+        document.getElementById("findPasswordButton").disabled = false;
       }
     } else if(response.ok) {
       alert("New Password has been sent to Your Email!");

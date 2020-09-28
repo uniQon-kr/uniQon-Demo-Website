@@ -1252,7 +1252,6 @@ footer {
     
   .addmore{
     float: right;
-    clear:right;
     display: inline;
     text-align: right;
     color: #0366d6;
@@ -1280,7 +1279,7 @@ footer {
       border-radius: 5px;
     }
 
-    #success {
+    .pass {
       display: none;
       width: 99;
       font-size: 14px;
@@ -1328,8 +1327,10 @@ footer {
   .checkboxes {
     margin-left:10px;
   }
-  .content {
-    margin-bottom: 20px;
+  .message-wrapper{
+    margin-top: 50px;
+  }
+  .content {  
 
     .content-title {
       margin-left:10px;
