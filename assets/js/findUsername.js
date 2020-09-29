@@ -1,7 +1,10 @@
+---
+---
 async function findIDFunc() {
   const email = document.getElementById('email').value;
   const firstName = document.getElementById('firstname').value;
   const lastName = document.getElementById('lastname').value;
+  document.getElementById("findUsernameButton").disabled = true;
 
 	if(email === "" || firstName === "" || lastName === "") {
 		// if not properly filled in, show error message
@@ -26,7 +29,6 @@ async function findIDFunc() {
     // Check Error Message
     const jsonResponse = await response.json();
     if(response.status === 400 || response.status === 404) {
-      const errorMessage = String(jsonResponse.error);
       if(errorMessage.includes("User not")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("not-match").style.display = "block";
@@ -41,8 +43,9 @@ async function findIDFunc() {
         document.getElementById("duplicated-info").style.display = "none";
       }
     } else if(response.ok) {
-      alert("New Password has been sent to Your Email!");
+      alert("Your Username has been sent to Your Email!");
       location.href = "{{ site.baseurl }}/signin";
     }
   }
+  document.getElementById("findUsernameButton").disabled = false;
 }

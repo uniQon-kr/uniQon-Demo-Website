@@ -3,8 +3,9 @@
 async function changePasswordFunc() {
     const newPassword = document.getElementById("new-password").value;
     const reEnter = document.getElementById("re-enter").value;
+    document.getElementById("changePasswordButton").disabled = true;
 
-    if(newPassword !== reEnter) {
+    if(newPassword !== reEnter || newPassword === "" || reEnter === "") {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("not-match").style.display = "block";
     } else {
@@ -23,10 +24,14 @@ async function changePasswordFunc() {
             // Used Refresh Token
             localStorage.setItem("uniQonSignedIn", false);
             location.href = "{{ site.baseurl }}/";
+        } else if(response.status === 500) { // Unauthorized OR Forbidden
+            // Used Refresh Token
+            localStorage.setItem("uniQonSignedIn", false);
+            location.href = "{{ site.baseurl }}/";
         } else {
-            console.log(await response.json());
             document.getElementById("invalid").style.display = "block";
             document.getElementById("not-match").style.display = "none";
         }
     }
+    document.getElementById("changePasswordButton").disabled = false;
 }

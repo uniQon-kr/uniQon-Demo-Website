@@ -47,6 +47,7 @@ async function signUpFunc() {
   const email = document.getElementById('email').value;
   const nickname = document.getElementById('nickname').value;
   const type = [ pathname[2] ];
+  document.getElementById("signupButton").disabled = true;
 
 	if(username === "" || firstName === "" || lastName === "" || password === "" || email === "" || nickname === "") {
 		// if not properly filled in, show error message
@@ -88,6 +89,7 @@ async function signUpFunc() {
         document.getElementById("readTC").style.display = "none";
         document.getElementById("already").style.display = "none";
         document.getElementById("duplicatedNickname").style.display = "none";
+        document.getElementById("signupButton").disabled = false;
       } else if(errorMessage.includes("Already")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("agreeTC").style.display = "none";
@@ -95,6 +97,7 @@ async function signUpFunc() {
         document.getElementById("readTC").style.display = "none";
         document.getElementById("already").style.display = "block";
         document.getElementById("duplicatedNickname").style.display = "none";
+        document.getElementById("signupButton").disabled = false;
       } else if(errorMessage.includes("Duplicated Nickname")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("agreeTC").style.display = "none";
@@ -102,6 +105,7 @@ async function signUpFunc() {
         document.getElementById("readTC").style.display = "none";
         document.getElementById("already").style.display = "none";
         document.getElementById("duplicatedNickname").style.display = "block";
+        document.getElementById("signupButton").disabled = false;
       } else {
         document.getElementById("invalid").style.display = "block";
         document.getElementById("agreeTC").style.display = "none";
@@ -109,6 +113,7 @@ async function signUpFunc() {
         document.getElementById("readTC").style.display = "none";
         document.getElementById("already").style.display = "none";
         document.getElementById("duplicatedNickname").style.display = "none";
+        document.getElementById("signupButton").disabled = false;
       }
     } else if(response.ok) {
       location.href = "{{ site.baseurl }}/";

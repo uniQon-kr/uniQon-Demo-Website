@@ -1,21 +1,5 @@
 let jsonResponse;
-
-async function emailChanged() {
-    document.getElementById("sendVerification").style.display = "inline-block";
-}
-async function sendVerification() {
-    document.getElementById("verification").style.display = "inline-block";
-    document.getElementById("verify").style.display = "inline-block";
-    //TODO send verification
-}
-async function verifyEmail() {
-    //if verified
-    if(true){
-    document.getElementById("sendVerification").style.display = "none";
-    document.getElementById("verification").style.display = "none";
-    document.getElementById("verify").style.display = "none";
-    }
-}
+let emailVerified = false;
 
 async function getMyInfo() {
     const response = await fetch('https://api.uniqon.kr/user/myinfo', {
@@ -54,6 +38,13 @@ async function getMyInfo() {
                 + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + bookmarkArr[0] + " (" + collegeName + ")</p></div>";
             }
         }
+        //if verification is needed
+        if(jsonResponse.verifiedReq){
+            document.getElementById("email").style.display = "inline-block";
+            document.getElementById("sendVerification").style.display = "inline-block";
+            document.getElementById("verification").style.display = "inline-block";
+            document.getElementById("verify").style.display = "inline-block";
+        }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
         await renew(); // try to renew access token
         if(localStorage.getItem("uniQonSignedIn")) {
@@ -70,7 +61,120 @@ async function openDetail(i) {
     window.location.href = "/application";
 }
 
+function emailChanged() {
+    document.getElementById("sendVerification").style.display = "inline-block";
+}
+
+async function sendVerification() {
+
+    document.getElementById('noUpdate').style.display = "none";
+    document.getElementById('invalid').style.display = "none";
+    document.getElementById('duplicatedNickname').style.display = "none";
+    document.getElementById('success').style.display = "none";
+
+    document.getElementById("sendVerification").disabled = true;
+    document.getElementById("verification").style.display = "inline-block";
+    document.getElementById("verification").value = "";
+    document.getElementById("verify").style.display = "inline-block";
+    const email = document.getElementById("email").value;
+    
+    if(email === "") {
+        // if not properly filled in, show error message
+        document.getElementById("invalid").style.display = "block";
+    } else {
+        const userInput = {email: email};
+        const response = await fetch('https://api.uniqon.kr/user/email/send-verify-code', {
+            credentials: 'include',
+            method: 'POST',
+            body: JSON.stringify(userInput),
+            headers: {
+            'Content-Type': 'application/json'
+            }
+        });
+  
+      // Check Error Message
+      const jsonResponse = await response.json();
+      if(response.status === 400) {
+        const errorMessage = String(jsonResponse.error);
+        if(errorMessage.includes("Invalid Input")) {
+          document.getElementById("invalid").style.display = "block";
+        } else if(errorMessage.includes("Email Same")){
+            document.getElementById("invalid").style.display = "block";
+        }
+      } else if(response.status === 201) {
+        alert("Verification Mail Sent")
+      } else if(response.status === 500) {
+        alert(String(jsonResponse.error));
+      }
+    }
+    document.getElementById("sendVerification").disabled = false;
+}
+
+async function verifyEmail() {
+    document.getElementById("verify").disabled = true;
+    const verificationCode = document.getElementById("verification").value;
+    const email = document.getElementById("email").value;
+    if(verification === "" || email === "") {
+        // if not properly filled in, show error message
+        document.getElementById("invalid").style.display = "block";
+    } else {
+        const userInput = {email: email, verifyCode: verificationCode};
+        const response = await fetch('https://api.uniqon.kr/user/email/verify', {
+            credentials: 'include',
+            method: 'POST',
+            body: JSON.stringify(userInput),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+  
+      // Check Error Message
+      const jsonResponse = await response.json();
+      if(response.status === 400 || response.status === 403) {
+        const errorMessage = String(jsonResponse.error);
+        if(errorMessage.includes("New Email Not Match")) {
+            document.getElementById("invalid").style.display = "block";
+            document.getElementById("needtoSave").style.display = "none";
+            emailVerified = false;
+        } else if(errorMessage.includes("Invalid Input")){
+            document.getElementById("invalid").style.display = "block";
+            document.getElementById("needtoSave").style.display = "none";
+            emailVerified = false;
+        }else if(errorMessage.includes("Code Expired or Not Matching")){
+            document.getElementById("invalid").style.display = "block";
+            document.getElementById("needtoSave").style.display = "none";
+            emailVerified = false;
+        }
+      } else if(response.status === 200) {
+        if(jsonResponse.message.includes("Verification Finish: Need to Save")){
+            document.getElementById("invalid").style.display = "none";
+            document.getElementById("sendVerification").style.display = "none";
+            document.getElementById("verification").style.display = "none";
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "block";
+            emailVerified = true;
+        }else if(jsonResponse.message.includes("Verification Finish")) {
+            document.getElementById("invalid").style.display = "none";
+            document.getElementById("sendVerification").style.display = "none";
+            document.getElementById("verification").style.display = "none";
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "none";
+            emailVerified = true;
+        } 
+      }
+    }
+    document.getElementById("verify").disabled = false;
+}
+
 async function updateMyInfo() {
+    // TODO: Disable
+    if(emailVerified){
+        document.getElementById("sendVerification").style.display = "none";
+        document.getElementById("verification").style.display = "none";
+        document.getElementById("verify").style.display = "none";
+        document.getElementById("needtoSave").style.display = "none";
+    }
+
     // Retrieve Inputs
     const newEmail = document.getElementById("email").value;
     const newNickname = document.getElementById("nickname").value;
