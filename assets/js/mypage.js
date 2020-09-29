@@ -126,21 +126,41 @@ async function verifyEmail() {
         const errorMessage = String(jsonResponse.error);
         if(errorMessage.includes("New Email Not Match")) {
             document.getElementById("invalid").style.display = "block";
+            document.getElementById("sendVerification").style.display = "none";
+            document.getElementById("verification").style.display = "none";
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "none";
             emailVerified = true;
         } else if(errorMessage.includes("Invalid Input")){
             document.getElementById("invalid").style.display = "block";
+            document.getElementById("sendVerification").style.display = "none";
+            document.getElementById("verification").style.display = "none";
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "none";
             emailVerified = true;
         }else if(errorMessage.includes("Code Expired or Not Matching")){
             document.getElementById("invalid").style.display = "block";
+            document.getElementById("sendVerification").style.display = "none";
+            document.getElementById("verification").style.display = "none";
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "none";
             emailVerified = true;
         }
       } else if(response.status === 200) {
         if(errorMessage.includes("Verification Finish")) {
+            document.getElementById("invalid").style.display = "none";
             document.getElementById("sendVerification").style.display = "none";
             document.getElementById("verification").style.display = "none";
             document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "none";
             emailVerified = true;
         } else if(errorMessage.includes("Verification Finish: Need to Save")){
+            document.getElementById("invalid").style.display = "none";
+            document.getElementById("sendVerification").style.display = "none";
+            document.getElementById("verification").style.display = "none";
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "block";
+            //create new save button
             emailVerified = true;
         }
       }
