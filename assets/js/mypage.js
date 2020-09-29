@@ -39,8 +39,11 @@ async function getMyInfo() {
             }
         }
         //if verification is needed
-        if(jsonResponse.verfiedReq){
-            emailChanged();
+        if(jsonResponse.verifiedReq){
+            document.getElementById("email").style.display = "inline-block";
+            document.getElementById("sendVerification").style.display = "inline-block";
+            document.getElementById("verification").style.display = "inline-block";
+            document.getElementById("verify").style.display = "inline-block";
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
         await renew(); // try to renew access token
@@ -63,8 +66,15 @@ function emailChanged() {
 }
 
 async function sendVerification() {
+
+    document.getElementById('noUpdate').style.display = "none";
+    document.getElementById('invalid').style.display = "none";
+    document.getElementById('duplicatedNickname').style.display = "none";
+    document.getElementById('success').style.display = "none";
+
     document.getElementById("sendVerification").disabled = true;
     document.getElementById("verification").style.display = "inline-block";
+    document.getElementById("verification").value = "";
     document.getElementById("verify").style.display = "inline-block";
     const email = document.getElementById("email").value;
     
@@ -92,9 +102,9 @@ async function sendVerification() {
             document.getElementById("invalid").style.display = "block";
         }
       } else if(response.status === 201) {
-        document.getElementById("invalid").style.display = "none";
+        alert("Verification Mail Sent")
       } else if(response.status === 500) {
-          alert(String(jsonResponse.error));
+        alert(String(jsonResponse.error));
       }
     }
     document.getElementById("sendVerification").disabled = false;
@@ -102,7 +112,7 @@ async function sendVerification() {
 
 async function verifyEmail() {
     document.getElementById("verify").disabled = true;
-    const verificationCode = document.getElementById("verification");
+    const verificationCode = document.getElementById("verification").value;
     const email = document.getElementById("email").value;
     if(verification === "" || email === "") {
         // if not properly filled in, show error message
@@ -124,42 +134,33 @@ async function verifyEmail() {
         const errorMessage = String(jsonResponse.error);
         if(errorMessage.includes("New Email Not Match")) {
             document.getElementById("invalid").style.display = "block";
-            document.getElementById("sendVerification").style.display = "none";
-            document.getElementById("verification").style.display = "none";
-            document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "none";
             emailVerified = false;
         } else if(errorMessage.includes("Invalid Input")){
             document.getElementById("invalid").style.display = "block";
-            document.getElementById("sendVerification").style.display = "none";
-            document.getElementById("verification").style.display = "none";
-            document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "none";
             emailVerified = false;
         }else if(errorMessage.includes("Code Expired or Not Matching")){
             document.getElementById("invalid").style.display = "block";
-            document.getElementById("sendVerification").style.display = "none";
-            document.getElementById("verification").style.display = "none";
-            document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "none";
             emailVerified = false;
         }
       } else if(response.status === 200) {
-        if(errorMessage.includes("Verification Finish")) {
-            document.getElementById("invalid").style.display = "none";
-            document.getElementById("sendVerification").style.display = "none";
-            document.getElementById("verification").style.display = "none";
-            document.getElementById("verify").style.display = "none";
-            document.getElementById("needtoSave").style.display = "none";
-            emailVerified = true;
-        } else if(errorMessage.includes("Verification Finish: Need to Save")){
+        if(jsonResponse.message.includes("Verification Finish: Need to Save")){
             document.getElementById("invalid").style.display = "none";
             document.getElementById("sendVerification").style.display = "none";
             document.getElementById("verification").style.display = "none";
             document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "block";
             emailVerified = true;
-        }
+        }else if(jsonResponse.message.includes("Verification Finish")) {
+            document.getElementById("invalid").style.display = "none";
+            document.getElementById("sendVerification").style.display = "none";
+            document.getElementById("verification").style.display = "none";
+            document.getElementById("verify").style.display = "none";
+            document.getElementById("needtoSave").style.display = "none";
+            emailVerified = true;
+        } 
       }
     }
     document.getElementById("verify").disabled = false;
@@ -171,6 +172,7 @@ async function updateMyInfo() {
         document.getElementById("sendVerification").style.display = "none";
         document.getElementById("verification").style.display = "none";
         document.getElementById("verify").style.display = "none";
+        document.getElementById("needtoSave").style.display = "none";
     }
 
     // Retrieve Inputs

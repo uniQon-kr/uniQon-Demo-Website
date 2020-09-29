@@ -5,7 +5,7 @@ async function changePasswordFunc() {
     const reEnter = document.getElementById("re-enter").value;
     document.getElementById("changePasswordButton").disabled = true;
 
-    if(newPassword !== reEnter) {
+    if(newPassword !== reEnter || newPassword === "" || reEnter === "") {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("not-match").style.display = "block";
     } else {

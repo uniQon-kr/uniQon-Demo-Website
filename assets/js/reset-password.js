@@ -1,4 +1,5 @@
-
+---
+---
 async function resetPassword() {
   document.getElementById("resetButton").disabled = true;
   const username = document.getElementById("username-input").value;
