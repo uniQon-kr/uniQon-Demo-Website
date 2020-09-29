@@ -19,13 +19,12 @@ async function resetPassword() {
         securityCode: securityCode,
         newPassword: newPassword
       };
-      console.log(userInput);
       const response = await fetch('https://api.uniqon.kr/user/reset-password', {
           credentials: 'include',
           method: 'POST',
           body: JSON.stringify(userInput),
           headers: {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
           }
       });
 

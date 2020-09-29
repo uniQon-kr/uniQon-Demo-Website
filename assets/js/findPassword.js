@@ -31,15 +31,14 @@ async function findPasswordFunc() {
       if(errorMessage.includes("User not")) {
         document.getElementById("invalid").style.display = "none";
         document.getElementById("not-match").style.display = "block";
-        document.getElementById("findPasswordButton").disabled = false;
       } else {
         document.getElementById("invalid").style.display = "block";
         document.getElementById("not-match").style.display = "none";
-        document.getElementById("findPasswordButton").disabled = false;
       }
     } else if(response.ok) {
       alert("New Password has been sent to Your Email!");
       location.href = "{{ site.baseurl }}/signin";
     }
   }
+  document.getElementById("findPasswordButton").disabled = false;
 }

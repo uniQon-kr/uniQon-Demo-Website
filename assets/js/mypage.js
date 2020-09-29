@@ -1,5 +1,6 @@
 let jsonResponse;
 let emailVerified = false;
+
 async function getMyInfo() {
     const response = await fetch('https://api.uniqon.kr/user/myinfo', {
         credentials: 'include',
@@ -60,6 +61,7 @@ async function openDetail(i) {
 function emailChanged() {
     document.getElementById("sendVerification").style.display = "inline-block";
 }
+
 async function sendVerification() {
     document.getElementById("sendVerification").disabled = true;
     document.getElementById("verification").style.display = "inline-block";
@@ -71,7 +73,6 @@ async function sendVerification() {
         document.getElementById("invalid").style.display = "block";
     } else {
         const userInput = {email: email};
-        console.log(userInput);
         const response = await fetch('https://api.uniqon.kr/user/email/send-verify-code', {
             credentials: 'include',
             method: 'POST',
@@ -87,22 +88,19 @@ async function sendVerification() {
         const errorMessage = String(jsonResponse.error);
         if(errorMessage.includes("Invalid Input")) {
           document.getElementById("invalid").style.display = "block";
-          document.getElementById("sendVerification").disabled = false;
         } else if(errorMessage.includes("Email Same")){
             document.getElementById("invalid").style.display = "block";
-            document.getElementById("sendVerification").disabled = false;
         }
       } else if(response.status === 201) {
         document.getElementById("invalid").style.display = "none";
-        document.getElementById("sendVerification").disabled = false;
       } else if(response.status === 500) {
           alert(String(jsonResponse.error));
       }
     }
-
+    document.getElementById("sendVerification").disabled = false;
 }
+
 async function verifyEmail() {
-    //TODO verify verification code
     document.getElementById("verify").disabled = true;
     const verificationCode = document.getElementById("verification");
     const email = document.getElementById("email").value;
@@ -110,13 +108,13 @@ async function verifyEmail() {
         // if not properly filled in, show error message
         document.getElementById("invalid").style.display = "block";
     } else {
-        const userInput = {email: email, verifyCode: verification};
+        const userInput = {email: email, verifyCode: verificationCode};
         const response = await fetch('https://api.uniqon.kr/user/email/verify', {
             credentials: 'include',
             method: 'POST',
             body: JSON.stringify(userInput),
             headers: {
-            'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }
         });
   
@@ -130,21 +128,21 @@ async function verifyEmail() {
             document.getElementById("verification").style.display = "none";
             document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "none";
-            emailVerified = true;
+            emailVerified = false;
         } else if(errorMessage.includes("Invalid Input")){
             document.getElementById("invalid").style.display = "block";
             document.getElementById("sendVerification").style.display = "none";
             document.getElementById("verification").style.display = "none";
             document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "none";
-            emailVerified = true;
+            emailVerified = false;
         }else if(errorMessage.includes("Code Expired or Not Matching")){
             document.getElementById("invalid").style.display = "block";
             document.getElementById("sendVerification").style.display = "none";
             document.getElementById("verification").style.display = "none";
             document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "none";
-            emailVerified = true;
+            emailVerified = false;
         }
       } else if(response.status === 200) {
         if(errorMessage.includes("Verification Finish")) {
@@ -160,15 +158,15 @@ async function verifyEmail() {
             document.getElementById("verification").style.display = "none";
             document.getElementById("verify").style.display = "none";
             document.getElementById("needtoSave").style.display = "block";
-            //create new save button
             emailVerified = true;
         }
       }
     }
+    document.getElementById("verify").disabled = false;
 }
 
 async function updateMyInfo() {
-
+    // TODO: Disable
     if(emailVerified){
         document.getElementById("sendVerification").style.display = "none";
         document.getElementById("verification").style.display = "none";

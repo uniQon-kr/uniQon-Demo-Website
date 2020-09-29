@@ -64,7 +64,6 @@ async function remove(type) {
 }
 
 async function addMore(type) {
-    let elm;
   //add more textfields to its type
   if(type === "hooks"){
     hooksCount++;
@@ -656,6 +655,8 @@ async function loadDraft() {
 }
 
 async function saveDraft() {
+    document.getElementById("draftButton").disabled = true;
+    document.getElementById("submitButton").disabled = true;
     // Generating Document
     const request = {};
 
@@ -1133,8 +1134,6 @@ async function saveDraft() {
 
     // sending draft
     let draftSent = false;
-    document.getElementById("draftButton").disabled = true;
-    document.getElementById("submitButton").disabled = true;
     while(!draftSent) {
         const response = await fetch('https://api.uniqon.kr/document/application/draft', {
             credentials: 'include',

@@ -14,8 +14,6 @@ async function loadMentor() {
     let jsonResponse = await response.json();
     
     const mentorName = localStorage.getItem('docID').split("_")[0];
-    const admittedMajor = jsonResponse.admittedMajor;
-    const grad = jsonResponse.grad;
     const college = jsonResponse.college;
     const background = jsonResponse.background;
     const academics = jsonResponse.academics;

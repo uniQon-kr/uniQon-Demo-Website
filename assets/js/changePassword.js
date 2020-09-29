@@ -28,7 +28,7 @@ async function changePasswordFunc() {
             console.log(await response.json());
             document.getElementById("invalid").style.display = "block";
             document.getElementById("not-match").style.display = "none";
-            document.getElementById("changePasswordButton").disabled = false;
         }
     }
+    document.getElementById("changePasswordButton").disabled = false;
 }
