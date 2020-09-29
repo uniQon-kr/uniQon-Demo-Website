@@ -37,6 +37,7 @@ async function getMyInfo() {
                 + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + bookmarkArr[0] + " (" + collegeName + ")</p></div>";
             }
         }
+        //if verification is needed
         if(jsonResponse.verfiedReq){
             emailChanged();
         }
@@ -64,7 +65,7 @@ async function sendVerification() {
     document.getElementById("verification").style.display = "inline-block";
     document.getElementById("verify").style.display = "inline-block";
     const email = document.getElementById("email").value;
-    //TODO send verification 
+    
     if(email === "") {
         // if not properly filled in, show error message
         document.getElementById("invalid").style.display = "block";

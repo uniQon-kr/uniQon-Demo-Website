@@ -1424,6 +1424,19 @@ footer {
       border-radius: 5px;
     }
 
+    #success {
+      display: none;
+      width: 312px;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 3px 0 3px 3px;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #2ea44f;
+      background-color:  #d4ffe0;
+      border: 1px solid #a9ffc1;
+      border-radius: 5px;
+    }
     .description {
       margin-bottom: 10px;
       font-size: 14px;
