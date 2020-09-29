@@ -24,8 +24,11 @@ async function changePasswordFunc() {
             // Used Refresh Token
             localStorage.setItem("uniQonSignedIn", false);
             location.href = "{{ site.baseurl }}/";
+        } else if(response.status === 500) { // Unauthorized OR Forbidden
+            // Used Refresh Token
+            localStorage.setItem("uniQonSignedIn", false);
+            location.href = "{{ site.baseurl }}/";
         } else {
-            console.log(await response.json());
             document.getElementById("invalid").style.display = "block";
             document.getElementById("not-match").style.display = "none";
         }

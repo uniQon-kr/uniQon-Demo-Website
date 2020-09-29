@@ -59,7 +59,7 @@ async function resetPassword() {
         document.getElementById("not-match").style.display = "none";
         document.getElementById("success").style.display = "block";
         setTimeout(() => {
-            location.href = "{{ site.baseurl }}";
+            location.href = "{{ site.baseurl }}/";
         }, 2000);
       } else if(response.status === 403) {
         document.getElementById("resetButton").disabled = false;
