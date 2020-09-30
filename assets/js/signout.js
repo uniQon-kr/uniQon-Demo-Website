@@ -8,7 +8,7 @@ async function signOutFunc() {
   });
 
   // Unset uniQonSignedIn
-  localStorage.setItem('expiredAt', jsonResponse.expiredAt);
+  localStorage.setItem('expiredAt', undefined);
 
   // Redirect to main page
   if (location === "{{ site.baseurl }}/") {
