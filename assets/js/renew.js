@@ -5,7 +5,7 @@ async function renew() {
         credentials: 'include',
         method: 'POST'
     });
-    const jsonRepsonse = await response.json();
+    const jsonResponse = await response.json();
 
     if(response.ok) {
         if(jsonResponse.expiredAt > localStorage.getItem("expiredAt")) {
