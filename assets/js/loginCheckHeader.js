@@ -1,5 +1,5 @@
 async function loginCheckHeader() {
-    if (localStorage.getItem("uniQonSignedIn") === null) {
+    if (localStorage.getItem("expiredAt") === null) {
         // call GET https://api.uniqon.kr/auth to check whether user is logged in or not
         const response = await fetch("https://api.uniqon.kr/auth", {
             credentials: 'include',
@@ -7,12 +7,15 @@ async function loginCheckHeader() {
         });
         const jsonResponse = await response.json();
 
-        // Save signedIn value to local Storage
-        localStorage.setItem("uniQonSignedIn", jsonResponse.signedIn);
+        // TODO: compare expired at with current time
+        localStorage.setItem('expiredAt', jsonResponse.expiredAt);
+        if(response.status === 500){
+            alert('Auth API Server Malfunctioning');
+        }
     }
 
     // parse localStorage and display button accordingly
-    if (localStorage.getItem("uniQonSignedIn") === "true") {
+    if (localStorage.getItem("expiredAt") > new Date.now) {
         for (item of document.getElementsByClassName("auth")) {
             item.style.display = "block";
         }

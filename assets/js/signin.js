@@ -49,7 +49,7 @@ async function signInFunc(){
 
 			// Setup uniQonSignedIn
 			const jsonResponse = await response.json(); //extract JSON from the http response
-			localStorage.setItem("uniQonSignedIn", jsonResponse.signedIn);
+			localStorage.setItem('expiredAt', jsonResponse.expiredAt);
 			// On success sign in, go back to previous page
 			history.back();
 		}
