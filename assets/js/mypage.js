@@ -25,22 +25,22 @@ async function getMyInfo() {
             //TODO change bookmark function below to create application list 
             for(i=0; i < jsonResponse.applicationDoc.length; i++){
                 const applicationObj = jsonResponse.applicationDoc[i];
-                let collegeName = applicationObj.college;
-                let collegeImage = "/assets/school-logo/" + applicationObj.college.replace(/ /g,'-') + ".png";
+                let collegeName = applicationObj.schoolName;
+                let collegeImage = "/assets/school-logo/" + applicationObj.schoolName.replace(/ /g,'-') + ".png";
 
                 //TODO sorting
-                if(applicationObj.progress === "draft") {
+                if(applicationObj.status === "draft") {
                     document.getElementById("draft").innerHTML += "<div class = 'collegeImageWrapper'></div>" 
-                    + "<div><p class = 'bookmarkLink' href = '{{ site.baseurl }}/mentor-form'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
-                } else if(applicationObj.progress === "actionRequested") {
+                    + "<div><p class = 'bookmarkLink' href = '{{ site.baseurl }}/mentor-form'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
+                } else if(applicationObj.status === "actionRequested") {
                     document.getElementById("actionRequested").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
-                } else if(applicationObj.progress === "inProgress") {
+                    + "<div><p class = 'bookmarkLink'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
+                } else if(applicationObj.status === "inProgress") {
                     document.getElementById("inprogress").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
-                } else if(applicationObj.progress === "done") {
+                    + "<div><p class = 'bookmarkLink'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
+                } else if(applicationObj.status === "done") {
                     document.getElementById("reviewDone").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
+                    + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
                 }
             }
         }
