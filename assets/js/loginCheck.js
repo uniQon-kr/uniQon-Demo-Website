@@ -1,7 +1,7 @@
 ---
 ---
 async function loginCheck() {
-    if (localStorage.getItem("uniQonSignedIn") === null) {
+    if (localStorage.getItem("expiredAt") === null) {
         // call GET https://api.uniqon.kr/auth to check whether user is logged in or not
         const response = await fetch("https://api.uniqon.kr/auth", {
             credentials: 'include',
@@ -9,12 +9,16 @@ async function loginCheck() {
         });
         const jsonResponse = await response.json();
 
-        // Save signedIn value to local Storage
-        localStorage.setItem("uniQonSignedIn", jsonResponse.signedIn);
+        localStorage.setItem('expiredAt', jsonResponse.expiredAt);
+        if(response.status === 500){
+            alert('Auth API Server Malfunctioning');
+        }
     }
 
-    // redirect to main page if not logged in
-    if (localStorage.getItem("uniQonSignedIn") === "false") {
+    // redirect to main page if not logged in or token expired
+    if (localStorage.getItem("expiredAt") === undefined) {
+        location.href = "{{ site.baseurl }}/";
+    } else if (localStorage.getItem("expiredAt") <= Date.now()){
         location.href = "{{ site.baseurl }}/";
     }
 }

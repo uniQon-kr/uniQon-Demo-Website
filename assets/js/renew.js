@@ -5,12 +5,15 @@ async function renew() {
         credentials: 'include',
         method: 'POST'
     });
+    const jsonResponse = await response.json();
 
     if(response.ok) {
-        localStorage.setItem("uniQonSignedIn", true);
+        if(jsonResponse.expiredAt > localStorage.getItem("expiredAt")) {
+            localStorage.setItem("expiredAt", jsonResponse.expiredAt);
+        }
         return true;
     } else {
-        localStorage.setItem("uniQonSignedIn", false);
+        localStorage.setItem("expiredAt", undefined);
         location.href = "{{ site.baseurl }}/";
     }
 }

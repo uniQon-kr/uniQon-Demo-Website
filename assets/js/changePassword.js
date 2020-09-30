@@ -22,11 +22,11 @@ async function changePasswordFunc() {
             history.back();
         } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
             // Used Refresh Token
-            localStorage.setItem("uniQonSignedIn", false);
+            localStorage.setItem("expiredAt", undefined);
             location.href = "{{ site.baseurl }}/";
         } else if(response.status === 500) { // Unauthorized OR Forbidden
             // Used Refresh Token
-            localStorage.setItem("uniQonSignedIn", false);
+            localStorage.setItem("expriedAt", undefined);
             location.href = "{{ site.baseurl }}/";
         } else {
             document.getElementById("invalid").style.display = "block";
