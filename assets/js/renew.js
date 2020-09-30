@@ -8,7 +8,9 @@ async function renew() {
     const jsonRepsonse = await response.json();
 
     if(response.ok) {
-        localStorage.setItem("expiredAt", jsonResponse.expiredAt);
+        if(jsonResponse.expiredAt > localStorage.getItem("expiredAt")) {
+            localStorage.setItem("expiredAt", jsonResponse.expiredAt);
+        }
         return true;
     } else {
         localStorage.setItem("expiredAt", undefined);
