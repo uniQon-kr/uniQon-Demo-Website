@@ -831,6 +831,7 @@ footer {
 
   .section-wrapper {
     margin-bottom: 30px;
+    margin-top: 30px;
 
     .collegeImageWrapper {
       text-align: center;
@@ -878,11 +879,6 @@ footer {
       border: 1px solid #2ea44f;
     }
 
-    a {
-      text-decoration: none;
-      color:white;
-    }
-
     .error {
       display: none;
       width: 312px;
@@ -916,10 +912,41 @@ footer {
     display: grid;
     grid-template-columns: 200px auto;
   }
+  
+  .security-button {
+    display: block;
+    width: 322px;
+    background-color: #2ea44f;
+    padding: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #2ea44f;
+    a {
+      text-decoration: none;
+      color:white;
+    }
+  }
 
   .content {
     margin-bottom: 10px;
     padding: 0px 10px 0px 10px;
+
+    #signout-success {
+      display: none;
+      width: 312px;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 3px 0 3px 3px;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #2ea44f;
+      background-color:  #d4ffe0;
+      border: 1px solid #a9ffc1;
+      border-radius: 5px;
+    }
     .email-button{
       display: none;
       width:250px;

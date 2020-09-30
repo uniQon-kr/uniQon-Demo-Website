@@ -29,9 +29,20 @@ permalink: /mypage
 			<div class = "error" id = "needtoSave">Successfully Verified, Need to Save</div>
 			<div id = "success">Successfully Updated</div>
 			<button onclick="updateMyInfo()">Change User Information</button>
-			<button><a href = "{{ site.baseurl }}/changePassword">Change Password</a></button>
 		</div>
 	</div>
+	
+	<div class = "section-wrapper content" id = "security">
+		<div class = "section-header">
+			<p class = "subtitle">Security</p>
+		</div>
+		<div class = "content-paragraph" id= security>
+			<button class = "security-button"><a href = "{{ site.baseurl }}/changePassword">Change Password</a></button>
+			<button class = "security-button" onclick="allSignout()">Logout From All Other Sessions</button>
+			<div id = "signout-success">Signed Out from All Other Sessions</div>
+		</div>
+	</div>
+
 	<div class = "section-wrapper optional" id = "mentor">
 		<div class = "section-header">
 			<p class = "subtitle">Mentor Profile</p>

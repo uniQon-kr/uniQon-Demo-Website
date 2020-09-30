@@ -231,5 +231,28 @@ async function updateMyInfo() {
     }
 }
 
+async function allSignout(){
+    // Log out from server
+    const response = await fetch("https://api.uniqon.kr/auth/signout/other-session",{
+      credentials: 'include',
+      method: "DELETE"
+    });
+
+    if(response.ok) {
+        document.getElementById('signout-success').style.display = "block";
+        setTimeout(() => {
+            document.getElementById('signout-success').style.display = "none";
+        }, 4000);
+    } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
+        // Used Refresh Token
+        localStorage.setItem("expiredAt", undefined);
+        location.href = "{{ site.baseurl }}/";
+    } else if(response.status === 500) { // Unauthorized OR Forbidden
+        // Used Refresh Token
+        localStorage.setItem("expriedAt", undefined);
+        location.href = "{{ site.baseurl }}/";
+    }
+}
+
 let email, nickname;
 getMyInfo();
