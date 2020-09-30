@@ -6,8 +6,6 @@ async function loginCheckHeader() {
             method: 'GET'
         });
         const jsonResponse = await response.json();
-
-        // TODO: compare expired at with current time
         localStorage.setItem('expiredAt', jsonResponse.expiredAt);
         if(response.status === 500){
             alert('Auth API Server Malfunctioning');
@@ -15,7 +13,7 @@ async function loginCheckHeader() {
     }
 
     // parse localStorage and display button accordingly
-    if (localStorage.getItem("expiredAt") > new Date.now) {
+    if (localStorage.getItem("expiredAt") > Date.now()) {
         for (item of document.getElementsByClassName("auth")) {
             item.style.display = "block";
         }

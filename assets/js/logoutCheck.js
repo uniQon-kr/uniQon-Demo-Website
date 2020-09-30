@@ -17,7 +17,7 @@ async function logoutCheck() {
     }
 
     // redirect to main page if logged in
-    if (localStorage.getItem("expiredAt") > new Date.now) {
+    if (localStorage.getItem("expiredAt") > Date.now()) {
         location.href = "{{ site.baseurl }}/";
     }
 }

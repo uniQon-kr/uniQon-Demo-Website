@@ -47,7 +47,7 @@ async function getMyInfo() {
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
         await renew(); // try to renew access token
-        if(localStorage.getItem("uniQonSignedIn")) {
+        if(localStorage.getItem("expiredAt") <= Date.now()) {
             getMyInfo();
         }
     } else {
