@@ -300,8 +300,7 @@ async function loadDraft() {
 
     if(response.status === 401 || (response.status === 403 && jsonResponse.error !== "Forbidden: Not A Mentor")) {
         // renew token
-        await renew();
-        if(localStorage.getItem("expiredAt") > Date.now()) {
+        if(await renew()) {
             await loadDraft();
         }
     } else if(response.ok) {

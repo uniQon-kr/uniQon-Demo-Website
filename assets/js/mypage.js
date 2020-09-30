@@ -46,10 +46,9 @@ async function getMyInfo() {
             document.getElementById("verify").style.display = "inline-block";
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
-        await renew(); // try to renew access token
-        if(localStorage.getItem("expiredAt") > Date.now()) {
+        if(await renew()) { // try to renew access token
             getMyInfo();
-        }
+        };
     } else {
         alert("Server Error!! Please Try Again");
         location.href = "{{ site.baseurl }}/";
