@@ -31,13 +31,13 @@ async function getMyInfo() {
                 //TODO sorting
                 if(applicationObj.progress === "draft") {
                     document.getElementById("draft").innerHTML += "<div class = 'collegeImageWrapper'></div>" 
-                    + "<div><p class = 'bookmarkLink' onclick = 'openDraft(" + i + ")'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
+                    + "<div><p class = 'bookmarkLink' href = '{{ site.baseurl }}/mentor-form'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
                 } else if(applicationObj.progress === "actionRequested") {
                     document.getElementById("actionRequested").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink' onclick = 'openDraft(" + i + ")'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
+                    + "<div><p class = 'bookmarkLink'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
                 } else if(applicationObj.progress === "inProgress") {
                     document.getElementById("inprogress").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink' onclick = 'openInProgress(" + i + ")'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
+                    + "<div><p class = 'bookmarkLink'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
                 } else if(applicationObj.progress === "done") {
                     document.getElementById("reviewDone").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
                     + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + applicationObj.name + " (" + collegeName + ")</p></div>";
