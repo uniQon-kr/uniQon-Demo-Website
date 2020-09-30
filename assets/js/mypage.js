@@ -231,5 +231,17 @@ async function updateMyInfo() {
     }
 }
 
+async function allSignout(){
+    // Log out from server
+    await fetch("https://api.uniqon.kr/auth/signout/other-session",{
+      credentials: 'include',
+      method: "DELETE"
+    });
+    document.getElementById('signout-success').style.display = "block";
+    setTimeout(() => {
+        document.getElementById('signout-success').style.display = "none";
+    }, 4000);
+}
+
 let email, nickname;
 getMyInfo();

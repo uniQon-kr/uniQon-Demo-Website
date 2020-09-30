@@ -7,7 +7,7 @@ async function signOutFunc() {
     method: "DELETE"
   });
 
-  // Unset uniQonSignedIn
+  // Unset expire time
   localStorage.setItem('expiredAt', undefined);
 
   // Redirect to main page
