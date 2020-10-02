@@ -1,6 +1,13 @@
 ---
 ---
 async function loginCheck() {
+    if (localStorage.getItem("resetPW") == "true" || localStorage.getItem("resetPW") == true) {
+        if(!location.href.includes("changePassword")){
+            location.href = "{{ site.baseurl }}/changePassword";
+            return;
+        }
+    }
+
     if (localStorage.getItem("expiredAt") === null) {
         // call GET https://api.uniqon.kr/auth to check whether user is logged in or not
         const response = await fetch("https://api.uniqon.kr/auth", {

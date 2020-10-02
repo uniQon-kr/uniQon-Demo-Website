@@ -5,7 +5,7 @@ async function resetPassword() {
   const username = document.getElementById("username-input").value;
   const ticketID = document.getElementById("ticketID-input").value;
   const securityCode = document.getElementById("securityCode-input").value;
-  const newPassword = document.getElementById("newPassword-input").value;
+  const newPassword = document.getElementById("password-checked").value;
   const retypePassword = document.getElementById("retypePassword-input").value;
   
   if(username === "" || ticketID === "" || securityCode === "" || newPassword === "" || retypePassword === "") {

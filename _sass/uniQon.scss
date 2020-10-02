@@ -747,6 +747,12 @@ footer {
         margin-bottom: 15px;
         padding: 2px;
       }
+      .checker{
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: red;
+      }
     }
 
     button {
@@ -842,8 +848,24 @@ footer {
       }
     }
 
+    .applications{
+      .collegeImageWrapper{
+        text-align: center;
+        width: 90%;
+        margin: auto;
+      }
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: 10% 90%;
+      row-gap: 15px;
+    }
     .bookmarkLink{
       margin-left: 3%;
+      margin-top: 2%;
+      color: black;
+      text-decoration: none;
+    }
+    a{
       margin-top: 2%;
       color: #0366d6;
       text-decoration: none;
@@ -1175,6 +1197,7 @@ footer {
   text-align: center;
   margin-top: 50px;
 
+
   .uniQon_logo {
     background-color: #000000;
     width: 50px;
@@ -1186,6 +1209,13 @@ footer {
     font-size: 25px;
     font-weight: 300;
     margin-bottom: 20px;
+  }
+
+  .checker{
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: red;
   }
 
   .change-password-box {
@@ -1428,6 +1458,13 @@ footer {
     font-size: 25px;
     font-weight: 300;
     margin-bottom: 20px;
+  }
+
+  .checker{
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: red;
   }
 
   .signin-box {

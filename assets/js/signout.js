@@ -9,6 +9,8 @@ async function signOutFunc() {
 
   // Unset expire time
   localStorage.setItem('expiredAt', undefined);
+  localStorage.setItem('resetPW', undefined);
+  localStorage.setItem('username', undefined);
 
   // Redirect to main page
   if (location === "{{ site.baseurl }}/") {
