@@ -23,8 +23,7 @@ async function getMyInfo() {
         if(jsonResponse.type.includes("mentor")) {
             document.getElementById("mentor").style.display = "block";
             document.getElementById("balance").innerHTML = jsonResponse.remainingBalance;
-            console.log(jsonResponse.applicationDoc);
-            //TODO change bookmark function below to create application list 
+            // change bookmark function below to create application list 
             if(jsonResponse.applicationDoc.length > 0) {
                 document.getElementById("application-list").style.display = "block";
                 for(i=0; i < jsonResponse.applicationDoc.length; i++){
@@ -34,7 +33,7 @@ async function getMyInfo() {
                     let docID = applicationObj.documentID;
                     localStorage.setItem("docID", docID)
 
-                    //TODO sorting
+                    // sorting
                     if(applicationObj.status === "draft") {
                         document.getElementById("draft").innerHTML += "<div></div><div><p class = 'bookmarkLink'> <a href = '{{ site.baseurl }}/mentor-form'>" + collegeName + " (" + applicationObj.expectedGrad + ") - draft</a></p></div>";
                     } else if(applicationObj.status === "action requested") {
@@ -192,7 +191,7 @@ async function verifyEmail() {
 }
 
 async function updateMyInfo() {
-    // TODO: Disable
+    // Disable
     if(emailVerified){
         document.getElementById("sendVerification").style.display = "none";
         document.getElementById("verification").style.display = "none";

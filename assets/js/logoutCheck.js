@@ -9,7 +9,7 @@ async function logoutCheck() {
         });
         const jsonResponse = await response.json();
 
-        // TODO: compare expired at with current time
+        // compare expired at with current time
         localStorage.setItem('expiredAt', jsonResponse.expiredAt);
         if(response.status === 500){
             alert('Auth API Server Malfunctioning');
