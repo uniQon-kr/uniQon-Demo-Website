@@ -50,8 +50,14 @@ async function signInFunc(){
 			// Setup uniQonSignedIn
 			const jsonResponse = await response.json(); //extract JSON from the http response
 			localStorage.setItem('expiredAt', jsonResponse.expiredAt);
-			// On success sign in, go back to previous page
-			history.back();
+			localStorage.setItem('resetPW', jsonResponse.resetPW);
+			localStorage.setItem('username', username);
+			if(!jsonResponse.resetPW){
+				// On success sign in, go back to previous page
+				history.back();
+			} else{
+        location.href = "{{ site.baseurl }}/changePassword";
+			}
 		}
 	}
 }

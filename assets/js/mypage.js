@@ -1,3 +1,5 @@
+---
+---
 let jsonResponse;
 let emailVerified = false;
 
@@ -21,26 +23,28 @@ async function getMyInfo() {
         if(jsonResponse.type.includes("mentor")) {
             document.getElementById("mentor").style.display = "block";
             document.getElementById("balance").innerHTML = jsonResponse.remainingBalance;
-
+            console.log(jsonResponse.applicationDoc);
             //TODO change bookmark function below to create application list 
-            for(i=0; i < jsonResponse.applicationDoc.length; i++){
-                const applicationObj = jsonResponse.applicationDoc[i];
-                let collegeName = applicationObj.schoolName;
-                let collegeImage = "/assets/school-logo/" + applicationObj.schoolName.replace(/ /g,'-') + ".png";
+            if(jsonResponse.applicationDoc.length > 0) {
+                document.getElementById("application-list").style.display = "block";
+                for(i=0; i < jsonResponse.applicationDoc.length; i++){
+                    let applicationObj = jsonResponse.applicationDoc[i];
+                    let collegeName = applicationObj.schoolName;
+                    let collegeImage = "/assets/school-logo/" + applicationObj.schoolName.replace(/ /g,'-') + ".png";
+                    let docID = applicationObj.documentID;
+                    localStorage.setItem("docID", docID)
 
-                //TODO sorting
-                if(applicationObj.status === "draft") {
-                    document.getElementById("draft").innerHTML += "<div class = 'collegeImageWrapper'></div>" 
-                    + "<div><p class = 'bookmarkLink' href = '{{ site.baseurl }}/mentor-form'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
-                } else if(applicationObj.status === "actionRequested") {
-                    document.getElementById("actionRequested").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
-                } else if(applicationObj.status === "inProgress") {
-                    document.getElementById("inprogress").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
-                } else if(applicationObj.status === "done") {
-                    document.getElementById("reviewDone").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                    + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + applicationObj.expectedGrad + " (" + collegeName + ")</p></div>";
+                    //TODO sorting
+                    if(applicationObj.status === "draft") {
+                        document.getElementById("draft").innerHTML += "<div></div><div><p class = 'bookmarkLink'> <a href = '{{ site.baseurl }}/mentor-form'>" + collegeName + " (" + applicationObj.expectedGrad + ") - draft</a></p></div>";
+                    } else if(applicationObj.status === "action requested") {
+                        document.getElementById("actionRequested").innerHTML += "<div></div><div><p class = 'bookmarkLink'>" + collegeName + " (" + applicationObj.expectedGrad + ") - action requested</p></div>";
+                    } else if(applicationObj.status === "review in progress") {
+                        document.getElementById("inprogress").innerHTML += "<div></div><div><p class = 'bookmarkLink'>" + collegeName + " (" + applicationObj.expectedGrad + ") - review in progress</p></div>";
+                    } else if(applicationObj.status === "done") {
+                        document.getElementById("reviewDone").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
+                        + "<div><p class = 'bookmarkLink'> <a href = '{{ site.baseurl }}/application'>" + collegeName + " (" + applicationObj.expectedGrad + ") - done</a></p></div>";
+                    }
                 }
             }
         }

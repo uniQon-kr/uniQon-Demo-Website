@@ -1156,7 +1156,6 @@ async function saveDraft() {
             document.getElementById("draftButton").disabled = false;
             document.getElementById("submitButton").disabled = false;
         } else if(response.status == 400 && jsonResponse.error === "Invalid Input") {
-            alert("Invalid Input");
             document.getElementById("missing").style.display = "none";
             document.getElementById("duplicated").style.display = "none";
             document.getElementById("success").style.display = "none";

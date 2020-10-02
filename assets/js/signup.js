@@ -49,8 +49,8 @@ async function signUpFunc() {
   const type = [ pathname[2] ];
   document.getElementById("signupButton").disabled = true;
 
-	if(username === "" || firstName === "" || lastName === "" || password === "" || email === "" || nickname === "") {
-		// if not properly filled in, show error message
+	if(username === "" || firstName === "" || lastName === "" || password === "" || email === "" || nickname === "" || !usernameChecker || ! passwordChecker) {
+		// if not properly filled in or not following proper format, show error message
 		document.getElementById("invalid").style.display = "block";
     document.getElementById("agreeTC").style.display = "none";
     document.getElementById("duplicatedID").style.display = "none";
