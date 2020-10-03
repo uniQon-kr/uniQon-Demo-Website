@@ -647,6 +647,9 @@ async function loadDraft() {
                 }
             }
         }
+    } else if(response.status === 400 && jsonResponse.error === 'Account Not Verified') {
+        alert("Account Not Verified");
+        location.href = "{{ site.baseurl }}/mypage";
     } else if(response.status !== 404) {
         alert("Server Error!! Please Try Again!!");
         location.href = "{{ site.baseurl }}/";
@@ -1161,6 +1164,9 @@ async function saveDraft() {
             document.getElementById("success").style.display = "none";
             document.getElementById("invalid").style.display = "block";
             location.reload();
+        }  else if(response.status === 400 && jsonResponse.error === 'Account Not Verified') {
+            alert("Account Not Verified");
+            location.href = "{{ site.baseurl }}/mypage";
         } else {
             alert("Server Error");
             location.reload();
@@ -1532,6 +1538,9 @@ async function submit() {
                 location.reload();
             }, 2000);
             break;
+        }  else if(response.status === 400 && jsonResponse.error === 'Account Not Verified') {
+            alert("Account Not Verified");
+            location.href = "{{ site.baseurl }}/mypage";
         } else {
             await saveDraft();
             alert("Server Error!!");
