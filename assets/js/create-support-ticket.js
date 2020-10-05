@@ -48,7 +48,6 @@ async function remove() {
   }
 }
 
-//TODO finish required check
 function requiredCheck(inputFieldID) {
   // check whether input field is written or not
   if(document.getElementById(inputFieldID).value !== "") { // when field contains value
@@ -94,7 +93,7 @@ async function submit() {
       document.getElementById("form-amount").value !== "" || 
       document.getElementById("form-cashout-message").value !== ""
       ){
-      paymentinfo += "Account Number" + "\n" +  document.getElementById("form-accnum") + "\n\n" + "Amount" + "\n"+  document.getElementById("form-amount").value 
+      paymentinfo += "Account Number" + "\n" +  document.getElementById("form-accnum").value + "\n\n" + "Amount" + "\n"+  document.getElementById("form-amount").value 
         + "\n\n\n";
       message += "Message" + "\n" +  document.getElementById("form-cashout-message").value;
       request.message = paymentinfo + message;
@@ -103,7 +102,7 @@ async function submit() {
     let generalinfo = "[Mentee General Information]\n\n";
     let concern = "[Concern]\n\n";
     let interests = "[Interests]\n\n";
-    let message = "[Message]\n\n";
+    let message = "\n\n\n[Message]\n\n";
     
     if(
       document.getElementById("form-school").value !== "" || 
@@ -115,15 +114,15 @@ async function submit() {
       document.getElementById("form-college").value !== "" || 
       document.getElementById("form-initialize-message").value !== ""
       ){
-        generalinfo += "School" + "\n" +  document.getElementById("form-school") + "\n\n" + "Grade" + "\n"+  document.getElementById("form-grade").value 
+        generalinfo += "School" + "\n" +  document.getElementById("form-school").value + "\n\n" + "Grade" + "\n"+  document.getElementById("form-grade").value 
           + "\n\n\n";
-        concern += "Academics" + "\n" +  document.getElementById("form-academics") + "\n\n" + "Activities" + "\n"+  document.getElementById("form-activities").value + "\n\n" 
+        concern += "Academics" + "\n" +  document.getElementById("form-academics").value + "\n\n" + "Activities" + "\n"+  document.getElementById("form-activities").value + "\n\n" 
         + "College Application" + "\n"+  document.getElementById("form-collageapp").value + "\n\n\n";
-        interests += "Major" + "\n" +  document.getElementById("form-major") + "\n\n" + "College" + "\n"+  document.getElementById("form-college").value + "\n\n" 
+        interests += "Major" + "\n" +  document.getElementById("form-major").value + "\n\n" + "College" + "\n"+  document.getElementById("form-college").value + "\n\n" 
         + "Interested Mentor's documentID" + "\n";
         for(let i = 1; i <= docIDCount; i += 1) {
           if(document.getElementById('form-docID-'+i).value !== "") {
-            interests += document.getElementById("form-docID-" + i) + "\n";
+            interests += document.getElementById("form-docID-" + i).value + "\n";
           } else {
               document.getElementById("missing").style.display = "block";
               document.getElementById("duplicated").style.display = "none";
@@ -132,7 +131,7 @@ async function submit() {
               return;
           }
         }
-        message += "\n\n\n" + "Message" + "\n" +  document.getElementById("form-initialize-message").value;
+        message += "Message" + "\n" +  document.getElementById("form-initialize-message").value;
 
 
         request.message = generalinfo + concern + interests + message;
@@ -142,76 +141,93 @@ async function submit() {
       request.message = "[Message]\n\n" + document.getElementById("form-message").value;
     }
   }
-
-  if(//chech for invalid input
-    document.getElementById("form-accnum").value === "" || 
-    document.getElementById("form-amount").value === "" || 
-    document.getElementById("form-cashout-message").value === "" ||
-    document.getElementById("form-school").value === "" || 
-    document.getElementById("form-grade").value === "" || 
-    document.getElementById("form-academics").value === "" || 
-    document.getElementById("form-activities").value === "" || 
-    document.getElementById("form-collageapp").value === "" || 
-    document.getElementById("form-major").value === "" || 
-    document.getElementById("form-college").value === "" || 
-    document.getElementById("form-initialize-message").value === "" ||
+  if(
+    document.getElementById("type-select").value === "cashout" && 
+    (
+      document.getElementById("form-accnum").value === "" || 
+      document.getElementById("form-amount").value === "" || 
+      document.getElementById("form-cashout-message").value === "" 
+    )){
+      document.getElementById("missing").style.display = "block";
+      document.getElementById("duplicated").style.display = "none";
+      document.getElementById("success").style.display = "none";
+      document.getElementById("invalid").style.display = "none";
+  } else if(
+    document.getElementById("type-select").value === "mentoring initialize" && 
+    (
+      document.getElementById("form-school").value === "" || 
+      document.getElementById("form-grade").value === "" || 
+      document.getElementById("form-academics").value === "" || 
+      document.getElementById("form-activities").value === "" || 
+      document.getElementById("form-collageapp").value === "" || 
+      document.getElementById("form-major").value === "" || 
+      document.getElementById("form-college").value === "" || 
+      document.getElementById("form-initialize-message").value === ""
+    )){
+      //check for all the docIDs
+      for(let i = 1; i <= docIDCount; i += 1) {
+        if(document.getElementById('form-docID-'+i).value === "") {
+          document.getElementById("missing").style.display = "block";
+          document.getElementById("duplicated").style.display = "none";
+          document.getElementById("success").style.display = "none";
+          document.getElementById("invalid").style.display = "none";
+          return;
+        }
+      }
+      document.getElementById("missing").style.display = "block";
+      document.getElementById("duplicated").style.display = "none";
+      document.getElementById("success").style.display = "none";
+      document.getElementById("invalid").style.display = "none";
+  } else if (
+    document.getElementById("type-select").value !== "cashout" && 
+    document.getElementById("type-select").value !== "mentoring initialize" && 
     document.getElementById("form-message").value === "" 
     ){
       document.getElementById("missing").style.display = "block";
       document.getElementById("duplicated").style.display = "none";
       document.getElementById("success").style.display = "none";
       document.getElementById("invalid").style.display = "none";
-  } else {//check for all the docIDs
-    for(let i = 1; i <= docIDCount; i += 1) {
-      if(document.getElementById('form-docID-'+i).value === "") {
-        document.getElementById("missing").style.display = "block";
-        document.getElementById("duplicated").style.display = "none";
-        document.getElementById("success").style.display = "none";
-        document.getElementById("invalid").style.display = "none";
-        return;
-      }
-    }
-
-    const userInput = {email: email, verifyCode: verificationCode};
-    const response = await fetch('https://api.uniqon.kr/support-ticket', {
-        credentials: 'include',
-        method: 'POST',
-        body: JSON.stringify(userInput),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-  }
-  const jsonResponse = await response.json();//error handling
-  if(response.status === 401 || response.status === 403) {
-    if(await renew()) {
-      await loadTypes();
-    }
-    return;
-  } else if(response.status === 400) {
-    if(jsonResponse.error.includes("Missing Fields")){
-      document.getElementById("missing").style.display = "block";
-      document.getElementById("duplicated").style.display = "none";
-      document.getElementById("success").style.display = "none";
-      document.getElementById("invalid").style.display = "none";
-    } else if(jsonResponse.error.includes("Account Not Verified")){
-      alert("Account Not Verified");
-      location.href = "{{ site.baseurl }}/mypage";
-    }
-  } else if(response.status === 201) {
-    document.getElementById("missing").style.display = "none";
-    document.getElementById("duplicated").style.display = "none";
-    document.getElementById("success").style.display = "block";
-    document.getElementById("invalid").style.display = "none";
-    setTimeout(() => {
-      location.href = "{{ site.baseurl }}/mypage";
-    }, 2000);
   } else {
-    await saveDraft();
-    alert("Server Error!!");
-    setTimeout(() => {
-        location.reload();
-    }, 2000);
+      const userInput = request;
+      const response = await fetch('https://api.uniqon.kr/support-ticket', {
+          credentials: 'include',
+          method: 'POST',
+          body: JSON.stringify(userInput),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      const jsonResponse = await response.json();//error handling
+      if(response.status === 401 || response.status === 403) {
+        if(await renew()) {
+          await loadTypes();
+        }
+        return;
+      } else if(response.status === 400) {
+          if(jsonResponse.error.includes("Missing Fields")){
+            document.getElementById("missing").style.display = "block";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "none";
+          } else if(jsonResponse.error.includes("Account Not Verified")){
+            alert("Account Not Verified");
+            location.href = "{{ site.baseurl }}/mypage";
+          }
+      } else if(response.status === 201) {
+        document.getElementById("missing").style.display = "none";
+        document.getElementById("duplicated").style.display = "none";
+        document.getElementById("success").style.display = "block";
+        document.getElementById("invalid").style.display = "none";
+        setTimeout(() => {
+          location.href = "{{ site.baseurl }}/mypage";
+        }, 2000);
+      } else {
+        await saveDraft();
+        alert("Server Error!!");
+        setTimeout(() => {
+            location.reload();
+        }, 2000);
+      }
   }
 }
 loadTypes();
