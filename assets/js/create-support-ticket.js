@@ -212,6 +212,11 @@ async function submit() {
           } else if(jsonResponse.error.includes("Account Not Verified")){
             alert("Account Not Verified");
             location.href = "{{ site.baseurl }}/mypage";
+          } else if(jsonResponse.error.includes("Invalid Input")){
+            document.getElementById("missing").style.display = "none";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "block";
           }
       } else if(response.status === 201) {
         document.getElementById("missing").style.display = "none";

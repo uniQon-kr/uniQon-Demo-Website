@@ -40,7 +40,6 @@ async function submit() {
         }
         return;
       } else if(response.status === 400) {
-        console.log(jsonResponse.error);
           if(jsonResponse.error.includes("Missing Fields")){
             document.getElementById("missing").style.display = "block";
             document.getElementById("duplicated").style.display = "none";
@@ -49,6 +48,11 @@ async function submit() {
           } else if(jsonResponse.error.includes("Account Not Verified")){
             alert("Account Not Verified");
             location.href = "{{ site.baseurl }}/mypage";
+          } else if(jsonResponse.error.includes("Invalid Input")){
+            document.getElementById("missing").style.display = "none";
+            document.getElementById("duplicated").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("invalid").style.display = "block";
           }
       } else if(response.status === 201) {
         document.getElementById("missing").style.display = "none";

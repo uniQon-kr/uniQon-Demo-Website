@@ -76,7 +76,15 @@ async function loadMentor() {
       await loadMentor();
     }
     return;
-  } 
+  } else if(response.status === 400) {
+      if(jsonResponse.error.includes("Invalid Input")){
+        alert("Server Error");
+      }
+  } else if(response.status === 404) {
+    if(jsonResponse.error.includes("Support Ticket Not Found")){
+      alert("Support Ticket Not Found");
+    }
+}
   //TODO error handling
 }
 
