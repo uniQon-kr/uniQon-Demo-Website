@@ -40,10 +40,10 @@ async function signUpFunc() {
 
   let pathname = location.pathname.split( '/' );
 
-	const username = document.getElementById('username').value;
+	const username = document.getElementById('username-checked').value;
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
-  const password = document.getElementById('password').value;
+  const password = document.getElementById('password-checked').value;
   const email = document.getElementById('email').value;
   const nickname = document.getElementById('nickname').value;
   const type = [ pathname[2] ];

@@ -1,0 +1,95 @@
+---
+layout: default
+title: "Create Support Ticket"
+permalink: /create-support-ticket
+---
+<script src = '{{ site.baseurl }}/assets/js/loginCheck.js'></script>
+<script defer src = '{{ site.baseurl }}/assets/js/create-support-ticket.js'></script>
+<div class="support-ticket">
+	<p id="title">Create Support Ticket<p>
+	<div class="common section-wrapper">
+		<div class = "section-header">
+			<p class = "subtitle">Basic Information</p>
+		</div>
+		<div class="content">
+			<p class = "content-title">Type</p>
+      <select onchange = "typeChange()" id="type-select"></select>   
+		</div>
+		<div class="content">
+			<p class = "content-title">Title</p>
+      <input onchange = "requiredCheck('form-title')" class = "required" id = "form-title" type = "text"/>
+    </div>
+  </div>
+  
+	<div class = "section-wrapper optional" id = "cashout">
+		<div class = "section-header">
+			<p class = "subtitle">Payment Information</p>
+		</div>
+		<div class = "content">
+			<p class = "content-title">Account Number</p>
+      <input onchange = "requiredCheck('form-accnum')" class = "required" id = "form-accnum"type = "text"/>
+			<p class = "content-title">Amount</p>
+      <input onchange = "requiredCheck('form-amount')" class = "required" id = "form-amount"type = "text"/>
+      <div class = "section-header">
+        <p class = "subtitle">Message<a> (You may not use these characters: "\;{}()$)</a></p>
+      </div>
+      <textarea onchange = "requiredCheck('form-cashout-message')" class = "message required" id= "form-cashout-message"></textarea>
+		</div>
+  </div>
+  
+	<div class = "section-wrapper optional" id = "message">
+		<div class = "section-header">
+			<p class = "subtitle">Message<a> (You may not use these characters: "\;{}()$)</a></p>
+		</div>
+		<div class = "content">
+      <textarea onchange = "requiredCheck('form-message')" class = "message required" id= "form-message"></textarea>
+		</div>
+  </div>
+  
+	<div class = "section-wrapper optional" id = "mentoring-initialize">
+		<div class = "section-header">
+			<p class = "subtitle">Mentee General Information</p>
+		</div>
+		<div class = "content">
+			<p class = "content-title">School</p>
+      <input onchange = "requiredCheck('form-school')" class = "required" id = "form-school"type = "text"/>
+			<p class = "content-title">Grade</p>
+      <input onchange = "requiredCheck('form-grade')" class = "required" id = "form-grade"type = "text"/>
+      <div class = "section-header">
+        <p class = "subtitle">Concern</p>
+      </div>
+			<p class = "content-title">Academics</p>
+      <textarea onchange = "requiredCheck('form-academics')" class = "message required" id= "form-academics"></textarea>
+			<p class = "content-title">Activities</p>
+      <textarea onchange = "requiredCheck('form-activities')" class = "message required" id= "form-activities"></textarea>
+			<p class = "content-title">College Application</p>
+      <textarea onchange = "requiredCheck('form-collageapp')" class = "message required" id= "form-collageapp"></textarea>
+      <div class = "section-header">
+        <p class = "subtitle">Interests</p>
+      </div>
+			<p class = "content-title">Major</p>
+      <textarea onchange = "requiredCheck('form-major')" class = "message required" id= "form-major"></textarea>
+			<p class = "content-title">College</p>
+      <textarea onchange = "requiredCheck('form-college')" class = "message required" id= "form-college"></textarea>
+			<p class = "content-title">Interested Mentor's documentID</p>
+      <div id = 'docID-AM'>
+        <input onchange = "requiredCheck('form-docID-1')" class = "block required" id = "form-docID-1" type = "text"/>
+      </div>
+      <p class="addmore" onclick="addMore()">Add more</p></br>
+      <p class="addmore" id= "docID-remove" onclick="remove()">Remove</p>
+      <div class = "section-header">
+        <p class = "subtitle">Message<a> (You may not use these characters: "\;{}()$)</a></p>
+      </div>
+      <textarea onchange = "requiredCheck('form-initialize-message')" class = "message required" id= "form-initialize-message"></textarea>
+		</div>
+  </div>
+  <div class = "message-wrapper">
+    <div class = "error" id = "missing">Missing Input: Please Fill All Required Fields</div>
+    <div class = "error" id = "duplicated">Duplicated Application Found</div>
+    <div class = "error" id = "invalid">Invalid Input</div>
+    <div class = "pass" id = "success">Successfully Submitted</div>
+  </div>
+  <div class = "button-wrapper">
+    <button onclick="submit()" id = "submitButton">Submit</button>
+  </div>
+</div>

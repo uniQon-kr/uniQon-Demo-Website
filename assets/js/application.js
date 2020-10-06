@@ -169,7 +169,10 @@ async function bookmarkAdd() {//post bookmark
       bookmarkAdd();
       return;
     }
-  }
+  } else if(response.status === 400 && jsonResponse.error === 'Account Not Verified') {
+    alert("Account Not Verified");
+    location.href = "{{ site.baseurl }}/mypage";
+  } 
 
   bookmark();
 }
@@ -189,7 +192,10 @@ async function bookmarkDel() {//delete bookmark
       bookmarkDel();
       return;
     }
-  }
+  } else if(response.status === 400 && jsonResponse.error === 'Account Not Verified') {
+    alert("Account Not Verified");
+    location.href = "{{ site.baseurl }}/mypage";
+  } 
 
   bookmark();
 }
