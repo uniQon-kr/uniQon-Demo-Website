@@ -12,43 +12,50 @@ body {
 }
 
 header {
-  height: 60px;
-  padding: 30px 0 30px 0;
-  font-weight: 500;
+  @media screen and (min-width: 550px) {
+
+  }
+  // mobile
   background-color: #000000;
-  color: #ffffff;
-
-  // desktop
   .desktop {
-    margin: 0px 40px 0px 40px;
-    display: grid;
-    grid-template-columns: 70px 130px auto 220px;
+    display: none;
+  }
+  .mobile{
+    margin: 0px 0px 0px 20px;
+    .topMobile {
+      height: auto;
+      padding: 30px 0 30px 0;
+      font-weight: 500;
+      color: #ffffff;
 
+      display: grid;
+      grid-template-columns: 30px auto 150px
+    }
+
+    .menuIcon {
+      height: 30px;
+    }
+  
     .uniQon_logo {
-      height: 50px;
-      padding: 5px 10px 5px 10px;
+      position: absolute;
+      width: 45px;
+      right: 45%;
     }
   
-    .title {
-      padding: 5px 0px 0px 0px;
-      font-size: 30px;
-      font-weight: 700;
-    }
-  
-    .navigator {
-      padding-top: 15px;
-      height: 45px;
+    #navLinks {
+      display: none;
+      height: auto;
+      padding-bottom: 10px;
 
       .a-wrapper {
-        padding-right: 20px;
         display: block;
-        float: right;
+        padding-bottom: 10px;
       }
 
       a {
         text-decoration: none;
-        color: #ffffff;
-        font-size: 18px;
+        color: white;
+        font-size: 15px;
         text-align: center;
 
         &:hover {
@@ -64,20 +71,17 @@ header {
     }
 
     .botton_wrapper {
-      padding-top: 10px;
-      height: 50px;
       color: #000000;
+      margin-left: 10px;
 
       .button {
-        cursor: pointer;
         float: left;
-        width: 100px;
+        width: 50px;
         text-align: center;
-        font-size: 18px;
-        height: 35px;
+        font-size: 10px;
         border-radius: 10px;
-        padding: 5px 0px 0px 0px;
-        margin: 0px 5px 0px 5px;
+        padding: 5px 5px 5px 5px;
+        margin: 5px 0px 0px 5px;
       }
 
       a {
@@ -99,6 +103,102 @@ header {
 
       .color_2 {
         background-color: #ffffff;
+      }
+    }
+  }
+  
+  @media screen and (min-width: 910px) {
+    height: 60px;
+    padding: 30px 0 30px 0;
+    font-weight: 500;
+    color: #ffffff;
+
+    // desktop
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      margin: 0px 40px 0px 40px;
+      display: grid;
+      grid-template-columns: 70px 130px auto 220px;
+
+      .uniQon_logo {
+        height: 50px;
+        padding: 5px 10px 5px 10px;
+      }
+    
+      .title {
+        padding: 5px 0px 0px 0px;
+        font-size: 30px;
+        font-weight: 700;
+      }
+    
+      .navigator {
+        padding-top: 15px;
+        height: 45px;
+
+        .a-wrapper {
+          padding-right: 20px;
+          display: block;
+          float: right;
+        }
+
+        a {
+          text-decoration: none;
+          color: #ffffff;
+          font-size: 18px;
+          text-align: center;
+
+          &:hover {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 2px;
+          }
+
+          &.current {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 2px;
+          }
+        }
+      }
+
+      .botton_wrapper {
+        padding-top: 10px;
+        height: 50px;
+        color: #000000;
+
+        .button {
+          cursor: pointer;
+          float: left;
+          width: 100px;
+          text-align: center;
+          font-size: 18px;
+          height: 35px;
+          border-radius: 10px;
+          padding: 5px 0px 0px 0px;
+          margin: 0px 5px 0px 5px;
+        }
+
+        a {
+          text-decoration: none;
+          color: #000000;
+        }
+
+        .unauth {
+          display: block;
+        }
+
+        .auth {
+          display: none;
+        }
+
+        .color_1 {
+          background-color: #ffffff;
+        }
+
+        .color_2 {
+          background-color: #ffffff;
+        }
       }
     }
   }
