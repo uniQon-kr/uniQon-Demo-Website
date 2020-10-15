@@ -12,9 +12,6 @@ body {
 }
 
 header {
-  @media screen and (min-width: 550px) {
-
-  }
   // mobile
   background-color: #000000;
   .desktop {
@@ -263,15 +260,30 @@ footer {
     background-color: rgb(0, 0, 0);
 
     #line1 {
-      font-size: 50px;
+      font-size: 30px;
       padding-bottom: 5px;
-      padding-top: 300px;
+      padding-top: 200px;
+      //tablet
+      @media screen and (min-width: 550px) {
+      }
+      @media screen and (min-width: 910px) {
+        font-size: 50px;
+        padding-bottom: 5px;
+        padding-top: 300px;
+      }
     }
 
     #line2 {
-      font-size: 75px;
-      padding-bottom: 450px;
+      font-size: 55px;
+      padding-bottom: 330px;
       padding-top: 0px;
+      @media screen and (min-width: 550px) {
+      }
+      @media screen and (min-width: 910px) {
+        font-size: 75px;
+        padding-bottom: 450px;
+        padding-top: 0px;
+      }
     }
   }
   
@@ -280,45 +292,104 @@ footer {
     text-decoration: none;
   }
 
-  .block {
-    margin: auto;
-    width: 1182px;
-    max-width: 99%;
-    text-align: left;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin-bottom: 100px;
-    margin-top: 125px;
-
-    .symbol-image {
-      margin: auto;
-      width: 450px;
+  @media screen and (max-width: 910px) {
+    .desktop{
+      display: none;
     }
+  }
+  .mobile{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 100%;
 
+    .block {
+      .symbol-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+      }
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
     .text {
+      text-align: left;
       padding-left: 20px;
 
       .bigBody {
-        font-size: 75px;
+        font-size: 55px;
         margin-bottom: 10px;
-        margin-top: 70px;
+        margin-top: 30px;
       }
       .smallBody {
-        font-size: 30px;
+        font-size: 20px;
         margin-bottom: 40px;
         margin-top: 0px;
       }
       .button {
         text-align: center;
         font-weight: 500;
-        line-height: 70px;
-        font-size: 30px;
-        width: 200px;
-        height: 70px;
+        line-height: 50px;
+        font-size: 18px;
+        width: 100px;
+        height: 50px;
         border-style: solid;
         border-color: rgb(0, 0, 0);
         background-color: rgb(255, 255, 255);
-        border-radius: 10px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 910px) {
+    .mobile{
+      display: none;
+    }
+    
+    .desktop{
+      display: grid;
+      .block {
+        margin: auto;
+        text-align: left;
+        width: 1182px;
+        max-width: 99%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-bottom: 100px;
+        margin-top: 125px;
+      
+    
+        .symbol-image {
+          margin: auto;
+          width: 450px;
+        }
+    
+        .text {
+          padding-left: 20px;
+    
+          .bigBody {
+            font-size: 75px;
+            margin-bottom: 10px;
+            margin-top: 70px;
+          }
+          .smallBody {
+            font-size: 30px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+          }
+          .button {
+            text-align: center;
+            font-weight: 500;
+            line-height: 70px;
+            font-size: 30px;
+            width: 200px;
+            height: 70px;
+            border-style: solid;
+            border-color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+          }
+        }
       }
     }
   }
@@ -334,15 +405,25 @@ footer {
     background-color: rgb(0, 0, 0);
 
     .subtitle {
-      font-size: 50px;
-      padding-bottom: 350px;
+      font-size: 30px;
+      padding-bottom: 330px;
       padding-top: 0px;
+      @media screen and (min-width: 550px) {
+        font-size: 50px;
+        padding-bottom: 350px;
+        padding-top: 0px;
+      }
     }
 
     .title {
-      font-size: 75px;
+      font-size: 55px;
       padding-bottom: 5px;
-      padding-top: 300px;
+      padding-top: 200px;
+      @media screen and (min-width: 550px) {
+        font-size: 55px;
+        padding-bottom: 5px;
+        padding-top: 300px;
+      }
     }
   }
   
@@ -352,48 +433,69 @@ footer {
   }
 
   .block {
-    margin-top: 50px;
-    margin-left: 50px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
     text-align: left;
     display: grid;
     grid-template-columns: 100%;
-    margin-bottom: 100px;   
+    margin-bottom: 50px;   
+    @media screen and (min-width: 550px) {
+      margin-top: 50px;
+      margin-left: 50px;
+      margin-bottom: 100px;   
+    }
 
     .biggerBody {
-      font-size: 75px;
+      font-size: 55px;
       margin-bottom: 0px;
       margin-top: 0px;
+      @media screen and (min-width: 550px) {
+        font-size: 75px;
+      }
     }
 
     .bigBody {
-      font-size: 50px;
+      font-size: 35px;
       margin-bottom: 20px;
       margin-top: 0px;
+      @media screen and (min-width: 550px) {
+        font-size: 50px;
+      }
     }
 
     .text {
       .smallBody {
-        font-size: 20px;
+        font-size: 15px;
         margin-bottom: 25px;
         margin-top: 10px;
+        @media screen and (min-width: 550px) {
+          font-size: 20px;
+        }
       }
       .boldBody {
         font-weight: 1000;
-        font-size: 20px;
+        font-size: 15px;
         margin-bottom: 40px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+          font-size: 20px;
+        }
       }
       .button {
         text-align: center;
-        line-height: 70px;
+        line-height: 50px;
         font-size: 20px;
-        width: 275px;
-        height: 70px;
+        width: 60%;
+        height: 50px;
         margin-bottom: 10px;
         border-width: 2px;
         border-style: solid;
         border-color: rgb(0, 0, 0);
         background-color: rgb(255, 255, 255);
+        @media screen and (min-width: 550px) {
+          width: 275px;
+        }
       }
     }
   }
@@ -401,20 +503,33 @@ footer {
   .inverse-block {
     color: white;
     background-color: rgb(0, 0, 0);
-    padding-bottom: 130px;
+    padding-bottom: 70px;
+    @media screen and (min-width: 550px) {
+      padding-bottom: 130px;
+    }
     .title {
       text-align: center;
+      margin-left: 10px;
+      margin-right: 10px;
       .biggerBody {
-        padding-top: 100px;
-        font-size: 55px;
+        padding-top: 70px;
+        font-size: 40px;
         margin-bottom: 0px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+          padding-top: 100px;
+          font-size: 55px;
+        }
       }
       .bigBody {
         font-weight: 200;
         font-size: 30px;
         margin-bottom: 50px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+          font-size: 25px;
+          margin-bottom: 35px;
+        }
       }
     }
 
@@ -422,21 +537,31 @@ footer {
       font-weight: 200;
       display: grid;
       grid-template-columns: 35% 65%;
-      margin-top: 25px;
+      margin-top: 15px;
+      @media screen and (min-width: 550px) {
+        margin-top: 25px;
+      }
   
       .number {
-        margin-left: 75%;
+        margin-left: 55%;
         text-align: center;
-        width: 450px;
         font-weight: 300;
-        line-height: 50px;
-        font-size: 30px;
-        width: 50px;
-        height: 50px;
+        line-height: 35px;
+        font-size: 15px;
+        width: 35px;
+        height: 35px;
         border-width: 1px;
         border-style: solid;
         border-color: rgb(255, 255, 255);
         background-color: rgb(0, 0, 0);
+        @media screen and (min-width: 550px) {
+          margin-left: 75%;
+          width: 450px;
+          line-height: 50px;
+          font-size: 30px;
+          width: 50px;
+          height: 50px;
+        }
       }
   
       .text {
@@ -444,13 +569,22 @@ footer {
         font-weight: 300;
         margin-bottom: 20px;
         margin-right: 25%;
+        @media screen and (min-width: 550px) {
+          margin-bottom: 20px;
+        }
   
         .bigBody {
-          font-size: 30px;
+          font-size: 20px;
           margin-bottom: 10px;
+          @media screen and (min-width: 550px) {
+            font-size: 30px;
+          }
         }
         .smallBody {
-          font-size: 20px;
+          font-size: 15px;
+          @media screen and (min-width: 550px) {
+            font-size: 20px;
+          }
           a {
             color: white;
             text-decoration: underline;
@@ -463,32 +597,59 @@ footer {
   .block2 {
     color: black;
     background-color: white;
-    margin-top: 120px;
+    margin-top: 80px;
+    @media screen and (min-width: 550px) {
+      margin-top: 120px;
+    }
     .title {
       text-align: center;
       .biggerBody {
-        font-size: 45px;
+        font-size: 35px;
         margin-bottom: 0px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+          font-size: 45px;
+        }
       }
       .bigBody {
         font-weight: 200;
-        font-size: 25px;
-        margin-bottom: 50px;
-        margin-top: 10px;
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 40px;
+        @media screen and (min-width: 550px) {
+          font-size: 25px;
+          margin-bottom: 50px;
+          margin-top: 10px;
+        }
       }
     }
 
+    @media screen and (max-width: 550px) {
+      #innerblock-desktop{
+        display: none;
+      }
+    }
+    @media screen and (min-width: 550px) {
+      #innerblock-mobile{
+        display: none;
+      }
+    }
     .innerblock {
       font-weight: 200;
       display: grid;
-      grid-template-columns: 50% 50%;
+      grid-template-columns: 100%;
       margin-top: 25px;
+      @media screen and (min-width: 550px) {
+        grid-template-columns: 50% 50%;
+      }
   
       .symbol-image {
         margin: auto;
-        height: 300px;
-        width: 300px;
+        width: 85%;
+        @media screen and (min-width: 550px) {
+          height: 300px;
+          width: 300px;
+        }
       }
   
       .text {
@@ -506,6 +667,7 @@ footer {
         }
         .smallBody {
           font-size: 20px;
+
           .boldtext {
             color: black;
             font-weight: 700;
@@ -522,42 +684,67 @@ footer {
   .block3 {
     color: black;
     background-color: rgb(232, 234, 236);
-    margin-top: 120px;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    margin-top: 70px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    @media screen and (min-width: 550px) {
+      margin-top: 120px;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
     .title {
       text-align: center;
       .biggerBody {
-        font-size: 45px;
+        font-size: 35px;
         margin-bottom: 0px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+          font-size: 45px;
+        }
       }
       .bigBody {
         font-weight: 200;
-        font-size: 25px;
-        margin-bottom: 50px;
+        font-size: 20px;
+        margin-bottom: 30px;
         margin-top: 10px;
+        @media screen and (min-width: 550px) {
+          font-size: 25px;
+          margin-bottom: 50px;
+        }
       }
     }
 
     .innerblock {
       font-weight: 200;
       display: grid;
-      grid-template-columns: 40% 60%;
-      margin-top: 25px;
+      grid-template-columns: 100%;
+      margin-top: 15px;
+      @media screen and (min-width: 550px) {
+        grid-template-columns: 40% 60%;
+        margin-top: 25px;
+      }
   
       .symbol-image {
         margin: auto;
-        height: 300px;
-        width: 300px;
+        width: 80%;
+        height: width;
+        @media screen and (min-width: 550px) {
+          height: 300px;
+          width: 300px;
+        }
       }
   
       .text {
         text-align: left;
         font-weight: 400;
-        margin-bottom: 20px;
-        margin-top: 65px;
+        margin-bottom: 30px;
+        margin-top: 30px;
         margin-right: 10%;
+        margin-left: 10%;
+        @media screen and (min-width: 550px) {
+          margin-top: 65px;
+          margin-left: 0%;
+        }
   
         .bigBody {
           font-size: 30px;
@@ -578,17 +765,26 @@ footer {
 
 .mentors-list{
   margin: auto;
-  width: 1182px;
+  width: 100%;
   text-align: center;
+  @media screen and (min-width: 550px) {
+    width: 1182px;
+  }
 
   .mentors-box{
     width: 99%;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     text-align: center;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 100%;
     margin-bottom: 40px;
+    @media screen and (min-width: 550px) {
+      grid-template-columns: 33% 33% 33%;
+      margin-bottom: 40px;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
     
     a {
       text-decoration: none;
@@ -597,7 +793,10 @@ footer {
 
     .mentor-wrapper{
       display: grid;
-      grid-template-rows: 400px 50px;
+      grid-template-rows: 350px 50px;
+      @media screen and (min-width: 550px) {
+        grid-template-rows: 400px 50px;
+      }
 
       &:hover {
         cursor: pointer;
@@ -908,11 +1107,17 @@ footer {
 }
 
 .mypage {
-  width: 800px;
-  max-width: 99%;
+  width: 90%;
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 70px;
+
+  @media screen and (min-width: 550px) {
+  width: 800px;
+  max-width: 99%;
+  margin-top: 50px;
   margin-bottom: 100px;
+  }
 
   #title {
     font-weight: 700;
@@ -1070,15 +1275,22 @@ footer {
       border-radius: 5px;
     }
     .email-button{
-      display: none;
-      width:250px;
+      display: block;
+      width: 322px;
       background-color: #2ea44f;
-      padding: 0px 10px 0px 10px;
-      margin-left: 10px;
+      padding: 2px;
+      margin-top: 10px;
       text-align: center;
       color: #ffffff;
       border-radius: 10px;
       border: 1px solid #2ea44f;
+      @media screen and (min-width: 550px) {
+        display: inline-block;
+        width:250px;
+        padding: 0px 10px 0px 10px;
+        margin-top: 0px;
+        margin-left: 10px;
+      }
     }
     #verification{
       display: none;
@@ -1654,6 +1866,9 @@ footer {
   margin: auto;
   margin-top: 50px;
   margin-bottom: 200px;
+  @media screen and (min-width: 550px) {
+    
+  }
 
 
   #title {
