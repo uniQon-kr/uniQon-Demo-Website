@@ -129,6 +129,10 @@ header {
         padding: 5px 0px 0px 0px;
         font-size: 30px;
         font-weight: 700;
+        a { 
+          text-decoration: none;
+          color: white;
+        }
       }
     
       .navigator {
@@ -466,11 +470,13 @@ footer {
     @media screen and (min-width: 550px) {
       margin-top: 50px;
       margin-left: 50px;
+      margin-right: 50px;
       margin-bottom: 100px;   
     }
     @media screen and (min-width: 910px) {
       margin-top: 50px;
       margin-left: 50px;
+      margin-right: 50px;
       margin-bottom: 100px;   
     }
 

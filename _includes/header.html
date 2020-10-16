@@ -1,7 +1,7 @@
 <!-- Desktop Header -->
 <div class = "desktop">
-    <img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg">
-    <div class = "title">uniQon</div>
+    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
+    <div class = "title"><a href = "{{ site.baseurl }}/">uniQon</a></div>
     <div class = "navigator">
         {% assign sorted = site.data.sitemap | reverse %}
         {% for item in sorted %}

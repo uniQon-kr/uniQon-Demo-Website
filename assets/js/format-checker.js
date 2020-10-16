@@ -85,6 +85,7 @@ function passwordChecker(){
       if (lowerCasePassword.includes(testString)) {
         document.getElementById("password-charFromUsername").style.color = "red";
         passwordValidity =  false;
+        break;
       } else {
         document.getElementById("password-charFromUsername").style.color = "green";
       }
@@ -93,6 +94,7 @@ function passwordChecker(){
       if (lowerCasePassword.includes(testString)) {
         document.getElementById("password-charFromUsername").style.color = "red";
         passwordValidity =  false;
+        break;
       } else {
         document.getElementById("password-charFromUsername").style.color = "green";
       }
