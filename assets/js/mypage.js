@@ -4,7 +4,6 @@ let jsonResponse;
 let emailVerified = false;
 
 async function getMyInfo() {
-    document.getElementById("email").style.display = "none";
     document.getElementById("sendVerification").style.display = "none";
     document.getElementById("verification").style.display = "none";
     document.getElementById("verify").style.display = "none";
