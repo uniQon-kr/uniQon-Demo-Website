@@ -2,7 +2,7 @@
 ---
 async function resetPassword() {
   document.getElementById("resetButton").disabled = true;
-  const username = document.getElementById("username-input").value;
+  const username = document.getElementById("username-checked").value;
   const ticketID = document.getElementById("ticketID-input").value;
   const securityCode = document.getElementById("securityCode-input").value;
   const newPassword = document.getElementById("password-checked").value;

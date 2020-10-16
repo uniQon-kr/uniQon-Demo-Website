@@ -4,6 +4,10 @@ let jsonResponse;
 let emailVerified = false;
 
 async function getMyInfo() {
+    document.getElementById("sendVerification").style.display = "none";
+    document.getElementById("verification").style.display = "none";
+    document.getElementById("verify").style.display = "none";
+
     const response = await fetch('https://api.uniqon.kr/user/myinfo', {
         credentials: 'include',
         method: 'GET',
@@ -83,10 +87,10 @@ async function getMyInfo() {
         }
         //if verification is needed
         if(jsonResponse.verifiedReq){
-            document.getElementById("email").style.display = "inline-block";
-            document.getElementById("sendVerification").style.display = "inline-block";
-            document.getElementById("verification").style.display = "inline-block";
-            document.getElementById("verify").style.display = "inline-block";
+            document.getElementById("email").style.display = "initial";
+            document.getElementById("sendVerification").style.display = "initial";
+            document.getElementById("verification").style.display = "initial";
+            document.getElementById("verify").style.display = "initial";
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
         if(await renew()) { // try to renew access token
