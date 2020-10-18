@@ -1003,18 +1003,6 @@ footer {
 }
 
 .signup{
-  .title{
-    text-align: center;
-    margin-top: 45%;
-    margin-bottom: 70px;
-    font-size: 35px;
-    @media screen and (min-width: 910px) {
-      margin-top: 13vw;
-      margin-bottom: 50px;
-      font-size: 50px;
-    }
-  }
-
   .button-wrapper {
     padding-top: 10px;
     color: #000000;
@@ -1042,6 +1030,59 @@ footer {
       border-radius: 10px;
       border: 2px solid #000000;
       background-color: #f9f9f9;
+      @media screen and (min-width: 910px) {
+        line-height: 50px;
+        font-size: 20px;
+        width: 150px;
+        height: 50px;
+      }
+    }
+  }
+}
+
+.signup-choice{
+  height:100vh;
+  background-color: black;
+  .title{
+    color: white;
+    text-align: center;
+    padding-top: 45%;
+    margin-bottom: 70px;
+    font-size: 30px;
+    @media screen and (min-width: 910px) {
+      padding-top: 16 vw;
+      margin-bottom: 50px;
+      font-size: 45px;
+    }
+  }
+
+  .button-wrapper {
+    padding-top: 10px;
+    color: white;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+    max-width: 75%;
+    margin: 0 auto;
+    @media screen and (min-width: 910px) {
+      max-width: 50%;
+    }
+
+    a {
+      color: white;
+      text-decoration: none; 
+    }
+
+    .button {
+      text-align: center;
+      line-height: 40px;
+      font-size: 15px;
+      width: 100px;
+      height: 40px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      border: 2px solid white;
+      background-color: black;
       @media screen and (min-width: 910px) {
         line-height: 50px;
         font-size: 20px;
