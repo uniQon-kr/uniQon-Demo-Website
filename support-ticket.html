@@ -6,8 +6,6 @@ permalink: /support-ticket
 
 <div class="support-ticket">
   <script defer src = '{{ site.baseurl }}/assets/js/support-ticket.js'></script>
-  <div class = "error" id = "noTicket">Ticket Not Found with Given ID</div>
-  <div class = "error" id = "notReady">Ticket Not Yet Ready</div>
   <div class = "detail-box">
     <p class = "subtitle">Basic Information</p>
     <div class = "textbox">
@@ -28,6 +26,7 @@ permalink: /support-ticket
       </div>
     </div>
   </div>
+  <div class = "error" id = "noTicket">Ticket Not Found with Given ID</div>
   <div class = "button-wrapper">
     <button class = "optional" onclick= "location.href='{{ site.baseurl }}/support-reply';" id = "conversationButton">Reply to the Ticket Response</button>
   </div>

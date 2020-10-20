@@ -482,7 +482,7 @@ footer {
     }
 
     .biggerBody {
-      font-size: 55px;
+      font-size: 60px;
       margin-bottom: 0px;
       margin-top: 0px;
       @media screen and (min-width: 910px) {
@@ -943,12 +943,21 @@ footer {
       text-align: left;
       margin-bottom: 5px;
 
+      a {
+        margin: auto;
+        color: black;
+        text-decoration: underline;
+        font-size: 13px;
+        display: block;
+        float: right;
+      }
+
       .error {
         display: none;
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;
@@ -988,14 +997,6 @@ footer {
       margin-top: 15px;
       float: left;
     }
-    a {
-      margin: auto;
-      color: black;
-      text-decoration: underline;
-      font-size: 13px;
-      display: block;
-      float: right;
-    }
   }
 
   @media screen and (min-width: 910px) {
@@ -1020,12 +1021,21 @@ footer {
       text-align: left;
       margin-bottom: 5px;
 
+      a {
+        margin: auto;
+        color: black;
+        text-decoration: underline;
+        font-size: 13px;
+        display: block;
+        float: right;
+      }
+
       .error {
         display: none;
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;
@@ -1062,14 +1072,6 @@ footer {
     #create{
       margin-top: 15px;
       float: left;
-    }
-    a {
-      margin: auto;
-      color: black;
-      text-decoration: underline;
-      font-size: 13px;
-      display: block;
-      float: right;
     }
   }
 }
@@ -1679,7 +1681,7 @@ footer {
     font-size: 14px;
     font-weight: 400;
     padding: 3px 0 3px 3px;
-    margin-bottom: 15px;
+    margin-top: 15px;
     text-align: center;
     color: #ff5656;
     background-color:  #ffe0e0;
@@ -1754,7 +1756,7 @@ footer {
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;
@@ -1813,7 +1815,7 @@ footer {
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;
@@ -2067,7 +2069,7 @@ footer {
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;
@@ -2147,7 +2149,7 @@ footer {
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;

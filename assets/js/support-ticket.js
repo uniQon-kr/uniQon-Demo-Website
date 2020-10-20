@@ -86,7 +86,9 @@ async function loadMentor() {
       }
   } else if(response.status === 404) {
     if(jsonResponse.error.includes("Support Ticket Not Found")){
-      alert("Support Ticket Not Found");
+      setTimeout(() => {
+        document.getElementById("noTicket").style.display = "block";
+      }, 2000);
       location.href = "{{ site.baseurl }}/mypage";
     }
 }

@@ -67,7 +67,7 @@ async function signUpFunc() {
     document.getElementById("already").style.display = "none";
     document.getElementById("duplicatedNickname").style.display = "none";
     document.getElementById("notMatch").style.display = "block";
-  }else {
+  } else {
     // if properly filled in, send the username and password inputs to the auth API
     const userInput = {
       id : username,
