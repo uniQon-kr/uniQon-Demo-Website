@@ -70,6 +70,10 @@ async function loadMentor() {
         }
       }
     }
+    if(jsonResponse.contents.resolved != null){
+      document.getElementById("conversationButton").style.display = "none";
+      localStorage.setItem('supportTicketID', undefined);
+    }
   }
   else if(response.status === 401 || response.status === 403) {
     if(await renew()) {
@@ -82,7 +86,10 @@ async function loadMentor() {
       }
   } else if(response.status === 404) {
     if(jsonResponse.error.includes("Support Ticket Not Found")){
-      alert("Support Ticket Not Found");
+      setTimeout(() => {
+        document.getElementById("noTicket").style.display = "block";
+      }, 2000);
+      location.href = "{{ site.baseurl }}/mypage";
     }
 }
   //TODO error handling

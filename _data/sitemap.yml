@@ -3,11 +3,11 @@
 - title: Home
   url: /
 
-- title: Our Mentors
-  url: /mentors-list
+#- title: Our Mentors
+#  url: /mentors-list
 
 - title: Be Our Mentor
   url: /mentor-recruit
 
-- title: Plans
-  url: /plans
+#- title: Plans
+#  url: /plans
