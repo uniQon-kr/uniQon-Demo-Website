@@ -1,5 +1,6 @@
 @import "normalize"; // Reset browser's default CSS Setting
 @import "NotoSansKR";
+@import "Nunito";
 
 * {
   margin: 0;
@@ -8,7 +9,7 @@
 body {
   background: #ffffff;
   color: #000000;
-  font-family: "Noto Sans KR","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Nunito", "Noto Sans KR", "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 header {
@@ -280,7 +281,7 @@ footer {
     }
 
     #line2 {
-      font-size: 55px;
+      font-size: 60px;
       padding-bottom: 330px;
       padding-top: 0px;
       @media screen and (min-width: 550px) {
@@ -606,7 +607,7 @@ footer {
           margin-left: 75%;
         }
         @media screen and (min-width: 910px) {
-          margin-left: 75%;
+          margin-left: 80%;
           width: 450px;
           line-height: 50px;
           font-size: 30px;
@@ -922,82 +923,153 @@ footer {
   text-align: center;
   margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .signin-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
-    }
-
-    .description {
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 80px;
+      padding: 10px;
       margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
     }
 
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
+    .title {
+      font-size: 25px;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
 
-    button {
+    .signin-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 80vw;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        margin: auto;
+        display: block;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
+    }
+
+    #create{
+      margin-top: 15px;
+      float: left;
+    }
+    a {
+      margin: auto;
+      color: black;
+      text-decoration: underline;
+      font-size: 13px;
+      display: block;
+      float: right;
     }
   }
 
-  .additional-feature {
-    margin: auto;
-    background-color: #ebebeb;
-    border: 1px solid #c9c9c9;
-    width: 352px;
-    padding: 4px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
 
+    .title {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+
+    .signin-box {
+      margin: auto;
+      width: 700px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      input {
+        width: 700px;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        display: block;
+        width: 312px;
+        background-color: black;
+        padding: 4px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
+    }
+    #create{
+      margin-top: 15px;
+      float: left;
+    }
     a {
-      color: #0366d6;
-      text-decoration: none;
+      margin: auto;
+      color: black;
+      text-decoration: underline;
+      font-size: 13px;
+      display: block;
+      float: right;
     }
   }
 }
@@ -1043,53 +1115,31 @@ footer {
 .signup-choice{
   height:100vh;
   background-color: black;
+  .title-wrapper{
+    padding-top: 28vh;
+    margin:auto;
+    max-width: 90%;
+    width: 99%;
+    text-align: left;
+    @media screen and (min-width: 910px) {
+      padding-top: 40vh;
+      max-width: 80%;
+    }
+  }
   .title{
     color: white;
-    text-align: center;
-    padding-top: 45%;
-    margin-bottom: 70px;
-    font-size: 30px;
+    font-size: 400%;
+    font-family: Arial;
+    font-weight: 800;
     @media screen and (min-width: 910px) {
-      padding-top: 16 vw;
-      margin-bottom: 50px;
-      font-size: 45px;
+      font-size: 100px;
     }
   }
 
-  .button-wrapper {
-    padding-top: 10px;
+  a {
+    display: inline-block;
     color: white;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    justify-items: center;
-    max-width: 75%;
-    margin: 0 auto;
-    @media screen and (min-width: 910px) {
-      max-width: 50%;
-    }
-
-    a {
-      color: white;
-      text-decoration: none; 
-    }
-
-    .button {
-      text-align: center;
-      line-height: 40px;
-      font-size: 15px;
-      width: 100px;
-      height: 40px;
-      margin-bottom: 10px;
-      border-radius: 10px;
-      border: 2px solid white;
-      background-color: black;
-      @media screen and (min-width: 910px) {
-        line-height: 50px;
-        font-size: 20px;
-        width: 150px;
-        height: 50px;
-      }
-    }
+    text-decoration: none; 
   }
 }
 
@@ -1097,96 +1147,185 @@ footer {
   text-align: center;
   margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .signup-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
-    }
-
-    .description {
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 80px;
+      padding: 10px;
       margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
     }
 
-    .terms{
-      clear: both;
-      float: none;
-      position: relative;
-
-      input {
-        top: 7px;
-        position: absolute;
-      }
-      
-      label {
-        display: block;
-        margin-left: 20px;
-        width: 100%;
-      }
-      a {
-        text-align: center;
-        color: #0366d6;
-        text-decoration: none;
-      }
+    .title {
+      font-size: 25px;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
 
-    .otherInput {
-      input {
-        width: 312px;
-        border: 1px solid #c9c9c9;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        margin-bottom: 15px;
-        padding: 2px;
-      }
-      .checker{
-        margin-top: -10px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        color: red;
-      }
-    }
-
-    button {
+    .signup-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .terms{
+        clear: both;
+        float: none;
+        position: relative;
+
+        input {
+          top: 7px;
+          position: absolute;
+        }
+        
+        label {
+          display: block;
+          margin-left: 20px;
+          width: 100%;
+        }
+        a {
+          text-align: center;
+          color: #0366d6;
+          text-decoration: none;
+        }
+      }
+
+      .otherInput {
+        input {
+          width: 80vw;
+          outline:0;
+          border:0;
+          border-bottom: 1px solid #c9c9c9;
+          margin-bottom: 15px;
+          padding: 2px;
+        }
+        .checker{
+          margin-top: -10px;
+          margin-bottom: 10px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+
+      button {
+        margin: auto;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
+    }
+  }
+
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .signup-box {
+      margin: auto;
+      width: 700px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      .terms{
+        clear: both;
+        float: none;
+        position: relative;
+
+        input {
+          top: 7px;
+          position: absolute;
+        }
+        
+        label {
+          display: block;
+          margin-left: 20px;
+          width: 100%;
+        }
+        a {
+          text-align: center;
+          color: #0366d6;
+          text-decoration: none;
+        }
+      }
+
+      .otherInput {
+        input {
+          width: 700px;
+          outline:0;
+          border:0;
+          border-bottom: 1px solid #c9c9c9;
+          margin-bottom: 15px;
+          padding: 2px;
+        }
+        .checker{
+          margin-top: -10px;
+          margin-bottom: 10px;
+          font-size: 12px;
+          color: red;
+        }
+      }
+
+      button {
+        margin: auto;
+        width: 312px;
+        background-color: black;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
 }
@@ -1332,14 +1471,16 @@ footer {
 
     button {
       display: block;
-      width: 322px;
-      background-color: #2ea44f;
+      width: 85vw;
+      background-color: black;
       padding: 4px;
       margin-top: 10px;
       text-align: center;
       color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      border: 1px solid black;
+      @media screen and (min-width: 910px) {
+      width: 322px;
+      }
     }
 
     .error {
@@ -1378,15 +1519,17 @@ footer {
   
   .security-button {
     display: block;
-    width: 322px;
-    background-color: #2ea44f;
+    width: 85vw;
+    background-color: black;
     padding: 4px;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
     color: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #2ea44f;
+    border: 1px solid black;
+    @media screen and (min-width: 910px) {
+    width: 322px;
+    }
     a {
       text-decoration: none;
       color:white;
@@ -1412,14 +1555,16 @@ footer {
     }
     .email-button{
       display: block;
-      width: 322px;
-      background-color: #2ea44f;
+      width: 85vw;
+      background-color: black;
       padding: 2px;
       margin-top: 10px;
       text-align: center;
       color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      border: 1px solid black;
+      @media screen and (min-width: 910px) {
+      width: 322px;
+      }
       @media screen and (min-width: 910px) {
         display: inline-block;
         width:250px;
@@ -1446,10 +1591,13 @@ footer {
     input {
       padding-left: 10px;
       font-size: 14px;
-      width: 312px;
+      width: 80vw;
       border: 1px solid #c9c9c9;
       background-color: #fcfcfc;
       border-radius: 10px;
+      @media screen and (min-width: 910px) {
+      width: 322px;
+      }
     }
   }
 }
@@ -1547,7 +1695,7 @@ footer {
 
   button {
     display: block;
-    width: 300px;
+    width: 85vw;
     background-color: #ffffff;
     padding: 4px;
     margin-top: 10px;
@@ -1555,10 +1703,14 @@ footer {
     color: black;
     border-radius: 10px;
     border: 1px solid black;
+    @media screen and (min-width: 910px) {
+    width: 322px;
+    }
   }
 
   .optional {
     display: none;
+    padding: 0px 10px 0px 10px;
   }
 
   .mentor-wrapper {
@@ -1577,142 +1729,124 @@ footer {
   text-align: center;
   margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .find-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+      margin-bottom: 20px;
     }
 
-    .description {
-      margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
+    .title {
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
 
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
-    }
-
-    button {
+    .find-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 80vw;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        margin: auto;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
-}
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+    }
 
-.change-password-wrapper {
-  text-align: center;
-  margin-top: 50px;
-
-
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .checker{
-    margin-top: -10px;
-    margin-bottom: 10px;
-    font-size: 12px;
-    color: red;
-  }
-
-  .change-password-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
+    .title {
+      font-size: 30px;
       font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
+      margin-bottom: 20px;
     }
 
-    .description {
-      margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
-    }
-
-    button {
+    .find-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 700px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 700px;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        margin: auto;
+        width: 312px;
+        background-color: black;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
 }
@@ -1803,13 +1937,12 @@ footer {
     margin: auto;
     display: block;
     width: 99%;
-    background-color: #2ea44f;
+    background-color: black;
     padding: 4px;
     margin-top: 10px;
     text-align: center;
     color: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #2ea44f;
+    border: 1px solid black;
   }
 
   .draftSave {
@@ -1891,106 +2024,169 @@ footer {
   }
 }
 
-.reset-wrapper {
+.change-wrapper {
   text-align: center;
-  margin-top: 7%;
+  margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .checker{
-    margin-top: -10px;
-    margin-bottom: 10px;
-    font-size: 12px;
-    color: red;
-  }
-
-  .signin-box {
-    margin: auto; 
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
-    }
-
-    #success {
-      display: none;
-      width: 312px;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #2ea44f;
-      background-color:  #d4ffe0;
-      border: 1px solid #a9ffc1;
-      border-radius: 5px;
-    }
-    .description {
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 80px;
+      padding: 10px;
       margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
     }
 
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
+    .title {
+      font-size: 25px;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
 
-    button {
+    .change-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+      
+      #success {
+        display: none;
+        width: 312px;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #2ea44f;
+        background-color:  #d4ffe0;
+        border: 1px solid #a9ffc1;
+        border-radius: 5px;
+      }
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 80vw;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+      .checker{
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size: 10px;
+        color: red;
+      }
+
+      button {
+        margin: auto;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
 
-  .additional-feature {
-    margin: auto;
-    background-color: #ebebeb;
-    border: 1px solid #c9c9c9;
-    width: 352px;
-    padding: 4px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+    }
 
-    a {
-      color: #0366d6;
-      text-decoration: none;
+    .title {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .change-box {
+      margin: auto;
+      width: 700px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      #success {
+        display: none;
+        width: 312px;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #2ea44f;
+        background-color:  #d4ffe0;
+        border: 1px solid #a9ffc1;
+        border-radius: 5px;
+      }
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 700px;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+      .checker{
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: red;
+      }
+
+      button {
+        margin: auto;
+        width: 312px;
+        background-color: black;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
 }
@@ -2083,12 +2279,6 @@ footer {
 
   .button-wrapper {
     margin-top: 20px;
-    @media screen and (min-width: 910px) {
-      display: grid;
-      grid-template-columns: 30%;
-      column-gap: 2%;
-      margin-top: 20px;
-    }
     a{
       color: white;
       text-decoration: none;
@@ -2122,16 +2312,15 @@ footer {
   }
 
   button {
-    margin: auto;
     display: block;
     width: 99%;
-    background-color: #2ea44f;
+    background-color: black;
     margin-top: 10px;
     text-align: center;
     color: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #2ea44f;
+    border: 1px solid black;
     @media screen and (min-width: 910px) {
+      width: 322px;
       padding: 4px;
     }
   }
