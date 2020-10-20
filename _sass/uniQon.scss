@@ -1129,7 +1129,7 @@ footer {
   .title{
     color: white;
     font-size: 400%;
-    font-family: Arial;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 800;
     @media screen and (min-width: 910px) {
       font-size: 100px;
@@ -1152,7 +1152,6 @@ footer {
       background-color: white;
       width: 80px;
       padding: 10px;
-      margin-bottom: 10px;
     }
 
     .title {
@@ -1172,7 +1171,7 @@ footer {
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;
@@ -1218,6 +1217,7 @@ footer {
           padding: 2px;
         }
         .checker{
+          display: none;
           margin-top: -10px;
           margin-bottom: 10px;
           font-size: 10px;
@@ -1234,6 +1234,7 @@ footer {
         text-align: center;
         color: #ffffff;
         border: 1px solid black;
+        margin-bottom: 20px;
       }
     }
   }
@@ -1262,7 +1263,7 @@ footer {
         font-size: 14px;
         font-weight: 400;
         padding: 3px 0 3px 3px;
-        margin-bottom: 15px;
+        margin-top: 15px;
         text-align: center;
         color: #ff5656;
         background-color:  #ffe0e0;
@@ -1309,6 +1310,7 @@ footer {
           padding: 2px;
         }
         .checker{
+          display: none;
           margin-top: -10px;
           margin-bottom: 10px;
           font-size: 12px;
@@ -1589,14 +1591,12 @@ footer {
     }
 
     input {
-      padding-left: 10px;
       font-size: 14px;
       width: 80vw;
       border: 1px solid #c9c9c9;
       background-color: #fcfcfc;
-      border-radius: 10px;
       @media screen and (min-width: 910px) {
-      width: 322px;
+      width: 316px;
       }
     }
   }
