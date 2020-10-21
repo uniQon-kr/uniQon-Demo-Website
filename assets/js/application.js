@@ -123,33 +123,30 @@ async function loadMentor() {
 }
 
 async function bookmark() {//checking for bookmark
-  if(localStorage.getItem("uniQonSignedIn") === "true"){ //display correct block of error
-    const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
-    const response = await fetch(responseUrl, {
-        credentials: 'include',
-        method: 'GET', 
-        headers: {
-          'Content-Type': 'application/json'
-        }
-    });
-    const jsonResponse = await response.json();
-
-    if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden")) {
-      if(await renew()) {
-        bookmark();
-        return;
+  const responseUrl = `https://api.uniqon.kr/document/application/` + localStorage.getItem('docID') + '/bookmark';
+  const response = await fetch(responseUrl, {
+      credentials: 'include',
+      method: 'GET', 
+      headers: {
+        'Content-Type': 'application/json'
       }
+  });
+  const jsonResponse = await response.json();
+
+  if(response.status === 401 || (response.status === 403 && jsonResponse.error === "Forbidden")) {
+    if(await renew()) {
+      bookmark();
+      return;
     }
-
-    if(jsonResponse.userType === 'mentee'){
-      if(!jsonResponse.bookmarked){
-        document.getElementById("bookmarkAdd").style.display = "block";
-        document.getElementById("bookmarkDel").style.display = "none";
-      }
-      else{
-        document.getElementById("bookmarkAdd").style.display = "none";
-        document.getElementById("bookmarkDel").style.display = "block";
-      }
+  }
+  if(jsonResponse.userType === 'mentee'){
+    if(!jsonResponse.bookmarked){
+      document.getElementById("bookmarkAdd").style.display = "block";
+      document.getElementById("bookmarkDel").style.display = "none";
+    }
+    else{
+      document.getElementById("bookmarkAdd").style.display = "none";
+      document.getElementById("bookmarkDel").style.display = "block";
     }
   }
 }
@@ -200,6 +197,5 @@ async function bookmarkDel() {//delete bookmark
   bookmark();
 }
 
-loadMentor();
-
 bookmark();
+loadMentor();

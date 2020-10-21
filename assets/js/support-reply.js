@@ -32,7 +32,6 @@ async function submit() {
               'Content-Type': 'application/json'
           }
       });
-      console.log(request);
       const jsonResponse = await response.json();//error handling
       if(response.status === 401 || response.status === 403) {
         if(await renew()) {
