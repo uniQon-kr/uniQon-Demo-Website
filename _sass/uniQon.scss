@@ -1,6 +1,6 @@
 @import "normalize"; // Reset browser's default CSS Setting
 @import "NotoSansKR";
-@import "Nunito";
+@import "Roboto";
 
 * {
   margin: 0;
@@ -9,7 +9,7 @@
 body {
   background: #ffffff;
   color: #000000;
-  font-family: "Nunito", "Noto Sans KR", "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Roboto", "Noto Sans KR", "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 header {
@@ -27,7 +27,7 @@ header {
       color: #ffffff;
 
       display: grid;
-      grid-template-columns: 30px auto 150px
+      grid-template-columns: 30px auto 155px
     }
 
     .menuIcon {
@@ -74,11 +74,11 @@ header {
 
       .button {
         float: left;
-        width: 50px;
+        width: 56px;
         text-align: center;
-        font-size: 10px;
+        font-size: 11.5px;
         border-radius: 10px;
-        padding: 5px 5px 5px 5px;
+        padding: 4px 4px 4px 4px;
         margin: 5px 0px 0px 5px;
       }
 
@@ -208,12 +208,12 @@ header {
 
 footer {
   .desktop {
-    height: 60px;
-    padding: 30px 0 30px 0;
+    height: auto;
+    padding: 10px 0 10px 0;
     background-color: #494949;
     color: #ffffff;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
 
     p {
       text-align: center;
@@ -423,7 +423,7 @@ footer {
   }
 }
 
-.mentors-recruit {
+.mentor-recruit {
   margin: 0;
   font-weight: 500;
 
@@ -437,7 +437,7 @@ footer {
       padding-bottom: 330px;
       padding-top: 0px;
       @media screen and (min-width: 700px) {
-        font-size: 50px;
+        font-size: 45px;
         padding-bottom: 450px;
         padding-top: 0px;
       }
@@ -448,7 +448,7 @@ footer {
       padding-bottom: 5px;
       padding-top: 200px;
       @media screen and (min-width: 700px) {
-        font-size: 55px;
+        font-size: 60px;
         padding-bottom: 5px;
         padding-top: 300px;
       }
@@ -624,7 +624,18 @@ footer {
         @media screen and (min-width: 910px) {
           margin-bottom: 20px;
         }
-  
+
+        #collegesList {
+          width: 110%;
+          font-size: 10px;
+          margin-top: 20px;
+          display: none;
+          @media screen and (min-width: 910px) {
+            font-size: 14px;
+            margin-top: 20px;
+          }
+        }
+        
         .bigBody {
           font-size: 20px;
           margin-bottom: 10px;
@@ -1406,7 +1417,7 @@ footer {
   }
 
   .subtitle {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 25px;
     margin-bottom: 5px;
   }
@@ -1606,11 +1617,16 @@ footer {
 }
 
 .application {
-  width: 70%;
+  width: 85%;
   max-width: 99%;
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: 200px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  @media screen and (min-width: 910px) {
+    width: 70%;
+    margin-top: 50px;
+    margin-bottom: 200px;
+  }
 
   .detail-box{
 
@@ -1649,16 +1665,25 @@ footer {
   }
   
   .profile-wrapper {
-    display: grid;
-    grid-template-columns: 25% 75%;
+    @media screen and (min-width: 910px) {
+      display: grid;
+      grid-template-columns: 25% 75%;
+    }
 
-    .header-wrapper{
+    .header-wrapper{  
       margin-top: 7%;
       text-transform: capitalize;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       justify-self: left;
-      margin-left: 10%;
+      @media screen and (min-width: 910px) {
+        margin-top: 7%;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 700;
+        justify-self: left;
+        margin-left: 10%;
+      }
       
       .content{
         margin-bottom: 20px;
@@ -1670,10 +1695,15 @@ footer {
       }
     }
     #college-image{
-      justify-self: right;
-      width: 90%;
+      width: 99%;
       margin-top:20px;
-      margin-bottom:30px;
+      margin-bottom:10px;
+      @media screen and (min-width: 910px) {
+        justify-self: right;
+        width: 90%;
+        margin-top:20px;
+        margin-bottom:30px;
+      }
     }
   }
 
@@ -1702,12 +1732,14 @@ footer {
     background-color: #ffffff;
     padding: 4px;
     margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     color: black;
     border-radius: 10px;
     border: 1px solid black;
     @media screen and (min-width: 910px) {
     width: 322px;
+    margin-bottom: 0px;
     }
   }
 
@@ -2424,6 +2456,131 @@ footer {
   
   .collapsable {
     display: none;
+  }
+
+  .mentor-wrapper {
+    margin-bottom: 30px;
+    display: initial;
+
+    .description {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
+}
+
+.sampleApp {
+  width: 85%;
+  max-width: 99%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  @media screen and (min-width: 910px) {
+    width: 70%;
+    margin-top: 50px;
+    margin-bottom: 200px;
+  }
+
+  .detail-box{
+
+    .textbox {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .essay {
+        font-size: 16px;
+        margin-bottom: 30px;
+        margin-top: 5px;
+        font-weight: 400;
+      }
+      .content {
+        text-transform: capitalize;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-weight: 400;
+      }
+      .content-title{
+        font-weight: 800;
+      }
+    }
+  }
+  
+  .subtitle {
+    font-size: 30px;
+    border-bottom: 2px solid #c2c6ca;
+    padding-top: 20px;
+  }
+  
+  .profile-wrapper {
+    @media screen and (min-width: 910px) {
+      display: grid;
+      grid-template-columns: 25% 75%;
+    }
+
+    .header-wrapper{  
+      margin-top: 7%;
+      text-transform: capitalize;
+      font-size: 15px;
+      font-weight: 700;
+      justify-self: left;
+      @media screen and (min-width: 910px) {
+        margin-top: 7%;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 700;
+        justify-self: left;
+        margin-left: 10%;
+      }
+      
+      .content{
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+
+      a{
+        text-decoration: none;
+      }
+    }
+    #college-image{
+      width: 99%;
+      margin-top:20px;
+      margin-bottom:10px;
+      @media screen and (min-width: 910px) {
+        justify-self: right;
+        width: 90%;
+        margin-top:20px;
+        margin-bottom:30px;
+      }
+    }
+  }
+
+  .more-details{
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: left;
+  }
+
+  button {
+    display: block;
+    width: 85vw;
+    background-color: #ffffff;
+    padding: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid black;
+    @media screen and (min-width: 910px) {
+    width: 322px;
+    margin-bottom: 0px;
+    }
+  }
+
+  .optional {
+    padding: 0px 10px 0px 10px;
   }
 
   .mentor-wrapper {

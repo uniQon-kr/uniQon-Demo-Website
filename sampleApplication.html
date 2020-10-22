@@ -1,0 +1,79 @@
+---
+layout: default
+title: "Application Detail"
+permalink: /sample-application
+---
+
+<script src = '{{ site.baseurl }}/assets/js/loginCheck.js'></script>
+<div class="sampleApp">
+	<div class="profile-wrapper">
+    <img id = "college-image" src = "/assets/school-logo/columbia-university.png">
+		<div class = "header-wrapper">
+      <p class = "name-grad">
+        <a id = "mentor-name">journeytotheeast</a>
+        <a> (</a>
+        <a id="grad">2020</a>
+        <a>)</a>
+      </p>
+      <p id = "mentor-school" class = "content">Columbia University</p>
+			<p id = "mentor-major" class = "content">Art History</p>
+      <a href = ""><button>프로필 열람하기</button></a>
+      <a class = "bookmark" id= "bookmarkAdd" onclick="bookmarkAdd()"><button>북마크 추가</button></a>
+		</div>
+  </div>
+  
+	<div class = "more-details">
+		<div class = "detail-box">
+      <p class = "subtitle">Colleges/Universities</p>
+        <div class = "textbox">
+          <p class = "content" id = "collegeName"><span class = "content-title">College/University: </span>Columbia University</p>
+          <p class = "content" id = "admittedMajor"><span class = "content-title">Admitted Major: </span>Art History</p>
+          <p class = "content" id = "expectedGrad"><span class = "content-title">Expected Graduation: </span>2020</p>
+        </div>
+      </div>
+		<div class = "detail-box">
+      <p class = "subtitle">Background</p>
+      <div class = "textbox">
+        <p class = "content" id = "citizenship"><span class = "content-title">Citizenship: </span>Non-US</p>
+        <p class = "content" id = "gender"><span class = "content-title">Gender: </span>Female</p>
+        <p class = "content" id = "ethnicity"><span class = "content-title">Ethnicity: </span>Asian</p>
+        <p class = "content content-title" id = "hooks">Hooks: <span class = "content" id="NA"></span>N/A</p>
+        <ul id = hooksList></ul>
+      </div>
+		</div>
+		<div class = "detail-box">
+      <p class = "subtitle">Academics</p>
+      <div class = "textbox">
+        <p class = "content" id = "weightedGPA"><span class = "content-title">Weighted GPA: </span>4.50</p>
+        <p class = "content" id = "sat1"><span class = "content-title">SAT1: </span>1560</p>
+        <p class = "content" id = "sat2"><span class = "content-title">SAT2 </span>- 프로필 열람 후 3개 항목 확인</p>
+        <p class = "content" id = "apCount"><span class = "content-title">AP </span>- 프로필 열람 후 4개 항목 확인</p>
+      </div>
+    </div>
+		<div class = "detail-box" id = "honorsBox">
+      <p class = "subtitle">Honors</p>
+      <div class = "textbox">
+        <p class = "content" id = "honorsCount">프로필 열람 후 3개 항목 확인</p>
+      </div>
+    </div>
+		<div class = "detail-box" id = "activitiesBox">
+      <p class = "subtitle">Activities</p>
+      <div class = "textbox">
+        <p class = "content" id = "activitiesCount">프로필 열람 후 8개 항목 확인</p>
+      </div>
+    </div>
+		<div class = "detail-box">
+      <p class = "subtitle">Essay</p>
+      <div class = "textbox" id="essay-detail">
+        <p class = 'content-title'>Common App Personal Statement</p>
+        <p class = 'essay'>Some children are afraid of monsters under their beds. I wasn't one of those children. Instead, Osama Bin Laden in my 
+          hamper and Hitler crouched in the back of my close. I'd stay up... - 프로필 열람 후 전체 에세이 확인 (654 Words)</p>
+        <p class = 'content-title'>Columbia: Why Columbia</p>
+        <p class = 'essay'>When I visited Columbia's campus last summer, I had the best chocolate pastry of my life at a nearby restaurant. But 
+          that is not the only reason I want to go to Columbia. The Columbia... - 프로필 열람 후 전체 에세이 확인 (294 Words)</p>
+        <p class = 'content-title'>Columbia: Why Major</p>
+        <p class = 'essay'>My interest in studying the humanities at Columbia is rooted in a desire to examine all facets of the human experience 
+          - from language to philosophy to art - looking specifically at which... - 프로필 열람 후 전체 에세이 확인 (300 Words)</p>
+      </div>
+  </div>
+</div>
