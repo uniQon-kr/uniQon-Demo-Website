@@ -1,6 +1,6 @@
 @import "normalize"; // Reset browser's default CSS Setting
 @import "NotoSansKR";
-@import "Nunito";
+@import "Roboto";
 
 * {
   margin: 0;
@@ -9,7 +9,7 @@
 body {
   background: #ffffff;
   color: #000000;
-  font-family: "Nunito", "Noto Sans KR", "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Roboto", "Noto Sans KR", "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 header {
@@ -1417,7 +1417,7 @@ footer {
   }
 
   .subtitle {
-    font-weight: 300;
+    font-weight: 400;
     font-size: 25px;
     margin-bottom: 5px;
   }
