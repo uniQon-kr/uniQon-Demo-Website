@@ -4,7 +4,7 @@ title: "Be Our Mentor"
 permalink: /mentor-recruit
 ---
 
-<div class="mentors-recruit">
+<div class="mentor-recruit">
   <div class="greeting">
     <p class="title">SHARE YOUR SUCCESS.</p>
     <p class="subtitle">LET YOUR STORY BE THEIR LIGHT.</p>
@@ -47,7 +47,60 @@ permalink: /mentor-recruit
       </div>
       <div class="text">
         <p class = "bigBody">Check your eligibility.</p>
-        <p class = "smallBody">We accept mentors from 22 different American universities.</p>
+        <p class = "smallBody">We accept mentors from 
+        <a id = "collegesClick" onmouseout="getElementById('collegesList').style.display = 'none'" onmouseover= "getElementById('collegesList').style.display = 'block'">
+          22 different American universities.</a></p>
+        
+          <!-- function for mobile (colleges list) and for pc if clicked while hovering keep it open and if closed bring hover function back-->
+        <script>
+          let collegesClick = document.getElementById("collegesClick"); // Find the paragraph element in the page
+          collegesClick.onclick = showColleges; // Add onclick function to element
+          let clicked = false;
+
+          function showColleges() {
+          if(document.getElementById('collegesList').style.display==='block') {
+            if(!clicked){
+              collegesClick.onmouseout = null;
+              collegesClick.onmouseover = null;
+              clicked = true;
+            } else {
+              document.getElementById('collegesList').style.display = 'none';
+              collegesClick.onmouseout = function(){document.getElementById('collegesList').style.display = 'none'};
+              collegesClick.onmouseover =  function(){document.getElementById('collegesList').style.display = 'block'};
+              clicked = false;
+            }
+          } else {
+            document.getElementById('collegesList').style.display = 'block';
+          }
+        }
+        </script>
+
+        <div id = "collegesList">
+          <p>
+            Columbia University (NY) <br>
+            Harvard University (MA) <br>
+            Massachusetts Institute of Technology (MA) <br>
+            Princeton University (NJ) <br>
+            Stanford University (CA) <br>
+            University of Chicago (IL) <br>
+            University of Pennsylvania (Wharton) (PA) <br>
+            Yale University (CT) <br>
+            Amherst College (MA) <br>
+            Brown University (RI) <br>
+            California Institute of Technology (CA) <br>
+            Cornell University (NY) <br>
+            Dartmouth College (NH) <br>
+            Duke University (NC) <br>
+            Johns Hopkins University (MD) <br>
+            New York University (Stern) (NY) <br>
+            Northwestern University (IL) <br>
+            University of California, Berkeley (CA) <br>
+            University of Pennsylvania (non-Wharton) (PA) <br>
+            Vanderbilt University (TN) <br>
+            Washington University in St. Louis (MO) <br>
+            Williams College (MA) 
+          </p>
+        </div>
       </div>
     </div>
     <div class= "pointBlock">
