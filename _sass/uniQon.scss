@@ -23,7 +23,7 @@ header {
     .topMobile {
       height: auto;
       padding: 30px 0 30px 0;
-      font-weight: 500;
+      font-weight: 400;
       color: #ffffff;
 
       display: grid;
@@ -108,7 +108,7 @@ header {
   @media screen and (min-width: 910px) {
     height: 60px;
     padding: 30px 0 30px 0;
-    font-weight: 500;
+    font-weight: 400;
     color: #ffffff;
 
     // desktop
@@ -527,7 +527,8 @@ footer {
         border-width: 2px;
         border-style: solid;
         border-color: rgb(0, 0, 0);
-        background-color: rgb(255, 255, 255);
+        color: white;
+        background-color: black;
         @media screen and (min-width: 550px) {
           width: 275px;
         }
@@ -583,7 +584,7 @@ footer {
     }
 
     .pointBlock {
-      font-weight: 200;
+      font-weight: 300;
       display: grid;
       grid-template-columns: 35% 65%;
       margin-top: 15px;
@@ -678,7 +679,7 @@ footer {
         }
       }
       .bigBody {
-        font-weight: 200;
+        font-weight: 300;
         font-size: 20px;
         margin-top: 5px;
         margin-bottom: 40px;
@@ -779,7 +780,7 @@ footer {
         }
       }
       .bigBody {
-        font-weight: 200;
+        font-weight: 300;
         font-size: 20px;
         margin-bottom: 30px;
         margin-top: 10px;
@@ -816,7 +817,7 @@ footer {
   
       .text {
         text-align: left;
-        font-weight: 400;
+        font-weight: 300;
         margin-bottom: 30px;
         margin-top: 30px;
         margin-right: 10%;
@@ -1417,7 +1418,7 @@ footer {
   }
 
   .subtitle {
-    font-weight: 400;
+    font-weight: 300;
     font-size: 25px;
     margin-bottom: 5px;
   }
