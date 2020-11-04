@@ -6,25 +6,25 @@ permalink: /signin
 <script src = '{{ site.baseurl }}/assets/js/logoutCheck.js'></script>
 <script defer src='{{ site.baseurl }}/assets/js/signin.js'></script>
 <div class = "signin-wrapper">
-    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
+    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo_black.svg"></a>
     <div class = "title">Sign in to uniQon</div>
     <div class = "signin-box">
         <div class = "signin">
-            <div class = "error" id = "invalid">Invalid Input</div>
-            <div class = "error" id = "not-match">Cannot Find Matching Information</div>
-            <div class = "error" id = "loginFail">Failed more than 5 times, Change Password!!</div>
             <div class = "username">
                 <div class = "description">Username</div>
                 <input id = "username-input" type = "text"/>
+                <a href ="{{ site.baseurl }}/findUsername">Find username</a>
             </div>
             <div class = "password">
                 <div class = "description">Password</div>
                 <input id = "password-input" type = "password"/>
+                <a href ="{{ site.baseurl }}/findPassword">Find password</a></br>
             </div>
+            <div class = "error" id = "invalid">Invalid Input</div>
+            <div class = "error" id = "not-match">Cannot Find Matching Information</div>
+            <div class = "error" id = "loginFail">Failed more than 5 times, Change Password!!</div>
             <button id="signinButton" onclick="signInFunc()">Sign in</button>
+            <a href ="{{ site.baseurl }}/signup" id= "create">Create an account</a>
         </div>
     </div>
-    <div class = "additional-feature">New to uniQon? <a href ="{{ site.baseurl }}/signup">Create an account</a> </br>
-    Lost username? <a href ="{{ site.baseurl }}/findUsername">Find username</a></br>
-    Lost password? <a href ="{{ site.baseurl }}/findPassword">Find password</a></div>
 </div>

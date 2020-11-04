@@ -4,10 +4,10 @@ title: "Be Our Mentor"
 permalink: /mentor-recruit
 ---
 
-<div class="mentors-recruit">
+<div class="mentor-recruit">
   <div class="greeting">
-    <p class="title">Share Your Success.</p>
-    <p class="subtitle">Let your story be their light.</p>
+    <p class="title">SHARE YOUR SUCCESS.</p>
+    <p class="subtitle">LET YOUR STORY BE THEIR LIGHT.</p>
   </div>
 
   <div class = "arrow-down">
@@ -17,20 +17,20 @@ permalink: /mentor-recruit
 
   <div class="block">
     <div class="title">
-      <p class ="biggerBody">Records are Valuable.</p>
+      <p class ="biggerBody">RECORDS ARE VALUABLE.</p>
       <p class ="bigBody">Yours, even more so.</p>
       <div class="text">
         <p class="smallBody">Remember when you were preparing for college? The times you crumpled up half-  
         written admissions essays, pored over exams for a good GPA, stayed behind school
         hours to do club activities?</p>
-        <p class="smallBody">Those days are probably now behind you, having done their intended part by getting
-        you where you are, but they can do so much more.</p>
+        <p class="smallBody">You've probably outgrown those days and records by now, 
+        but they're not quite useless yet.</p>
         <p class="smallBody">We provide the link between your data - your essays, GPA, and activities - and the
         mentees in need of them, who use the data to move forward in their own goals and
         dreams, much like you did.</p>
         <p class="smallBody">Help pave the way for them.</p>
         <p class="boldBody">Become a uniQon mentor.</p>
-        <a href = "{{ site.baseurl }}/mentor-form"><div class = "button">Share Your Success</div></a>
+        <a href = "https://forms.gle/TJzsda5qdNd1wVwt6" target = "blank"><div class = "button">Share Your Success</div></a>
       </div>
     </div>
   </div>
@@ -47,7 +47,60 @@ permalink: /mentor-recruit
       </div>
       <div class="text">
         <p class = "bigBody">Check your eligibility.</p>
-        <p class = "smallBody">Our mentors come from 22 different American universities.</p>
+        <p class = "smallBody">We accept mentors from 
+        <a id = "collegesClick" onmouseout="getElementById('collegesList').style.display = 'none'" onmouseover= "getElementById('collegesList').style.display = 'block'">
+          22 different American universities.</a></p>
+        
+          <!-- function for mobile (colleges list) and for pc if clicked while hovering keep it open and if closed bring hover function back-->
+        <script>
+          let collegesClick = document.getElementById("collegesClick"); // Find the paragraph element in the page
+          collegesClick.onclick = showColleges; // Add onclick function to element
+          let clicked = false;
+
+          function showColleges() {
+          if(document.getElementById('collegesList').style.display==='block') {
+            if(!clicked){
+              collegesClick.onmouseout = null;
+              collegesClick.onmouseover = null;
+              clicked = true;
+            } else {
+              document.getElementById('collegesList').style.display = 'none';
+              collegesClick.onmouseout = function(){document.getElementById('collegesList').style.display = 'none'};
+              collegesClick.onmouseover =  function(){document.getElementById('collegesList').style.display = 'block'};
+              clicked = false;
+            }
+          } else {
+            document.getElementById('collegesList').style.display = 'block';
+          }
+        }
+        </script>
+
+        <div id = "collegesList">
+          <p>
+            Amherst College (MA) <br>
+            Brown University (RI) <br>
+            California Institute of Technology (CA) <br>
+            Columbia University (NY) <br>
+            Cornell University (NY) <br>
+            Dartmouth College (NH) <br>
+            Duke University (NC) <br>
+            Harvard University (MA) <br>
+            Johns Hopkins University (MD) <br>
+            Massachusetts Institute of Technology (MA) <br>
+            New York University (Stern) (NY) <br>
+            Northwestern University (IL) <br>
+            Princeton University (NJ) <br>
+            Stanford University (CA) <br>
+            University of California, Berkeley (CA) <br>
+            University of Chicago (IL) <br>
+            University of Pennsylvania (non-Wharton) (PA) <br>
+            University of Pennsylvania (Wharton) (PA) <br>
+            Vanderbilt University (TN) <br>
+            Washington University in St. Louis (MO) <br>
+            Williams College (MA) <br>
+            Yale University (CT)
+          </p>
+        </div>
       </div>
     </div>
     <div class= "pointBlock">
@@ -56,8 +109,8 @@ permalink: /mentor-recruit
       </div>
       <div class="text">
         <p class = "bigBody">Polish.</p>
-        <p class = "smallBody">민감한 부분은 지우고, 빠진 부분은 채우고, 돋보이는 부분은 강조하고. 모든 과정은 
-          <a href="#crypto">철통 보안.</a> 당신의 데이터는 우리와 함께 더욱 빛납니다.</p>
+        <p class = "smallBody">Remove the sensitive bits, fill out the missing bits, and polish until it's ready -  
+          <a href="#crypto">under the tightest security.</a> We make sure no one actually traces the data back to you.</p>
       </div>
     </div>
     <div class= "pointBlock">
@@ -66,8 +119,8 @@ permalink: /mentor-recruit
       </div>
       <div class="text">
         <p class = "bigBody">All set.</p>
-        <p class = "smallBody">모든 준비가 끝났습니다. 이제 선택받을 일만 남았네요! 당신의 프로필 unlock 로열티는 기본. 멘토링 매칭. 
-          강력한 커뮤니티. <a href = "#benefit">끝이 없는 베네핏</a>.</p>
+        <p class = "smallBody">Now you're good to go! All that remains is to <a href = "#benefit">enjoy</a>: loyalties 
+          for every time your profile is unlocked, mentor-matching, and powerful communities. Welcome to uniQon.</p>
       </div>
     </div>
   </div>
@@ -75,7 +128,7 @@ permalink: /mentor-recruit
   <div class="block2">
     <div class= "title">
       <a id="benefit"></a>
-      <p class = "biggerBody">A Rewarding Experience.</p>
+      <p class = "biggerBody">A REWARDING EXPERIENCE.</p>
       <p class = "bigBody">Rewarding, in the literal sense.</p>
     </div>
     <div class="innerblock">
@@ -87,7 +140,7 @@ permalink: /mentor-recruit
       </div>
     </div>
 
-    <div class="innerblock">
+    <div class="innerblock" id = "innerblock-desktop">
       <div class="text">
         <p class="bigBody">Tutoring.</p>
         <p class="smallBody"><span class=boldtext>Your profile is better than any tutoring ad.</span></br>
@@ -95,6 +148,16 @@ permalink: /mentor-recruit
           <p class="smallerBody">Service opens November 2020</p>
       </div>
       <img class="symbol-image" src="{{ site.baseurl }}/assets/infographics/mahnsay.png">
+    </div>
+
+    <div class="innerblock" id = "innerblock-mobile">
+      <img class="symbol-image" src="{{ site.baseurl }}/assets/infographics/mahnsay.png">
+      <div class="text">
+        <p class="bigBody">Tutoring.</p>
+        <p class="smallBody"><span class=boldtext>Your profile is better than any tutoring ad.</span></br>
+          From SAT and academic tutoring to college essay consultings, uniQon brings mentors and mentees together.</p>
+          <p class="smallerBody">Service opens November 2020</p>
+      </div>
     </div>
 
     <div class="innerblock">
@@ -128,8 +191,8 @@ permalink: /mentor-recruit
       <img class="symbol-image" src="{{ site.baseurl }}/assets/infographics/censor.png">
       <div class="text">
         <p class="bigBody">Deleting sensitive information.</p>
-        <p class="smallBody">Our Data Team is fully committed to figure out Even you won't be able to identify yourself.Remove information 
-          that might identify you.</p>
+        <p class="smallBody">Our Data Team is fully committed to guaranteeing confidentiality. Even you won't be able to identify yourself. 
+          Feel free to consult with us about removing information you feel overly insecure about.</p>
       </div>
     </div>
   

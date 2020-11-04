@@ -7,7 +7,7 @@ permalink: /mypage
 <script defer src = '{{ site.baseurl }}/assets/js/mypage.js'></script>
 <div class="mypage">
 	<p id="title">Hi! <p>
-	<div class="common section-wrapper">
+	<div class="section-wrapper">
 		<div class = "section-header">
 			<p class = "subtitle">Common User Profile</p>
 		</div>
@@ -17,10 +17,10 @@ permalink: /mypage
 		</div>
 		<div class="email-wrapper content">
 			<p class = "content-title">Email</p>
-			<input type="text" id="email"  onkeypress="emailChanged()"/>
-			<button id = "sendVerification" class = "email-button"  onclick="sendVerification()">Send Verification Code</button>
-			<input type="text" id="verification" placeholder="Verification Code"/>
-			<button id = "verify" class = "email-button" onclick="verifyEmail()">Verify</button>
+			<input type="text" id="email" class = "inline" onkeypress="emailChanged()"/>
+			<button id = "sendVerification" class = "email-button inline"  onclick="sendVerification()">Send Verification Code</button>
+			<input type="text" id="verification" class = "inline" placeholder="Verification Code"/>
+			<button id = "verify" class = "email-button inline" onclick="verifyEmail()">Verify</button>
 		</div>
 		<div class = "button-wrapper content">
 			<div class = "error" id = "invalid">Invalid Input</div>
@@ -32,11 +32,11 @@ permalink: /mypage
 		</div>
 	</div>
 	
-	<div class = "section-wrapper content" id = "security">
+	<div class = "section-wrapper " id = "security">
 		<div class = "section-header">
 			<p class = "subtitle">Security</p>
 		</div>
-		<div class = "content-paragraph">
+		<div class = "content content-paragraph">
 			<button class = "security-button"><a href = "{{ site.baseurl }}/changePassword">Change Password</a></button>
 			<button class = "security-button" onclick="allSignout()">Logout From All Other Sessions</button>
 			<div id = "signout-success">Signed Out from All Other Sessions</div>
@@ -83,5 +83,18 @@ permalink: /mypage
 		<div class = "applications" id= "actionRequested"></div>
 		<div class = "applications" id= "inprogress"></div>
 		<div class = "applications" id= "reviewDone"></div>
+	</div>
+
+	<div class = "section-wrapper" id = "support-ticket">
+		<div class = "section-header">
+			<p class = "subtitle">Support Ticket</p>
+		</div>
+		<div class = "content-paragraph" id = "resolved">
+		</div>
+		<div class = "content-paragraph" id = "processing">
+		</div>
+		<div class = "content">
+			<button class = "security-button"><a href = "{{ site.baseurl }}/create-support-ticket">Create Support Ticket</a></button>
+		</div>
 	</div>
 </div>

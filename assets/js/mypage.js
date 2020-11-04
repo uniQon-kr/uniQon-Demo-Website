@@ -4,6 +4,10 @@ let jsonResponse;
 let emailVerified = false;
 
 async function getMyInfo() {
+    document.getElementById("sendVerification").style.display = "none";
+    document.getElementById("verification").style.display = "none";
+    document.getElementById("verify").style.display = "none";
+
     const response = await fetch('https://api.uniqon.kr/user/myinfo', {
         credentials: 'include',
         method: 'GET',
@@ -23,7 +27,7 @@ async function getMyInfo() {
         if(jsonResponse.type.includes("mentor")) {
             document.getElementById("mentor").style.display = "block";
             document.getElementById("balance").innerHTML = jsonResponse.remainingBalance;
-            // change bookmark function below to create application list 
+            // application list 
             if(jsonResponse.applicationDoc.length > 0) {
                 document.getElementById("application-list").style.display = "block";
                 for(i=0; i < jsonResponse.applicationDoc.length; i++){
@@ -31,7 +35,6 @@ async function getMyInfo() {
                     let collegeName = applicationObj.schoolName;
                     let collegeImage = "/assets/school-logo/" + applicationObj.schoolName.replace(/ /g,'-') + ".png";
                     let docID = applicationObj.documentID;
-                    localStorage.setItem("docID", docID)
 
                     // sorting
                     if(applicationObj.status === "draft") {
@@ -42,7 +45,7 @@ async function getMyInfo() {
                         document.getElementById("inprogress").innerHTML += "<div></div><div><p class = 'bookmarkLink'>" + collegeName + " (" + applicationObj.expectedGrad + ") - review in progress</p></div>";
                     } else if(applicationObj.status === "done") {
                         document.getElementById("reviewDone").innerHTML += "<div class = 'collegeImageWrapper'><img class = 'collegeImage' src =" + collegeImage + "></div>" 
-                        + "<div><p class = 'bookmarkLink'> <a href = '{{ site.baseurl }}/application'>" + collegeName + " (" + applicationObj.expectedGrad + ") - done</a></p></div>";
+                        + "<div><p class = 'bookmarkLink'> <a onclick = \"openApplication('" + docID + "')\">" + collegeName + " (" + applicationObj.expectedGrad + ") - done</a></p></div>";
                     }
                 }
             }
@@ -63,12 +66,31 @@ async function getMyInfo() {
                 + "<div><p class = 'bookmarkLink' onclick = 'openDetail(" + i + ")'>" + bookmarkArr[0] + " (" + collegeName + ")</p></div>";
             }
         }
+        // support-ticket list 
+        // TODO still need fix after html/ticket done
+        if(jsonResponse.supportTicket.length > 0) {
+            for(i=0; i < jsonResponse.supportTicket.length; i++){
+                let supportTicketObj = jsonResponse.supportTicket[i];
+                let ticketTitle = supportTicketObj.title;
+                let ticketResolved = supportTicketObj.resolved;
+                let ticketID = supportTicketObj.ticketID;
+
+                // sorting
+                if(ticketResolved) {
+                    document.getElementById("resolved").innerHTML += 
+                        "<p class = 'bookmarkLink'> <a onclick = \"openTicket('" + ticketID + "')\">" + ticketTitle + " (" + ticketID + ") - resolved</a></p>";
+                } else {
+                    document.getElementById("processing").innerHTML += 
+                        "<p class = 'bookmarkLink'> <a onclick = \"openTicket('" + ticketID + "')\">" + ticketTitle + " (" + ticketID + ") - processing</a></p>";
+                }
+            }
+        }
         //if verification is needed
         if(jsonResponse.verifiedReq){
-            document.getElementById("email").style.display = "inline-block";
-            document.getElementById("sendVerification").style.display = "inline-block";
-            document.getElementById("verification").style.display = "inline-block";
-            document.getElementById("verify").style.display = "inline-block";
+            document.getElementById("email").style.display = "initial";
+            document.getElementById("sendVerification").style.display = "initial";
+            document.getElementById("verification").style.display = "initial";
+            document.getElementById("verify").style.display = "initial";
         }
     } else if(response.status === 401 || response.status == 403) { // Unauthorized OR Forbidden
         if(await renew()) { // try to renew access token
@@ -78,6 +100,16 @@ async function getMyInfo() {
         alert("Server Error!! Please Try Again");
         location.href = "{{ site.baseurl }}/";
     }
+}
+
+async function openTicket(ticketID) {
+    localStorage.setItem("supportTicketID", ticketID)
+    window.location.href = "/support-ticket";
+}
+
+async function openApplication(docID) {
+    localStorage.setItem("docID", docID)
+    window.location.href = "/application";
 }
 
 async function openDetail(i) {

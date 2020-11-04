@@ -1,5 +1,6 @@
 @import "normalize"; // Reset browser's default CSS Setting
 @import "NotoSansKR";
+@import "Roboto";
 
 * {
   margin: 0;
@@ -8,47 +9,51 @@
 body {
   background: #ffffff;
   color: #000000;
-  font-family: "Noto Sans KR","Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Roboto", "Noto Sans KR", "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 header {
-  height: 60px;
-  padding: 30px 0 30px 0;
-  font-weight: 500;
+  // mobile
   background-color: #000000;
-  color: #ffffff;
-
-  // desktop
   .desktop {
-    margin: 0px 40px 0px 40px;
-    display: grid;
-    grid-template-columns: 70px 130px auto 220px;
+    display: none;
+  }
+  .mobile{
+    margin: 0px 0px 0px 20px;
+    .topMobile {
+      height: auto;
+      padding: 30px 0 30px 0;
+      font-weight: 400;
+      color: #ffffff;
 
+      display: grid;
+      grid-template-columns: 30px auto 155px
+    }
+
+    .menuIcon {
+      height: 30px;
+    }
+  
     .uniQon_logo {
-      height: 50px;
-      padding: 5px 10px 5px 10px;
+      position: absolute;
+      width: 45px;
+      right: 45%;
     }
   
-    .title {
-      padding: 5px 0px 0px 0px;
-      font-size: 30px;
-      font-weight: 700;
-    }
-  
-    .navigator {
-      padding-top: 15px;
-      height: 45px;
+    #navLinks {
+      display: none;
+      height: auto;
+      padding-bottom: 10px;
 
       .a-wrapper {
-        padding-right: 20px;
         display: block;
-        float: right;
+        padding-bottom: 10px;
       }
 
       a {
         text-decoration: none;
-        color: #ffffff;
-        font-size: 18px;
+        color: white;
+        font-size: 15px;
         text-align: center;
 
         &:hover {
@@ -64,20 +69,17 @@ header {
     }
 
     .botton_wrapper {
-      padding-top: 10px;
-      height: 50px;
       color: #000000;
+      margin-left: 10px;
 
       .button {
-        cursor: pointer;
         float: left;
-        width: 100px;
+        width: 56px;
         text-align: center;
-        font-size: 18px;
-        height: 35px;
+        font-size: 11.5px;
         border-radius: 10px;
-        padding: 5px 0px 0px 0px;
-        margin: 0px 5px 0px 5px;
+        padding: 4px 4px 4px 4px;
+        margin: 5px 0px 0px 5px;
       }
 
       a {
@@ -102,16 +104,116 @@ header {
       }
     }
   }
+  
+  @media screen and (min-width: 910px) {
+    height: 60px;
+    padding: 30px 0 30px 0;
+    font-weight: 400;
+    color: #ffffff;
+
+    // desktop
+    .mobile {
+      display: none;
+    }
+
+    .desktop {
+      margin: 0px 40px 0px 40px;
+      display: grid;
+      grid-template-columns: 70px 130px auto 220px;
+
+      .uniQon_logo {
+        height: 50px;
+        padding: 5px 10px 5px 10px;
+      }
+    
+      .title {
+        padding: 5px 0px 0px 0px;
+        font-size: 30px;
+        font-weight: 700;
+        a { 
+          text-decoration: none;
+          color: white;
+        }
+      }
+    
+      .navigator {
+        padding-top: 15px;
+        height: 45px;
+
+        .a-wrapper {
+          padding-right: 20px;
+          display: block;
+          float: right;
+        }
+
+        a {
+          text-decoration: none;
+          color: #ffffff;
+          font-size: 18px;
+          text-align: center;
+
+          &:hover {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 2px;
+          }
+
+          &.current {
+            border-bottom: 1px solid #ffffff;
+            padding-bottom: 2px;
+          }
+        }
+      }
+
+      .botton_wrapper {
+        padding-top: 10px;
+        height: 50px;
+        color: #000000;
+
+        .button {
+          cursor: pointer;
+          float: left;
+          width: 100px;
+          text-align: center;
+          font-size: 18px;
+          height: 35px;
+          border-radius: 10px;
+          padding: 5px 0px 0px 0px;
+          margin: 0px 5px 0px 5px;
+        }
+
+        a {
+          text-decoration: none;
+          color: #000000;
+        }
+
+        .unauth {
+          display: block;
+        }
+
+        .auth {
+          display: none;
+        }
+
+        .color_1 {
+          background-color: #ffffff;
+        }
+
+        .color_2 {
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
 }
 
 footer {
   .desktop {
-    height: 60px;
-    padding: 30px 0 30px 0;
+    height: auto;
+    padding: 10px 0 10px 0;
     background-color: #494949;
     color: #ffffff;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 12px;
 
     p {
       text-align: center;
@@ -163,15 +265,35 @@ footer {
     background-color: rgb(0, 0, 0);
 
     #line1 {
-      font-size: 50px;
+      font-size: 30px;
       padding-bottom: 5px;
-      padding-top: 300px;
+      padding-top: 200px;
+      @media screen and (min-width: 550px) {
+        font-size: 45px;
+        padding-bottom: 5px;
+        padding-top: 300px;
+      }
+      @media screen and (min-width: 910px) {
+        font-size: 50px;
+        padding-bottom: 5px;
+        padding-top: 300px;
+      }
     }
 
     #line2 {
-      font-size: 75px;
-      padding-bottom: 450px;
+      font-size: 60px;
+      padding-bottom: 330px;
       padding-top: 0px;
+      @media screen and (min-width: 550px) {
+        font-size: 60px;
+        padding-bottom: 450px;
+        padding-top: 0px;
+      }
+      @media screen and (min-width: 910px) {
+        font-size: 75px;
+        padding-bottom: 450px;
+        padding-top: 0px;
+      }
     }
   }
   
@@ -180,51 +302,128 @@ footer {
     text-decoration: none;
   }
 
-  .block {
-    margin: auto;
-    width: 1182px;
-    max-width: 99%;
-    text-align: left;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin-bottom: 100px;
-    margin-top: 125px;
-
-    .symbol-image {
-      margin: auto;
-      width: 450px;
+  @media screen and (max-width: 550px) {
+    .desktop{
+      display: none;
     }
+  }
+  .mobile{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 100%;
 
+    .block {
+      .symbol-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+      }
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
     .text {
+      text-align: left;
       padding-left: 20px;
 
       .bigBody {
-        font-size: 75px;
+        font-size: 55px;
         margin-bottom: 10px;
-        margin-top: 70px;
+        margin-top: 30px;
       }
       .smallBody {
-        font-size: 30px;
+        font-size: 20px;
         margin-bottom: 40px;
         margin-top: 0px;
       }
       .button {
         text-align: center;
         font-weight: 500;
-        line-height: 70px;
-        font-size: 30px;
-        width: 200px;
-        height: 70px;
+        line-height: 50px;
+        font-size: 18px;
+        width: 100px;
+        height: 50px;
         border-style: solid;
         border-color: rgb(0, 0, 0);
         background-color: rgb(255, 255, 255);
-        border-radius: 10px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 550px) {
+    .mobile{
+      display: none;
+    }
+    
+    .desktop{
+      .block {
+        margin: auto;
+        text-align: left;
+        width: 99%;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-bottom: 100px;
+        margin-top: 5px;
+        @media screen and (min-width: 910px) {
+          width: 1182px;
+          max-width: 99%;
+          margin-top: 125px;
+        }
+      
+    
+        .symbol-image {
+          margin: auto;
+          width: 90%;
+          @media screen and (min-width: 910px) {
+            width: 450px;
+          }
+        }
+    
+        .text {
+          padding-left: 20px;
+    
+          .bigBody {
+            font-size: 55px;
+            margin-bottom: 10px;
+            margin-top: 70px;
+            @media screen and (min-width: 910px) {
+              font-size: 75px;
+            }
+          }
+          .smallBody {
+            font-size: 25px;
+            margin-bottom: 40px;
+            margin-top: 0px;
+            @media screen and (min-width: 910px) {
+              font-size: 30px;
+            }
+          }
+          .button {
+            text-align: center;
+            font-weight: 500;
+            line-height: 50px;
+            font-size: 25px;
+            width: 150px;
+            height: 50px;
+            border-style: solid;
+            border-color: rgb(0, 0, 0);
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            @media screen and (min-width: 910px) {
+              line-height: 70px;
+              font-size: 30px;
+              width: 200px;
+              height: 70px;
+            }
+          }
+        }
       }
     }
   }
 }
 
-.mentors-recruit {
+.mentor-recruit {
   margin: 0;
   font-weight: 500;
 
@@ -234,15 +433,25 @@ footer {
     background-color: rgb(0, 0, 0);
 
     .subtitle {
-      font-size: 50px;
-      padding-bottom: 350px;
+      font-size: 30px;
+      padding-bottom: 330px;
       padding-top: 0px;
+      @media screen and (min-width: 700px) {
+        font-size: 45px;
+        padding-bottom: 450px;
+        padding-top: 0px;
+      }
     }
 
     .title {
-      font-size: 75px;
+      font-size: 55px;
       padding-bottom: 5px;
-      padding-top: 300px;
+      padding-top: 200px;
+      @media screen and (min-width: 700px) {
+        font-size: 60px;
+        padding-bottom: 5px;
+        padding-top: 300px;
+      }
     }
   }
   
@@ -252,48 +461,80 @@ footer {
   }
 
   .block {
-    margin-top: 50px;
-    margin-left: 50px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
     text-align: left;
     display: grid;
     grid-template-columns: 100%;
-    margin-bottom: 100px;   
+    margin-bottom: 50px;   
+    @media screen and (min-width: 550px) {
+      margin-top: 50px;
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-bottom: 100px;   
+    }
+    @media screen and (min-width: 910px) {
+      margin-top: 50px;
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-bottom: 100px;   
+    }
 
     .biggerBody {
-      font-size: 75px;
+      font-size: 45px;
       margin-bottom: 0px;
       margin-top: 0px;
+      @media screen and (min-width: 910px) {
+        font-size: 60px;
+      }
     }
 
     .bigBody {
-      font-size: 50px;
+      font-size: 30px;
       margin-bottom: 20px;
       margin-top: 0px;
+      @media screen and (min-width: 910px) {
+        font-size: 45px;
+      }
     }
 
     .text {
       .smallBody {
-        font-size: 20px;
+        font-size: 15px;
         margin-bottom: 25px;
         margin-top: 10px;
+        @media screen and (min-width: 910px) {
+          font-size: 20px;
+        }
       }
       .boldBody {
         font-weight: 1000;
-        font-size: 20px;
+        font-size: 15px;
         margin-bottom: 40px;
         margin-top: 0px;
+        @media screen and (min-width: 910px) {
+          font-size: 20px;
+        }
       }
       .button {
         text-align: center;
-        line-height: 70px;
+        line-height: 50px;
         font-size: 20px;
-        width: 275px;
-        height: 70px;
+        width: 60%;
+        height: 50px;
         margin-bottom: 10px;
         border-width: 2px;
         border-style: solid;
         border-color: rgb(0, 0, 0);
-        background-color: rgb(255, 255, 255);
+        color: white;
+        background-color: black;
+        @media screen and (min-width: 550px) {
+          width: 275px;
+        }
+        @media screen and (min-width: 910px) {
+          width: 275px;
+        }
       }
     }
   }
@@ -301,42 +542,79 @@ footer {
   .inverse-block {
     color: white;
     background-color: rgb(0, 0, 0);
-    padding-bottom: 130px;
+    padding-bottom: 70px;
+    @media screen and (min-width: 550px) {
+      padding-bottom: 100px;
+    }
+    @media screen and (min-width: 910px) {
+      padding-bottom: 130px;
+    }
     .title {
       text-align: center;
+      margin-left: 10px;
+      margin-right: 10px;
       .biggerBody {
-        padding-top: 100px;
-        font-size: 55px;
+        padding-top: 70px;
+        font-size: 40px;
         margin-bottom: 0px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+          padding-top: 100px;
+          font-size: 50px;
+        }
+        @media screen and (min-width: 910px) {
+          padding-top: 100px;
+          font-size: 55px;
+        }
       }
       .bigBody {
         font-weight: 200;
-        font-size: 30px;
-        margin-bottom: 50px;
+        font-size: 25px;
+        margin-bottom: 35px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+          font-size: 30px;
+          margin-bottom: 50px;
+        }
+        @media screen and (min-width: 910px) {
+          font-size: 30px;
+          margin-bottom: 50px;
+        }
       }
     }
 
     .pointBlock {
-      font-weight: 200;
+      font-weight: 300;
       display: grid;
       grid-template-columns: 35% 65%;
-      margin-top: 25px;
+      margin-top: 15px;
+      @media screen and (min-width: 910px) {
+        margin-top: 25px;
+      }
   
       .number {
-        margin-left: 75%;
+        margin-left: 55%;
         text-align: center;
-        width: 450px;
         font-weight: 300;
-        line-height: 50px;
-        font-size: 30px;
-        width: 50px;
-        height: 50px;
+        line-height: 35px;
+        font-size: 15px;
+        width: 35px;
+        height: 35px;
         border-width: 1px;
         border-style: solid;
         border-color: rgb(255, 255, 255);
         background-color: rgb(0, 0, 0);
+        @media screen and (min-width: 550px) {
+          margin-left: 75%;
+        }
+        @media screen and (min-width: 910px) {
+          margin-left: 80%;
+          width: 450px;
+          line-height: 50px;
+          font-size: 30px;
+          width: 50px;
+          height: 50px;
+        }
       }
   
       .text {
@@ -344,13 +622,33 @@ footer {
         font-weight: 300;
         margin-bottom: 20px;
         margin-right: 25%;
-  
+        @media screen and (min-width: 910px) {
+          margin-bottom: 20px;
+        }
+
+        #collegesList {
+          width: 110%;
+          font-size: 12px;
+          margin-top: 20px;
+          display: none;
+          @media screen and (min-width: 910px) {
+            font-size: 14px;
+            margin-top: 20px;
+          }
+        }
+        
         .bigBody {
-          font-size: 30px;
+          font-size: 20px;
           margin-bottom: 10px;
+          @media screen and (min-width: 910px) {
+            font-size: 30px;
+          }
         }
         .smallBody {
-          font-size: 20px;
+          font-size: 15px;
+          @media screen and (min-width: 910px) {
+            font-size: 20px;
+          }
           a {
             color: white;
             text-decoration: underline;
@@ -363,32 +661,65 @@ footer {
   .block2 {
     color: black;
     background-color: white;
-    margin-top: 120px;
+    margin-top: 80px;
+    @media screen and (min-width: 550px) {
+      margin-top: 100px;
+    }
+    @media screen and (min-width: 910px) {
+      margin-top: 120px;
+    }
     .title {
       text-align: center;
       .biggerBody {
-        font-size: 45px;
+        font-size: 35px;
         margin-bottom: 0px;
         margin-top: 0px;
+        @media screen and (min-width: 910px) {
+          font-size: 45px;
+        }
       }
       .bigBody {
-        font-weight: 200;
-        font-size: 25px;
-        margin-bottom: 50px;
-        margin-top: 10px;
+        font-weight: 300;
+        font-size: 20px;
+        margin-top: 5px;
+        margin-bottom: 40px;
+        @media screen and (min-width: 910px) {
+          font-size: 25px;
+          margin-bottom: 50px;
+          margin-top: 10px;
+        }
       }
     }
 
+    @media screen and (max-width: 550px) {
+      #innerblock-desktop{
+        display: none;
+      }
+    }
+    @media screen and (min-width: 550px) {
+      #innerblock-mobile{
+        display: none;
+      }
+    }
     .innerblock {
       font-weight: 200;
       display: grid;
-      grid-template-columns: 50% 50%;
+      grid-template-columns: 100%;
       margin-top: 25px;
+      @media screen and (min-width: 550px) {
+        grid-template-columns: 50% 50%;
+      }
+      @media screen and (min-width: 910px) {
+        grid-template-columns: 50% 50%;
+      }
   
       .symbol-image {
         margin: auto;
-        height: 300px;
-        width: 300px;
+        width: 85%;
+        @media screen and (min-width: 910px) {
+          height: 300px;
+          width: 300px;
+        }
       }
   
       .text {
@@ -406,6 +737,7 @@ footer {
         }
         .smallBody {
           font-size: 20px;
+
           .boldtext {
             color: black;
             font-weight: 700;
@@ -422,42 +754,78 @@ footer {
   .block3 {
     color: black;
     background-color: rgb(232, 234, 236);
-    margin-top: 120px;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    margin-top: 70px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    @media screen and (min-width: 550px) {
+      margin-top: 100px;
+      padding-top: 90px;
+      padding-bottom: 80px;
+    }
+    @media screen and (min-width: 910px) {
+      margin-top: 120px;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
     .title {
       text-align: center;
       .biggerBody {
-        font-size: 45px;
+        font-size: 35px;
         margin-bottom: 0px;
         margin-top: 0px;
+        @media screen and (min-width: 550px) {
+        }
+        @media screen and (min-width: 910px) {
+          font-size: 45px;
+        }
       }
       .bigBody {
-        font-weight: 200;
-        font-size: 25px;
-        margin-bottom: 50px;
+        font-weight: 300;
+        font-size: 20px;
+        margin-bottom: 30px;
         margin-top: 10px;
+        @media screen and (min-width: 910px) {
+          font-size: 25px;
+          margin-bottom: 50px;
+        }
       }
     }
 
     .innerblock {
       font-weight: 200;
       display: grid;
-      grid-template-columns: 40% 60%;
-      margin-top: 25px;
+      grid-template-columns: 100%;
+      margin-top: 15px;
+      @media screen and (min-width: 550px) {
+        grid-template-columns: 40% 60%;
+        margin-top: 25px;
+      }
+      @media screen and (min-width: 910px) {
+        grid-template-columns: 40% 60%;
+        margin-top: 25px;
+      }
   
       .symbol-image {
         margin: auto;
-        height: 300px;
-        width: 300px;
+        width: 80%;
+        height: width;
+        @media screen and (min-width: 910px) {
+          height: 300px;
+          width: 300px;
+        }
       }
   
       .text {
         text-align: left;
-        font-weight: 400;
-        margin-bottom: 20px;
-        margin-top: 65px;
+        font-weight: 300;
+        margin-bottom: 30px;
+        margin-top: 30px;
         margin-right: 10%;
+          margin-left: 10%;
+        @media screen and (min-width: 910px) {
+          margin-top: 65px;
+          margin-left: 0%;
+        }
   
         .bigBody {
           font-size: 30px;
@@ -478,17 +846,26 @@ footer {
 
 .mentors-list{
   margin: auto;
-  width: 1182px;
+  width: 100%;
   text-align: center;
+  @media screen and (min-width: 1182px) {
+    width: 1182px;
+  }
 
   .mentors-box{
     width: 99%;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     text-align: center;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 100%;
     margin-bottom: 40px;
+    @media screen and (min-width: 910px) {
+      grid-template-columns: 33% 33% 33%;
+      margin-bottom: 40px;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
     
     a {
       text-decoration: none;
@@ -497,7 +874,10 @@ footer {
 
     .mentor-wrapper{
       display: grid;
-      grid-template-rows: 400px 50px;
+      grid-template-rows: 350px 50px;
+      @media screen and (min-width: 1182px) {
+        grid-template-rows: 400px 50px;
+      }
 
       &:hover {
         cursor: pointer;
@@ -555,102 +935,172 @@ footer {
   text-align: center;
   margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .signin-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
-    }
-
-    .description {
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 80px;
+      padding: 10px;
       margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
     }
 
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
+    .title {
+      font-size: 25px;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
 
-    button {
+    .signin-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+
+      a {
+        margin: auto;
+        color: black;
+        text-decoration: underline;
+        font-size: 10px;
+        display: block;
+        float: right;
+      }
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 5px;
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 80vw;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        margin: auto;
+        display: block;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
+    }
+
+    #create{
+      margin-top: 15px;
+      float: left;
     }
   }
 
-  .additional-feature {
-    margin: auto;
-    background-color: #ebebeb;
-    border: 1px solid #c9c9c9;
-    width: 352px;
-    padding: 4px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
 
-    a {
-      color: #0366d6;
-      text-decoration: none;
+    .title {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+
+    .signin-box {
+      margin: auto;
+      width: 700px;
+      padding: 20px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      a {
+        margin: auto;
+        color: black;
+        text-decoration: underline;
+        font-size: 13px;
+        display: block;
+        float: right;
+      }
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      input {
+        width: 700px;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        display: block;
+        width: 312px;
+        background-color: black;
+        padding: 4px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
+    }
+    #create{
+      margin-top: 15px;
+      float: left;
     }
   }
 }
 
 .signup{
-  .title{
-    text-align: center;
-    margin-top: 13vw;
-    margin-bottom: 50px;
-    font-size: 50px;
-  }
-
   .button-wrapper {
     padding-top: 10px;
     color: #000000;
     display: grid;
     grid-template-columns: 50% 50%;
     justify-items: center;
-    max-width: 30%;
+    max-width: 75%;
     margin: 0 auto;
+    @media screen and (min-width: 910px) {
+      max-width: 50%;
+    }
 
     a {
       color: black;
@@ -659,15 +1109,51 @@ footer {
 
     .button {
       text-align: center;
-      line-height: 50px;
-      font-size: 20px;
-      width: 150px;
-      height: 50px;
+      line-height: 40px;
+      font-size: 15px;
+      width: 100px;
+      height: 40px;
       margin-bottom: 10px;
       border-radius: 10px;
       border: 2px solid #000000;
       background-color: #f9f9f9;
+      @media screen and (min-width: 910px) {
+        line-height: 50px;
+        font-size: 20px;
+        width: 150px;
+        height: 50px;
+      }
     }
+  }
+}
+
+.signup-choice{
+  height:100vh;
+  background-color: black;
+  .title-wrapper{
+    padding-top: 28vh;
+    margin:auto;
+    max-width: 90%;
+    width: 99%;
+    text-align: left;
+    @media screen and (min-width: 910px) {
+      padding-top: 40vh;
+      max-width: 80%;
+    }
+  }
+  .title{
+    color: white;
+    font-size: 400%;
+    font-weight: 800;
+    @media screen and (min-width: 910px) {
+      font-size: 100px;
+    }
+  }
+
+  a {
+    display: inline-block;
+    color: white;
+    text-decoration: none; 
   }
 }
 
@@ -675,107 +1161,201 @@ footer {
   text-align: center;
   margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .signup-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 80px;
+      padding: 10px;
     }
 
-    .description {
-      margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
+    .title {
+      font-size: 25px;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
 
-    .terms{
-      clear: both;
-      float: none;
-      position: relative;
-
-      input {
-        top: 7px;
-        position: absolute;
-      }
-      
-      label {
-        display: block;
-        margin-left: 20px;
-        width: 100%;
-      }
-      a {
-        text-align: center;
-        color: #0366d6;
-        text-decoration: none;
-      }
-    }
-
-    .otherInput {
-      input {
-        width: 312px;
-        border: 1px solid #c9c9c9;
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        margin-bottom: 15px;
-        padding: 2px;
-      }
-      .checker{
-        margin-top: -10px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        color: red;
-      }
-    }
-
-    button {
+    .signup-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .terms{
+        clear: both;
+        float: none;
+        position: relative;
+
+        input {
+          top: 7px;
+          position: absolute;
+        }
+        
+        label {
+          display: block;
+          margin-left: 20px;
+          width: 100%;
+        }
+        a {
+          text-align: center;
+          color: #0366d6;
+          text-decoration: none;
+        }
+      }
+
+      .otherInput {
+        input {
+          width: 80vw;
+          outline:0;
+          border:0;
+          border-bottom: 1px solid #c9c9c9;
+          margin-bottom: 15px;
+          padding: 2px;
+        }
+        .checker{
+          display: none;
+          margin-top: -10px;
+          margin-bottom: 10px;
+          font-size: 10px;
+          color: red;
+        }
+      }
+
+      button {
+        margin: auto;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .signup-box {
+      margin: auto;
+      width: 700px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      .terms{
+        clear: both;
+        float: none;
+        position: relative;
+
+        input {
+          top: 7px;
+          position: absolute;
+        }
+        
+        label {
+          display: block;
+          margin-left: 20px;
+          width: 100%;
+        }
+        a {
+          text-align: center;
+          color: #0366d6;
+          text-decoration: none;
+        }
+      }
+
+      .otherInput {
+        input {
+          width: 700px;
+          outline:0;
+          border:0;
+          border-bottom: 1px solid #c9c9c9;
+          margin-bottom: 15px;
+          padding: 2px;
+        }
+        .checker{
+          display: none;
+          margin-top: -10px;
+          margin-bottom: 10px;
+          font-size: 12px;
+          color: red;
+        }
+      }
+
+      button {
+        margin: auto;
+        width: 312px;
+        background-color: black;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
 }
 
 .tc {
   margin: auto;
-  width: 1000px;
-  max-width: 80%;
+  width: 90%;
   text-align: center;
   margin-top: 50px;
   margin-bottom: 50px;
+  @media screen and (min-width: 910px) {
+    width: 1000px;
+    max-width: 80%;
+  }
 
   .uniQon_logo {
     background-color: #000000;
@@ -786,33 +1366,49 @@ footer {
 
   .title {
     margin-top: 20px;
-    font-size: 45px;
+    font-size: 35px;
     font-weight: 400;
     margin-bottom: 20px;
+    @media screen and (min-width: 910px) {
+      font-size: 45px;
+    }
   }
 
   .subtitle {
-    margin-left: 10%;
     text-align: left;
     margin-top: 20px;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 20px;
+    @media screen and (min-width: 910px) {
+      margin-left: 10%;
+      margin-top: 20px;
+      font-size: 30px;
+    }
   }
 
   textarea {
     overflow-y: scroll;
-    width: 80%;
+    width: 99%;
     height: 400px;
+    @media screen and (min-width: 910px) {
+      width: 80%;
+    }
   }
 }
 
 .mypage {
-  width: 800px;
-  max-width: 99%;
+  width: 90%;
   margin: auto;
   margin-top: 50px;
+  margin-bottom: 70px;
+
+  @media screen and (min-width: 910px) {
+  width: 800px;
+  max-width: 99%;
+  margin-top: 50px;
   margin-bottom: 100px;
+  }
 
   #title {
     font-weight: 700;
@@ -891,14 +1487,16 @@ footer {
 
     button {
       display: block;
-      width: 322px;
-      background-color: #2ea44f;
+      width: 85vw;
+      background-color: black;
       padding: 4px;
       margin-top: 10px;
       text-align: center;
       color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      border: 1px solid black;
+      @media screen and (min-width: 910px) {
+      width: 322px;
+      }
     }
 
     .error {
@@ -937,15 +1535,17 @@ footer {
   
   .security-button {
     display: block;
-    width: 322px;
-    background-color: #2ea44f;
+    width: 85vw;
+    background-color: black;
     padding: 4px;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
     color: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #2ea44f;
+    border: 1px solid black;
+    @media screen and (min-width: 910px) {
+    width: 322px;
+    }
     a {
       text-decoration: none;
       color:white;
@@ -970,15 +1570,24 @@ footer {
       border-radius: 5px;
     }
     .email-button{
-      display: none;
-      width:250px;
-      background-color: #2ea44f;
-      padding: 0px 10px 0px 10px;
-      margin-left: 10px;
+      display: block;
+      width: 85vw;
+      background-color: black;
+      padding: 2px;
+      margin-top: 10px;
       text-align: center;
       color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      border: 1px solid black;
+      @media screen and (min-width: 910px) {
+      width: 322px;
+      }
+      @media screen and (min-width: 910px) {
+        display: inline-block;
+        width:250px;
+        padding: 0px 10px 0px 10px;
+        margin-top: 0px;
+        margin-left: 10px;
+      }
     }
     #verification{
       display: none;
@@ -996,22 +1605,28 @@ footer {
     }
 
     input {
-      padding-left: 10px;
       font-size: 14px;
-      width: 312px;
+      width: 83vw;
       border: 1px solid #c9c9c9;
       background-color: #fcfcfc;
-      border-radius: 10px;
+      @media screen and (min-width: 910px) {
+      width: 316px;
+      }
     }
   }
 }
 
 .application {
-  width: 70%;
+  width: 85%;
   max-width: 99%;
   margin: auto;
-  margin-top: 50px;
-  margin-bottom: 200px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  @media screen and (min-width: 910px) {
+    width: 70%;
+    margin-top: 50px;
+    margin-bottom: 200px;
+  }
 
   .detail-box{
 
@@ -1050,16 +1665,25 @@ footer {
   }
   
   .profile-wrapper {
-    display: grid;
-    grid-template-columns: 25% 75%;
+    @media screen and (min-width: 910px) {
+      display: grid;
+      grid-template-columns: 25% 75%;
+    }
 
-    .header-wrapper{
+    .header-wrapper{  
       margin-top: 7%;
       text-transform: capitalize;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       justify-self: left;
-      margin-left: 10%;
+      @media screen and (min-width: 910px) {
+        margin-top: 7%;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 700;
+        justify-self: left;
+        margin-left: 10%;
+      }
       
       .content{
         margin-bottom: 20px;
@@ -1071,10 +1695,15 @@ footer {
       }
     }
     #college-image{
-      justify-self: right;
-      width: 90%;
+      width: 99%;
       margin-top:20px;
-      margin-bottom:30px;
+      margin-bottom:10px;
+      @media screen and (min-width: 910px) {
+        justify-self: right;
+        width: 90%;
+        margin-top:20px;
+        margin-bottom:30px;
+      }
     }
   }
 
@@ -1083,7 +1712,7 @@ footer {
     font-size: 14px;
     font-weight: 400;
     padding: 3px 0 3px 3px;
-    margin-bottom: 15px;
+    margin-top: 15px;
     text-align: center;
     color: #ff5656;
     background-color:  #ffe0e0;
@@ -1099,18 +1728,24 @@ footer {
 
   button {
     display: block;
-    width: 300px;
+    width: 85vw;
     background-color: #ffffff;
     padding: 4px;
     margin-top: 10px;
+    margin-bottom: 10px;
     text-align: center;
     color: black;
     border-radius: 10px;
     border: 1px solid black;
+    @media screen and (min-width: 910px) {
+    width: 322px;
+    margin-bottom: 0px;
+    }
   }
 
   .optional {
     display: none;
+    padding: 0px 10px 0px 10px;
   }
 
   .mentor-wrapper {
@@ -1129,142 +1764,124 @@ footer {
   text-align: center;
   margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .find-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+      margin-bottom: 20px;
     }
 
-    .description {
-      margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
+    .title {
+      font-size: 30px;
+      font-weight: 300;
+      margin-bottom: 20px;
     }
 
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
-    }
-
-    button {
+    .find-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 80vw;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        margin: auto;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
-}
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+    }
 
-.change-password-wrapper {
-  text-align: center;
-  margin-top: 50px;
-
-
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
-  }
-
-  .title {
-    font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
-  }
-
-  .checker{
-    margin-top: -10px;
-    margin-bottom: 10px;
-    font-size: 12px;
-    color: red;
-  }
-
-  .change-password-box {
-    margin: auto;
-    border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
+    .title {
+      font-size: 30px;
       font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
-      border-radius: 5px;
+      margin-bottom: 20px;
     }
 
-    .description {
-      margin-bottom: 10px;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
-    }
-
-    button {
+    .find-box {
       margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      width: 700px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 700px;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+
+      button {
+        margin: auto;
+        width: 312px;
+        background-color: black;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
     }
   }
 }
@@ -1355,13 +1972,12 @@ footer {
     margin: auto;
     display: block;
     width: 99%;
-    background-color: #2ea44f;
+    background-color: black;
     padding: 4px;
     margin-top: 10px;
     text-align: center;
     color: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #2ea44f;
+    border: 1px solid black;
   }
 
   .draftSave {
@@ -1443,106 +2059,537 @@ footer {
   }
 }
 
-.reset-wrapper {
+.change-wrapper {
   text-align: center;
-  margin-top: 7%;
+  margin-top: 50px;
 
-  .uniQon_logo {
-    background-color: #000000;
-    width: 50px;
-    padding: 10px;
-    margin-bottom: 20px;
+  @media screen and (max-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 80px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 25px;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .change-box {
+      margin: auto;
+      width: 80vw;
+      text-align: left;
+      margin-bottom: 5px;
+      
+      #success {
+        display: none;
+        width: 312px;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #2ea44f;
+        background-color:  #d4ffe0;
+        border: 1px solid #a9ffc1;
+        border-radius: 5px;
+      }
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 80vw;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+      .checker{
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size: 10px;
+        color: red;
+      }
+
+      button {
+        margin: auto;
+        width: 80vw;
+        background-color: black;
+        padding: 4px;
+        margin-top: 10px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
+    }
   }
 
-  .title {
+  @media screen and (min-width: 910px) {
+    .uniQon_logo {
+      background-color: white;
+      width: 100px;
+      padding: 10px;
+    }
+
+    .title {
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .change-box {
+      margin: auto;
+      width: 700px;
+      text-align: left;
+      margin-bottom: 5px;
+
+      #success {
+        display: none;
+        width: 312px;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #2ea44f;
+        background-color:  #d4ffe0;
+        border: 1px solid #a9ffc1;
+        border-radius: 5px;
+      }
+
+      .error {
+        display: none;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 3px 0 3px 3px;
+        margin-top: 15px;
+        text-align: center;
+        color: #ff5656;
+        background-color:  #ffe0e0;
+        border: 1px solid #ffb5b5;
+        border-radius: 5px;
+      }
+
+      .description {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-size: 17px;
+        font-weight: 600;
+      }
+
+      input {
+        width: 700px;
+        outline:0;
+        border:0;
+        border-bottom: 1px solid #c9c9c9;
+        margin-bottom: 15px;
+        padding: 2px;
+      }
+      .checker{
+        margin-top: -10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: red;
+      }
+
+      button {
+        margin: auto;
+        width: 312px;
+        background-color: black;
+        padding: 10px;
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        border: 1px solid black;
+      }
+    }
+  }
+}
+
+
+.support-ticket {
+  max-width: 90%;
+  width: 100%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  @media screen and (min-width: 910px) {
+    width: 70%;
+    max-width: 99%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 200px;
+
+  }
+
+
+  #title {
     font-size: 25px;
-    font-weight: 300;
-    margin-bottom: 20px;
+    font-weight: 400;
+    @media screen and (min-width: 910px) {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
   }
-
-  .checker{
-    margin-top: -10px;
+  #type-select {
+    width: 40%;
+    margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 12px;
-    color: red;
+    margin-right: 10px;
+    margin-left: 10px;
+    @media screen and (min-width: 910px) {
+      width: 350px;
+    }
   }
 
-  .signin-box {
-    margin: auto; 
+  .message{
     border: 1px solid #c9c9c9;
-    background-color: #f9f9f9;
-    width: 320px;
-    padding: 20px;
-    text-align: left;
-    margin-bottom: 5px;
-
-    .error {
-      display: none;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #ff5656;
-      background-color:  #ffe0e0;
-      border: 1px solid #ffb5b5;
+    width: 95%;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    @media screen and (min-width: 910px) {
+      width: 95%;
+      height: 200px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
       border-radius: 5px;
     }
-
-    #success {
-      display: none;
-      width: 312px;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 3px 0 3px 3px;
-      margin-bottom: 15px;
-      text-align: center;
-      color: #2ea44f;
-      background-color:  #d4ffe0;
-      border: 1px solid #a9ffc1;
-      border-radius: 5px;
-    }
+  }
+  textarea{
+    resize: none;
+    font-size: 13px;
+  }
+  .section-header {
+    margin-bottom: 20px;
     .description {
       margin-bottom: 10px;
       font-size: 14px;
-      font-weight: 600;
-    }
-
-    input {
-      width: 312px;
-      border: 1px solid #c9c9c9;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      padding: 2px;
-    }
-
-    button {
-      margin: auto;
-      width: 312px;
-      background-color: #2ea44f;
-      padding: 4px;
-      margin-top: 10px;
-      text-align: center;
-      color: #ffffff;
-      border-radius: 10px;
-      border: 1px solid #2ea44f;
+      font-weight: 400;
+      margin-left:15px;
     }
   }
 
-  .additional-feature {
-    margin: auto;
-    background-color: #ebebeb;
-    border: 1px solid #c9c9c9;
-    width: 352px;
-    padding: 4px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 14px;
+  .optional {
+    display: none;
+  }
 
-    a {
-      color: #0366d6;
+  .section-wrapper {
+    margin-bottom: 10px;
+    @media screen and (min-width: 910px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  .addmore{
+    float: right;
+    display: inline;
+    text-align: right;
+    color: #0366d6;
+  }
+
+  .button-wrapper {
+    margin-top: 20px;
+    a{
+      color: white;
       text-decoration: none;
+    }
+  }
+
+  .error {
+    display: none;
+    width: 99%;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 3px 0 3px 3px;
+    text-align: center;
+    color: #ff5656;
+    background-color:  #ffe0e0;
+    border: 1px solid #ffb5b5;
+    border-radius: 5px;
+  }
+
+  .pass {
+    display: none;
+    width: 99%;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 3px 0 3px 3px;
+    text-align: center;
+    color: #2ea44f;
+    background-color:  #d4ffe0;
+    border: 1px solid #a9ffc1;
+    border-radius: 5px;
+  }
+
+  button {
+    display: block;
+    width: 99%;
+    background-color: black;
+    margin-top: 10px;
+    text-align: center;
+    color: #ffffff;
+    border: 1px solid black;
+    @media screen and (min-width: 910px) {
+      width: 322px;
+      padding: 4px;
+    }
+  }
+
+  .message-wrapper{
+    margin-top: 10px;
+    @media screen and (min-width: 910px) {
+      margin-top: 50px;
+    }
+  }
+  .content {  
+    @media screen and (min-width: 910px) {
+      margin-left: 20px;
+    }
+    .content-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      @media screen and (min-width: 910px) {
+        font-size: 16px;
+      }
+    }
+    .description {
+      margin-bottom: 10px;
+      font-size: 12px;
+      margin-left:10px;
+      font-weight: 300;
+      font-style: italic;
+    }
+    .block{
+      display: block;
+    }
+    
+    input {
+      background-color: #fcfcfc;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      @media screen and (min-width: 910px) {
+        font-size: 14px;
+      }
+
+      &[type=text] {
+        width: 90%;
+        margin-right: 10px;
+        margin-left: 10px;
+        border: 1px solid #c9c9c9;
+        border-radius: 5px;
+        @media screen and (min-width: 910px) {
+          width: 350px;
+        }
+      }
+
+      &[type=checkbox] {
+        width: 20px;
+      }
+    }
+
+    .required {
+      background-color: #ffe4e4;
+    }
+  }
+
+  .detail-box{
+
+    .textbox {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .content {
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-weight: 400;
+        display: none;
+      }
+      .content-title{
+        font-weight: 800;
+      }
+    }
+  }
+
+  .subtitle {
+    font-size: 20px;
+    border-bottom: 2px solid #c2c6ca;
+    padding-top: 20px;
+    @media screen and (min-width: 910px) {
+      font-size: 30px;
+    }
+    a{
+      font-size: 10px;
+      @media screen and (min-width: 910px) {
+        font-size: 15px;
+      }
+    }
+  }
+  
+  .collapsable {
+    display: none;
+  }
+
+  .mentor-wrapper {
+    margin-bottom: 30px;
+    display: initial;
+
+    .description {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
+    }
+  }
+}
+
+.sampleApp {
+  width: 85%;
+  max-width: 99%;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  @media screen and (min-width: 910px) {
+    width: 70%;
+    margin-top: 50px;
+    margin-bottom: 200px;
+  }
+
+  .detail-box{
+
+    .textbox {
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .essay {
+        font-size: 16px;
+        margin-bottom: 30px;
+        margin-top: 5px;
+        font-weight: 400;
+      }
+      .content {
+        text-transform: capitalize;
+        font-size: 16px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        font-weight: 400;
+      }
+      .content-title{
+        font-weight: 800;
+      }
+    }
+  }
+  
+  .subtitle {
+    font-size: 30px;
+    border-bottom: 2px solid #c2c6ca;
+    padding-top: 20px;
+  }
+  
+  .profile-wrapper {
+    @media screen and (min-width: 910px) {
+      display: grid;
+      grid-template-columns: 25% 75%;
+    }
+
+    .header-wrapper{  
+      margin-top: 7%;
+      text-transform: capitalize;
+      font-size: 15px;
+      font-weight: 700;
+      justify-self: left;
+      @media screen and (min-width: 910px) {
+        margin-top: 7%;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 700;
+        justify-self: left;
+        margin-left: 10%;
+      }
+      
+      .content{
+        margin-bottom: 20px;
+        margin-top: 20px;
+      }
+
+      a{
+        text-decoration: none;
+      }
+    }
+    #college-image{
+      width: 99%;
+      margin-top:20px;
+      margin-bottom:10px;
+      @media screen and (min-width: 910px) {
+        justify-self: right;
+        width: 90%;
+        margin-top:20px;
+        margin-bottom:30px;
+      }
+    }
+  }
+
+  .more-details{
+    display: grid;
+    grid-template-columns: 100%;
+    text-align: left;
+  }
+
+  button {
+    display: block;
+    width: 85vw;
+    background-color: #ffffff;
+    padding: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    border: 1px solid black;
+    @media screen and (min-width: 910px) {
+    width: 322px;
+    margin-bottom: 0px;
+    }
+  }
+
+  .optional {
+    padding: 0px 10px 0px 10px;
+  }
+
+  .mentor-wrapper {
+    margin-bottom: 30px;
+    display: initial;
+
+    .description {
+      font-size: 14px;
+      font-weight: 300;
+      font-style: italic;
     }
   }
 }

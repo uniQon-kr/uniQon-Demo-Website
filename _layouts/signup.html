@@ -6,18 +6,12 @@ layout: no-header-footer
 <script src = '{{ site.baseurl }}/assets/js/format-checker.js'></script>
 <script async src='{{ site.baseurl }}/assets/js/signup.js'></script>
 <div class="signup-detail">
-  <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
-  <div class = "title">Welcome to uniQon</div>
+  <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo_black.svg"></a>
   <div class = "signup-box">
     <div class = "signup">
-        <div class = "error" id = "invalid">Invalid Input</div>
-        <div class = "error" id = "agreeTC">Please Agree to Our Terms of Service!!</div>
-        <div class = "error" id = "duplicatedID">Duplicated Username</div>
-        <div class = "error" id = "duplicatedNickname">Duplicated Nickname</div>
-        <div class = "error" id = "already">Already Signed Up</div>
         <div class = "otherInput">
             <div class = "description">Username (ID)</div>
-            <input onchange = "usernameChecker()" id = "username" type = "text"/>
+            <input onfocus="getElementById('username-checker').style.display = 'block'" onchange = "usernameChecker()" id = "username-checked" type = "text"/>
             <div id = "username-checker" class = "checker">
                 <p id = "username-charCount">Must have 6 ~ 25 characters </p>
             </div>
@@ -31,8 +25,16 @@ layout: no-header-footer
             <input id = "lastName" type = "text"/>
         </div>
         <div class = "otherInput">
+            <div class = "description">Nickname</div>
+            <input id = "nickname" type = "text"/>
+        </div>
+        <div class = "otherInput">
+            <div class = "description">E-mail</div>
+            <input id = "email" type = "text"/>
+        </div>
+        <div class = "otherInput">
             <div class = "description">Password</div>
-            <input onchange = "passwordChecker()" id = "password-checked" type = "password"/>
+            <input onfocus="getElementById('password-checker').style.display = 'block'" onchange = "passwordChecker()" id = "password-checked" type = "password"/>
             <div id = "password-checker" class = "checker">
                 <p id = "password-charCount">Must have 10 or more characters </p>
                 <p id = "password-charType">Must use number, upper, lower case, and a symbol </p>
@@ -41,17 +43,19 @@ layout: no-header-footer
             </div>
         </div>
         <div class = "otherInput">
-            <div class = "description">E-mail</div>
-            <input id = "email" type = "text"/>
-        </div>
-        <div class = "otherInput">
-            <div class = "description">Nickname</div>
-            <input id = "nickname" type = "text"/>
+            <div class = "description">Re-Type Password</div>
+            <input id = "rePassword" type = "password"/>
         </div>
         <div class = "error" id = "readTC">Please read Terms of Services</div>
         <div class = "terms">
           {{ content }}
         </div>
+        <div class = "error" id = "invalid">Invalid Input</div>
+        <div class = "error" id = "agreeTC">Please Agree to Our Terms of Service!!</div>
+        <div class = "error" id = "duplicatedID">Duplicated Username</div>
+        <div class = "error" id = "duplicatedNickname">Duplicated Nickname</div>
+        <div class = "error" id = "notMatch">Passwords are not matching</div>
+        <div class = "error" id = "already">Already Signed Up</div>
         <button id="signupButton" onclick="signUpFunc()">Sign Up</button>
     </div>
   </div>

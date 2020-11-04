@@ -40,10 +40,11 @@ async function signUpFunc() {
 
   let pathname = location.pathname.split( '/' );
 
-	const username = document.getElementById('username').value;
+	const username = document.getElementById('username-checked').value;
   const firstName = document.getElementById('firstName').value;
   const lastName = document.getElementById('lastName').value;
-  const password = document.getElementById('password').value;
+  const password = document.getElementById('password-checked').value;
+  const rePassword = document.getElementById('rePassword').value;
   const email = document.getElementById('email').value;
   const nickname = document.getElementById('nickname').value;
   const type = [ pathname[2] ];
@@ -57,6 +58,15 @@ async function signUpFunc() {
     document.getElementById("readTC").style.display = "none";
     document.getElementById("already").style.display = "none";
     document.getElementById("duplicatedNickname").style.display = "none";
+    document.getElementById("notMatch").style.display = "none";
+  } else if(password !== rePassword) {
+		document.getElementById("invalid").style.display = "none";
+    document.getElementById("agreeTC").style.display = "none";
+    document.getElementById("duplicatedID").style.display = "none";
+    document.getElementById("readTC").style.display = "none";
+    document.getElementById("already").style.display = "none";
+    document.getElementById("duplicatedNickname").style.display = "none";
+    document.getElementById("notMatch").style.display = "block";
   } else {
     // if properly filled in, send the username and password inputs to the auth API
     const userInput = {

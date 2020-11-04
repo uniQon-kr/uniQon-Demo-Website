@@ -6,13 +6,10 @@ permalink: /findUsername
 <script src = '{{ site.baseurl }}/assets/js/logoutCheck.js'></script>
 <script async src = '{{ site.baseurl }}/assets/js/findUsername.js'></script>
 <div class = "find-wrapper">
-    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
+    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo_black.svg"></a>
     <div class = "title">Find Username</div>
     <div class = "find-box">
         <div class = "find">
-            <div class = "error" id = "invalid">Invalid Input</div>
-            <div class = "error" id = "not-match">Cannot Find Matching Information</div>
-            <div class = "error" id = "duplicated-info">Duplicated information found. Contact Customer Support!!</div>
             <div class = "email">
                 <div class = "description">E-mail</div>
                 <input id = "email" type = "text"/>
@@ -25,6 +22,9 @@ permalink: /findUsername
                 <div class = "description">Last Name</div>
                 <input id = "lastname" type = "text"/>
             </div>
+            <div class = "error" id = "invalid">Invalid Input</div>
+            <div class = "error" id = "not-match">Cannot Find Matching Information</div>
+            <div class = "error" id = "duplicated-info">Duplicated information found. Contact Customer Support!!</div>
             <button id = "findUsernameButton" onclick="findIDFunc()">Find Your Username</button>
         </div>
     </div>

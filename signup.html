@@ -4,12 +4,11 @@ title: "Sign Up"
 permalink: /signup
 ---
 <script src = '{{ site.baseurl }}/assets/js/logoutCheck.js'></script>
-<div class="signup">
+<div class="signup-choice">
   <div class = "title-wrapper">
-    <p class = "title">Are You</p>
-  </div>
-  <div class = "button-wrapper">
-    <a href="{{ site.baseurl }}/signup/mentor"><div class = "button">Mentor</div></a>
-    <a href="{{ site.baseurl }}/signup/mentee"><div class = "button">Mentee</div></a>
+    <p class = "title">I AM:</p>
+    <a href="{{ site.baseurl }}/signup/mentor" onmouseout="getElementById('mentor').style.color = 'white'" onmouseover= "getElementById('mentor').style.color = '#D7B740'"><div id="mentor" class = "title">MENTOR</div></a>
+    <div></div>
+    <a href="{{ site.baseurl }}/signup/mentee" onmouseout="getElementById('mentee').style.color = 'white'" onmouseover= "getElementById('mentee').style.color = '#D7B740'"><div id="mentee" class = "title">MENTEE</div></a>
   </div>
 </div>

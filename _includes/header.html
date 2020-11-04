@@ -1,7 +1,7 @@
 <!-- Desktop Header -->
 <div class = "desktop">
-    <img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg">
-    <div class = "title">uniQon</div>
+    <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
+    <div class = "title"><a href = "{{ site.baseurl }}/">uniQon</a></div>
     <div class = "navigator">
         {% assign sorted = site.data.sitemap | reverse %}
         {% for item in sorted %}
@@ -17,6 +17,42 @@
         <a href = "/signup"><div class = "button color_2 unauth">SIGN UP</div></a>
         <a href = "/mypage"><div class = "button color_1 auth">MY PAGE</div></a>
         <div class = "button color_2 auth" id = "signout-button" onclick = "signOutFunc()">SIGN OUT</div>
+    </div>
+    <!-- Check Logged In -->
+    <script async src = "{{ site.baseurl }}/assets/js/loginCheckHeader.js"></script>
+    <!-- Signout Script-->
+    <script async src = "{{ site.baseurl }}/assets/js/signout.js"></script>
+</div>
+
+<!-- Mobile Header -->
+<div class = "mobile">
+    <script rel = "script" src = "{{ site.baseurl }}/assets/js/mobileHeader.js"></script>
+    <div class = "topMobile">
+        <!-- Hamburger Menu Icon -->
+        <div class = "icon-wrapper">
+            <a href = "javascript:void(0);" class = "icon" onclick = "toggleMenu()">
+                <img class = "menuIcon" src = "{{ site.baseurl }}/assets/menuIcon.jpg">
+            </a>
+        </div>
+        <!-- Logo + Menu Icon -->
+        <a href = "{{ site.baseurl }}/"><img class = "uniQon_logo" src = "{{ site.baseurl }}/assets/uniQon_logo.svg"></a>
+        <div class = "botton_wrapper">
+          <a href = "/signin"><div class = "button color_1 unauth">SIGN IN</div></a>
+          <a href = "/signup"><div class = "button color_2 unauth">SIGN UP</div></a>
+          <a href = "/mypage"><div class = "button color_1 auth">MY PAGE</div></a>
+          <div class = "button color_2 auth" id = "signout-button" onclick = "signOutFunc()">SIGN OUT</div>
+        </div>
+    </div>
+    <!-- Navigator (hidden by default) -->
+    <div class = "moblieNav" id = "navLinks">
+        {% assign sorted = site.data.sitemap %}
+        {% for item in sorted %}
+            {% if page.url == item.url %}
+                <div class = a-wrapper><a class = "current">{{ item.title }}</a></div>
+            {% else %}
+                <div class = a-wrapper><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></div>
+            {% endif %}
+        {% endfor %}
     </div>
     <!-- Check Logged In -->
     <script async src = "{{ site.baseurl }}/assets/js/loginCheckHeader.js"></script>

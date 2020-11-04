@@ -7,8 +7,8 @@ function usernameChecker(){
 
   // username Length Check
   if (
-    document.getElementById("username").value.length > 25 || 
-  document.getElementById("username").value.length < 6
+    document.getElementById("username-checked").value.length > 25 || 
+  document.getElementById("username-checked").value.length < 6
   ) {
     document.getElementById("username-charCount").style.color = "red";
     usernameValidity =  false;
@@ -27,7 +27,10 @@ function usernameChecker(){
 function passwordChecker(){
   const password = document.getElementById("password-checked").value;
   const lowerCasePassword = password.toLowerCase();
-  const lowerCaseUsername = localStorage.getItem("username").toLowerCase();
+  let lowerCaseUsername = "";
+  if(document.getElementById("username-checked").value !== ""){
+    lowerCaseUsername = document.getElementById("username-checked").value.toLowerCase();
+  }
   passwordValidity = true;
   const numberRegExp = /[0-9]/;
   const smallLetterRegExp = /[a-z]/;
@@ -82,6 +85,7 @@ function passwordChecker(){
       if (lowerCasePassword.includes(testString)) {
         document.getElementById("password-charFromUsername").style.color = "red";
         passwordValidity =  false;
+        break;
       } else {
         document.getElementById("password-charFromUsername").style.color = "green";
       }
@@ -90,6 +94,7 @@ function passwordChecker(){
       if (lowerCasePassword.includes(testString)) {
         document.getElementById("password-charFromUsername").style.color = "red";
         passwordValidity =  false;
+        break;
       } else {
         document.getElementById("password-charFromUsername").style.color = "green";
       }

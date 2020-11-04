@@ -1,0 +1,38 @@
+---
+layout: default
+title: "Support Ticket Reply"
+permalink: /support-reply
+---
+<script src = '{{ site.baseurl }}/assets/js/loginCheck.js'></script>
+<script defer src = '{{ site.baseurl }}/assets/js/support-reply.js'></script>
+<div class="support-ticket">
+	<p id="title">Reply<p>
+	<div class="common section-wrapper">
+		<div class = "section-header">
+			<p class = "subtitle">Basic Information</p>
+		</div>
+		<div class="content">
+			<p class = "content-title" id = "ticketID">Ticket ID: </p>
+		</div>
+  </div>
+  
+  
+	<div class = "section-wrapper" id = "message">
+		<div class = "section-header">
+			<p class = "subtitle">Message<a> (You may not use these characters: "\;{}()$)</a></p>
+		</div>
+		<div class = "content">
+      <textarea onchange = "requiredCheck()" class = "message required" id= "form-message"></textarea>
+		</div>
+  </div>
+  
+  <div class = "message-wrapper">
+    <div class = "error" id = "missing">Missing Input: Please Fill All Required Fields</div>
+    <div class = "error" id = "duplicated">Duplicated Application Found</div>
+    <div class = "error" id = "invalid">Invalid Input</div>
+    <div class = "pass" id = "success">Successfully Submitted</div>
+  </div>
+  <div class = "button-wrapper">
+    <button onclick="submit()" id = "submitButton">Submit</button>
+  </div>
+</div>
